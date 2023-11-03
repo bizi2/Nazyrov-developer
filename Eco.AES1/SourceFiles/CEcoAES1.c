@@ -144,8 +144,20 @@ int16_t ECOCALLMETHOD CEcoAES1_MyFunction(/* in */ IEcoAES1Ptr_t me, /* in */ ch
     return 0;
 }
 
+void ECOCALLMETHOD fnAESEncrypt(IEcoAES1Ptr_t me, uint8_t* _roundKey, uint8_t* _buf) {
+    CEcoAES1* pCMe = (CEcoAES1*)me;
+    fnCipher((state_t*)_buf, _roundKey);
+}
 
+void ECOCALLMETHOD fnAESDecrypt(IEcoAES1Ptr_t me, uint8_t* _roundKey, uint8_t* _buf) {
+    CEcoAES1* pCMe = (CEcoAES1*)me;
+    fnCipherInv((state_t*)_buf, _roundKey);
+}
 
+void ECOCALLMETHOD fnAESInitCtx(IEcoAES1Ptr_t me, uint8_t* _roundKey, uint8_t* _key) {
+    CEcoAES1* pCMe = (CEcoAES1*)me;
+    fnKeyExpansion(_roundKey, _key);
+}
 
 /*
  *
@@ -188,14 +200,17 @@ int16_t ECOCALLMETHOD initCEcoAES1(/*in*/ IEcoAES1Ptr_t me, /* in */ IEcoUnknown
     pIBus->pVTbl->Release(pIBus);
 	
     return result;
-}
+} 
 
 /* Create Virtual Table IEcoAES1 */
 IEcoAES1VTbl g_x84F33CD46FEC4788B062F86A7D65BC4BVTbl = {
     CEcoAES1_QueryInterface,
     CEcoAES1_AddRef,
     CEcoAES1_Release,
-    CEcoAES1_MyFunction
+    CEcoAES1_MyFunction,
+    fnAESEncrypt,
+    fnAESDecrypt,
+    fnAESInitCtx
 };
 
 

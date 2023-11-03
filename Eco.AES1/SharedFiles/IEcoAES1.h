@@ -32,6 +32,7 @@ static const UGUID IID_IEcoAES1 = {0x01, 0x10, {0x84, 0xF3, 0x3C, 0xD4, 0x6F, 0x
 #endif /* __IID_IEcoAES1 */
 
 typedef struct IEcoAES1* IEcoAES1Ptr_t;
+typedef uint8_t state_t[4][4];
 
 typedef struct IEcoAES1VTbl {
 
@@ -42,6 +43,9 @@ typedef struct IEcoAES1VTbl {
 
     /* IEcoAES1 */
     int16_t (ECOCALLMETHOD *MyFunction)(/* in */ IEcoAES1Ptr_t me, /* in */ char_t* Name, /* out */ char_t** CopyName);
+    void (ECOCALLMETHOD *fnAESEncrypt)(IEcoAES1Ptr_t me, uint8_t* _roundKey, uint8_t* _buf);
+    void (ECOCALLMETHOD *fnAESDecrypt)(IEcoAES1Ptr_t me, uint8_t* _roundKey, uint8_t* _buf);
+    void (ECOCALLMETHOD *fnAESInitCtx)(IEcoAES1Ptr_t me, uint8_t* _roundKey, uint8_t* _key);
 
 } IEcoAES1VTbl, *IEcoAES1VTblPtr_t;
 

@@ -25,6 +25,21 @@
 #include "IdEcoFileSystemManagement1.h"
 #include "IdEcoAES1.h"
 
+#define AES128 1
+
+#if defined(AES256) && (AES256 == 1)
+    #define AES_KEYEXPSIZE 240
+    #define AES_KEYSIZE 32
+#elif defined(AES192) && (AES192 == 1)
+    #define AES_KEYEXPSIZE 208
+    #define AES_KEYSIZE 24
+#else
+    #define AES_KEYEXPSIZE 176      // Длина расширенного ключа.
+    #define AES_KEYSIZE 16          // Длина ключа шифрования.
+#endif
+
+#define AES_BLOCKLEN 16             // Длина блока в байтах. AES использует блоки по 128 бит.
+
 /*
  *
  * <сводка>
@@ -38,6 +53,12 @@
  */
 int16_t EcoMain(IEcoUnknown* pIUnk) {
     int16_t result = -1;
+    /* Расширенный ключ. */
+    uint8_t keyExpanded[AES_KEYEXPSIZE];
+    /* Ключ шифрования */
+    uint8_t key[AES_KEYSIZE] = { 0x2B, 0x7E, 0x15, 0x16, 0x28, 0xAE, 0xD2, 0xA6, 0xAB, 0xF7, 0x15, 0x88, 0x09, 0xCF, 0x4F, 0x3C };
+    /* Данные для шифрования */
+    uint8_t cipherInput[AES_BLOCKLEN] = { 0x32, 0x43, 0xF6, 0xA8, 0x88, 0x5A, 0x30, 0x8D, 0x31, 0x31, 0x98, 0xA2, 0xE0, 0x37, 0x07, 0x34 };
     /* Указатель на системный интерфейс */
     IEcoSystem1* pISys = 0;
     /* Указатель на интерфейс работы с системной интерфейсной шиной */
@@ -48,7 +69,9 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     char_t* copyName = 0;
     /* Указатель на тестируемый интерфейс */
     IEcoAES1* pIEcoAES1 = 0;
-
+    int8_t x = 4;
+    int8_t y = 0;
+    y = x << 1;
     /* Проверка и создание системного интрефейса */
     if (pISys == 0) {
         result = pIUnk->pVTbl->QueryInterface(pIUnk, &GID_IEcoSystem1, (void **)&pISys);
@@ -95,9 +118,12 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 
-
-    result = pIEcoAES1->pVTbl->MyFunction(pIEcoAES1, name, &copyName);
-
+    pIEcoAES1->pVTbl->fnAESInitCtx(pIEcoAES1, keyExpanded, key);
+    pIEcoAES1->pVTbl->fnAESEncrypt(pIEcoAES1, keyExpanded, cipherInput);
+    pIEcoAES1->pVTbl->fnAESDecrypt(pIEcoAES1, keyExpanded, cipherInput);
+    //fnKeyExpansion(ctx, key);
+    //fnCipher((state_t*)cipherInput, ctx);
+    //fnCipherInv((state_t*)cipherInput, ctx);
 
     /* Освлбождение блока памяти */
     pIMem->pVTbl->Free(pIMem, name);
