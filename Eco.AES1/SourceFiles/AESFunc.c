@@ -1,25 +1,25 @@
 /*
- * <кодировка символов>
+ * <РєРѕРґРёСЂРѕРІРєР° СЃРёРјРІРѕР»РѕРІ>
  *   Cyrillic (UTF-8 with signature) - Codepage 65001
- * </кодировка символов>
+ * </РєРѕРґРёСЂРѕРІРєР° СЃРёРјРІРѕР»РѕРІ>
  *
- * <сводка>
+ * <СЃРІРѕРґРєР°>
  *   AESFunc
- * </сводка>
+ * </СЃРІРѕРґРєР°>
  *
- * <описание>
- *   Данный исходный код описывает реализацию функций AES
- * </описание>
+ * <РѕРїРёСЃР°РЅРёРµ>
+ *   Р”Р°РЅРЅС‹Р№ РёСЃС…РѕРґРЅС‹Р№ РєРѕРґ РѕРїРёСЃС‹РІР°РµС‚ СЂРµР°Р»РёР·Р°С†РёСЋ С„СѓРЅРєС†РёР№ AES
+ * </РѕРїРёСЃР°РЅРёРµ>
  *
- * <автор>
+ * <Р°РІС‚РѕСЂ>
  *   Copyright (c) 2023 Ivan Vinokurov. All rights reserved.
- * </автор>
+ * </Р°РІС‚РѕСЂ>
  *
  */
 
 #include "AESFunc.h"
 
-#define Nb 4 // Кол-во колонн в состоянии AES. Всегда равно 4.
+#define Nb 4 // РљРѕР»-РІРѕ РєРѕР»РѕРЅРЅ РІ СЃРѕСЃС‚РѕСЏРЅРёРё AES. Р’СЃРµРіРґР° СЂР°РІРЅРѕ 4.
 
 #if defined(AES256) && (AES256 == 1)
 	#define Nk 8
@@ -28,8 +28,8 @@
 	#define Nk 6
 	#define Nr 12
 #else
-	#define Nk 4        // Кол-во 32-битных слов в ключе.
-	#define Nr 10       // Кол-во раундов в AES шифровальщике.
+	#define Nk 4        // РљРѕР»-РІРѕ 32-Р±РёС‚РЅС‹С… СЃР»РѕРІ РІ РєР»СЋС‡Рµ.
+	#define Nr 10       // РљРѕР»-РІРѕ СЂР°СѓРЅРґРѕРІ РІ AES С€РёС„СЂРѕРІР°Р»СЊС‰РёРєРµ.
 #endif
 
 static const uint8_t g_sbox[256] = {
@@ -102,7 +102,7 @@ void fnCipher(state_t* _state, uint8_t* _roundKey)
 
 	fnAddRoundKey(l_round, _state, _roundKey);
 
-	// Всего Nr раундов, первые Nr - 1 из них - одинаковые.
+	// Р’СЃРµРіРѕ Nr СЂР°СѓРЅРґРѕРІ, РїРµСЂРІС‹Рµ Nr - 1 РёР· РЅРёС… - РѕРґРёРЅР°РєРѕРІС‹Рµ.
 	for (l_round = 1; l_round < Nr; ++l_round) {
 		fnSubBytes(_state);
 		fnShiftRows(_state);
@@ -110,7 +110,7 @@ void fnCipher(state_t* _state, uint8_t* _roundKey)
 		fnAddRoundKey(l_round, _state, _roundKey);
 	}
 
-	// Последний раунд. Здесь fnMixColumns не используется.
+	// РџРѕСЃР»РµРґРЅРёР№ СЂР°СѓРЅРґ. Р—РґРµСЃСЊ fnMixColumns РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ.
 	fnSubBytes(_state);
 	fnShiftRows(_state);
 	fnAddRoundKey(Nr, _state, _roundKey);
@@ -122,7 +122,7 @@ void fnCipherInv(state_t* _state, uint8_t* _roundKey)
 
 	fnAddRoundKey(Nr, _state, _roundKey);
 
-	// Всего Nr раундов, первые Nr - 1 из них - одинаковые.
+	// Р’СЃРµРіРѕ Nr СЂР°СѓРЅРґРѕРІ, РїРµСЂРІС‹Рµ Nr - 1 РёР· РЅРёС… - РѕРґРёРЅР°РєРѕРІС‹Рµ.
 	for (l_round = (Nr - 1); l_round > 0; --l_round) {
 		fnShiftRowsInv(_state);
 		fnSubBytesInv(_state);
@@ -130,7 +130,7 @@ void fnCipherInv(state_t* _state, uint8_t* _roundKey)
 		fnMixColumnsInv(_state);
 	}
 
-	// Последний раунд. Здесь fnMixColumns не используется.
+	// РџРѕСЃР»РµРґРЅРёР№ СЂР°СѓРЅРґ. Р—РґРµСЃСЊ fnMixColumns РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ.
 	fnShiftRowsInv(_state);
 	fnSubBytesInv(_state);
 	fnAddRoundKey(0, _state, _roundKey);
@@ -152,14 +152,14 @@ void fnShiftRows(state_t* _state)
 {
 	uint8_t temp;
 
-	// Повернуть первый ряд на 1 колонку влево	
+	// РџРѕРІРµСЂРЅСѓС‚СЊ РїРµСЂРІС‹Р№ СЂСЏРґ РЅР° 1 РєРѕР»РѕРЅРєСѓ РІР»РµРІРѕ	
 	temp = (*_state)[0][1];
 	(*_state)[0][1] = (*_state)[1][1];
 	(*_state)[1][1] = (*_state)[2][1];
 	(*_state)[2][1] = (*_state)[3][1];
 	(*_state)[3][1] = temp;
 
-	// Повернуть второй ряд на 2 колонки влево	 
+	// РџРѕРІРµСЂРЅСѓС‚СЊ РІС‚РѕСЂРѕР№ СЂСЏРґ РЅР° 2 РєРѕР»РѕРЅРєРё РІР»РµРІРѕ	 
 	temp = (*_state)[0][2];
 	(*_state)[0][2] = (*_state)[2][2];
 	(*_state)[2][2] = temp;
@@ -168,7 +168,7 @@ void fnShiftRows(state_t* _state)
 	(*_state)[1][2] = (*_state)[3][2];
 	(*_state)[3][2] = temp;
 
-	// Повернуть третий ряд на 3 колонки влево	
+	// РџРѕРІРµСЂРЅСѓС‚СЊ С‚СЂРµС‚РёР№ СЂСЏРґ РЅР° 3 РєРѕР»РѕРЅРєРё РІР»РµРІРѕ	
 	temp = (*_state)[0][3];
 	(*_state)[0][3] = (*_state)[3][3];
 	(*_state)[3][3] = (*_state)[2][3];
@@ -180,14 +180,14 @@ void fnShiftRowsInv(state_t* _state)
 {
 	uint8_t temp;
 
-	// Первый ряд на 1 колонку вправо 
+	// РџРµСЂРІС‹Р№ СЂСЏРґ РЅР° 1 РєРѕР»РѕРЅРєСѓ РІРїСЂР°РІРѕ 
 	temp = (*_state)[3][1];
 	(*_state)[3][1] = (*_state)[2][1];
 	(*_state)[2][1] = (*_state)[1][1];
 	(*_state)[1][1] = (*_state)[0][1];
 	(*_state)[0][1] = temp;
 
-	// Второй ряд на 2 колонки вправо 
+	// Р’С‚РѕСЂРѕР№ СЂСЏРґ РЅР° 2 РєРѕР»РѕРЅРєРё РІРїСЂР°РІРѕ 
 	temp = (*_state)[0][2];
 	(*_state)[0][2] = (*_state)[2][2];
 	(*_state)[2][2] = temp;
@@ -196,7 +196,7 @@ void fnShiftRowsInv(state_t* _state)
 	(*_state)[1][2] = (*_state)[3][2];
 	(*_state)[3][2] = temp;
 
-	// Третий ряд на 3 колонки вправо 
+	// РўСЂРµС‚РёР№ СЂСЏРґ РЅР° 3 РєРѕР»РѕРЅРєРё РІРїСЂР°РІРѕ 
 	temp = (*_state)[0][3];
 	(*_state)[0][3] = (*_state)[1][3];
 	(*_state)[1][3] = (*_state)[2][3];
