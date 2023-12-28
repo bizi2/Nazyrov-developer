@@ -23,6 +23,7 @@
 #include "IEcoAES1.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
+#include "AESFunc.h"
 
 typedef struct CEcoAES1 {
 

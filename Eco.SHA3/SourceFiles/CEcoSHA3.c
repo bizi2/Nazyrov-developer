@@ -21,6 +21,7 @@
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
 #include "CEcoSHA3.h"
+#include "SHA3Func.h"
 
 /*
  *
@@ -109,41 +110,16 @@ uint32_t ECOCALLMETHOD CEcoSHA3_6EFC7840_Release(/* in */ IEcoSHA3Ptr_t me) {
     return pCMe->m_cRef;
 }
 
-/*
- *
- * <сводка>
- *   Функция MyFunction
- * </сводка>
- *
- * <описание>
- *   Функция
- * </описание>
- *
- */
-int16_t ECOCALLMETHOD CEcoSHA3_6EFC7840_MyFunction(/* in */ IEcoSHA3Ptr_t me, /* in */ char_t* Name, /* out */ char_t** copyName) {
+void ECOCALLMETHOD fnEncryptSHA3(IEcoSHA3Ptr_t me, uint8_t* message, uint8_t* output) {
     CEcoSHA3_6EFC7840* pCMe = (CEcoSHA3_6EFC7840*)me;
-    int16_t index = 0;
+    KeccakState l_state;
 
-    /* Проверка указателей */
-    if (me == 0 || Name == 0 || copyName == 0) {
-        return -1;
-    }
+    fnKeccakInitialize(&l_state);
+    fnKeccakAbsorb(&l_state, message, strlen((const char*)message));
+    fnKeccakSqueeze(&l_state, output, sizeof(output));
 
-    /* Копирование строки */
-    while(Name[index] != 0) {
-        index++;
-    }
-    pCMe->m_Name = (char_t*)pCMe->m_pIMem->pVTbl->Alloc(pCMe->m_pIMem, index + 1);
-    index = 0;
-    while(Name[index] != 0) {
-        pCMe->m_Name[index] = Name[index];
-        index++;
-    }
-    *copyName = pCMe->m_Name;
-
-    return 0;
+    return output;
 }
-
 
 
 
@@ -195,7 +171,7 @@ IEcoSHA3VTbl g_x2EBABB98EA1849C287820C3DE6226359VTbl_6EFC7840 = {
     CEcoSHA3_6EFC7840_QueryInterface,
     CEcoSHA3_6EFC7840_AddRef,
     CEcoSHA3_6EFC7840_Release,
-    CEcoSHA3_6EFC7840_MyFunction
+    fnEncryptSHA3
 };
 
 

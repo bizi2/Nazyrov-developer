@@ -53,6 +53,9 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     IEcoMemoryAllocator1* pIMem = 0;
     char_t* name = 0;
     char_t* copyName = 0;
+    uint8_t message[] = "Hello!";
+    uint8_t output[32]; // SHA-3 256-bit hash
+
     /* Указатель на интерфейс работы с журналом */
     IEcoLog1* pILog = 0;
     IEcoLog1FileAffiliate* pIFileAffiliate = 0;
@@ -97,48 +100,46 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
     /* Регистрация статического компонента для работы с датой и вреенем */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoDateTime1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_5B2BA17BEA704527BC708F88568FE115);
-    if (result != 0 ) {
+    //result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoDateTime1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_5B2BA17BEA704527BC708F88568FE115);
+    //if (result != 0 ) {
         /* Освобождение в случае ошибки */
-        goto Release;
-    }
+    //    goto Release;
+    //}
     /* Регистрация статического компонента для работы с журналом */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoLog1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_97322B6765B74342BBCE38798A0B40B5);
-    if (result != 0 ) {
+    //result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoLog1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_97322B6765B74342BBCE38798A0B40B5);
+    //if (result != 0 ) {
         /* Освобождение в случае ошибки */
-        goto Release;
-    }
+    //    goto Release;
+    //}
 #endif
-
-    /* Получение интерфейса  для работы с журналом */
-    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1, (void**) &pILog);
+    /*
+    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1, (void**)&pILog);
     if (result != 0 || pILog == 0) {
-        /* Освобождение интерфейсов в случае ошибки */
         goto Release;
     }
 
-    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1FileAffiliate, (void**) &pIFileAffiliate);
+    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1FileAffiliate, (void**)&pIFileAffiliate);
     if (result != 0 || pIFileAffiliate == 0) {
-        /* Освобождение интерфейсов в случае ошибки */
         goto Release;
     }
+    */
 
-    pILayout = pIFileAffiliate->pVTbl->get_Layout(pIFileAffiliate);
-    pILayout->pVTbl->QueryInterface(pILayout, &IID_IEcoLog1SimpleLayout, (void**) &pISimpleLayout);
+    //pILayout = pIFileAffiliate->pVTbl->get_Layout(pIFileAffiliate);
+    //pILayout->pVTbl->QueryInterface(pILayout, &IID_IEcoLog1SimpleLayout, (void**) &pISimpleLayout);
     //pISimpleLayout->pVTbl->set_Pattern(pISimpleLayout, "%m");
-    pISimpleLayout->pVTbl->Release(pISimpleLayout);
-    pILog->pVTbl->AddAffiliate(pILog, (IEcoLog1Affiliate*)pIFileAffiliate);
-    pIFileAffiliate->pVTbl->Release(pIFileAffiliate);
+    //pISimpleLayout->pVTbl->Release(pISimpleLayout);
+    //pILog->pVTbl->AddAffiliate(pILog, (IEcoLog1Affiliate*)pIFileAffiliate);
+    //pIFileAffiliate->pVTbl->Release(pIFileAffiliate);
 
-    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1ConsoleAffiliate, (void**) &pIConsoleAffiliate);
-    if (result != 0 || pIConsoleAffiliate == 0) {
+    //result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1ConsoleAffiliate, (void**) &pIConsoleAffiliate);
+    //if (result != 0 || pIConsoleAffiliate == 0) {
         /* Освобождение интерфейсов в случае ошибки */
-        goto Release;
-    }
-    pILog->pVTbl->AddAffiliate(pILog, (IEcoLog1Affiliate*)pIConsoleAffiliate);
-    pIConsoleAffiliate->pVTbl->Release(pIConsoleAffiliate);
+    //    goto Release;
+    //}
+    //pILog->pVTbl->AddAffiliate(pILog, (IEcoLog1Affiliate*)pIConsoleAffiliate);
+    //pIConsoleAffiliate->pVTbl->Release(pIConsoleAffiliate);
 
-    pILog->pVTbl->Info(pILog, "Start tests!!!\n");
+    //pILog->pVTbl->Info(pILog, "Start tests!!!\n");
 
     /* Получение интерфейса управления памятью */
     result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoMemoryManager1, 0, &IID_IEcoMemoryAllocator1, (void**) &pIMem);
@@ -156,10 +157,10 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     pIMem->pVTbl->Fill(pIMem, name, 'a', 9);
 
     /* Вывод отладочной информации */
-    pILog->pVTbl->DebugFormat(pILog, "name = %s", name);
+    //pILog->pVTbl->DebugFormat(pILog, "name = %s", name);
 
     /* Вывод в виде дампа */
-    pILog->pVTbl->HexDump(pILog, name, 10);
+    //pILog->pVTbl->HexDump(pILog, name, 10);
 
     /* Получение тестируемого интерфейса */
     result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoSHA3, 0, &IID_IEcoSHA3, (void**) &pIEcoSHA3);
@@ -168,9 +169,7 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 
-
-    result = pIEcoSHA3->pVTbl->MyFunction(pIEcoSHA3, name, &copyName);
-
+    pIEcoSHA3->pVTbl->fnEncryptSHA3(pIEcoSHA3, message, output);
 
     /* Освлбождение блока памяти */
     pIMem->pVTbl->Free(pIMem, name);
