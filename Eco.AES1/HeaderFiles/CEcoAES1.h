@@ -12,24 +12,30 @@
  * </описание>
  *
  * <автор>
- *   Copyright (c) 2018 Vladimir Bashev. All rights reserved.
+ *   Copyright (c) 2023 Ivan Vinokurov. All rights reserved.
  * </автор>
  *
  */
 
-#ifndef __C_ECOAES1_H__
-#define __C_ECOAES1_H__
+#ifndef __C_ECO_AES_1_H__
+#define __C_ECO_AES_1_H__
 
 #include "IEcoAES1.h"
+#include "IEcoAES1Cipher.h"
+#include "IEcoAES1InvCipher.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
-#include "AESFunc.h"
 
 typedef struct CEcoAES1 {
 
     /* Таблица функций интерфейса IEcoAES1 */
-    IEcoAES1VTbl* m_pVTblIEcoAES1;
+    IEcoAES1VTbl* m_pVTblIAES;
 
+    /* Таблица функций интерфейса IEcoAES1Cipher */
+    IEcoAES1CipherVTbl* m_pVTblIAESCipher;
+
+    /* Таблица функций интерфейса IEcoAES1InvCipher */
+    IEcoAES1InvCipherVTbl* m_pVTblIAESInvCipher;
 
     /* Счетчик ссылок */
     uint32_t m_cRef;
@@ -41,7 +47,16 @@ typedef struct CEcoAES1 {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    char_t* m_Name;
+    uint8_t m_iMode;
+    uint8_t m_iPaddingMode;
+    uint8_t* m_pKey;
+    uint8_t* m_pIV;
+
+
+    uint8_t m_Nb;
+    uint8_t m_Nk; /* Кол-во 32-битных слов в ключе. */
+    uint8_t m_Nr;
+
 
 } CEcoAES1, *CEcoAES1Ptr;
 
@@ -52,4 +67,4 @@ int16_t ECOCALLMETHOD createCEcoAES1(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* i
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoAES1(/* in */ IEcoAES1Ptr_t pIEcoAES1);
 
-#endif /* __C_ECOAES1_H__ */
+#endif /* __C_ECO_AES_1_H__ */

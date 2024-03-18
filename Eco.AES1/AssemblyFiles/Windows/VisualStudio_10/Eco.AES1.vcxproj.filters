@@ -32,10 +32,19 @@
     <ClInclude Include="..\..\..\HeaderFiles\CEcoAES1Factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\SharedFiles\IdEcoAES1.h">
+    <ClInclude Include="..\..\..\SharedFiles\IEcoAES1.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\SharedFiles\IEcoAES1.h">
+    <ClInclude Include="..\..\..\SharedFiles\IEcoAES1Cipher.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SharedFiles\IEcoAES1InvCipher.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SharedFiles\IdEcoAES1SW.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SharedFiles\IdEcoAES1HW.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
   </ItemGroup>
