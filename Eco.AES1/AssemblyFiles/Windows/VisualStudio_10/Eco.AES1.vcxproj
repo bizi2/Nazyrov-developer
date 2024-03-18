@@ -170,8 +170,11 @@
     <ClInclude Include="..\..\..\HeaderFiles\CEcoAES1.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoAES1Factory.h" />
     <ClInclude Include="..\..\..\SharedFiles\ErrEcoAES1.h" />
-    <ClInclude Include="..\..\..\SharedFiles\IdEcoAES1.h" />
+    <ClInclude Include="..\..\..\SharedFiles\IdEcoAES1HW.h" />
+    <ClInclude Include="..\..\..\SharedFiles\IdEcoAES1SW.h" />
     <ClInclude Include="..\..\..\SharedFiles\IEcoAES1.h" />
+    <ClInclude Include="..\..\..\SharedFiles\IEcoAES1Cipher.h" />
+    <ClInclude Include="..\..\..\SharedFiles\IEcoAES1InvCipher.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\SourceFiles\CEcoAES1.c" />
