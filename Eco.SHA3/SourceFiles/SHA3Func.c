@@ -26,11 +26,11 @@ static const uint8_t g_keccakfPiln[24] = {
     14, 22, 9, 6, 1
 };
 
-void fnKeccakPermutation(uint64_t p_state[KECCAK_LANE]) {
+void fnKeccakPermutation(uint64_t p_state[SHA3_LANE]) {
     int l_round, i, j;
     uint64_t C[5], D;
 
-    for (l_round = 0; l_round < KECCAK_ROUNDS; l_round++) {
+    for (l_round = 0; l_round < SHA3_ROUNDS; l_round++) {
         // Шаг Тета
         for (i = 0; i < 5; ++i) {
             C[i] = p_state[i] ^ p_state[i + 5] ^ p_state[i + 10] ^ p_state[i + 15] ^ p_state[i + 20];
@@ -66,16 +66,35 @@ void fnKeccakPermutation(uint64_t p_state[KECCAK_LANE]) {
     }
 }
 
-void fnKeccakInitialize(KeccakState* p_state) {
-    memset(p_state->m_state, 0, KECCAK_LANE * sizeof(uint64_t));
-    p_state->m_rate = KECCAK_RATE;
-    p_state->m_capacity = KECCAK_CAPACITY;
-}
-
 void fnKeccakAbsorb(KeccakState* p_state, const uint8_t* p_input, size_t l_input_len) {
+    for (uint64_t i = 0; i < l_input_len; i++) {
+        p_state->m_state.m_bytes[p_state->m_absorbed++] ^= p_input[i];
 
+        if (p_state->m_absorbed == SHA3_RATE) {
+            fnKeccakPermutation(p_state->m_state.m_words);
+            p_state->m_absorbed = 0;
+        }
+    }
+
+    p_state->m_padpoint = p_state->m_absorbed;
 }
 
-void fnKeccakSqueeze(KeccakState* p_state, uint8_t* p_output, size_t l_output_len) {
+void fnKeccakSqueeze(KeccakState* p_state, uint8_t* p_output) {
+    p_state->m_state.m_bytes[p_state->m_padpoint] ^= 0x06;
+    p_state->m_state.m_bytes[SHA3_RATE - 1] ^= 0x80;
 
+    fnKeccakPermutation(p_state->m_state.m_words);
+
+    for (int i = 0; i < SHA3_MD_LEN; i++) {
+        p_output[i] = p_state->m_state.m_bytes[i];
+    }
+
+    p_state->m_padpoint = p_state->m_absorbed = 0;
+}
+
+void fnSHA3Digest(uint8_t* p_data, uint64_t n, uint8_t* p_digest) {
+    KeccakState p_state;
+    memset(&p_state, 0, sizeof(p_state));
+    fnKeccakAbsorb(&p_state, p_data, n);
+    fnKeccakSqueeze(&p_state, p_digest);
 }

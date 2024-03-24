@@ -54,7 +54,7 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     char_t* name = 0;
     char_t* copyName = 0;
     uint8_t message[] = "Hello!";
-    uint8_t output[32]; // SHA-3 256-bit hash
+    uint8_t output[64]; 
 
     /* Указатель на интерфейс работы с журналом */
     IEcoLog1* pILog = 0;
