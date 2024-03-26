@@ -44,6 +44,8 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     IEcoInterfaceBus1* pIBus = 0;
     /* Указатель на интерфейс работы с памятью */
     IEcoMemoryAllocator1* pIMem = 0;
+    uint8_t message[] = "abc";
+    uint8_t output[16];
     char_t* name = 0;
     char_t* copyName = 0;
     /* Указатель на тестируемый интерфейс */
@@ -96,7 +98,7 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     }
 
 
-    result = pIEcoMD5->pVTbl->MyFunction(pIEcoMD5, name, &copyName);
+    pIEcoMD5->pVTbl->fnEncryptMD5(pIEcoMD5, message, output);
 
 
     /* Освлбождение блока памяти */

@@ -41,7 +41,7 @@ typedef struct IEcoMD5VTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoMD5Ptr_t me);
 
     /* IEcoMD5 */
-    int16_t (ECOCALLMETHOD *MyFunction)(/* in */ IEcoMD5Ptr_t me, /* in */ char_t* Name, /* out */ char_t** CopyName);
+    void (ECOCALLMETHOD *fnEncryptMD5)(/*in*/ IEcoMD5Ptr_t me, uint8_t* input, uint8_t* output);
 
 } IEcoMD5VTbl, *IEcoMD5VTblPtr_t;
 
