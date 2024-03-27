@@ -112,13 +112,8 @@ uint32_t ECOCALLMETHOD CEcoSHA3_6EFC7840_Release(/* in */ IEcoSHA3Ptr_t me) {
 
 void ECOCALLMETHOD fnEncryptSHA3(IEcoSHA3Ptr_t me, uint8_t* message, uint8_t* output) {
     CEcoSHA3_6EFC7840* pCMe = (CEcoSHA3_6EFC7840*)me;
-    KeccakState l_state;
 
-    fnKeccakInitialize(&l_state);
-    fnKeccakAbsorb(&l_state, message, strlen((const char*)message));
-    fnKeccakSqueeze(&l_state, output, sizeof(output));
-
-    return output;
+    fnSHA3Digest(message, strlen(message), output);
 }
 
 

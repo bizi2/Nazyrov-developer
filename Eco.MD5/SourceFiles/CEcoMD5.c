@@ -21,6 +21,7 @@
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
 #include "CEcoMD5.h"
+#include "MD5Func.h"
 
 /*
  *
@@ -112,7 +113,7 @@ uint32_t ECOCALLMETHOD CEcoMD5_5D90ACD0_Release(/* in */ IEcoMD5Ptr_t me) {
 /*
  *
  * <сводка>
- *   Функция MyFunction
+ *   Функция fnEncryptMD5
  * </сводка>
  *
  * <описание>
@@ -120,28 +121,14 @@ uint32_t ECOCALLMETHOD CEcoMD5_5D90ACD0_Release(/* in */ IEcoMD5Ptr_t me) {
  * </описание>
  *
  */
-int16_t ECOCALLMETHOD CEcoMD5_5D90ACD0_MyFunction(/* in */ IEcoMD5Ptr_t me, /* in */ char_t* Name, /* out */ char_t** copyName) {
+ 
+void ECOCALLMETHOD fnEncryptMD5(/*in*/ IEcoMD5Ptr_t me, uint8_t* input, uint8_t output[16]) {
     CEcoMD5_5D90ACD0* pCMe = (CEcoMD5_5D90ACD0*)me;
-    int16_t index = 0;
+    MD5Context context;
+    fnMD5Init(&context);
+    fnMD5Update(&context, input, strlen(input));
+    fnMD5Final(output, &context);
 
-    /* Проверка указателей */
-    if (me == 0 || Name == 0 || copyName == 0) {
-        return -1;
-    }
-
-    /* Копирование строки */
-    while(Name[index] != 0) {
-        index++;
-    }
-    pCMe->m_Name = (char_t*)pCMe->m_pIMem->pVTbl->Alloc(pCMe->m_pIMem, index + 1);
-    index = 0;
-    while(Name[index] != 0) {
-        pCMe->m_Name[index] = Name[index];
-        index++;
-    }
-    *copyName = pCMe->m_Name;
-
-    return 0;
 }
 
 
@@ -195,7 +182,7 @@ IEcoMD5VTbl g_x3B1DB870DD5A46A2B716848B45F6D148VTbl_5D90ACD0 = {
     CEcoMD5_5D90ACD0_QueryInterface,
     CEcoMD5_5D90ACD0_AddRef,
     CEcoMD5_5D90ACD0_Release,
-    CEcoMD5_5D90ACD0_MyFunction
+    fnEncryptMD5
 };
 
 
