@@ -24,6 +24,7 @@
 #include "IdEcoInterfaceBus1.h"
 #include "IdEcoFileSystemManagement1.h"
 #include "IdEcoBaseEncoding1.h"
+#include "BaseFunc.h"
 
 /*
  *
@@ -46,6 +47,8 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     IEcoMemoryAllocator1* pIMem = 0;
     char_t* name = 0;
     char_t* copyName = 0;
+    int8_t* input = "foobar";
+    int8_t* output = NULL;
     /* Указатель на тестируемый интерфейс */
     IEcoBaseEncoding1* pIEcoBaseEncoding1 = 0;
 
@@ -95,9 +98,9 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 
-
-    result = pIEcoBaseEncoding1->pVTbl->MyFunction(pIEcoBaseEncoding1, name, &copyName);
-
+    output = malloc(9);
+    fnBase64Encode(input, 6, output, 9);
+        
 
     /* Освлбождение блока памяти */
     pIMem->pVTbl->Free(pIMem, name);
