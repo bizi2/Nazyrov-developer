@@ -21,6 +21,7 @@
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
 #include "CEcoBaseEncoding1.h"
+#include "BaseFunc.h"
 
 /*
  *
@@ -109,43 +110,137 @@ uint32_t ECOCALLMETHOD CEcoBaseEncoding1_343447F8_Release(/* in */ IEcoBaseEncod
     return pCMe->m_cRef;
 }
 
-/*
- *
- * <сводка>
- *   Функция MyFunction
- * </сводка>
- *
- * <описание>
- *   Функция
- * </описание>
- *
- */
-int16_t ECOCALLMETHOD CEcoBaseEncoding1_343447F8_MyFunction(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ char_t* Name, /* out */ char_t** copyName) {
+/* Encode Memory Allocate */
+void* ECOCALLMETHOD fnBase64EncMemAllocate(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* out */ size_t* inlen, /* out */ size_t* outlen) {
     CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
-    int16_t index = 0;
-
-    /* Проверка указателей */
-    if (me == 0 || Name == 0 || copyName == 0) {
-        return -1;
-    }
-
-    /* Копирование строки */
-    while(Name[index] != 0) {
-        index++;
-    }
-    pCMe->m_Name = (char_t*)pCMe->m_pIMem->pVTbl->Alloc(pCMe->m_pIMem, index + 1);
-    index = 0;
-    while(Name[index] != 0) {
-        pCMe->m_Name[index] = Name[index];
-        index++;
-    }
-    *copyName = pCMe->m_Name;
-
-    return 0;
+    return fnBase64EncodeAlloc(in, inlen, outlen);
 }
 
+void* ECOCALLMETHOD fnBase32EncMemAllocate(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* out */ size_t* inlen, /* out */ size_t* outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    return fnBase32EncodeAlloc(in, inlen, outlen);
+}
 
+void* ECOCALLMETHOD fnBase16EncMemAllocate(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* out */ size_t* inlen, /* out */ size_t* outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    return fnBase16EncodeAlloc(in, inlen, outlen);
+}
 
+/* Encode */
+void ECOCALLMETHOD fnBase64Enc(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+    /* out */ const int8_t* out, /* in */ const size_t outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    fnBase64Encode(in, inlen, out, outlen);
+}
+
+void ECOCALLMETHOD fnBase32Enc(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+    /* out */ const int8_t* out, /* in */ const size_t outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    fnBase32Encode(in, inlen, out, outlen);
+}
+
+void ECOCALLMETHOD fnBase16Enc(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen, 
+    /* out */ const int8_t* out, /* in */ const size_t outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    fnBase16Encode(in, inlen, out, outlen);
+}
+
+/* Decode Memory Allocate */
+void* ECOCALLMETHOD fnBase64DecMemAllocate(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* out */ size_t* inlen, /* out */ size_t* outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    return fnBase64DecodeAlloc(in, inlen, outlen);
+}
+
+void* ECOCALLMETHOD fnBase32DecMemAllocate(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* out */ size_t* inlen, /* out */ size_t* outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    return fnBase32DecodeAlloc(in, inlen, outlen);
+}
+
+void* ECOCALLMETHOD fnBase16DecMemAllocate(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* out */ size_t* inlen, /* out */ size_t* outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    return fnBase16DecodeAlloc(in, inlen, outlen);
+}
+
+/* Decode  */
+void ECOCALLMETHOD fnBase64Dec(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+    /* out */ const int8_t* out, /* in */ const size_t outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    fnBase64Decode(in, inlen, out, outlen);
+}
+
+void ECOCALLMETHOD fnBase32Dec(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+    /* out */ const int8_t* out, /* in */ const size_t outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    fnBase32Decode(in, inlen, out, outlen);
+}
+
+void ECOCALLMETHOD fnBase16Dec(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+    /* out */ const int8_t* out, /* in */ const size_t outlen) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    fnBase16Decode(in, inlen, out, outlen);
+}
+
+/* Encode Shell */
+int8_t* ECOCALLMETHOD fnBase64EncSh(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    size_t inl = 0, outl = 0;
+    int8_t* out = NULL;
+    out = fnBase64EncodeAlloc(in, &inl, &outl);
+    fnBase64Encode(in, inl, out, outl);
+
+    return out;
+}
+
+int8_t* ECOCALLMETHOD fnBase32EncSh(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    size_t inl = 0, outl = 0;
+    int8_t* out = NULL;
+    out = fnBase32EncodeAlloc(in, &inl, &outl);
+    fnBase32Encode(in, inl, out, outl);
+
+    return out;
+}
+
+int8_t* ECOCALLMETHOD fnBase16EncSh(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    size_t inl = 0, outl = 0;
+    int8_t* out = NULL;
+    out = fnBase16EncodeAlloc(in, &inl, &outl);
+    fnBase16Encode(in, inl, out, outl);
+
+    return out;
+}
+
+/* Decode Shell */
+int8_t* ECOCALLMETHOD fnBase64DecSh(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    size_t inl = 0, outl = 0;
+    int8_t* out = NULL;
+    out = fnBase64DecodeAlloc(in, &inl, &outl);
+    fnBase64Decode(in, inl, out, outl);
+
+    return out;
+}
+
+int8_t* ECOCALLMETHOD fnBase32DecSh(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    size_t inl = 0, outl = 0;
+    int8_t* out = NULL;
+    out = fnBase32DecodeAlloc(in, &inl, &outl);
+    fnBase32Decode(in, inl, out, outl);
+
+    return out;
+}
+
+int8_t* ECOCALLMETHOD fnBase16DecSh(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in) {
+    CEcoBaseEncoding1_343447F8* pCMe = (CEcoBaseEncoding1_343447F8*)me;
+    size_t inl = 0, outl = 0;
+    int8_t* out = NULL;
+    out = fnBase16DecodeAlloc(in, &inl, &outl);
+    fnBase16Decode(in, inl, out, outl);
+
+    return out;
+}
 
 /*
  *
@@ -195,11 +290,25 @@ IEcoBaseEncoding1VTbl g_xA61019F6E1D24B12AD7316D88BBFE375VTbl_343447F8 = {
     CEcoBaseEncoding1_343447F8_QueryInterface,
     CEcoBaseEncoding1_343447F8_AddRef,
     CEcoBaseEncoding1_343447F8_Release,
-    CEcoBaseEncoding1_343447F8_MyFunction
+    fnBase64EncMemAllocate,
+    fnBase32EncMemAllocate,
+    fnBase16EncMemAllocate,
+    fnBase64DecMemAllocate,
+    fnBase32DecMemAllocate,
+    fnBase16DecMemAllocate,
+    fnBase64Enc,
+    fnBase32Enc,
+    fnBase16Enc,
+    fnBase64Dec,
+    fnBase32Dec,
+    fnBase16Dec,
+    fnBase64EncSh,
+    fnBase32EncSh,
+    fnBase16EncSh,
+    fnBase64DecSh,
+    fnBase32DecSh,
+    fnBase16DecSh
 };
-
-
-
 
 /*
  *

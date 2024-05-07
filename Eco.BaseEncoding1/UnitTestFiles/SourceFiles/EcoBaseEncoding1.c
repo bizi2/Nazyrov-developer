@@ -48,7 +48,11 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     char_t* name = 0;
     char_t* copyName = 0;
     int8_t* input = "foobar";
+    int8_t* input_64 = "Zm9vYmFy";
+    int8_t* input_32 = "MZXW6YTBOI======";
+    int8_t* input_16 = "666F6F626172";
     int8_t* output = NULL;
+    int8_t inlen = 0, outlen = 0;
     /* Указатель на тестируемый интерфейс */
     IEcoBaseEncoding1* pIEcoBaseEncoding1 = 0;
 
@@ -97,10 +101,24 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         /* Освобождение интерфейсов в случае ошибки */
         goto Release;
     }
+    
+    //output = pIEcoBaseEncoding1->pVTbl->fnBase16EncMemAllocate(pIEcoBaseEncoding1, input, &inlen, &outlen);
 
-    output = malloc(9);
-    fnBase64Encode(input, 6, output, 9);
-        
+    //pIEcoBaseEncoding1->pVTbl->fnBase16Enc(pIEcoBaseEncoding1, input, inlen, output, outlen);
+
+    output = pIEcoBaseEncoding1->pVTbl->fnBase64EncSh(pIEcoBaseEncoding1, input);
+
+    output = pIEcoBaseEncoding1->pVTbl->fnBase32EncSh(pIEcoBaseEncoding1, input);
+
+    output = pIEcoBaseEncoding1->pVTbl->fnBase16EncSh(pIEcoBaseEncoding1, input);
+
+    output = pIEcoBaseEncoding1->pVTbl->fnBase64DecSh(pIEcoBaseEncoding1, input_64);
+
+    output = pIEcoBaseEncoding1->pVTbl->fnBase32DecSh(pIEcoBaseEncoding1, input_32);
+
+    output = pIEcoBaseEncoding1->pVTbl->fnBase16DecSh(pIEcoBaseEncoding1, input_16);
+
+    printf("%s", output);
 
     /* Освлбождение блока памяти */
     pIMem->pVTbl->Free(pIMem, name);

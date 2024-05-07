@@ -41,7 +41,48 @@ typedef struct IEcoBaseEncoding1VTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoBaseEncoding1Ptr_t me);
 
     /* IEcoBaseEncoding1 */
-    int16_t (ECOCALLMETHOD *MyFunction)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ char_t* Name, /* out */ char_t** CopyName);
+
+    /* Encode memory allocation */
+    void* (ECOCALLMETHOD *fnBase64EncMemAllocate)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in,
+        /* out */ size_t* inlen, /* out */ size_t* outlen);
+    void* (ECOCALLMETHOD* fnBase32EncMemAllocate)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in,
+        /* out */ size_t* inlen, /* out */ size_t* outlen);
+    void* (ECOCALLMETHOD* fnBase16EncMemAllocate)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in,
+        /* out */ size_t* inlen, /* out */ size_t* outlen);
+
+    /* Decode memory allocation */
+    void* (ECOCALLMETHOD* fnBase64DecMemAllocate)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in,
+        /* out */ size_t* inlen, /* out */ size_t* outlen);
+    void* (ECOCALLMETHOD* fnBase32DecMemAllocate)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in,
+        /* out */ size_t* inlen, /* out */ size_t* outlen);
+    void* (ECOCALLMETHOD* fnBase16DecMemAllocate)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in,
+        /* out */ size_t* inlen, /* out */ size_t* outlen);
+
+    /* Encode */
+    void (ECOCALLMETHOD* fnBase64Enc)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+        /* out */ const int8_t* out, /* in */ const size_t outlen);
+    void (ECOCALLMETHOD* fnBase32Enc)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+        /* out */ const int8_t* out, /* in */ const size_t outlen);
+    void (ECOCALLMETHOD* fnBase16Enc)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+        /* out */ const int8_t* out, /* in */ const size_t outlen);
+
+    /* Decode */
+    void (ECOCALLMETHOD* fnBase64Dec)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+        /* out */ const int8_t* out, /* in */ const size_t outlen);
+    void (ECOCALLMETHOD* fnBase32Dec)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+        /* out */ const int8_t* out, /* in */ const size_t outlen);
+    void (ECOCALLMETHOD* fnBase16Dec)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in, /* in */ const size_t inlen,
+        /* out */ const int8_t* out, /* in */ const size_t outlen);
+
+    /* Encode Shell */
+    int8_t* (ECOCALLMETHOD* fnBase64EncSh)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in);
+    int8_t* (ECOCALLMETHOD* fnBase32EncSh)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in);
+    int8_t* (ECOCALLMETHOD* fnBase16EncSh)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in);
+
+    /* Decode Shell */
+    int8_t* (ECOCALLMETHOD* fnBase64DecSh)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in);
+    int8_t* (ECOCALLMETHOD* fnBase32DecSh)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in);
+    int8_t* (ECOCALLMETHOD* fnBase16DecSh)(/* in */ IEcoBaseEncoding1Ptr_t me, /* in */ const int8_t* in);
 
 } IEcoBaseEncoding1VTbl, *IEcoBaseEncoding1VTblPtr_t;
 
