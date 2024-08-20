@@ -193,15 +193,50 @@ typedef struct IEcoASNOneENUMERATEDVTbl {
     uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneENUMERATEDPtr_t me);
 
     /* IEcoASNOneENUMERATED */
-    int16_t(ECOCALLMETHOD* Next)(/* in */ IEcoASNOneENUMERATEDPtr_t me, /* in */ uint32_t cConnections, /* out */ struct EcoConnectionData* rgcd, /* out */ uint32_t* pcFetched);
-    int16_t(ECOCALLMETHOD* Skip)(/* in */ IEcoASNOneENUMERATEDPtr_t me, /* in */ uint32_t cConnections);
-    int16_t(ECOCALLMETHOD* Reset)(/* in */ IEcoASNOneENUMERATEDPtr_t me);
-    int16_t(ECOCALLMETHOD* Clone)(/* in */ IEcoASNOneENUMERATEDPtr_t me, /* out */ IEcoASNOneENUMERATEDPtr_t* ppEnum);
+
 };
 
 interface IEcoASNOneENUMERATED {
     struct IEcoASNOneENUMERATEDVTbl* pVTbl;
 } IEcoASNOneENUMERATED;
+
+/* IEcoASNOneSEQUENCEOF */
+
+typedef struct IEcoASNOneSEQUENCEOF* IEcoASNOneSEQUENCEOFPtr_t;
+
+typedef struct IEcoASNOneSEQUENCEOFVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneSEQUENCEOFPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneSEQUENCEOFPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneSEQUENCEOFPtr_t me);
+
+    /* IEcoASNOneSEQUENCEOF */
+
+};
+
+interface IEcoASNOneSEQUENCEOF {
+    struct IEcoASNOneSEQUENCEOFVTbl* pVTbl;
+} IEcoASNOneSEQUENCEOF;
+
+/* IEcoASNOneSEQUENCEOF */
+
+typedef struct IEcoASNOneSEQUENCE* IEcoASNOneSEQUENCEPtr_t;
+
+typedef struct IEcoASNOneSEQUENCEVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneSEQUENCEPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneSEQUENCEPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneSEQUENCEPtr_t me);
+
+    /* IEcoASNOneSEQUENCE */
+
+};
+
+interface IEcoASNOneSEQUENCE {
+    struct IEcoASNOneSEQUENCEVTbl* pVTbl;
+} IEcoASNOneSEQUENCE;
 
 /* IEcoASNOneSET */
 
@@ -223,6 +258,311 @@ interface IEcoASNOneSET {
     struct IEcoASNOneSETVTbl* pVTbl;
 } IEcoASNOneSET;
 
+/* IEcoASNOneSETOF */
+
+typedef struct IEcoASNOneSETOF* IEcoASNOneSETOFPtr_t;
+
+typedef struct IEcoASNOneSETOFVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneSETOFPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneSETOFPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneSETOFPtr_t me);
+
+    /* IEcoASNOneSETOF */
+
+};
+
+interface IEcoASNOneSETOF {
+    struct IEcoASNOneSETOFVTbl* pVTbl;
+} IEcoASNOneSETOF;
+
+/* IEcoASNOneCHOICE */
+
+typedef struct IEcoASNOneCHOICE* IEcoASNOneCHOICEPtr_t;
+
+typedef struct IEcoASNOneCHOICEVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneCHOICEPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneCHOICEPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneCHOICEPtr_t me);
+
+    /* IEcoASNOneCHOICE */
+
+};
+
+interface IEcoASNOneCHOICE {
+    struct IEcoASNOneCHOICEVTbl* pVTbl;
+} IEcoASNOneCHOICE;
+
+/* IEcoASNOneSELECTION */
+
+typedef struct IEcoASNOneSELECTION* IEcoASNOneSELECTIONPtr_t;
+
+typedef struct IEcoASNOneSELECTIONVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneSELECTIONPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneSELECTIONPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneSELECTIONPtr_t me);
+
+    /* IEcoASNOneSELECTION */
+
+};
+
+interface IEcoASNOneSELECTION {
+    struct IEcoASNOneSELECTIONVTbl* pVTbl;
+} IEcoASNOneSELECTION;
+
+/* IEcoASNOnePREFIXED */
+
+typedef struct IEcoASNOnePREFIXED* IEcoASNOnePREFIXEDPtr_t;
+
+typedef struct IEcoASNOnePREFIXEDVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOnePREFIXEDPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOnePREFIXEDPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOnePREFIXEDPtr_t me);
+
+    /* IEcoASNOnePREFIXED */
+
+};
+
+interface IEcoASNOnePREFIXED {
+    struct IEcoASNOnePREFIXEDVTbl* pVTbl;
+} IEcoASNOnePREFIXED;
+
+/* IEcoASNOneOID */
+
+typedef struct IEcoASNOneOID* IEcoASNOneOIDPtr_t;
+
+typedef struct IEcoASNOneOIDVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneOIDPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneOIDPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneOIDPtr_t me);
+
+    /* IEcoASNOneOID */
+
+};
+
+interface IEcoASNOneOID {
+    struct IEcoASNOneOIDVTbl* pVTbl;
+} IEcoASNOneOID;
+
+/* IEcoASNOneRelativeOID */
+
+typedef struct IEcoASNOneRelativeOID* IEcoASNOneRelativeOIDPtr_t;
+
+typedef struct IEcoASNOneRelativeOIDVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneRelativeOIDPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneRelativeOIDPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneRelativeOIDPtr_t me);
+
+    /* IEcoASNOneRelativeOID */
+
+};
+
+/* IEcoASNOneIRI */
+
+typedef struct IEcoASNOneIRI* IEcoASNOneIRIPtr_t;
+
+typedef struct IEcoASNOneIRIVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneIRIPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneIRIPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneIRIPtr_t me);
+
+    /* IEcoASNOneIRI */
+
+};
+
+/* IEcoASNOneRelativeIRI */
+
+typedef struct IEcoASNOneRelativeIRI* IEcoASNOneRelativeIRIPtr_t;
+
+typedef struct IEcoASNOneRelativeIRIVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneRelativeIRIPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneRelativeIRIPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneRelativeIRIPtr_t me);
+
+    /* IEcoASNOneRelativeIRI */
+
+};
+
+
+interface IEcoASNOneRelativeIRI {
+    struct IEcoASNOneRelativeIRIVTbl* pVTbl;
+} IEcoASNOneRelativeIRI;
+
+/* IEcoASNOneEmbeddedPDV */
+
+typedef struct IEcoASNOneEmbeddedPDV* IEcoASNOneEmbeddedPDVPtr_t;
+
+typedef struct IEcoASNOneEmbeddedPDVVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneEmbeddedPDVPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneEmbeddedPDVPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneEmbeddedPDVPtr_t me);
+
+    /* IEcoASNOneEmbeddedPDV */
+
+};
+
+
+interface IEcoASNOneEmbeddedPDV {
+    struct IEcoASNOneEmbeddedPDVVTbl* pVTbl;
+} IEcoASNOneEmbeddedPDV;
+
+/* IEcoASNOneEXTERNAL */
+
+typedef struct IEcoASNOneEXTERNAL* IEcoASNOneEXTERNALPtr_t;
+
+typedef struct IEcoASNOneEXTERNALVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneEXTERNALPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneEXTERNALPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneEXTERNALPtr_t me);
+
+    /* IEcoASNOneEXTERNAL */
+
+};
+
+
+interface IEcoASNOneEXTERNAL {
+    struct IEcoASNOneEXTERNALVTbl* pVTbl;
+} IEcoASNOneEXTERNAL;
+
+/* IEcoASNOneTIME */
+
+typedef struct IEcoASNOneTIME* IEcoASNOneTIMEPtr_t;
+
+typedef struct IEcoASNOneTIMEVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneTIMEPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneTIMEPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneTIMEPtr_t me);
+
+    /* IEcoASNOneTIME */
+
+};
+
+
+interface IEcoASNOneTIME {
+    struct IEcoASNOneTIMEVTbl* pVTbl;
+} IEcoASNOneTIME;
+
+/* IEcoASNOneCharacterSTRING */
+
+typedef struct IEcoASNOneCharacterSTRING* IEcoASNOneCharacterSTRINGPtr_t;
+
+typedef struct IEcoASNOneCharacterSTRINGVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneCharacterSTRINGPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneCharacterSTRINGPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneCharacterSTRINGPtr_t me);
+
+    /* IEcoASNOneCharacterSTRING */
+
+};
+
+
+interface IEcoASNOneCharacterSTRING {
+    struct IEcoASNOneCharacterSTRINGVTbl* pVTbl;
+} IEcoASNOneCharacterSTRING;
+
+/* IEcoASNOneRestrictedCharacterSTRING */
+
+typedef struct IEcoASNOneRestrictedCharacterSTRING* IEcoASNOneRestrictedCharacterSTRINGPtr_t;
+
+typedef struct IEcoASNOneRestrictedCharacterSTRINGVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneRestrictedCharacterSTRINGPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneRestrictedCharacterSTRINGPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneRestrictedCharacterSTRINGPtr_t me);
+
+    /* IEcoASNOneRestrictedCharacterSTRING */
+
+};
+
+
+interface IEcoASNOneRestrictedCharacterSTRING {
+    struct IEcoASNOneRestrictedCharacterSTRINGVTbl* pVTbl;
+} IEcoASNOneRestrictedCharacterSTRING;
+
+/* IEcoASNOneUnrestrictedCharacterSTRING */
+
+typedef struct IEcoASNOneUnrestrictedCharacterSTRING* IEcoASNOneUnrestrictedCharacterSTRINGPtr_t;
+
+typedef struct IEcoASNOneUnrestrictedCharacterSTRINGVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneUnrestrictedCharacterSTRINGPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneUnrestrictedCharacterSTRINGPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneUnrestrictedCharacterSTRINGPtr_t me);
+
+    /* IEcoASNOneUnrestrictedCharacterSTRING */
+
+};
+
+
+interface IEcoASNOneUnrestrictedCharacterSTRING {
+    struct IEcoASNOneUnrestrictedCharacterSTRINGVTbl* pVTbl;
+} IEcoASNOneUnrestrictedCharacterSTRING;
+
+/* IEcoASNOneObjectDescriptor */
+
+typedef struct IEcoASNOneObjectDescriptor* IEcoASNOneObjectDescriptorPtr_t;
+
+typedef struct IEcoASNOneObjectDescriptorVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneObjectDescriptorPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneObjectDescriptorPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneObjectDescriptorPtr_t me);
+
+    /* IEcoASNOneObjectDescriptor */
+
+};
+
+
+interface IEcoASNOneObjectDescriptor {
+    struct IEcoASNOneObjectDescriptorVTbl* pVTbl;
+} IEcoASNOneObjectDescriptor;
+
+/* IEcoASNOneCONSTRAINED */
+
+typedef struct IEcoASNOneCONSTRAINED* IEcoASNOneCONSTRAINEDPtr_t;
+
+typedef struct IEcoASNOneCONSTRAINEDVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoASNOneCONSTRAINEDPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoASNOneCONSTRAINEDPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneCONSTRAINEDPtr_t me);
+
+    /* IEcoASNOneCONSTRAINED */
+
+};
+
+
+interface IEcoASNOneCONSTRAINED {
+    struct IEcoASNOneCONSTRAINEDVTbl* pVTbl;
+} IEcoASNOneCONSTRAINED;
+
 /* IEcoASNOneBITSTRING */
 
 typedef struct IEcoASNOneBITSTRING* IEcoASNOneBITSTRINGPtr_t;
@@ -235,12 +575,7 @@ typedef struct IEcoASNOneBITSTRINGVTbl {
     uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoASNOneBITSTRINGPtr_t me);
 
     /* IEcoASNOneBITSTRING */
-    int16_t(ECOCALLMETHOD* set_LengthBitstring)(/* in */ IEcoASNOneBITSTRINGPtr_t me, /* in */ byte_t* length, /* in */ int16_t bitstring);
-    int16_t(ECOCALLMETHOD* get_LengthBitstring)(/* in */ IEcoASNOneBITSTRINGPtr_t me, /* out */ byte_t** length, /* out */ int16_t* bitstring);
-    int16_t(ECOCALLMETHOD* set_ContentsBitstring)(/* in */ IEcoASNOneBITSTRINGPtr_t me, /* in */ byte_t* contents, /* in */ int16_t bitstring);
-    int16_t(ECOCALLMETHOD* get_ContentsBitstring)(/* in */ IEcoASNOneBITSTRINGPtr_t me, /* out */ byte_t** contents, /* out */ int16_t* bitstring);
-    int16_t(ECOCALLMETHOD* set_EndOfContentsBitstring)(/* in */ IEcoASNOneBITSTRINGPtr_t me, /* in */ uint16_t zeroBitstring);
-    int16_t(ECOCALLMETHOD* get_EndOfContentsBitstring)(/* in */ IEcoASNOneBITSTRINGPtr_t me, /* out */ uint16_t* zeroBitstring);
+
 };
 
 
