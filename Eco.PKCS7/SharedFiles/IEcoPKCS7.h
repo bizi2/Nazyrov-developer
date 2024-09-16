@@ -229,12 +229,12 @@ typedef struct IEcoPKCS7EncryptedDataVTbl {
 
     /* IEcoPKCS7EncryptedData */
     IEcoPKCS7Version* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS7EncryptedDataPtr_t me);
-	IEcoPKCS7EncryptedContentInfo* (ECOCALLMETHOD *encryptedContentInfo)(/* in */ IEcoPKCS7EncryptedDataPtr_t me);
+    IEcoPKCS7EncryptedContentInfo* (ECOCALLMETHOD *encryptedContentInfo)(/* in */ IEcoPKCS7EncryptedDataPtr_t me);
 
-} IEcoPKCS7DigestedDataVTbl, *IEcoPKCS7EncryptedDataPtr_t;
+} IEcoPKCS7EncryptedDataVTbl *IEcoPKCS7EncryptedDataPtr_t;
 
 interface IEcoPKCS7EncryptedData {
-    struct IEcoPKCS7DigestedDataVTbl *pVTbl;
+    struct IEcoPKCS7EncryptedDataVTbl *pVTbl;
 } IEcoPKCS7EncryptedData;
 
 
