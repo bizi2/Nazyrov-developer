@@ -1,0 +1,20 @@
+﻿EcoRSA1.obj : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/INCREMENTAL:NO"
+  00000000000000000000000000000100.lib(CEcoSystem1EntryPoint.obj) : найден .netmodule MSIL или модуль, откомпилированный с параметром /GL; перезапускается компоновка с параметром /LTCG; добавьте /LTCG в командную строку компоновки для повышения производительности компоновщика
+EcoRSA1.obj : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/INCREMENTAL:NO"
+LIBCMTD.lib(initializers.obj) : warning LNK4098: библиотека по умолчанию "libcmt.lib" конфликтует с использованием других библиотек; используйте /NODEFAULTLIB:library
+  Создание кода
+  Создание кода завершено
+00000000000000000000000000000100.lib(CEcoSystem1EntryPoint.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoSystem1EntryPoint.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoSystem1.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoSystem1.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoFileSystemManagement1Factory.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoFileSystemManagement1Factory.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoMemoryManager1Factory.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoMemoryManager1Factory.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoInterfaceBus1Factory.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoInterfaceBus1Factory.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoFileSystemManagement1.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoFileSystemManagement1.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoMemoryManager1.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoMemoryManager1.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoInterfaceBus1.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoInterfaceBus1.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoFileManager1.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoFileManager1.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoDirectoryManager1.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoDirectoryManager1.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoMemoryAllocator1.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoMemoryAllocator1.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoFile1.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoFile1.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+00000000000000000000000000000100.lib(CEcoDirectoryInfo1.obj) : warning LNK4099: "" PDB не найден с "00000000000000000000000000000100.lib(CEcoDirectoryInfo1.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+  Eco.RSA1UnitTest.vcxproj -> C:\Users\dimos\Eco.Security\Eco.RSA1\AssemblyFiles\Windows\VisualStudio_22\Eco.RSA1UnitTest\StaticDebug\Eco.RSA1UnitTest.exe

@@ -24,6 +24,7 @@
 #include "IdEcoInterfaceBus1.h"
 #include "IdEcoFileSystemManagement1.h"
 #include "IdEcoRSA1.h"
+#include "RSAFunc.h"
 
 /*
  *
@@ -44,6 +45,7 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     IEcoInterfaceBus1* pIBus = 0;
     /* Указатель на интерфейс работы с памятью */
     IEcoMemoryAllocator1* pIMem = 0;
+    uint32_t test = 255;
     char_t* name = 0;
     char_t* copyName = 0;
     /* Указатель на тестируемый интерфейс */
@@ -96,7 +98,7 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     }
 
 
-    result = pIEcoRSA1->pVTbl->MyFunction(pIEcoRSA1, name, &copyName);
+    fnI20SP(test, 2);
 
 
     /* Освлбождение блока памяти */

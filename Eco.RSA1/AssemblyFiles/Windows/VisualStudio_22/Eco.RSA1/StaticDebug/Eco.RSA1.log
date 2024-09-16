@@ -1,0 +1,6 @@
+﻿  CEcoRSA1.c
+  CEcoRSA1Factory.c
+  RSAFunc.c
+  Создание кода...
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1554,5): warning MSB8012: TargetPath(C:\Users\dimos\Eco.Security\Eco.RSA1\AssemblyFiles\Windows\VisualStudio_22\Eco.RSA1\StaticDebug\79FA67D3DEBD44D69F59262E3C4F4509.lib) не соответствует значению свойства выходного файла (C:\Users\dimos\Eco.Security\Eco.RSA1\BuildFiles\Windows\x86\StaticDebug\79FA67D3DEBD44D69F59262E3C4F4509.lib) для Library. Это может привести к неправильной сборке проекта. Чтобы исправить это, убедитесь, что значения свойств $(OutDir), $(TargetName) и $(TargetExt) соответствуют значению, указанному в %(Lib.OutputFile).
+  Eco.RSA1.vcxproj -> C:\Users\dimos\Eco.Security\Eco.RSA1\AssemblyFiles\Windows\VisualStudio_22\Eco.RSA1\StaticDebug\79FA67D3DEBD44D69F59262E3C4F4509.lib

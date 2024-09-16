@@ -49,5 +49,51 @@ interface IEcoPKCS10 {
     struct IEcoPKCS10VTbl *pVTbl;
 } IEcoPKCS10;
 
+typedef struct IEcoPKCS10CertificateRequestInfo* IEcoPKCS10CertificateRequestInfoPtr_t;
+
+typedef struct IEcoPKCS10CertificateRequestInfoVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS10CertificateRequestInfoPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS10CertificateRequestInfoPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS10CertificateRequestInfoPtr_t me);
+
+    /* IEcoASNOneSEQUENCE */
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS10CertificateRequestInfoPtr_t me);
+
+    /* IEcoPKCS10CertificateRequestInfo */
+    IEcoPKCS10Version* (ECOCALLMETHOD* version)(/* in */ IEcoPKCS10CertificateRequestInfoPtr_t me);
+    IEcoPKCS10SubjectPublicKeyInfo* (ECOCALLMETHOD* subjectPKInfo) (/* in */ IEcoPKCS10CertificateRequestInfoPtr_t me);
+	IEcoPKCS10Name* (ECOCALLMETHOD* subject) (/* in */ IEcoPKCS10CertificateRequestInfoPtr_t me);
+    IEcoPKCS10Attributes* (ECOCALLMETHOD* attributes) (/* in */ IEcoPKCS10CertificateRequestInfoPtr_t me);
+
+} IEcoPKCS10CertificateRequestInfoVTbl, * IEcoPKCS10CertificateRequestInfoPtr_t;
+
+interface IEcoPKCS10CertificateRequestInfo {
+    struct IEcoPKCS10CertificateRequestInfoVTbl *pVTbl;
+} IEcoPKCS10CertificateRequestInfo;
+
+typedef struct IEcoPKCS10CertificateRequest* IEcoPKCS10CertificateRequestPtr_t;
+
+typedef struct IEcoPKCS10CertificateRequestVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS10CertificateRequestPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS10CertificateRequestPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS10CertificateRequestPtr_t me);
+
+    /* IEcoASNOneSEQUENCE */
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS10CertificateRequestPtr_t me);
+
+    /* IEcoPKCS10CertificateRequest */
+    IEcoPKCS10CertificationRequestInfo* (ECOCALLMETHOD* certificationRequestInfo)(/* in */ IEcoPKCS10CertificateRequestPtr_t me);
+    IEcoPKCS10AlgorithmIdentifier* (ECOCALLMETHOD* signatureAlgorithm) (/* in */ IEcoPKCS10CertificateRequestPtr_t me);
+	IEcoASNOneBITSTRING* (ECOCALLMETHOD* signature) (/* in */ IEcoPKCS10CertificateRequestPtr_t me);
+
+} IEcoPKCS10CertificateRequestVTbl, * IEcoPKCS10CertificateRequestPtr_t;
+
+interface IEcoPKCS10CertificateRequest {
+    struct IEcoPKCS10CertificateRequestVTbl *pVTbl;
+} IEcoPKCS10CertificateRequest;
 
 #endif /* __I_ECOPKCS10_H__ */
