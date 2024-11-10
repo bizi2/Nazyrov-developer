@@ -49,5 +49,27 @@ interface IEcoPKCS9 {
     struct IEcoPKCS9VTbl *pVTbl;
 } IEcoPKCS9;
 
+typedef struct IEcoPKCS9SMIMECapability* IEcoPKCS9SMIMECapabilityPtr_t;
+
+typedef struct IEcoPKCS9SMIMECapabilityVTbl {
+
+    /* IEcoUnknown */
+    int16_t (ECOCALLMETHOD *QueryInterface)(/* in */ IEcoPKCS9SMIMECapabilityPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t (ECOCALLMETHOD *AddRef)(/* in */ IEcoPKCS9SMIMECapabilityPtr_t me);
+    uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS9SMIMECapabilityPtr_t me);
+
+    /* IEcoPKCS9SMIMECapability */
+	
+	//         algorithm  ALGORITHM.&id ({SMIMEv3Algorithms}),
+    //         parameters ALGORITHM.&Type ({SMIMEv3Algorithms}{@algorithm})
+
+} IEcoPKCS9SMIMECapabilityVTbl, *IEcoPKCS9SMIMECapabilityVTblPtr_t;
+
+interface IEcoPKCS9SMIMECapability {
+    struct IEcoPKCS9SMIMECapabilityVTbl *pVTbl;
+} IEcoPKCS9SMIMECapability;
+
+
+
 
 #endif /* __I_ECOPKCS9_H__ */

@@ -219,5 +219,163 @@ interface IEcoPKCS12PFX {
     struct IEcoPKCS12PFXVTbl *pVTbl;
 } IEcoPKCS12PFX;
 
+/*
+keyBag BAG-TYPE ::=
+    {KeyBag              IDENTIFIED BY {bagtypes 1}}
+pkcs8ShroudedKeyBag BAG-TYPE ::=
+    {PKCS8ShroudedKeyBag IDENTIFIED BY {bagtypes 2}}
+certBag BAG-TYPE ::=
+    {CertBag             IDENTIFIED BY {bagtypes 3}}
+crlBag BAG-TYPE ::=
+    {CRLBag              IDENTIFIED BY {bagtypes 4}}
+secretBag BAG-TYPE ::=
+    {SecretBag           IDENTIFIED BY {bagtypes 5}}
+safeContentsBag BAG-TYPE ::=
+    {SafeContents        IDENTIFIED BY {bagtypes 6}}
+
+PKCS12BagSet BAG-TYPE ::= {
+    keyBag | 
+    pkcs8ShroudedKeyBag |
+    certBag |
+    crlBag | 
+    secretBag | 
+    safeContentsBag,
+    ... -- For future extensions
+}
+
+BAG-TYPE ::= TYPE-IDENTIFIER
+
+-- KeyBag
+KeyBag ::= PrivateKeyInfo
+
+-- Shrouded KeyBag
+PKCS8ShroudedKeyBag ::= EncryptedPrivateKeyInfo
+
+x509Certificate BAG-TYPE ::=
+    {OCTET STRING IDENTIFIED BY {certTypes 1}}
+    -- DER-encoded X.509 certificate stored in OCTET STRING
+sdsiCertificate BAG-TYPE ::=
+    {IA5String IDENTIFIED BY {certTypes 2}}
+    -- Base64-encoded SDSI certificate stored in IA5String
+
+CertTypes BAG-TYPE ::= {
+    x509Certificate |
+    sdsiCertificate,
+    ... -- For future extensions
+	
+	x509CRL BAG-TYPE ::=
+    {OCTET STRING IDENTIFIED BY {crlTypes 1}}
+    -- DER-encoded X.509 CRL stored in OCTET STRING
+
+CRLTypes BAG-TYPE ::= {
+    x509CRL,
+    ... -- For future extensions
+}
+
+SecretTypes BAG-TYPE ::= {
+    ... -- For future extensions
+}
+
+PKCS12AttrSet ATTRIBUTE ::= {
+    friendlyName |
+    localKeyId,
+    ... -- Other attributes are allowed
+}
+
+
+*/
+
+typedef struct IEcoPKCS12CertBag* IEcoPKCS12CertBagPtr_t;
+
+typedef struct IEcoPKCS12CertBagVTbl {
+
+    /* IEcoUnknown */
+    int16_t (ECOCALLMETHOD *QueryInterface)(/* in */ IEcoPKCS12CertBagPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t (ECOCALLMETHOD *AddRef)(/* in */ IEcoPKCS12CertBagPtr_t me);
+    uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS12CertBagPtr_t me);
+
+    /* IEcoPKCS12CertBag */
+	
+	//     certId    BAG-TYPE.&id   ({CertTypes}),
+	//     certValue [0] EXPLICIT BAG-TYPE.&Type ({CertTypes}{@certId})
+	//
+
+
+
+} IEcoPKCS12CertBagVTbl, *IEcoPKCS12CertBagVTblPtr_t;
+
+interface IEcoPKCS12CertBag {
+    struct IEcoPKCS12CertBagVTbl *pVTbl;
+} IEcoPKCS12CertBag;
+
+typedef struct IEcoPKCS12CRLBag* IEcoPKCS12CRLBagPtr_t;
+
+typedef struct IEcoPKCS12CRLBagVTbl {
+
+    /* IEcoUnknown */
+    int16_t (ECOCALLMETHOD *QueryInterface)(/* in */ IEcoPKCS12CRLBagPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t (ECOCALLMETHOD *AddRef)(/* in */ IEcoPKCS12CRLBagPtr_t me);
+    uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS12CRLBagPtr_t me);
+
+    /* IEcoPKCS12CRLBag */
+	
+	//     crlId     BAG-TYPE.&id ({CRLTypes}),
+	//     crltValue [0] EXPLICIT BAG-TYPE.&Type ({CRLTypes}{@crlId})
+	//
+
+
+
+} IEcoPKCS12CRLBagVTbl, *IEcoPKCS12CRLBagVTblPtr_t;
+
+interface IEcoPKCS12CRLBag {
+    struct IEcoPKCS12CRLBagVTbl *pVTbl;
+} IEcoPKCS12CRLBag;
+
+typedef struct IEcoPKCS12SecretBag* IEcoPKCS12SecretBagPtr_t;
+
+typedef struct IEcoPKCS12SecretBagVTbl {
+
+    /* IEcoUnknown */
+    int16_t (ECOCALLMETHOD *QueryInterface)(/* in */ IEcoPKCS12SecretBagPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t (ECOCALLMETHOD *AddRef)(/* in */ IEcoPKCS12SecretBagPtr_t me);
+    uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS12SecretBagPtr_t me);
+
+    /* IEcoPKCS12SecretBag */
+	
+	//     secretTypeId  BAG-TYPE.&id ({SecretTypes}),
+	//     secretValue   [0] EXPLICIT BAG-TYPE.&Type ({SecretTypes}{@secretTypeId})
+	//
+
+
+
+} IEcoPKCS12SecretBagVTbl, *IEcoPKCS12SecretBagVTblPtr_t;
+
+interface IEcoPKCS12SecretBag {
+    struct IEcoPKCS12SecretBagVTbl *pVTbl;
+} IEcoPKCS12SecretBag;
+
+typedef struct IEcoPKCS12PKCS12Attribute* IEcoPKCS12PKCS12AttributePtr_t;
+
+typedef struct IEcoPKCS12PKCS12AttributeVTbl {
+
+    /* IEcoUnknown */
+    int16_t (ECOCALLMETHOD *QueryInterface)(/* in */ IEcoPKCS12PKCS12AttributePtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t (ECOCALLMETHOD *AddRef)(/* in */ IEcoPKCS12PKCS12AttributePtr_t me);
+    uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS12PKCS12AttributePtr_t me);
+
+    /* IEcoPKCS12PKCS12Attribute */
+	
+	//     attrId      ATTRIBUTE.&id ({PKCS12AttrSet}),
+	//     attrValues  SET OF ATTRIBUTE.&Type ({PKCS12AttrSet}{@attrId})
+	//
+
+
+
+} IEcoPKCS12PKCS12AttributeVTbl, *IEcoPKCS12PKCS12AttributeVTblPtr_t;
+
+interface IEcoPKCS12PKCS12Attribute {
+    struct IEcoPKCS12PKCS12AttributeVTbl *pVTbl;
+} IEcoPKCS12PKCS12Attribute;
+
 
 #endif /* __I_ECO_PKCS_12_H__ */
