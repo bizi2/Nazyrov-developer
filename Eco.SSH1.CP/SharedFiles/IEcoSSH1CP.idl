@@ -1,0 +1,9 @@
+﻿import "IEcoBase1.idl"; 
+
+[
+    uuid({58182FFD-6184-45A0-B72D-DF702C45F1EC})
+]
+interface IEcoSSH1CP : IEcoUnknown {
+
+    int16_t MyFunction([in] char_t* Name, [out] char_t** CopyName);
+};
