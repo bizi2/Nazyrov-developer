@@ -1,0 +1,61 @@
+﻿/*
+ * <кодировка символов>
+ *   Cyrillic (UTF-8 with signature) - Codepage 65001
+ * </кодировка символов>
+ *
+ * <сводка>
+ *   CEcoPKCS15
+ * </сводка>
+ *
+ * <описание>
+ *   Данный заголовок описывает реализацию компонента CEcoPKCS15
+ * </описание>
+ *
+ * <автор>
+ *   Copyright (c) 2018 Vladimir Bashev. All rights reserved.
+ * </автор>
+ *
+ */
+
+#ifndef __C_ECOPKCS15_H__
+#define __C_ECOPKCS15_H__
+
+#include "IEcoPKCS15.h"
+#include "IEcoSystem1.h"
+#include "IdEcoMemoryManager1.h"
+
+typedef struct CEcoPKCS15CommonCertificateAttributes {
+
+    /* Таблица функций интерфейса IEcoPKCS15 */
+    IEcoPKCS15VTbl* m_pVTblIEcoPKCS15;
+
+
+    /* Счетчик ссылок */
+    uint32_t m_cRef;
+
+    /* Интерфейс для работы с памятью */
+    IEcoMemoryAllocator1* m_pIMem;
+
+    /* Системный интерфейс */
+    IEcoSystem1* m_pISys;
+
+    /* Данные экземпляра */
+    IEcoPKCS15Identifier* m_id;
+	IEcoASNOneBOOLEAN* m_authority;
+	IEcoPKCS15CredentialIdentifier* m_identifier;
+	IEcoPKCS15OOBCertHash* m_certHash;
+	IEcoPKCS15Usage* m_trustedUsage;
+	IEcoPKCS15GeneralizedTime* m_endDate;
+	IEcoPKCS15CredentialIdentifier** m_identifier2;
+	IEcoASNOneBOOLEAN* m_implicitTrust;
+
+} CEcoPKCS15CommonCertificateAttributes, *CEcoPKCS15CommonCertificateAttributesPtr;
+
+/* Инициализация экземпляра */
+int16_t ECOCALLMETHOD initCEcoPKCS15CommonCertificateAttributes(/*in*/ IEcoPKCS15Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
+/* Создание экземпляра */
+int16_t ECOCALLMETHOD createCEcoPKCS15CommonCertificateAttributes(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS15Ptr_t* ppIEcoPKCS15);
+/* Удаление */
+void ECOCALLMETHOD deleteCEcoPKCS15CommonCertificateAttributes(/* in */ IEcoPKCS15Ptr_t pIEcoPKCS15);
+
+#endif /* __C_ECOPKCS15_H__ */
