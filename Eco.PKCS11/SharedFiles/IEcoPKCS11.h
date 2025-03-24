@@ -82,747 +82,747 @@ interface IEcoPKCS11 {
     struct IEcoPKCS11VTbl *pVTbl;
 } IEcoPKCS11;
 
-typedef struct IEcoPKCS11VERSION* IEcoPKCS11VERSIONPtr_t;
+typedef struct IEcoPKCS11Version* IEcoPKCS11VersionPtr_t;
 
-typedef struct IEcoPKCS11VERSIONVTbl {
-
-    /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11VERSIONPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11VERSIONPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11VERSIONPtr_t me);
-
-    /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11VERSIONPtr_t me);
-
-    /* IEcoPKCS11VERSION */
-    IEcoPKCS11BYTE* (ECOCALLMETHOD* major)(/* in */ IEcoPKCS11VERSIONPtr_t me);
-    IEcoPKCS11BYTE* (ECOCALLMETHOD* minor)(/* in */ IEcoPKCS11VERSIONPtr_t me);
-
-} IEcoPKCS11VERSIONVTbl, * IEcoPKCS11VERSIONVTblPtr_t;
-
-interface IEcoPKCS11VERSION {
-    struct IEcoPKCS11VERSIONVTbl* pVTbl;
-} IEcoPKCS11VERSION;
-
-typedef struct IEcoPKCS11INFO* IEcoPKCS11INFOPtr_t;
-
-typedef struct IEcoPKCS11INFOVTbl {
+typedef struct IEcoPKCS11VersionVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11INFOPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11INFOPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11INFOPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11VersionPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11VersionPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11VersionPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11INFOPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11VersionPtr_t me);
 
-    /* IEcoPKCS11INFO */
-    IEcoPKCS11VERSION* (ECOCALLMETHOD* cryptokiVersion)(/* in */ IEcoPKCS11INFOPtr_t me);
-    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* manufacturerID)(/* in */ IEcoPKCS11INFOPtr_t me);
-    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11INFOPtr_t me);
-    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* libraryDescription)(/* in */ IEcoPKCS11INFOPtr_t me);
-    IEcoPKCS11VERSION* (ECOCALLMETHOD* libraryVersion)(/* in */ IEcoPKCS11INFOPtr_t me);
+    /* IEcoPKCS11Version */
+    IEcoPKCS11BYTE* (ECOCALLMETHOD* major)(/* in */ IEcoPKCS11VersionPtr_t me);
+    IEcoPKCS11BYTE* (ECOCALLMETHOD* minor)(/* in */ IEcoPKCS11VersionPtr_t me);
 
-} IEcoPKCS11INFOVTbl, * IEcoPKCS11INFOVTblPtr_t;
+} IEcoPKCS11VersionVTbl, * IEcoPKCS11VersionVTblPtr_t;
 
-interface IEcoPKCS11INFO {
-    struct IEcoPKCS11INFOVTbl* pVTbl;
-} IEcoPKCS11INFO;
+interface IEcoPKCS11Version {
+    struct IEcoPKCS11VersionVTbl* pVTbl;
+} IEcoPKCS11Version;
 
-typedef struct IEcoPKCS11SLOTINFO* IEcoPKCS11SLOTINFOPtr_t;
+typedef struct IEcoPKCS11Info* IEcoPKCS11InfoPtr_t;
 
-typedef struct IEcoPKCS11SLOTINFOVTbl {
+typedef struct IEcoPKCS11InfoVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11SLOTINFOPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11SLOTINFOPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11SLOTINFOPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11InfoPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11InfoPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11InfoPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11SLOTINFOPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11InfoPtr_t me);
 
-    /* IEcoPKCS11SLOTINFO */
-    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* slotDescription)(/* in */ IEcoPKCS11SLOTINFOPtr_t me);
-    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* manufacturerID)(/* in */ IEcoPKCS11SLOTINFOPtr_t me);
-    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11SLOTINFOPtr_t me);
-    IEcoPKCS11VERSION* (ECOCALLMETHOD* hardwareVersion)(/* in */ IEcoPKCS11SLOTINFOPtr_t me);
-    IEcoPKCS11VERSION* (ECOCALLMETHOD* firmwareVersion)(/* in */ IEcoPKCS11SLOTINFOPtr_t me);
+    /* IEcoPKCS11Info */
+    IEcoPKCS11Version* (ECOCALLMETHOD* cryptokiVersion)(/* in */ IEcoPKCS11InfoPtr_t me);
+    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* manufacturerID)(/* in */ IEcoPKCS11InfoPtr_t me);
+    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11InfoPtr_t me);
+    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* libraryDescription)(/* in */ IEcoPKCS11InfoPtr_t me);
+    IEcoPKCS11Version* (ECOCALLMETHOD* libraryVersion)(/* in */ IEcoPKCS11InfoPtr_t me);
 
-} IEcoPKCS11SLOTINFOVTbl, * IEcoPKCS11SLOTINFOVTblPtr_t;
+} IEcoPKCS11InfoVTbl, * IEcoPKCS11InfoVTblPtr_t;
 
-interface IEcoPKCS11SLOTINFO {
-    struct IEcoPKCS11SLOTINFOVTbl* pVTbl;
-} IEcoPKCS11SLOTINFO;
+interface IEcoPKCS11Info {
+    struct IEcoPKCS11InfoVTbl* pVTbl;
+} IEcoPKCS11Info;
 
-typedef struct IEcoPKCS11TOKENINFO* IEcoPKCS11TOKENINFOPtr_t;
+typedef struct IEcoPKCS11SlotInfo* IEcoPKCS11SlotInfoPtr_t;
 
-typedef struct IEcoPKCS11TOKENINFOVTbl {
+typedef struct IEcoPKCS11SlotInfoVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11TOKENINFOPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11SlotInfoPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11SlotInfoPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11SlotInfoPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11SlotInfoPtr_t me);
 
-    /* IEcoPKCS11TOKENINFO */
-    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* label)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* manufacturerID)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* model)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11CHAR* (ECOCALLMETHOD* serialNumber)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMaxSessionCount)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSessionCount)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMaxRwSessionCount)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRwSessionCount)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMaxPinLen)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMinPinLen)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulTotalPublicMemory)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulFreePublicMemory)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulTotalPrivateMemory)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulFreePrivateMemory)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11VERSION* (ECOCALLMETHOD* hardwareVersion)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11VERSION* (ECOCALLMETHOD* firmwareVersion)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
-    IEcoPKCS11CHAR* (ECOCALLMETHOD* utcTime)(/* in */ IEcoPKCS11TOKENINFOPtr_t me);
+    /* IEcoPKCS11SlotInfo */
+    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* slotDescription)(/* in */ IEcoPKCS11SlotInfoPtr_t me);
+    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* manufacturerID)(/* in */ IEcoPKCS11SlotInfoPtr_t me);
+    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11SlotInfoPtr_t me);
+    IEcoPKCS11Version* (ECOCALLMETHOD* hardwareVersion)(/* in */ IEcoPKCS11SlotInfoPtr_t me);
+    IEcoPKCS11Version* (ECOCALLMETHOD* firmwareVersion)(/* in */ IEcoPKCS11SlotInfoPtr_t me);
 
-} IEcoPKCS11TOKENINFOVTbl, * IEcoPKCS11TOKENINFOVTblPtr_t;
+} IEcoPKCS11SlotInfoVTbl, * IEcoPKCS11SlotInfoVTblPtr_t;
 
-interface IEcoPKCS11TOKENINFO {
-    struct IEcoPKCS11TOKENINFOVTbl* pVTbl;
-} IEcoPKCS11TOKENINFO;
+interface IEcoPKCS11SlotInfo {
+    struct IEcoPKCS11SlotInfoVTbl* pVTbl;
+} IEcoPKCS11SlotInfo;
 
-typedef struct IEcoPKCS11SESSIONINFO* IEcoPKCS11SESSIONINFOPtr_t;
+typedef struct IEcoPKCS11TokenInfo* IEcoPKCS11TokenInfoPtr_t;
 
-typedef struct IEcoPKCS11SESSIONINFOVTbl {
+typedef struct IEcoPKCS11TokenInfoVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11SESSIONINFOPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11SESSIONINFOPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11SESSIONINFOPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11TokenInfoPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11SESSIONINFOPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
 
-    /* IEcoPKCS11SESSIONINFO */
-    IEcoPKCS11SLOTID* (ECOCALLMETHOD* slotID)(/* in */ IEcoPKCS11SESSIONINFOPtr_t me);
-    IEcoPKCS11STATE* (ECOCALLMETHOD* state)(/* in */ IEcoPKCS11SESSIONINFOPtr_t me);
-    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11SESSIONINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulDeviceError)(/* in */ IEcoPKCS11SESSIONINFOPtr_t me);
+    /* IEcoPKCS11TokenInfo */
+    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* label)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* manufacturerID)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11UTF8CHAR* (ECOCALLMETHOD* model)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11CHAR* (ECOCALLMETHOD* serialNumber)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMaxSessionCount)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSessionCount)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMaxRwSessionCount)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRwSessionCount)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMaxPinLen)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMinPinLen)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulTotalPublicMemory)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulFreePublicMemory)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulTotalPrivateMemory)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulFreePrivateMemory)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11Version* (ECOCALLMETHOD* hardwareVersion)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11Version* (ECOCALLMETHOD* firmwareVersion)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
+    IEcoPKCS11CHAR* (ECOCALLMETHOD* utcTime)(/* in */ IEcoPKCS11TokenInfoPtr_t me);
 
-} IEcoPKCS11SESSIONINFOVTbl, * IEcoPKCS11SESSIONINFOVTblPtr_t;
+} IEcoPKCS11TokenInfoVTbl, * IEcoPKCS11TokenInfoVTblPtr_t;
 
-interface IEcoPKCS11SESSIONINFO {
-    struct IEcoPKCS11SESSIONINFOVTbl* pVTbl;
-} IEcoPKCS11SESSIONINFO;
+interface IEcoPKCS11TokenInfo {
+    struct IEcoPKCS11TokenInfoVTbl* pVTbl;
+} IEcoPKCS11TokenInfo;
 
-typedef struct IEcoPKCS11ATTRIBUTE* IEcoPKCS11ATTRIBUTEPtr_t;
+typedef struct IEcoPKCS11SessionInfo* IEcoPKCS11SessionInfoPtr_t;
 
-typedef struct IEcoPKCS11ATTRIBUTEVTbl {
+typedef struct IEcoPKCS11SessionInfoVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11ATTRIBUTEPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11ATTRIBUTEPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11ATTRIBUTEPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11SessionInfoPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11SessionInfoPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11SessionInfoPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11ATTRIBUTEPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11SessionInfoPtr_t me);
 
-    /* IEcoPKCS11ATTRIBUTE */
-    IEcoPKCS11ATTRIBUTETYPE* (ECOCALLMETHOD* type)(/* in */ IEcoPKCS11ATTRIBUTEPtr_t me);
-    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pValue)(/* in */ IEcoPKCS11ATTRIBUTEPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulValueLen)(/* in */ IEcoPKCS11ATTRIBUTEPtr_t me);
+    /* IEcoPKCS11SessionInfo */
+    IEcoPKCS11SLOTID* (ECOCALLMETHOD* slotID)(/* in */ IEcoPKCS11SessionInfoPtr_t me);
+    IEcoPKCS11STATE* (ECOCALLMETHOD* state)(/* in */ IEcoPKCS11SessionInfoPtr_t me);
+    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11SessionInfoPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulDeviceError)(/* in */ IEcoPKCS11SessionInfoPtr_t me);
 
-} IEcoPKCS11ATTRIBUTEVTbl, * IEcoPKCS11ATTRIBUTEVTblPtr_t;
+} IEcoPKCS11SessionInfoVTbl, * IEcoPKCS11SessionInfoVTblPtr_t;
 
-interface IEcoPKCS11ATTRIBUTE {
-    struct IEcoPKCS11ATTRIBUTEVTbl* pVTbl;
-} IEcoPKCS11ATTRIBUTE;
+interface IEcoPKCS11SessionInfo {
+    struct IEcoPKCS11SessionInfoVTbl* pVTbl;
+} IEcoPKCS11SessionInfo;
 
+typedef struct IEcoPKCS11Attribute* IEcoPKCS11AttributePtr_t;
 
-typedef struct IEcoPKCS11DATE* IEcoPKCS11DATEPtr_t;
-
-typedef struct IEcoPKCS11DATEVTbl {
+typedef struct IEcoPKCS11AttributeVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11DATEPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11DATEPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11DATEPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11AttributePtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11AttributePtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11AttributePtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11DATEPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11AttributePtr_t me);
 
-    /* IEcoPKCS11DATE */
-    IEcoPKCS11CHAR* (ECOCALLMETHOD* year)(/* in */ IEcoPKCS11DATEPtr_t me);
-    IEcoPKCS11CHAR* (ECOCALLMETHOD* month)(/* in */ IEcoPKCS11DATEPtr_t me);
-    IEcoPKCS11CHAR* (ECOCALLMETHOD* day)(/* in */ IEcoPKCS11DATEPtr_t me);
+    /* IEcoPKCS11Attribute */
+    IEcoPKCS11AttributeTYPE* (ECOCALLMETHOD* type)(/* in */ IEcoPKCS11AttributePtr_t me);
+    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pValue)(/* in */ IEcoPKCS11AttributePtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulValueLen)(/* in */ IEcoPKCS11AttributePtr_t me);
 
-} IEcoPKCS11DATEVTbl, * IEcoPKCS11DATEVTblPtr_t;
+} IEcoPKCS11AttributeVTbl, * IEcoPKCS11AttributeVTblPtr_t;
 
-interface IEcoPKCS11DATE {
-    struct IEcoPKCS11DATEVTbl* pVTbl;
-} IEcoPKCS11DATE;
+interface IEcoPKCS11Attribute {
+    struct IEcoPKCS11AttributeVTbl* pVTbl;
+} IEcoPKCS11Attribute;
 
-typedef struct IEcoPKCS11MECHANISM* IEcoPKCS11MECHANISMPtr_t;
 
-typedef struct IEcoPKCS11MECHANISMVTbl {
+typedef struct IEcoPKCS11Date* IEcoPKCS11DatePtr_t;
+
+typedef struct IEcoPKCS11DateVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11MECHANISMPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11MECHANISMPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11MECHANISMPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11DatePtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11DatePtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11DatePtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11MECHANISMPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11DatePtr_t me);
 
-    /* IEcoPKCS11MECHANISM */
-    IEcoPKCS11MECHANISMTYPE* (ECOCALLMETHOD* mechanism)(/* in */ IEcoPKCS11MECHANISMPtr_t me);
-    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pParameter)(/* in */ IEcoPKCS11MECHANISMPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulParameterLen)(/* in */ IEcoPKCS11MECHANISMPtr_t me);
+    /* IEcoPKCS11Date */
+    IEcoPKCS11CHAR* (ECOCALLMETHOD* year)(/* in */ IEcoPKCS11DatePtr_t me);
+    IEcoPKCS11CHAR* (ECOCALLMETHOD* month)(/* in */ IEcoPKCS11DatePtr_t me);
+    IEcoPKCS11CHAR* (ECOCALLMETHOD* day)(/* in */ IEcoPKCS11DatePtr_t me);
 
-} IEcoPKCS11MECHANISMVTbl, * IEcoPKCS11MECHANISMVTblPtr_t;
+} IEcoPKCS11DateVTbl, * IEcoPKCS11DateVTblPtr_t;
 
-interface IEcoPKCS11MECHANISM {
-    struct IEcoPKCS11MECHANISMVTbl* pVTbl;
-} IEcoPKCS11MECHANISM;
+interface IEcoPKCS11Date {
+    struct IEcoPKCS11DateVTbl* pVTbl;
+} IEcoPKCS11Date;
 
-typedef struct IEcoPKCS11MECHANISMINFO* IEcoPKCS11MECHANISMINFOPtr_t;
+typedef struct IEcoPKCS11Mechanism* IEcoPKCS11MechanismPtr_t;
 
-typedef struct IEcoPKCS11MECHANISMINFOVTbl {
+typedef struct IEcoPKCS11MechanismVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11MECHANISMINFOPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11MECHANISMINFOPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11MECHANISMINFOPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11MechanismPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11MechanismPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11MechanismPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11MECHANISMINFOPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11MechanismPtr_t me);
 
-    /* IEcoPKCS11MECHANISMINFO */
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMinKeySize)(/* in */ IEcoPKCS11MECHANISMINFOPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMaxKeySize)(/* in */ IEcoPKCS11MECHANISMINFOPtr_t me);
-    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11MECHANISMINFOPtr_t me);
+    /* IEcoPKCS11Mechanism */
+    IEcoPKCS11MechanismTYPE* (ECOCALLMETHOD* mechanism)(/* in */ IEcoPKCS11MechanismPtr_t me);
+    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pParameter)(/* in */ IEcoPKCS11MechanismPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulParameterLen)(/* in */ IEcoPKCS11MechanismPtr_t me);
 
-} IEcoPKCS11MECHANISMINFOVTbl, * IEcoPKCS11MECHANISMINFOVTblPtr_t;
+} IEcoPKCS11MechanismVTbl, * IEcoPKCS11MechanismVTblPtr_t;
 
-interface IEcoPKCS11MECHANISMINFO {
-    struct IEcoPKCS11MECHANISMINFOVTbl* pVTbl;
-} IEcoPKCS11MECHANISMINFO;
+interface IEcoPKCS11Mechanism {
+    struct IEcoPKCS11MechanismVTbl* pVTbl;
+} IEcoPKCS11Mechanism;
 
-typedef struct IEcoPKCS11INTERFACE* IEcoPKCS11INTERFACEPtr_t;
+typedef struct IEcoPKCS11MechanismINFO* IEcoPKCS11MechanismINFOPtr_t;
 
-typedef struct IEcoPKCS11INTERFACEVTbl {
+typedef struct IEcoPKCS11MechanismINFOVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11INTERFACEPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11INTERFACEPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11INTERFACEPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11MechanismINFOPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11MechanismINFOPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11MechanismINFOPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11INTERFACEPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11MechanismINFOPtr_t me);
 
-    /* IEcoPKCS11INTERFACE */
-    IEcoPKCS11CHAR** (ECOCALLMETHOD* pInterfaceName)(/* in */ IEcoPKCS11INTERFACEPtr_t me);
-    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pFunctionList)(/* in */ IEcoPKCS11INTERFACEPtr_t me);
-    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11INTERFACEPtr_t me);
+    /* IEcoPKCS11MechanismINFO */
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMinKeySize)(/* in */ IEcoPKCS11MechanismINFOPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMaxKeySize)(/* in */ IEcoPKCS11MechanismINFOPtr_t me);
+    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11MechanismINFOPtr_t me);
 
-} IEcoPKCS11INTERFACEVTbl, * IEcoPKCS11INTERFACEVTblPtr_t;
+} IEcoPKCS11MechanismINFOVTbl, * IEcoPKCS11MechanismINFOVTblPtr_t;
 
-interface IEcoPKCS11INTERFACE {
-    struct IEcoPKCS11INTERFACEVTbl* pVTbl;
-} IEcoPKCS11INTERFACE;
+interface IEcoPKCS11MechanismINFO {
+    struct IEcoPKCS11MechanismINFOVTbl* pVTbl;
+} IEcoPKCS11MechanismINFO;
 
-typedef struct IEcoPKCS11CINITIALIZEARGS* IEcoPKCS11CINITIALIZEARGSPtr_t;
+typedef struct IEcoPKCS11Interface* IEcoPKCS11InterfacePtr_t;
 
-typedef struct IEcoPKCS11CINITIALIZEARGSVTbl {
+typedef struct IEcoPKCS11InterfaceVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11InterfacePtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11InterfacePtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11InterfacePtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11InterfacePtr_t me);
 
-    /* IEcoPKCS11CINITIALIZEARGS */
-    IEcoPKCS11CREATEMUTEX* (ECOCALLMETHOD* CreateMutex)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me);
-    IEcoPKCS11DESTROYMUTEX* (ECOCALLMETHOD* DestroyMutex)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me);
-    IEcoPKCS11LOCKMUTEX* (ECOCALLMETHOD* LockMutex)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me);
-    IEcoPKCS11UNLOCKMUTEX* (ECOCALLMETHOD* UnlockMutex)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me);
-    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me);
-    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pReserved)(/* in */ IEcoPKCS11CINITIALIZEARGSPtr_t me);
+    /* IEcoPKCS11Interface */
+    IEcoPKCS11CHAR** (ECOCALLMETHOD* pInterfaceName)(/* in */ IEcoPKCS11InterfacePtr_t me);
+    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pFunctionList)(/* in */ IEcoPKCS11InterfacePtr_t me);
+    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11InterfacePtr_t me);
 
-} IEcoPKCS11CINITIALIZEARGSVTbl, * IEcoPKCS11CINITIALIZEARGSVTblPtr_t;
+} IEcoPKCS11InterfaceVTbl, * IEcoPKCS11InterfaceVTblPtr_t;
 
-interface IEcoPKCS11CINITIALIZEARGS {
-    struct IEcoPKCS11CINITIALIZEARGSVTbl* pVTbl;
-} IEcoPKCS11CINITIALIZEARGS;
+interface IEcoPKCS11Interface {
+    struct IEcoPKCS11InterfaceVTbl* pVTbl;
+} IEcoPKCS11Interface;
 
-typedef struct IEcoPKCS11RSAPKCSOAEPPARAMS* IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t;
+typedef struct IEcoPKCS11CInitializeARGS* IEcoPKCS11CInitializeARGSPtr_t;
 
-typedef struct IEcoPKCS11RSAPKCSOAEPPARAMSVTbl {
+typedef struct IEcoPKCS11CInitializeARGSVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me);
 
-    /* IEcoPKCS11RSAPKCSOAEPPARAMS */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* hashAlg)(/* in */ IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t me);
-    IEcoPKCS11RSA_PKCS_MGF_TYPE* (ECOCALLMETHOD* mgf)(/* in */ IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t me);
-    IEcoPKCS11RSA_PKCS_OAEP_SOURCE_TYPE* (ECOCALLMETHOD* source)(/* in */ IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t me);
-    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pSourceData)(/* in */ IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSourceDataLen)(/* in */ IEcoPKCS11RSAPKCSOAEPPARAMSPtr_t me);
+    /* IEcoPKCS11CInitializeARGS */
+    IEcoPKCS11CREATEMUTEX* (ECOCALLMETHOD* CreateMutex)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me);
+    IEcoPKCS11DESTROYMUTEX* (ECOCALLMETHOD* DestroyMutex)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me);
+    IEcoPKCS11LOCKMUTEX* (ECOCALLMETHOD* LockMutex)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me);
+    IEcoPKCS11UNLOCKMUTEX* (ECOCALLMETHOD* UnlockMutex)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me);
+    IEcoPKCS11FLAGS* (ECOCALLMETHOD* flags)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me);
+    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pReserved)(/* in */ IEcoPKCS11CInitializeARGSPtr_t me);
 
-} IEcoPKCS11RSAPKCSOAEPPARAMSVTbl, * IEcoPKCS11RSAPKCSOAEPPARAMSVTblPtr_t;
+} IEcoPKCS11CInitializeARGSVTbl, * IEcoPKCS11CInitializeARGSVTblPtr_t;
 
-interface IEcoPKCS11RSAPKCSOAEPPARAMS {
-    struct IEcoPKCS11RSAPKCSOAEPPARAMSVTbl* pVTbl;
-} IEcoPKCS11RSAPKCSOAEPPARAMS;
+interface IEcoPKCS11CInitializeARGS {
+    struct IEcoPKCS11CInitializeARGSVTbl* pVTbl;
+} IEcoPKCS11CInitializeARGS;
 
-typedef struct IEcoPKCS11RSAPKCSSPARAMS* IEcoPKCS11RSAPKCSSPARAMSPtr_t;
+typedef struct IEcoPKCS11RSAPKCSOAEPParams* IEcoPKCS11RSAPKCSOAEPParamsPtr_t;
 
-typedef struct IEcoPKCS11RSAPKCSSPARAMSVTbl {
+typedef struct IEcoPKCS11RSAPKCSOAEPParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RSAPKCSSPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RSAPKCSSPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RSAPKCSSPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RSAPKCSOAEPParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RSAPKCSOAEPParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RSAPKCSOAEPParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RSAPKCSSPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RSAPKCSOAEPParamsPtr_t me);
 
-    /* IEcoPKCS11RSAPKCSSPARAMS */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* hashAlg)(/* in */ IEcoPKCS11RSAPKCSSPARAMSPtr_t me);
-    IEcoPKCS11RSA_PKCS_MGF_TYPE* (ECOCALLMETHOD* mgf)(/* in */ IEcoPKCS11RSAPKCSSPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* sLen)(/* in */ IEcoPKCS11RSAPKCSSPARAMSPtr_t me);
+    /* IEcoPKCS11RSAPKCSOAEPParams */
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* hashAlg)(/* in */ IEcoPKCS11RSAPKCSOAEPParamsPtr_t me);
+    IEcoPKCS11RSA_PKCS_MGF_TYPE* (ECOCALLMETHOD* mgf)(/* in */ IEcoPKCS11RSAPKCSOAEPParamsPtr_t me);
+    IEcoPKCS11RSA_PKCS_OAEP_SOURCE_TYPE* (ECOCALLMETHOD* source)(/* in */ IEcoPKCS11RSAPKCSOAEPParamsPtr_t me);
+    IEcoPKCS11VOID_PTR* (ECOCALLMETHOD* pSourceData)(/* in */ IEcoPKCS11RSAPKCSOAEPParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSourceDataLen)(/* in */ IEcoPKCS11RSAPKCSOAEPParamsPtr_t me);
 
-} IEcoPKCS11RSAPKCSSPARAMSVTbl, * IEcoPKCS11RSAPKCSSPARAMSVTblPtr_t;
+} IEcoPKCS11RSAPKCSOAEPParamsVTbl, * IEcoPKCS11RSAPKCSOAEPParamsVTblPtr_t;
 
-interface IEcoPKCS11RSAPKCSSPARAMS {
-    struct IEcoPKCS11RSAPKCSSPARAMSVTbl* pVTbl;
-} IEcoPKCS11RSAPKCSSPARAMS;
+interface IEcoPKCS11RSAPKCSOAEPParams {
+    struct IEcoPKCS11RSAPKCSOAEPParamsVTbl* pVTbl;
+} IEcoPKCS11RSAPKCSOAEPParams;
 
-typedef struct IEcoPKCS11ECDH1DERIVEPARAMS* IEcoPKCS11ECDH1DERIVEPARAMSPtr_t;
+typedef struct IEcoPKCS11RSAPKCSSParams* IEcoPKCS11RSAPKCSSParamsPtr_t;
 
-typedef struct IEcoPKCS11ECDH1DERIVEPARAMSVTbl {
+typedef struct IEcoPKCS11RSAPKCSSParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11ECDH1DERIVEPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11ECDH1DERIVEPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11ECDH1DERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RSAPKCSSParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RSAPKCSSParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RSAPKCSSParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11ECDH1DERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RSAPKCSSParamsPtr_t me);
 
-    /* IEcoPKCS11ECDH1DERIVEPARAMS */
-    IEcoPKCS11EC_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11ECDH1DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSharedDataLen)(/* in */ IEcoPKCS11ECDH1DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSharedData)(/* in */ IEcoPKCS11ECDH1DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11ECDH1DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11ECDH1DERIVEPARAMSPtr_t me);
+    /* IEcoPKCS11RSAPKCSSParams */
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* hashAlg)(/* in */ IEcoPKCS11RSAPKCSSParamsPtr_t me);
+    IEcoPKCS11RSA_PKCS_MGF_TYPE* (ECOCALLMETHOD* mgf)(/* in */ IEcoPKCS11RSAPKCSSParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* sLen)(/* in */ IEcoPKCS11RSAPKCSSParamsPtr_t me);
 
-} IEcoPKCS11ECDH1DERIVEPARAMSVTbl, * IEcoPKCS11ECDH1DERIVEPARAMSVTblPtr_t;
+} IEcoPKCS11RSAPKCSSParamsVTbl, * IEcoPKCS11RSAPKCSSParamsVTblPtr_t;
 
-interface IEcoPKCS11ECDH1DERIVEPARAMS {
-    struct IEcoPKCS11ECDH1DERIVEPARAMSVTbl* pVTbl;
-} IEcoPKCS11ECDH1DERIVEPARAMS;
+interface IEcoPKCS11RSAPKCSSParams {
+    struct IEcoPKCS11RSAPKCSSParamsVTbl* pVTbl;
+} IEcoPKCS11RSAPKCSSParams;
 
-typedef struct IEcoPKCS11ECDH2DERIVEPARAMS* IEcoPKCS11ECDH2DERIVEPARAMSPtr_t;
+typedef struct IEcoPKCS11ECDH1DERIVEParams* IEcoPKCS11ECDH1DERIVEParamsPtr_t;
 
-typedef struct IEcoPKCS11ECDH2DERIVEPARAMSVTbl {
+typedef struct IEcoPKCS11ECDH1DERIVEParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11ECDH1DERIVEParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11ECDH1DERIVEParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11ECDH1DERIVEParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11ECDH1DERIVEParamsPtr_t me);
 
-    /* IEcoPKCS11ECDH2DERIVEPARAMS */
-    IEcoPKCS11EC_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSharedDataLen)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSharedData)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPrivateDataLen)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hPrivateData)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen2)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData2)(/* in */ IEcoPKCS11ECDH2DERIVEPARAMSPtr_t me);
+    /* IEcoPKCS11ECDH1DERIVEParams */
+    IEcoPKCS11EC_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11ECDH1DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSharedDataLen)(/* in */ IEcoPKCS11ECDH1DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSharedData)(/* in */ IEcoPKCS11ECDH1DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11ECDH1DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11ECDH1DERIVEParamsPtr_t me);
 
-} IEcoPKCS11ECDH2DERIVEPARAMSVTbl, * IEcoPKCS11ECDH2DERIVEPARAMSVTblPtr_t;
+} IEcoPKCS11ECDH1DERIVEParamsVTbl, * IEcoPKCS11ECDH1DERIVEParamsVTblPtr_t;
 
-interface IEcoPKCS11ECDH2DERIVEPARAMS {
-    struct IEcoPKCS11ECDH2DERIVEPARAMSVTbl* pVTbl;
-} IEcoPKCS11ECDH2DERIVEPARAMS;
+interface IEcoPKCS11ECDH1DERIVEParams {
+    struct IEcoPKCS11ECDH1DERIVEParamsVTbl* pVTbl;
+} IEcoPKCS11ECDH1DERIVEParams;
 
-typedef struct IEcoPKCS11ECMQVDERIVEPARAMS* IEcoPKCS11ECMQVDERIVEPARAMSPtr_t;
+typedef struct IEcoPKCS11ECDH2DERIVEParams* IEcoPKCS11ECDH2DERIVEParamsPtr_t;
 
-typedef struct IEcoPKCS11ECMQVDERIVEPARAMSVTbl {
+typedef struct IEcoPKCS11ECDH2DERIVEParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
 
-    /* IEcoPKCS11ECMQVDERIVEPARAMS */
-    IEcoPKCS11EC_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSharedDataLen)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSharedData)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPrivateDataLen)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hPrivateData)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen2)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData2)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* publicKey)(/* in */ IEcoPKCS11ECMQVDERIVEPARAMSPtr_t me);
+    /* IEcoPKCS11ECDH2DERIVEParams */
+    IEcoPKCS11EC_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSharedDataLen)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSharedData)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPrivateDataLen)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
+    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hPrivateData)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen2)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData2)(/* in */ IEcoPKCS11ECDH2DERIVEParamsPtr_t me);
 
-} IEcoPKCS11ECMQVDERIVEPARAMSVTbl, * IEcoPKCS11ECMQVDERIVEPARAMSVTblPtr_t;
+} IEcoPKCS11ECDH2DERIVEParamsVTbl, * IEcoPKCS11ECDH2DERIVEParamsVTblPtr_t;
 
-interface IEcoPKCS11ECMQVDERIVEPARAMS {
-    struct IEcoPKCS11ECMQVDERIVEPARAMSVTbl* pVTbl;
-} IEcoPKCS11ECMQVDERIVEPARAMS;
+interface IEcoPKCS11ECDH2DERIVEParams {
+    struct IEcoPKCS11ECDH2DERIVEParamsVTbl* pVTbl;
+} IEcoPKCS11ECDH2DERIVEParams;
 
-typedef struct IEcoPKCS11X942DH1DERIVEPARAMS* IEcoPKCS11X942DH1DERIVEPARAMSPtr_t;
+typedef struct IEcoPKCS11ECMQVDERIVEParams* IEcoPKCS11ECMQVDERIVEParamsPtr_t;
 
-typedef struct IEcoPKCS11X942DH1DERIVEPARAMSVTbl {
+typedef struct IEcoPKCS11ECMQVDERIVEParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11X942DH1DERIVEPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11X942DH1DERIVEPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11X942DH1DERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11X942DH1DERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
 
-    /* IEcoPKCS11X942DH1DERIVEPARAMS */
-    IEcoPKCS11X942DH_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11X942DH1DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOtherInfoLen)(/* in */ IEcoPKCS11X942DH1DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOtherInfo)(/* in */ IEcoPKCS11X942DH1DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11X942DH1DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11X942DH1DERIVEPARAMSPtr_t me);
+    /* IEcoPKCS11ECMQVDERIVEParams */
+    IEcoPKCS11EC_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSharedDataLen)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSharedData)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPrivateDataLen)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hPrivateData)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen2)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData2)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
+    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* publicKey)(/* in */ IEcoPKCS11ECMQVDERIVEParamsPtr_t me);
 
-} IEcoPKCS11X942DH1DERIVEPARAMSVTbl, * IEcoPKCS11X942DH1DERIVEPARAMSVTblPtr_t;
+} IEcoPKCS11ECMQVDERIVEParamsVTbl, * IEcoPKCS11ECMQVDERIVEParamsVTblPtr_t;
 
-interface IEcoPKCS11X942DH1DERIVEPARAMS {
-    struct IEcoPKCS11X942DH1DERIVEPARAMSVTbl* pVTbl;
-} IEcoPKCS11X942DH1DERIVEPARAMS;
+interface IEcoPKCS11ECMQVDERIVEParams {
+    struct IEcoPKCS11ECMQVDERIVEParamsVTbl* pVTbl;
+} IEcoPKCS11ECMQVDERIVEParams;
 
-typedef struct IEcoPKCS11X942DH2DERIVEPARAMS* IEcoPKCS11X942DH2DERIVEPARAMSPtr_t;
+typedef struct IEcoPKCS11X942DH1DERIVEParams* IEcoPKCS11X942DH1DERIVEParamsPtr_t;
 
-typedef struct IEcoPKCS11X942DH2DERIVEPARAMSVTbl {
+typedef struct IEcoPKCS11X942DH1DERIVEParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11X942DH1DERIVEParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11X942DH1DERIVEParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11X942DH1DERIVEParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11X942DH1DERIVEParamsPtr_t me);
 
-    /* IEcoPKCS11X942DH2DERIVEPARAMS */
-    IEcoPKCS11X942DH_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOtherInfoLen)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOtherInfo)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPrivateDataLen)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hPrivateData)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen2)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData2)(/* in */ IEcoPKCS11X942DH2DERIVEPARAMSPtr_t me);
+    /* IEcoPKCS11X942DH1DERIVEParams */
+    IEcoPKCS11X942DH_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11X942DH1DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOtherInfoLen)(/* in */ IEcoPKCS11X942DH1DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOtherInfo)(/* in */ IEcoPKCS11X942DH1DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11X942DH1DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11X942DH1DERIVEParamsPtr_t me);
 
-} IEcoPKCS11X942DH2DERIVEPARAMSVTbl, * IEcoPKCS11X942DH2DERIVEPARAMSVTblPtr_t;
+} IEcoPKCS11X942DH1DERIVEParamsVTbl, * IEcoPKCS11X942DH1DERIVEParamsVTblPtr_t;
 
-interface IEcoPKCS11X942DH2DERIVEPARAMS {
-    struct IEcoPKCS11X942DH2DERIVEPARAMSVTbl* pVTbl;
-} IEcoPKCS11X942DH2DERIVEPARAMS;
+interface IEcoPKCS11X942DH1DERIVEParams {
+    struct IEcoPKCS11X942DH1DERIVEParamsVTbl* pVTbl;
+} IEcoPKCS11X942DH1DERIVEParams;
 
-typedef struct IEcoPKCS11X942MQVDERIVEPARAMS* IEcoPKCS11X942MQVDERIVEPARAMSPtr_t;
+typedef struct IEcoPKCS11X942DH2DERIVEParams* IEcoPKCS11X942DH2DERIVEParamsPtr_t;
 
-typedef struct IEcoPKCS11X942MQVDERIVEPARAMSVTbl {
+typedef struct IEcoPKCS11X942DH2DERIVEParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
 
-    /* IEcoPKCS11X942MQVDERIVEPARAMS */
-    IEcoPKCS11X942DH_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOtherInfoLen)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOtherInfo)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPrivateDataLen)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hPrivateData)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen2)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData2)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
-    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* publicKey)(/* in */ IEcoPKCS11X942MQVDERIVEPARAMSPtr_t me);
+    /* IEcoPKCS11X942DH2DERIVEParams */
+    IEcoPKCS11X942DH_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOtherInfoLen)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOtherInfo)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPrivateDataLen)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
+    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hPrivateData)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen2)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData2)(/* in */ IEcoPKCS11X942DH2DERIVEParamsPtr_t me);
 
-} IEcoPKCS11X942MQVDERIVEPARAMSVTbl, * IEcoPKCS11X942MQVDERIVEPARAMSVTblPtr_t;
+} IEcoPKCS11X942DH2DERIVEParamsVTbl, * IEcoPKCS11X942DH2DERIVEParamsVTblPtr_t;
 
-interface IEcoPKCS11X942MQVDERIVEPARAMS {
-    struct IEcoPKCS11X942MQVDERIVEPARAMSVTbl* pVTbl;
-} IEcoPKCS11X942MQVDERIVEPARAMS;
+interface IEcoPKCS11X942DH2DERIVEParams {
+    struct IEcoPKCS11X942DH2DERIVEParamsVTbl* pVTbl;
+} IEcoPKCS11X942DH2DERIVEParams;
 
-typedef struct IEcoPKCS11KEADERIVEPARAMS* IEcoPKCS11KEADERIVEPARAMSPtr_t;
+typedef struct IEcoPKCS11X942MQVDERIVEParams* IEcoPKCS11X942MQVDERIVEParamsPtr_t;
 
-typedef struct IEcoPKCS11KEADERIVEPARAMSVTbl {
+typedef struct IEcoPKCS11X942MQVDERIVEParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
 
-    /* IEcoPKCS11KEADERIVEPARAMS */
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* isSender)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRandomLen)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pRandomA)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pRandomB)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11KEADERIVEPARAMSPtr_t me);
+    /* IEcoPKCS11X942MQVDERIVEParams */
+    IEcoPKCS11X942DH_KDF_TYPE* (ECOCALLMETHOD* kdf)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOtherInfoLen)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOtherInfo)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPrivateDataLen)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hPrivateData)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen2)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData2)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
+    IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* publicKey)(/* in */ IEcoPKCS11X942MQVDERIVEParamsPtr_t me);
 
-} IEcoPKCS11KEADERIVEPARAMSVTbl, * IEcoPKCS11KEADERIVEPARAMSVTblPtr_t;
+} IEcoPKCS11X942MQVDERIVEParamsVTbl, * IEcoPKCS11X942MQVDERIVEParamsVTblPtr_t;
 
-interface IEcoPKCS11KEADERIVEPARAMS {
-    struct IEcoPKCS11KEADERIVEPARAMSVTbl* pVTbl;
-} IEcoPKCS11KEADERIVEPARAMS;
+interface IEcoPKCS11X942MQVDERIVEParams {
+    struct IEcoPKCS11X942MQVDERIVEParamsVTbl* pVTbl;
+} IEcoPKCS11X942MQVDERIVEParams;
 
-typedef struct IEcoPKCS11RC2CBCPARAMS* IEcoPKCS11RC2CBCPARAMSPtr_t;
+typedef struct IEcoPKCS11KEADERIVEParams* IEcoPKCS11KEADERIVEParamsPtr_t;
 
-typedef struct IEcoPKCS11RC2CBCPARAMSVTbl {
+typedef struct IEcoPKCS11KEADERIVEParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC2CBCPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC2CBCPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC2CBCPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC2CBCPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me);
 
-    /* IEcoPKCS11RC2CBCPARAMS */
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulEffectiveBits)(/* in */ IEcoPKCS11RC2CBCPARAMSPtr_t me);
-    IEcoPKCS11BYTE* (ECOCALLMETHOD* iv)(/* in */ IEcoPKCS11RC2CBCPARAMSPtr_t me);
+    /* IEcoPKCS11KEADERIVEParams */
+    IEcoPKCS11BBOOL* (ECOCALLMETHOD* isSender)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRandomLen)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pRandomA)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pRandomB)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11KEADERIVEParamsPtr_t me);
 
-} IEcoPKCS11RC2CBCPARAMSVTbl, * IEcoPKCS11RC2CBCPARAMSVTblPtr_t;
+} IEcoPKCS11KEADERIVEParamsVTbl, * IEcoPKCS11KEADERIVEParamsVTblPtr_t;
 
-interface IEcoPKCS11RC2CBCPARAMS {
-    struct IEcoPKCS11RC2CBCPARAMSVTbl* pVTbl;
-} IEcoPKCS11RC2CBCPARAMS;
+interface IEcoPKCS11KEADERIVEParams {
+    struct IEcoPKCS11KEADERIVEParamsVTbl* pVTbl;
+} IEcoPKCS11KEADERIVEParams;
 
-typedef struct IEcoPKCS11RC2MACGENERALPARAMS* IEcoPKCS11RC2MACGENERALPARAMSPtr_t;
+typedef struct IEcoPKCS11RC2CBCParams* IEcoPKCS11RC2CBCParamsPtr_t;
 
-typedef struct IEcoPKCS11RC2MACGENERALPARAMSVTbl {
+typedef struct IEcoPKCS11RC2CBCParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC2MACGENERALPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC2MACGENERALPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC2MACGENERALPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC2CBCParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC2CBCParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC2CBCParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC2MACGENERALPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC2CBCParamsPtr_t me);
 
-    /* IEcoPKCS11RC2MACGENERALPARAMS */
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulEffectiveBits)(/* in */ IEcoPKCS11RC2MACGENERALPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMacLength)(/* in */ IEcoPKCS11RC2MACGENERALPARAMSPtr_t me);
+    /* IEcoPKCS11RC2CBCParams */
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulEffectiveBits)(/* in */ IEcoPKCS11RC2CBCParamsPtr_t me);
+    IEcoPKCS11BYTE* (ECOCALLMETHOD* iv)(/* in */ IEcoPKCS11RC2CBCParamsPtr_t me);
 
-} IEcoPKCS11RC2MACGENERALPARAMSVTbl, * IEcoPKCS11RC2MACGENERALPARAMSVTblPtr_t;
+} IEcoPKCS11RC2CBCParamsVTbl, * IEcoPKCS11RC2CBCParamsVTblPtr_t;
 
-interface IEcoPKCS11RC2MACGENERALPARAMS {
-    struct IEcoPKCS11RC2MACGENERALPARAMSVTbl* pVTbl;
-} IEcoPKCS11RC2MACGENERALPARAMS;
+interface IEcoPKCS11RC2CBCParams {
+    struct IEcoPKCS11RC2CBCParamsVTbl* pVTbl;
+} IEcoPKCS11RC2CBCParams;
 
-typedef struct IEcoPKCS11RC5PARAMS* IEcoPKCS11RC5PARAMSPtr_t;
+typedef struct IEcoPKCS11RC2MACGENERALParams* IEcoPKCS11RC2MACGENERALParamsPtr_t;
 
-typedef struct IEcoPKCS11RC5PARAMSVTbl {
+typedef struct IEcoPKCS11RC2MACGENERALParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC5PARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC5PARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC5PARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC2MACGENERALParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC2MACGENERALParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC2MACGENERALParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC5PARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC2MACGENERALParamsPtr_t me);
 
-    /* IEcoPKCS11RC5PARAMS */
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulWordsize)(/* in */ IEcoPKCS11RC5PARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRounds)(/* in */ IEcoPKCS11RC5PARAMSPtr_t me);
+    /* IEcoPKCS11RC2MACGENERALParams */
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulEffectiveBits)(/* in */ IEcoPKCS11RC2MACGENERALParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMacLength)(/* in */ IEcoPKCS11RC2MACGENERALParamsPtr_t me);
 
-} IEcoPKCS11RC5PARAMSVTbl, * IEcoPKCS11RC5PARAMSVTblPtr_t;
+} IEcoPKCS11RC2MACGENERALParamsVTbl, * IEcoPKCS11RC2MACGENERALParamsVTblPtr_t;
 
-interface IEcoPKCS11RC5PARAMS {
-    struct IEcoPKCS11RC5PARAMSVTbl* pVTbl;
-} IEcoPKCS11RC5PARAMS;
+interface IEcoPKCS11RC2MACGENERALParams {
+    struct IEcoPKCS11RC2MACGENERALParamsVTbl* pVTbl;
+} IEcoPKCS11RC2MACGENERALParams;
 
-typedef struct IEcoPKCS11RC5CBCPARAMS* IEcoPKCS11RC5CBCPARAMSPtr_t;
+typedef struct IEcoPKCS11RC5Params* IEcoPKCS11RC5ParamsPtr_t;
 
-typedef struct IEcoPKCS11RC5CBCPARAMSVTbl {
+typedef struct IEcoPKCS11RC5ParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC5CBCPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC5CBCPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC5CBCPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC5ParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC5ParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC5ParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC5CBCPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC5ParamsPtr_t me);
 
-    /* IEcoPKCS11RC5CBCPARAMS */
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulWordsize)(/* in */ IEcoPKCS11RC5CBCPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRounds)(/* in */ IEcoPKCS11RC5CBCPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pIv)(/* in */ IEcoPKCS11RC5CBCPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulIvLen)(/* in */ IEcoPKCS11RC5CBCPARAMSPtr_t me);
+    /* IEcoPKCS11RC5Params */
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulWordsize)(/* in */ IEcoPKCS11RC5ParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRounds)(/* in */ IEcoPKCS11RC5ParamsPtr_t me);
 
-} IEcoPKCS11RC5CBCPARAMSVTbl, * IEcoPKCS11RC5CBCPARAMSVTblPtr_t;
+} IEcoPKCS11RC5ParamsVTbl, * IEcoPKCS11RC5ParamsVTblPtr_t;
 
-interface IEcoPKCS11RC5CBCPARAMS {
-    struct IEcoPKCS11RC5CBCPARAMSVTbl* pVTbl;
-} IEcoPKCS11RC5CBCPARAMS;
+interface IEcoPKCS11RC5Params {
+    struct IEcoPKCS11RC5ParamsVTbl* pVTbl;
+} IEcoPKCS11RC5Params;
 
-typedef struct IEcoPKCS11RC5MACGENERALPARAMS* IEcoPKCS11RC5MACGENERALPARAMSPtr_t;
+typedef struct IEcoPKCS11RC5CBCParams* IEcoPKCS11RC5CBCParamsPtr_t;
 
-typedef struct IEcoPKCS11RC5MACGENERALPARAMSVTbl {
+typedef struct IEcoPKCS11RC5CBCParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC5MACGENERALPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC5MACGENERALPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC5MACGENERALPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC5CBCParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC5CBCParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC5CBCParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC5MACGENERALPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC5CBCParamsPtr_t me);
 
-    /* IEcoPKCS11RC5MACGENERALPARAMS */
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulWordsize)(/* in */ IEcoPKCS11RC5MACGENERALPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRounds)(/* in */ IEcoPKCS11RC5MACGENERALPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMacLength)(/* in */ IEcoPKCS11RC5MACGENERALPARAMSPtr_t me);
+    /* IEcoPKCS11RC5CBCParams */
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulWordsize)(/* in */ IEcoPKCS11RC5CBCParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRounds)(/* in */ IEcoPKCS11RC5CBCParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pIv)(/* in */ IEcoPKCS11RC5CBCParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulIvLen)(/* in */ IEcoPKCS11RC5CBCParamsPtr_t me);
 
-} IEcoPKCS11RC5MACGENERALPARAMSVTbl, * IEcoPKCS11RC5MACGENERALPARAMSVTblPtr_t;
+} IEcoPKCS11RC5CBCParamsVTbl, * IEcoPKCS11RC5CBCParamsVTblPtr_t;
 
-interface IEcoPKCS11RC5MACGENERALPARAMS {
-    struct IEcoPKCS11RC5MACGENERALPARAMSVTbl* pVTbl;
-} IEcoPKCS11RC5MACGENERALPARAMS;
+interface IEcoPKCS11RC5CBCParams {
+    struct IEcoPKCS11RC5CBCParamsVTbl* pVTbl;
+} IEcoPKCS11RC5CBCParams;
 
-typedef struct IEcoPKCS11DESCBCENCRYPTDATAPARAMS* IEcoPKCS11DESCBCENCRYPTDATAPARAMSPtr_t;
+typedef struct IEcoPKCS11RC5MACGENERALParams* IEcoPKCS11RC5MACGENERALParamsPtr_t;
 
-typedef struct IEcoPKCS11DESCBCENCRYPTDATAPARAMSVTbl {
+typedef struct IEcoPKCS11RC5MACGENERALParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11RC5MACGENERALParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11RC5MACGENERALParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11RC5MACGENERALParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11RC5MACGENERALParamsPtr_t me);
 
-    /* IEcoPKCS11DESCBCENCRYPTDATAPARAMS */
-    IEcoPKCS11BYTE* (ECOCALLMETHOD* iv)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pData)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* length)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAPARAMSPtr_t me);
+    /* IEcoPKCS11RC5MACGENERALParams */
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulWordsize)(/* in */ IEcoPKCS11RC5MACGENERALParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRounds)(/* in */ IEcoPKCS11RC5MACGENERALParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMacLength)(/* in */ IEcoPKCS11RC5MACGENERALParamsPtr_t me);
 
-} IEcoPKCS11DESCBCENCRYPTDATAPARAMSVTbl, * IEcoPKCS11DESCBCENCRYPTDATAPARAMSVTblPtr_t;
+} IEcoPKCS11RC5MACGENERALParamsVTbl, * IEcoPKCS11RC5MACGENERALParamsVTblPtr_t;
 
-interface IEcoPKCS11DESCBCENCRYPTDATAPARAMS {
-    struct IEcoPKCS11DESCBCENCRYPTDATAPARAMSVTbl* pVTbl;
-} IEcoPKCS11DESCBCENCRYPTDATAPARAMS;
+interface IEcoPKCS11RC5MACGENERALParams {
+    struct IEcoPKCS11RC5MACGENERALParamsVTbl* pVTbl;
+} IEcoPKCS11RC5MACGENERALParams;
 
-typedef struct IEcoPKCS11AESCBCENCRYPTDATAPARAMS* IEcoPKCS11AESCBCENCRYPTDATAPARAMSPtr_t;
+typedef struct IEcoPKCS11DESCBCENCRYPTDATAParams* IEcoPKCS11DESCBCENCRYPTDATAParamsPtr_t;
 
-typedef struct IEcoPKCS11AESCBCENCRYPTDATAPARAMSVTbl {
+typedef struct IEcoPKCS11DESCBCENCRYPTDATAParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAParamsPtr_t me);
 
-    /* IEcoPKCS11AESCBCENCRYPTDATAPARAMS */
-    IEcoPKCS11BYTE* (ECOCALLMETHOD* iv)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAPARAMSPtr_t me);
-    IEcoPKCS11BYTEPTR* (ECOCALLMETHOD* pData)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* length)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAPARAMSPtr_t me);
+    /* IEcoPKCS11DESCBCENCRYPTDATAParams */
+    IEcoPKCS11BYTE* (ECOCALLMETHOD* iv)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pData)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* length)(/* in */ IEcoPKCS11DESCBCENCRYPTDATAParamsPtr_t me);
 
-} IEcoPKCS11AESCBCENCRYPTDATAPARAMSVTbl, * IEcoPKCS11AESCBCENCRYPTDATAPARAMSVTblPtr_t;
+} IEcoPKCS11DESCBCENCRYPTDATAParamsVTbl, * IEcoPKCS11DESCBCENCRYPTDATAParamsVTblPtr_t;
 
-interface IEcoPKCS11AESCBCENCRYPTDATAPARAMS {
-    struct IEcoPKCS11AESCBCENCRYPTDATAPARAMSVTbl* pVTbl;
-} IEcoPKCS11AESCBCENCRYPTDATAPARAMS;
+interface IEcoPKCS11DESCBCENCRYPTDATAParams {
+    struct IEcoPKCS11DESCBCENCRYPTDATAParamsVTbl* pVTbl;
+} IEcoPKCS11DESCBCENCRYPTDATAParams;
 
-typedef struct IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMS* IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t;
+typedef struct IEcoPKCS11AESCBCENCRYPTDATAParams* IEcoPKCS11AESCBCENCRYPTDATAParamsPtr_t;
 
-typedef struct IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSVTbl {
+typedef struct IEcoPKCS11AESCBCENCRYPTDATAParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAParamsPtr_t me);
 
-    /* IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMS */
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPasswordLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPassword)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPAndGLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulQLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRandomLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pRandomA)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPrimeP)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pBaseG)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSubprimeQ)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSPtr_t me);
+    /* IEcoPKCS11AESCBCENCRYPTDATAParams */
+    IEcoPKCS11BYTE* (ECOCALLMETHOD* iv)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAParamsPtr_t me);
+    IEcoPKCS11BYTEPTR* (ECOCALLMETHOD* pData)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* length)(/* in */ IEcoPKCS11AESCBCENCRYPTDATAParamsPtr_t me);
 
-} IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSVTbl, * IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSVTblPtr_t;
+} IEcoPKCS11AESCBCENCRYPTDATAParamsVTbl, * IEcoPKCS11AESCBCENCRYPTDATAParamsVTblPtr_t;
 
-interface IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMS {
-    struct IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMSVTbl* pVTbl;
-} IEcoPKCS11SKIPJACKPRIVATEWRAPPARAMS;
+interface IEcoPKCS11AESCBCENCRYPTDATAParams {
+    struct IEcoPKCS11AESCBCENCRYPTDATAParamsVTbl* pVTbl;
+} IEcoPKCS11AESCBCENCRYPTDATAParams;
 
-typedef struct IEcoPKCS11SKIPJACKRELAYXPARAMS* IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t;
+typedef struct IEcoPKCS11SKIPJACKPRIVATEWrapParams* IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t;
 
-typedef struct IEcoPKCS11SKIPJACKRELAYXPARAMSVTbl {
+typedef struct IEcoPKCS11SKIPJACKPRIVATEWrapParamsVTbl {
 
     /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
 
     /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
 
-    /* IEcoPKCS11SKIPJACKRELAYXPARAMS */
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOldWrappedXLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOldWrappedX)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOldPasswordLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOldPassword)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOldPublicDataLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOldPublicData)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOldRandomLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOldRandomA)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulNewPasswordLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pNewPassword)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulNewPublicDataLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pNewPublicData)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulNewRandomLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pNewRandomA)(/* in */ IEcoPKCS11SKIPJACKRELAYXPARAMSPtr_t me);
+    /* IEcoPKCS11SKIPJACKPRIVATEWrapParams */
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPasswordLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPassword)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPublicDataLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPublicData)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulPAndGLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulQLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRandomLen)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pRandomA)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pPrimeP)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pBaseG)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSubprimeQ)(/* in */ IEcoPKCS11SKIPJACKPRIVATEWrapParamsPtr_t me);
 
-} IEcoPKCS11SKIPJACKRELAYXPARAMSVTbl, * IEcoPKCS11SKIPJACKRELAYXPARAMSVTblPtr_t;
+} IEcoPKCS11SKIPJACKPRIVATEWrapParamsVTbl, * IEcoPKCS11SKIPJACKPRIVATEWrapParamsVTblPtr_t;
 
-interface IEcoPKCS11SKIPJACKRELAYXPARAMS {
-    struct IEcoPKCS11SKIPJACKRELAYXPARAMSVTbl* pVTbl;
-} IEcoPKCS11SKIPJACKRELAYXPARAMS;
+interface IEcoPKCS11SKIPJACKPRIVATEWrapParams {
+    struct IEcoPKCS11SKIPJACKPRIVATEWrapParamsVTbl* pVTbl;
+} IEcoPKCS11SKIPJACKPRIVATEWrapParams;
+
+typedef struct IEcoPKCS11SKIPJACKRELAYXParams* IEcoPKCS11SKIPJACKRELAYXParamsPtr_t;
+
+typedef struct IEcoPKCS11SKIPJACKRELAYXParamsVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+
+    /* IEcoASNOneSEQUENCE */
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+
+    /* IEcoPKCS11SKIPJACKRELAYXParams */
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOldWrappedXLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOldWrappedX)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOldPasswordLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOldPassword)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOldPublicDataLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOldPublicData)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulOldRandomLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pOldRandomA)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulNewPasswordLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pNewPassword)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulNewPublicDataLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pNewPublicData)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulNewRandomLen)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pNewRandomA)(/* in */ IEcoPKCS11SKIPJACKRELAYXParamsPtr_t me);
+
+} IEcoPKCS11SKIPJACKRELAYXParamsVTbl, * IEcoPKCS11SKIPJACKRELAYXParamsVTblPtr_t;
+
+interface IEcoPKCS11SKIPJACKRELAYXParams {
+    struct IEcoPKCS11SKIPJACKRELAYXParamsVTbl* pVTbl;
+} IEcoPKCS11SKIPJACKRELAYXParams;
 
 typedef struct IEcoPKCS11PBEParams* IEcoPKCS11PBEParamsPtr_t;
 
@@ -910,8 +910,8 @@ typedef struct IEcoPKCS11SSL3MasterKeyDeriveParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11SSL3MasterKeyDeriveParamsPtr_t me);
 
     /* IEcoPKCS11SSL3MasterKeyDeriveParams */
-    IEcoPKCS11SSL3RandomDataPtr_t(ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11SSL3MasterKeyDeriveParamsPtr_t me);
-    IEcoPKCS11VERSIONPtr_t(ECOCALLMETHOD* pVersion)(/* in */ IEcoPKCS11SSL3MasterKeyDeriveParamsPtr_t me);
+    IEcoPKCS11SSL3RandomData* (ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11SSL3MasterKeyDeriveParamsPtr_t me);
+    IEcoPKCS11Version* (ECOCALLMETHOD* pVersion)(/* in */ IEcoPKCS11SSL3MasterKeyDeriveParamsPtr_t me);
 
 } IEcoPKCS11SSL3MasterKeyDeriveParamsVTbl, * IEcoPKCS11SSL3MasterKeyDeriveParamsVTblPtr_t;
 
@@ -963,9 +963,9 @@ typedef struct IEcoPKCS11SSL3KeyMatParamsVTbl {
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMacSizeInBits)(/* in */ IEcoPKCS11SSL3KeyMatParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulKeySizeInBits)(/* in */ IEcoPKCS11SSL3KeyMatParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulIVSizeInBits)(/* in */ IEcoPKCS11SSL3KeyMatParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bIsExport)(/* in */ IEcoPKCS11SSL3KeyMatParamsPtr_t me);
-    IEcoPKCS11SSL3RandomDataPtr_t(ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11SSL3KeyMatParamsPtr_t me);
-    IEcoPKCS11SSL3KeyMatOutPtr_t* (ECOCALLMETHOD* pReturnedKeyMaterial)(/* in */ IEcoPKCS11SSL3KeyMatParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bIsExport)(/* in */ IEcoPKCS11SSL3KeyMatParamsPtr_t me);
+    IEcoPKCS11SSL3RandomData*(ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11SSL3KeyMatParamsPtr_t me);
+    IEcoPKCS11SSL3KeyMatOut* (ECOCALLMETHOD* pReturnedKeyMaterial)(/* in */ IEcoPKCS11SSL3KeyMatParamsPtr_t me);
 
 } IEcoPKCS11SSL3KeyMatParamsVTbl, * IEcoPKCS11SSL3KeyMatParamsVTblPtr_t;
 
@@ -1036,7 +1036,7 @@ typedef struct IEcoPKCS11WTLSMasterKeyDeriveParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11WTLSMasterKeyDeriveParamsPtr_t me);
 
     /* IEcoPKCS11WTLSMasterKeyDeriveParams */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* DigestMechanism)(/* in */ IEcoPKCS11WTLSMasterKeyDeriveParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* DigestMechanism)(/* in */ IEcoPKCS11WTLSMasterKeyDeriveParamsPtr_t me);
     IEcoPKCS11WTLSRandomDataPtr_t(ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11WTLSMasterKeyDeriveParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pVersion)(/* in */ IEcoPKCS11WTLSMasterKeyDeriveParamsPtr_t me);
 
@@ -1059,7 +1059,7 @@ typedef struct IEcoPKCS11WTLSPrfParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11WTLSPrfParamsPtr_t me);
 
     /* IEcoPKCS11WTLSPrfParams */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* DigestMechanism)(/* in */ IEcoPKCS11WTLSPrfParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* DigestMechanism)(/* in */ IEcoPKCS11WTLSPrfParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSeed)(/* in */ IEcoPKCS11WTLSPrfParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSeedLen)(/* in */ IEcoPKCS11WTLSPrfParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pLabel)(/* in */ IEcoPKCS11WTLSPrfParamsPtr_t me);
@@ -1109,14 +1109,14 @@ typedef struct IEcoPKCS11WTLSKeyMatParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
 
     /* IEcoPKCS11WTLSKeyMatParams */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* DigestMechanism)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* DigestMechanism)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMacSizeInBits)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulKeySizeInBits)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulIVSizeInBits)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSequenceNumber)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bIsExport)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
-    IEcoPKCS11WTLSRandomDataPtr_t(ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
-    IEcoPKCS11WTLSKeyMatOutPtr_t* (ECOCALLMETHOD* pReturnedKeyMaterial)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bIsExport)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
+    IEcoPKCS11WTLSRandomData*(ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
+    IEcoPKCS11WTLSKeyMatOut* (ECOCALLMETHOD* pReturnedKeyMaterial)(/* in */ IEcoPKCS11WTLSKeyMatParamsPtr_t me);
 
 } IEcoPKCS11WTLSKeyMatParamsVTbl, * IEcoPKCS11WTLSKeyMatParamsVTblPtr_t;
 
@@ -1138,8 +1138,8 @@ typedef struct IEcoPKCS11CMSSigParamsVTbl {
 
     /* IEcoPKCS11CMSSigParams */
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* certificateHandle)(/* in */ IEcoPKCS11CMSSigParamsPtr_t me);
-    IEcoPKCS11MECHANISM_PTR* (ECOCALLMETHOD* pSigningMechanism)(/* in */ IEcoPKCS11CMSSigParamsPtr_t me);
-    IEcoPKCS11MECHANISM_PTR* (ECOCALLMETHOD* pDigestMechanism)(/* in */ IEcoPKCS11CMSSigParamsPtr_t me);
+    IEcoPKCS11Mechanism_PTR* (ECOCALLMETHOD* pSigningMechanism)(/* in */ IEcoPKCS11CMSSigParamsPtr_t me);
+    IEcoPKCS11Mechanism_PTR* (ECOCALLMETHOD* pDigestMechanism)(/* in */ IEcoPKCS11CMSSigParamsPtr_t me);
     IEcoPKCS11UTF8CHAR_PTR* (ECOCALLMETHOD* pContentType)(/* in */ IEcoPKCS11CMSSigParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pRequestedAttributes)(/* in */ IEcoPKCS11CMSSigParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulRequestedAttributesLen)(/* in */ IEcoPKCS11CMSSigParamsPtr_t me);
@@ -1268,7 +1268,7 @@ typedef struct IEcoPKCS11OTPParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11OTPParamsPtr_t me);
 
     /* IEcoPKCS11OTPParams */
-    IEcoPKCS11OTPParamPtr_t* (ECOCALLMETHOD* pParams)(/* in */ IEcoPKCS11OTPParamsPtr_t me);
+    IEcoPKCS11OTPParam* (ECOCALLMETHOD* pParams)(/* in */ IEcoPKCS11OTPParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulCount)(/* in */ IEcoPKCS11OTPParamsPtr_t me);
 
 } IEcoPKCS11OTPParamsVTbl, * IEcoPKCS11OTPParamsVTblPtr_t;
@@ -1290,7 +1290,7 @@ typedef struct IEcoPKCS11OTPSignatureInfoVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11OTPSignatureInfoPtr_t me);
 
     /* IEcoPKCS11OTPSignatureInfo */
-    IEcoPKCS11OTPParamPtr_t* (ECOCALLMETHOD* pParams)(/* in */ IEcoPKCS11OTPSignatureInfoPtr_t me);
+    IEcoPKCS11OTPParam* (ECOCALLMETHOD* pParams)(/* in */ IEcoPKCS11OTPSignatureInfoPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulCount)(/* in */ IEcoPKCS11OTPSignatureInfoPtr_t me);
 
 } IEcoPKCS11OTPSignatureInfoVTbl, * IEcoPKCS11OTPSignatureInfoVTblPtr_t;
@@ -1312,7 +1312,7 @@ typedef struct IEcoPKCS11KIPParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11KIPParamsPtr_t me);
 
     /* IEcoPKCS11KIPParams */
-    IEcoPKCS11MechanismPtr_t* (ECOCALLMETHOD* pMechanism)(/* in */ IEcoPKCS11KIPParamsPtr_t me);
+    IEcoPKCS11Mechanism* (ECOCALLMETHOD* pMechanism)(/* in */ IEcoPKCS11KIPParamsPtr_t me);
     IEcoPKCS11ObjectHandle* (ECOCALLMETHOD* hKey)(/* in */ IEcoPKCS11KIPParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSeed)(/* in */ IEcoPKCS11KIPParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSeedLen)(/* in */ IEcoPKCS11KIPParamsPtr_t me);
@@ -1524,28 +1524,6 @@ interface IEcoPKCS11CamelliaCTRParams {
     struct IEcoPKCS11CamelliaCTRParamsVTbl* pVTbl;
 } IEcoPKCS11CamelliaCTRParams;
 
-typedef struct IEcoPKCS11CamelliaCTRParams* IEcoPKCS11CamelliaCTRParamsPtr_t;
-
-typedef struct IEcoPKCS11CamelliaCTRParamsVTbl {
-
-    /* IEcoUnknown */
-    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS11CamelliaCTRParamsPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS11CamelliaCTRParamsPtr_t me);
-    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS11CamelliaCTRParamsPtr_t me);
-
-    /* IEcoASNOneSEQUENCE */
-    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11CamelliaCTRParamsPtr_t me);
-
-    /* IEcoPKCS11CamelliaCTRParams */
-    IEcoPKCS11ULONG* (ECOCALLMETHOD* ulCounterBits)(/* in */ IEcoPKCS11CamelliaCTRParamsPtr_t me);
-    IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* cb)(/* in */ IEcoPKCS11CamelliaCTRParamsPtr_t me);
-
-} IEcoPKCS11CamelliaCTRParamsVTbl, * IEcoPKCS11CamelliaCTRParamsVTblPtr_t;
-
-interface IEcoPKCS11CamelliaCTRParams {
-    struct IEcoPKCS11CamelliaCTRParamsVTbl* pVTbl;
-} IEcoPKCS11CamelliaCTRParams;
-
 typedef struct IEcoPKCS11AriaCBCEncryptDataParams* IEcoPKCS11AriaCBCEncryptDataParamsPtr_t;
 
 typedef struct IEcoPKCS11AriaCBCEncryptDataParamsVTbl {
@@ -1582,7 +1560,7 @@ typedef struct IEcoPKCS11DSAParameterGenParamVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11DSAParameterGenParamPtr_t me);
 
     /* IEcoPKCS11DSAParameterGenParam */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* hash)(/* in */ IEcoPKCS11DSAParameterGenParamPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* hash)(/* in */ IEcoPKCS11DSAParameterGenParamPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSeed)(/* in */ IEcoPKCS11DSAParameterGenParamPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSeedLen)(/* in */ IEcoPKCS11DSAParameterGenParamPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulIndex)(/* in */ IEcoPKCS11DSAParameterGenParamPtr_t me);
@@ -1649,8 +1627,8 @@ typedef struct IEcoPKCS11TLS12MasterKeyDeriveParamsVTbl {
 
     /* IEcoPKCS11TLS12MasterKeyDeriveParams */
     IEcoPKCS11SSL3_RANDOM_DATA_PTR* (ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11TLS12MasterKeyDeriveParamsPtr_t me);
-    IEcoPKCS11VERSION_PTR* (ECOCALLMETHOD* pVersion)(/* in */ IEcoPKCS11TLS12MasterKeyDeriveParamsPtr_t me);
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* prfHashMechanism)(/* in */ IEcoPKCS11TLS12MasterKeyDeriveParamsPtr_t me);
+    IEcoPKCS11Version_PTR* (ECOCALLMETHOD* pVersion)(/* in */ IEcoPKCS11TLS12MasterKeyDeriveParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* prfHashMechanism)(/* in */ IEcoPKCS11TLS12MasterKeyDeriveParamsPtr_t me);
 
 } IEcoPKCS11TLS12MasterKeyDeriveParamsVTbl, * IEcoPKCS11TLS12MasterKeyDeriveParamsVTblPtr_t;
 
@@ -1673,10 +1651,10 @@ typedef struct IEcoPKCS11TLS12KeyMatParamsVTbl {
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMacSizeInBits)(/* in */ IEcoPKCS11TLS12KeyMatParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulKeySizeInBits)(/* in */ IEcoPKCS11TLS12KeyMatParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulIVSizeInBits)(/* in */ IEcoPKCS11TLS12KeyMatParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bIsExport)(/* in */ IEcoPKCS11TLS12KeyMatParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bIsExport)(/* in */ IEcoPKCS11TLS12KeyMatParamsPtr_t me);
     IEcoPKCS11SSL3_RANDOM_DATA_PTR* (ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11TLS12KeyMatParamsPtr_t me);
     IEcoPKCS11SSL3_KEY_MAT_OUT_PTR* (ECOCALLMETHOD* pReturnedKeyMaterial)(/* in */ IEcoPKCS11TLS12KeyMatParamsPtr_t me);
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* prfHashMechanism)(/* in */ IEcoPKCS11TLS12KeyMatParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* prfHashMechanism)(/* in */ IEcoPKCS11TLS12KeyMatParamsPtr_t me);
 
 } IEcoPKCS11TLS12KeyMatParamsVTbl, * IEcoPKCS11TLS12KeyMatParamsVTblPtr_t;
 
@@ -1692,7 +1670,7 @@ typedef struct IEcoPKCS11TLSKDFParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11TLSKDFParamsPtr_t me);
 
     /* IEcoPKCS11TLSKDFParams */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11TLSKDFParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11TLSKDFParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pLabel)(/* in */ IEcoPKCS11TLSKDFParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulLabelLength)(/* in */ IEcoPKCS11TLSKDFParamsPtr_t me);
     IEcoPKCS11SSL3_RANDOM_DATA_PTR* (ECOCALLMETHOD* RandomInfo)(/* in */ IEcoPKCS11TLSKDFParamsPtr_t me);
@@ -1717,7 +1695,7 @@ typedef struct IEcoPKCS11TLSMacParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11TLSMacParamsPtr_t me);
 
     /* IEcoPKCS11TLSMacParams */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* prfHashMechanism)(/* in */ IEcoPKCS11TLSMacParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* prfHashMechanism)(/* in */ IEcoPKCS11TLSMacParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulMacLength)(/* in */ IEcoPKCS11TLSMacParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulServerOrClient)(/* in */ IEcoPKCS11TLSMacParamsPtr_t me);
 } IEcoPKCS11TLSMacParamsVTbl, * IEcoPKCS11TLSMacParamsVTblPtr_t;
@@ -1847,7 +1825,7 @@ typedef struct IEcoPKCS11SP800108DKMLengthFormatVTbl {
 
     /* IEcoPKCS11SP800108DKMLengthFormat */
     IEcoPKCS11SP800_108_DKM_LENGTH_METHOD* (ECOCALLMETHOD* dkmLengthMethod)(/* in */ IEcoPKCS11SP800108DKMLengthFormatPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bLittleEndian)(/* in */ IEcoPKCS11SP800108DKMLengthFormatPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bLittleEndian)(/* in */ IEcoPKCS11SP800108DKMLengthFormatPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulWidthInBits)(/* in */ IEcoPKCS11SP800108DKMLengthFormatPtr_t me);
 } IEcoPKCS11SP800108DKMLengthFormatVTbl, * IEcoPKCS11SP800108DKMLengthFormatVTblPtr_t;
 
@@ -1867,7 +1845,7 @@ typedef struct IEcoPKCS11DerivedKeyVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11DerivedKeyPtr_t me);
 
     /* IEcoPKCS11DerivedKey */
-    IEcoPKCS11ATTRIBUTE_PTR* (ECOCALLMETHOD* pTemplate)(/* in */ IEcoPKCS11DerivedKeyPtr_t me);
+    IEcoPKCS11Attribute_PTR* (ECOCALLMETHOD* pTemplate)(/* in */ IEcoPKCS11DerivedKeyPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulAttributeCount)(/* in */ IEcoPKCS11DerivedKeyPtr_t me);
     IEcoPKCS11OBJECT_HANDLE_PTR* (ECOCALLMETHOD* phKey)(/* in */ IEcoPKCS11DerivedKeyPtr_t me);
 } IEcoPKCS11DerivedKeyVTbl, * IEcoPKCS11DerivedKeyVTblPtr_t;
@@ -1936,7 +1914,7 @@ typedef struct IEcoPKCS11EDDSAParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11EDDSAParamsPtr_t me);
 
     /* IEcoPKCS11EDDSAParams */
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* phFlag)(/* in */ IEcoPKCS11EDDSAParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* phFlag)(/* in */ IEcoPKCS11EDDSAParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulContextDataLen)(/* in */ IEcoPKCS11EDDSAParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pContextData)(/* in */ IEcoPKCS11EDDSAParamsPtr_t me);
 } IEcoPKCS11EDDSAParamsVTbl, * IEcoPKCS11EDDSAParamsVTblPtr_t;
@@ -2096,9 +2074,9 @@ typedef struct IEcoPKCS11X2RatchetInitializeParamsVTbl {
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* peer_public_prekey)(/* in */ IEcoPKCS11X2RatchetInitializeParamsPtr_t me);
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* peer_public_identity)(/* in */ IEcoPKCS11X2RatchetInitializeParamsPtr_t me);
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* own_public_identity)(/* in */ IEcoPKCS11X2RatchetInitializeParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bEncryptedHeader)(/* in */ IEcoPKCS11X2RatchetInitializeParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bEncryptedHeader)(/* in */ IEcoPKCS11X2RatchetInitializeParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* eCurve)(/* in */ IEcoPKCS11X2RatchetInitializeParamsPtr_t me);
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* aeadMechanism)(/* in */ IEcoPKCS11X2RatchetInitializeParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* aeadMechanism)(/* in */ IEcoPKCS11X2RatchetInitializeParamsPtr_t me);
     IEcoPKCS11X2RATCHET_KDF_TYPE* (ECOCALLMETHOD* kdfMechanism)(/* in */ IEcoPKCS11X2RatchetInitializeParamsPtr_t me);
 } IEcoPKCS11X2RatchetInitializeParamsVTbl, * IEcoPKCS11X2RatchetInitializeParamsVTblPtr_t;
 
@@ -2122,9 +2100,9 @@ typedef struct IEcoPKCS11X2RatchetRespondParamsVTbl {
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* own_prekey)(/* in */ IEcoPKCS11X2RatchetRespondParamsPtr_t me);
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* initiator_identity)(/* in */ IEcoPKCS11X2RatchetRespondParamsPtr_t me);
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* own_public_identity)(/* in */ IEcoPKCS11X2RatchetRespondParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bEncryptedHeader)(/* in */ IEcoPKCS11X2RatchetRespondParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bEncryptedHeader)(/* in */ IEcoPKCS11X2RatchetRespondParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* eCurve)(/* in */ IEcoPKCS11X2RatchetRespondParamsPtr_t me);
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* aeadMechanism)(/* in */ IEcoPKCS11X2RatchetRespondParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* aeadMechanism)(/* in */ IEcoPKCS11X2RatchetRespondParamsPtr_t me);
     IEcoPKCS11X2RATCHET_KDF_TYPE* (ECOCALLMETHOD* kdfMechanism)(/* in */ IEcoPKCS11X2RatchetRespondParamsPtr_t me);
 } IEcoPKCS11X2RatchetRespondParamsVTbl, * IEcoPKCS11X2RatchetRespondParamsVTblPtr_t;
 
@@ -2163,9 +2141,9 @@ typedef struct IEcoPKCS11HKDFParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
 
     /* IEcoPKCS11HKDFParams */
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bExtract)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bExpand)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* prfHashMechanism)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bExtract)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bExpand)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* prfHashMechanism)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSaltType)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSalt)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSaltLen)(/* in */ IEcoPKCS11HKDFParamsPtr_t me);
@@ -2211,8 +2189,8 @@ typedef struct IEcoPKCS11IKE2PrfPlusDeriveParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11IKE2PrfPlusDeriveParamsPtr_t me);
 
     /* IEcoPKCS11IKE2PrfPlusDeriveParams */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11IKE2PrfPlusDeriveParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bHasSeedKey)(/* in */ IEcoPKCS11IKE2PrfPlusDeriveParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11IKE2PrfPlusDeriveParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bHasSeedKey)(/* in */ IEcoPKCS11IKE2PrfPlusDeriveParamsPtr_t me);
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hSeedKey)(/* in */ IEcoPKCS11IKE2PrfPlusDeriveParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pSeedData)(/* in */ IEcoPKCS11IKE2PrfPlusDeriveParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulSeedDataLen)(/* in */ IEcoPKCS11IKE2PrfPlusDeriveParamsPtr_t me);
@@ -2234,9 +2212,9 @@ typedef struct IEcoPKCS11IKEPrfDeriveParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
 
     /* IEcoPKCS11IKEPrfDeriveParams */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bDataAsKey)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bRekey)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bDataAsKey)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bRekey)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pNi)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulNiLen)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pNr)(/* in */ IEcoPKCS11IKEPrfDeriveParamsPtr_t me);
@@ -2260,8 +2238,8 @@ typedef struct IEcoPKCS11IKE1PrfDeriveParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11IKE1PrfDeriveParamsPtr_t me);
 
     /* IEcoPKCS11IKE1PrfDeriveParams */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11IKE1PrfDeriveParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bHasPrevKey)(/* in */ IEcoPKCS11IKE1PrfDeriveParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11IKE1PrfDeriveParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bHasPrevKey)(/* in */ IEcoPKCS11IKE1PrfDeriveParamsPtr_t me);
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hKeygxy)(/* in */ IEcoPKCS11IKE1PrfDeriveParamsPtr_t me);
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hPrevKey)(/* in */ IEcoPKCS11IKE1PrfDeriveParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pCKYi)(/* in */ IEcoPKCS11IKE1PrfDeriveParamsPtr_t me);
@@ -2287,8 +2265,8 @@ typedef struct IEcoPKCS11IKE1ExtendedDeriveParamsVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS11IKE1ExtendedDeriveParamsPtr_t me);
 
     /* IEcoPKCS11IKE1ExtendedDeriveParams */
-    IEcoPKCS11MECHANISM_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11IKE1ExtendedDeriveParamsPtr_t me);
-    IEcoPKCS11BBOOL* (ECOCALLMETHOD* bHasKeygxy)(/* in */ IEcoPKCS11IKE1ExtendedDeriveParamsPtr_t me);
+    IEcoPKCS11Mechanism_TYPE* (ECOCALLMETHOD* prfMechanism)(/* in */ IEcoPKCS11IKE1ExtendedDeriveParamsPtr_t me);
+    IEcoPKCS11BOOL* (ECOCALLMETHOD* bHasKeygxy)(/* in */ IEcoPKCS11IKE1ExtendedDeriveParamsPtr_t me);
     IEcoPKCS11OBJECT_HANDLE* (ECOCALLMETHOD* hKeygxy)(/* in */ IEcoPKCS11IKE1ExtendedDeriveParamsPtr_t me);
     IEcoPKCS11BYTE_PTR* (ECOCALLMETHOD* pExtraData)(/* in */ IEcoPKCS11IKE1ExtendedDeriveParamsPtr_t me);
     IEcoPKCS11ULONG* (ECOCALLMETHOD* ulExtraDataLen)(/* in */ IEcoPKCS11IKE1ExtendedDeriveParamsPtr_t me);

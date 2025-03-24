@@ -29,6 +29,8 @@ typedef struct CEcoPKCS1_A50FB39D {
     /* Таблица функций интерфейса IEcoPKCS1 */
     IEcoPKCS1VTbl* m_pVTblIEcoPKCS1;
 
+    /* Таблица функций интерфейса IEcoPKCS1 */
+    IEcoPKCS1EncoderVTbl* m_pVTblIEcoPKCS1Encoder;
 
     /* Счетчик ссылок */
     uint32_t m_cRef;

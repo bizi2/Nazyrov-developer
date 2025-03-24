@@ -41,6 +41,26 @@ typedef struct IEcoASNOneBER1VTbl {
     /* IEcoASNOneBER1 */
     int16_t (*MyFunction)(/* in */ struct IEcoASNOneBER1* me, /* in */ char_t* Name, /* out */ char_t** CopyName);
 
+    uint8_t* (*Encode)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* buffer, size_t len);
+    uint8_t* (*Decode)(/* in */ struct IEcoASNOneBER1* me);
+
+    uint8_t* (*EncodeOID)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* buffer, size_t len);
+    uint8_t* (*EncodeInteger)(/* in */ struct IEcoASNOneBER1* me, const int32_t value, size_t len);
+    uint8_t* (*EncodeOctetString)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* buffer, size_t data_len, size_t* len);
+    uint8_t* (*EncodeSequence)(/* in */ struct IEcoASNOneBER1* me, uint8_t** elements, size_t* element_lens, size_t num_elements, size_t len);
+    uint8_t* (*EncodeUTF8String)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* buffer, size_t len);
+    uint8_t* (*EncodePrintableString)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* buffer, size_t len);
+    uint8_t* (*EncodeUTCTime)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* buffer, size_t len);
+
+    int32_t* (*DecodeOID)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* encoded, size_t encoded_len, size_t* decoded_len);
+    int32_t (*DecodeInteger)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* encoded, size_t encoded_len, size_t* decoded_len);
+    uint8_t* (*DecodeOctetString)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* encoded, size_t encoded_len, size_t* decoded_len);
+    uint8_t** (*DecodeSequence)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* encoded, size_t encoded_len, size_t* decoded_len);
+    uint8_t* (*DecodeUTF8String)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* encoded, size_t encoded_len, size_t* decoded_len);
+    uint8_t* (*DecodePrintableString)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* encoded, size_t encoded_len, size_t* decoded_len);
+    uint8_t* (*DecodeUTCTime)(/* in */ struct IEcoASNOneBER1* me, const uint8_t* encoded, size_t encoded_len, size_t* decoded_len);
+
+
 } IEcoASNOneBER1VTbl, *IEcoASNOneBER1VTblPtr;
 
 interface IEcoASNOneBER1 {
