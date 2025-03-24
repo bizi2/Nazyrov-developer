@@ -41,7 +41,7 @@ typedef struct IEcoSHA3VTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoSHA3Ptr_t me);
 
     /* IEcoSHA3 */
-    int16_t (ECOCALLMETHOD *MyFunction)(/* in */ IEcoSHA3Ptr_t me, /* in */ char_t* Name, /* out */ char_t** CopyName);
+    void (ECOCALLMETHOD *fnEncryptSHA3)(/*in*/ IEcoSHA3Ptr_t me, uint8_t* message, uint8_t* output);
 
 } IEcoSHA3VTbl, *IEcoSHA3VTblPtr_t;
 

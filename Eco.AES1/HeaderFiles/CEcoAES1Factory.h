@@ -12,7 +12,7 @@
  * </описание>
  *
  * <автор>
- *   Copyright (c) 2018 Vladimir Bashev. All rights reserved.
+ *   Copyright (c) 2023 Ivan Vinokurov. All rights reserved.
  * </автор>
  *
  */
