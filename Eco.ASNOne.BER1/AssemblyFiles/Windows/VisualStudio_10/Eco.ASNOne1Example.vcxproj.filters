@@ -23,39 +23,57 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\HeaderFiles\CEcoASNOne1.h">
+    <ClInclude Include="..\..\..\UnitTestFiles\HeaderFiles\CEcoASNOne1Example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\HeaderFiles\CEcoASNOne1Factory.h">
+    <ClInclude Include="..\..\..\UnitTestFiles\HeaderFiles\CEcoASNOne1ExampleFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\SharedFiles\IdEcoASNOne1.h">
+    <ClInclude Include="..\..\..\UnitTestFiles\SharedFiles\ErrEcoASNOne1Example.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\SharedFiles\IEcoASNOne1.h">
+    <ClInclude Include="..\..\..\UnitTestFiles\SharedFiles\IdEcoASNOne1Example.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\SharedFiles\ErrEcoASNOne1.h">
+    <ClInclude Include="..\..\..\UnitTestFiles\SharedFiles\IEcoASNOne1Example.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\HeaderFiles\CEcoASNOne1Value.h">
+    <ClInclude Include="..\..\..\UnitTestFiles\HeaderFiles\CEcoASNOne1ExDate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\HeaderFiles\CEcoASNOne1ValueSet.h">
+    <ClInclude Include="..\..\..\UnitTestFiles\HeaderFiles\CEcoASNOne1ExEmployeeNumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UnitTestFiles\HeaderFiles\CEcoASNOne1ExName.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UnitTestFiles\HeaderFiles\CEcoASNOne1ExChildInformation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UnitTestFiles\HeaderFiles\CEcoASNOne1ExPersonnelRecord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\SourceFiles\CEcoASNOne1.c">
+    <ClCompile Include="..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1Example.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\SourceFiles\CEcoASNOne1Factory.c">
+    <ClCompile Include="..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExampleFactory.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\SourceFiles\CEcoASNOne1Value.c">
+    <ClCompile Include="..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExDate.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\SourceFiles\CEcoASNOne1ValueSet.c">
+    <ClCompile Include="..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExEmployeeNumber.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExName.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExChildInformation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExPersonnelRecord.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

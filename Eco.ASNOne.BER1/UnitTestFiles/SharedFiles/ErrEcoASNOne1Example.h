@@ -4,7 +4,7 @@
  * </кодировка символов>
  *
  * <сводка>
- *   ErrEcoASNOne1
+ *   ErrEcoASNOne1Example
  * </сводка>
  *
  * <описание>
@@ -21,13 +21,14 @@
  *
  */
 
-#ifndef __ERR_ECO_ASN_ONE_1_H__
-#define __ERR_ECO_ASN_ONE_1_H__
+#ifndef __ERR_ECO_ASN_ONE_1_EXAMPLE_H__
+#define __ERR_ECO_ASN_ONE_1_EXAMPLE_H__
 
+#include "IEcoBase1.h"
 
 /*
  * <код ошибки>
- *   ERR_ECO_ASN1_REQ_COMP_LIST
+ *   ERR_ASNONE1EXAMPLE_REQ_COMP_LIST
  * </код ошибки>
  *
  * <описание>
@@ -38,44 +39,22 @@
  *   CID_EcoList1 = {53884AFC-93C4-48EC-AA92-9C8D3A562281}
  * </CID>
  */
-#define ERR_ECO_ASN1_REQ_COMP_LIST 1001
+#define ERR_ASNONE1EXAMPLE_REQ_COMP_LIST 1001
 
 
 /*
  * <код ошибки>
- *   ERR_ECO_ASN1_INVALID_SIZE
+ *   ERR_ASNONE1EXAMPLE_REQ_COMP_LIST
  * </код ошибки>
  *
  * <описание>
- *   Недопустимый размер значения
+ *   Требуется компонент для работы со списком IEcoList1
  * </описание>
  *
+ * <CID>
+ *   CID_EcoList1 = {53884AFC-93C4-48EC-AA92-9C8D3A562281}
+ * </CID>
  */
-#define ERR_ECO_ASN1_INVALID_SIZE 2001
+#define ERR_ASNONE1EXAMPLE_REQ_COMP_ASN1 1002
 
-
-/*
- * <код ошибки>
- *   ERR_ECO_ASN1_INVALID_VALUE
- * </код ошибки>
- *
- * <описание>
- *   Значение не установлено
- * </описание>
- *
- */
-#define ERR_ECO_ASN1_INVALID_VALUE 2002
-
-/*
- * <код ошибки>
- *   ERR_ECO_ASN1_INVALID_TYPE
- * </код ошибки>
- *
- * <описание>
- *   ASN.1 тип не установлен
- * </описание>
- *
- */
-#define ERR_ECO_ASN1_INVALID_TYPE 2003
-
-#endif /* __ERR_ECO_ASN_ONE_1_H__ */
+#endif /* __ERR_ECO_ASN_ONE_1_EXAMPLE_H__ */
