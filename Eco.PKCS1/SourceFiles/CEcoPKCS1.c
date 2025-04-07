@@ -120,7 +120,7 @@ uint32_t ECOCALLMETHOD CEcoPKCS1_A50FB39D_Release(/* in */ IEcoPKCS1Ptr_t me) {
  * </описание>
  *
  */
-int16_t ECOCALLMETHOD CEcoPKCS1_A50FB39D_MyFunction(/* in */ IEcoPKCS1Ptr_t me, /* in */ char_t* Name, /* out */ char_t** copyName) {
+int16_t ECOCALLMETHOD CEcoPKCS1_A50FB39D_Encode(/* in */ IEcoPKCS1Ptr_t me, /* in */ char_t* Name, /* out */ char_t** copyName) {
     CEcoPKCS1_A50FB39D* pCMe = (CEcoPKCS1_A50FB39D*)me;
     int16_t index = 0;
 
@@ -198,7 +198,13 @@ IEcoPKCS1VTbl g_x0873B45E04504CCFA2C92CDEAD2A7855VTbl_A50FB39D = {
     CEcoPKCS1_A50FB39D_MyFunction
 };
 
-
+IEcoPKCS1EncoderVTbl g_x0873B45E04504CCFA2C92CDEAD2A7851VTbl_A50FB39D = {
+    CEcoPKCS1_A50FB39D_QueryInterface,
+    CEcoPKCS1_A50FB39D_AddRef,
+    CEcoPKCS1_A50FB39D_Release,
+    CEcoPKCS1_A50FB39D_Encode,
+    CEcoPKCS1_A50FB39D_Decode
+};
 
 
 /*

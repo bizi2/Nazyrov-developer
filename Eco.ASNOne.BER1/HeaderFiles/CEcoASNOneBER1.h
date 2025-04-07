@@ -23,6 +23,7 @@
 #include "IEcoASNOneBER1.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
+#include "IEcoASNOne1.h"
 
 typedef struct CEcoASNOneBER1 {
 
@@ -37,6 +38,9 @@ typedef struct CEcoASNOneBER1 {
 
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
+
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
 
     /* Данные экземпляра */
     char_t* m_Name;

@@ -49,5 +49,51 @@ interface IEcoPKCS8 {
     struct IEcoPKCS8VTbl *pVTbl;
 } IEcoPKCS8;
 
+typedef struct IEcoPKCS8PrivateKey* IEcoPKCS8PrivateKeyPtr_t;
+
+typedef struct IEcoPKCS8PrivateKeyVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS8PrivateKeyPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS8PrivateKeyPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS8PrivateKeyPtr_t me);
+
+    /* IEcoASNOneSEQUENCE */
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS8PrivateKeyPtr_t me);
+
+    /* IEcoPKCS8PrivateKey */
+    IEcoPKCS8Version* (ECOCALLMETHOD* version)(/* in */ IEcoPKCS8PrivateKeyPtr_t me);
+    IEcoPKCS8AlgorithmIdentifier* (ECOCALLMETHOD* privateKeyAlgorithm) (/* in */ IEcoPKCS8PrivateKeyPtr_t me);
+	IEcoPKCS8PrivateKey* (ECOCALLMETHOD* privateKey) (/* in */ IEcoPKCS8PrivateKeyPtr_t me);
+    IEcoPKCS8Attributes* (ECOCALLMETHOD* attributes) (/* in */ IEcoPKCS8PrivateKeyPtr_t me);
+
+} IEcoPKCS8PrivateKeyVTbl, * IEcoPKCS8PrivateKeyPtr_t;
+
+interface IEcoPKCS8PrivateKey {
+    struct IEcoPKCS8PrivateKeyVTbl *pVTbl;
+} IEcoPKCS8PrivateKey;
+
+typedef struct IEcoPKCS8EncryptedPrivateKey* IEcoPKCS8EncryptedPrivateKeyPtr_t;
+
+typedef struct IEcoPKCS8EncryptedPrivateKeyVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS8EncryptedPrivateKeyPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS8EncryptedPrivateKeyPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS8EncryptedPrivateKeyPtr_t me);
+
+    /* IEcoASNOneSEQUENCE */
+    int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS8EncryptedPrivateKeyPtr_t me);
+
+    /* IEcoPKCS8EncryptedPrivateKey */
+    IEcoPKCS8AlgorithmIdentifier* (ECOCALLMETHOD* encryptionAlgorithm) (/* in */ IEcoPKCS8EncryptedPrivateKeyPtr_t me);
+	IEcoPKCS8EncryptedData* (ECOCALLMETHOD* encryptedData) (/* in */ IEcoPKCS8EncryptedPrivateKeyPtr_t me);
+
+} IEcoPKCS8EncryptedPrivateKey, * IEcoPKCS8EncryptedPrivateKeyPtr_t;
+
+interface IEcoPKCS8EncryptedPrivateKey {
+    struct IEcoPKCS8EncryptedPrivateKeyVTbl *pVTbl;
+} IEcoPKCS8EncryptedPrivateKey;
+
 
 #endif /* __I_ECOPKCS8_H__ */

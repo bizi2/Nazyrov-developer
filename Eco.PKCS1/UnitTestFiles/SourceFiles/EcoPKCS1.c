@@ -98,6 +98,31 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
 
     result = pIEcoPKCS1->pVTbl->MyFunction(pIEcoPKCS1, name, &copyName);
 
+    IEcoASNOneINTEGER* pointerInteger = NULL;
+
+
+    IEcoPKCS1RSAPublicKey* pointerPublicKey;
+    pointerInteger = pointerPublicKey->pVTbl->modulus;
+    pointerInteger->set(10);
+
+    pointerInteger = pointerPublicKey->pVTbl->publicExponent;
+    pointerInteger->set(30);
+
+    IEcoPKCS1* pointerPKCS1;
+    IEcoASNOneEncoder* pointerEncoder;
+    pointerPKCS1->pVTbl->QueryInterface(pointerPKCS1, IIDAsnOneEncoder, &pointerEncoder);
+    pointerEncoder->Encode(&buffer, len);
+    printf(hexdump, buffer);
+
+    IEcoPKCS1* pointer2PKCS1;
+    pointer2PKCS1 = pointerEncoder->Decode(buffer, len);
+    pointerInteger = pointerPublicKey->pVTbl->modulus;
+    int value = pointerInteger->get;
+    pointerInteger = pointerPublicKey->pVTbl->publicExponent;
+    int value2 = pointerInteger->get;
+
+    IEcoPKCS7* pointerPKCS7;
+    pointerPKCS7->QueryInterface(pointerPKCS7, IIDEcoPKCS1, &pointerPKCS1)
 
     /* Освлбождение блока памяти */
     pIMem->pVTbl->Free(pIMem, name);

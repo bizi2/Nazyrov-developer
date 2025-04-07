@@ -88,10 +88,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;..\..\..\..\Eco.Core1\SharedFiles;..\..\..\..\Eco.MemoryManager1\SharedFiles;..\..\..\..\Eco.InterfaceBus1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;..\..\..\..\Eco.ASNOne1\SharedFiles;$(ECO_FRAMEWORK)\Eco.Core1\SharedFiles;$(ECO_FRAMEWORK)\Eco.MemoryManager1\SharedFiles;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <CompileAs>CompileAsC</CompileAs>
-      <PreprocessorDefinitions>ECO_WIN32;_DEBUG;_WINDOWS;ECO_LIB;UGUID_UTILITY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ECO_WIN32;ECO_X86_32;ECO_WINDOWS;_DEBUG;_WINDOWS;ECO_LIB;UGUID_UTILITY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <Link>
@@ -108,10 +108,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;..\..\..\..\Eco.Core1\SharedFiles;..\..\..\..\Eco.MemoryManager1\SharedFiles;..\..\..\..\Eco.InterfaceBus1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;..\..\..\..\Eco.ASNOne1\SharedFiles;$(ECO_FRAMEWORK)\Eco.Core1\SharedFiles;$(ECO_FRAMEWORK)\Eco.MemoryManager1\SharedFiles;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <CompileAs>CompileAsC</CompileAs>
-      <PreprocessorDefinitions>ECO_WIN32;_DEBUG;_WINDOWS;ECO_DLL;UGUID_UTILITY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ECO_WIN32;ECO_X86_32;ECO_WINDOWS;_DEBUG;_WINDOWS;ECO_DLL;UGUID_UTILITY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <Link>
@@ -133,8 +133,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <CompileAs>CompileAsC</CompileAs>
-      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;..\..\..\..\Eco.Core1\SharedFiles;..\..\..\..\Eco.MemoryManager1\SharedFiles;..\..\..\..\Eco.InterfaceBus1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>ECO_WIN32;NDEBUG;_WINDOWS;ECO_LIB;UGUID_UTILITY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;..\..\..\..\Eco.ASNOne1\SharedFiles;$(ECO_FRAMEWORK)\Eco.Core1\SharedFiles;$(ECO_FRAMEWORK)\Eco.MemoryManager1\SharedFiles;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ECO_WIN32;ECO_X86_32;ECO_WINDOWS;NDEBUG;_WINDOWS;ECO_LIB;UGUID_UTILITY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <Link>
@@ -157,8 +157,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <CompileAs>CompileAsC</CompileAs>
-      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;..\..\..\..\Eco.Core1\SharedFiles;..\..\..\..\Eco.MemoryManager1\SharedFiles;..\..\..\..\Eco.InterfaceBus1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>ECO_WIN32;NDEBUG;_WINDOWS;ECO_DLL;UGUID_UTILITY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;..\..\..\..\Eco.ASNOne1\SharedFiles;$(ECO_FRAMEWORK)\Eco.Core1\SharedFiles;$(ECO_FRAMEWORK)\Eco.MemoryManager1\SharedFiles;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>ECO_WIN32;ECO_X86_32;ECO_WINDOWS;NDEBUG;_WINDOWS;ECO_DLL;UGUID_UTILITY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <Link>
