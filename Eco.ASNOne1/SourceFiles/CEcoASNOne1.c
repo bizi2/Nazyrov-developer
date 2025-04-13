@@ -21,6 +21,8 @@
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
 #include "CEcoASNOne1.h"
+#include "CEcoASNOne1Value.h"
+#include "CEcoASNOne1ValueSet.h"
 
 /*
  *
@@ -33,12 +35,12 @@
  * </описание>
  *
  */
-int16_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_QueryInterface(/* in */ IEcoASNOne1Ptr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
+static int16_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_QueryInterface(/* in */ IEcoASNOne1Ptr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
     CEcoASNOne1_11B2F7AB* pCMe = (CEcoASNOne1_11B2F7AB*)me;
 
     /* Проверка указателей */
     if (me == 0 || ppv == 0) {
-        return -1;
+        return ERR_ECO_POINTER;
     }
 
     /* Проверка и получение запрошенного интерфейса */
@@ -52,9 +54,9 @@ int16_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_QueryInterface(/* in */ IEcoASNOne1Pt
     }
     else {
         *ppv = 0;
-        return -1;
+        return ERR_ECO_NOINTERFACE;
     }
-    return 0;
+    return ERR_ECO_SUCCESES;
 }
 
 /*
@@ -68,12 +70,12 @@ int16_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_QueryInterface(/* in */ IEcoASNOne1Pt
  * </описание>
  *
  */
-uint32_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_AddRef(/* in */ IEcoASNOne1Ptr_t me) {
+static uint32_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_AddRef(/* in */ IEcoASNOne1Ptr_t me) {
     CEcoASNOne1_11B2F7AB* pCMe = (CEcoASNOne1_11B2F7AB*)me;
 
     /* Проверка указателя */
     if (me == 0 ) {
-        return -1;
+        return -1; /* ERR_ECO_POINTER */
     }
 
     return ++pCMe->m_cRef;
@@ -90,12 +92,12 @@ uint32_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_AddRef(/* in */ IEcoASNOne1Ptr_t me)
  * </описание>
  *
  */
-uint32_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_Release(/* in */ IEcoASNOne1Ptr_t me) {
+static uint32_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_Release(/* in */ IEcoASNOne1Ptr_t me) {
     CEcoASNOne1_11B2F7AB* pCMe = (CEcoASNOne1_11B2F7AB*)me;
 
     /* Проверка указателя */
     if (me == 0 ) {
-        return -1;
+        return -1; /* ERR_ECO_POINTER */
     }
 
     /* Уменьшение счетчика ссылок на компонент */
@@ -112,7 +114,7 @@ uint32_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_Release(/* in */ IEcoASNOne1Ptr_t me
 /*
  *
  * <сводка>
- *   Функция MyFunction
+ *   Функция new_Value
  * </сводка>
  *
  * <описание>
@@ -120,32 +122,44 @@ uint32_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_Release(/* in */ IEcoASNOne1Ptr_t me
  * </описание>
  *
  */
-int16_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_MyFunction(/* in */ IEcoASNOne1Ptr_t me, /* in */ char_t* Name, /* out */ char_t** copyName) {
+static int16_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_new_Value(/* in */ IEcoASNOne1Ptr_t me, /* in */ uint8_t Tag, /* in */ uint8_t TaggetType, /* in */ uint8_t Type, /* out */ IEcoASNOne1Value** ppIValue) {
     CEcoASNOne1_11B2F7AB* pCMe = (CEcoASNOne1_11B2F7AB*)me;
-    int16_t index = 0;
+    int16_t result;
 
     /* Проверка указателей */
-    if (me == 0 || Name == 0 || copyName == 0) {
-        return -1;
+    if (me == 0 || ppIValue == 0) {
+        return ERR_ECO_POINTER;
     }
 
-    /* Копирование строки */
-    while(Name[index] != 0) {
-        index++;
-    }
-    pCMe->m_Name = (char_t*)pCMe->m_pIMem->pVTbl->Alloc(pCMe->m_pIMem, index + 1);
-    index = 0;
-    while(Name[index] != 0) {
-        pCMe->m_Name[index] = Name[index];
-        index++;
-    }
-    *copyName = pCMe->m_Name;
+    result = createCEcoASNOne1Value_11B2F7AB((IEcoUnknown*)pCMe->m_pISys, 0, Tag, TaggetType, Type, ppIValue);
 
-    return 0;
+    return result;
 }
 
+/*
+ *
+ * <сводка>
+ *   Функция new_ValueSet
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoASNOne1_11B2F7AB_new_ValueSet(/* in */ IEcoASNOne1Ptr_t me, /* in */ uint8_t Tag, /* in */ uint8_t TaggetType, /* in */ uint8_t Type, /* out */ IEcoASNOne1ValueSet** ppIValueSet) {
+    CEcoASNOne1_11B2F7AB* pCMe = (CEcoASNOne1_11B2F7AB*)me;
+    int16_t result;
 
+    /* Проверка указателей */
+    if (me == 0 || ppIValueSet == 0) {
+        return ERR_ECO_POINTER;
+    }
 
+    result = createCEcoASNOne1ValueSet_11B2F7AB((IEcoUnknown*)pCMe->m_pISys, 0, Tag, TaggetType, Type, ppIValueSet);
+
+    return result;
+}
 
 /*
  *
@@ -195,11 +209,9 @@ IEcoASNOne1VTbl g_xAED4F0849F58430D96201E0D43831516VTbl_11B2F7AB = {
     CEcoASNOne1_11B2F7AB_QueryInterface,
     CEcoASNOne1_11B2F7AB_AddRef,
     CEcoASNOne1_11B2F7AB_Release,
-    CEcoASNOne1_11B2F7AB_MyFunction
+    CEcoASNOne1_11B2F7AB_new_Value,
+    CEcoASNOne1_11B2F7AB_new_ValueSet
 };
-
-
-
 
 /*
  *
@@ -220,14 +232,14 @@ int16_t ECOCALLMETHOD createCEcoASNOne1_11B2F7AB(/* in */ IEcoUnknownPtr_t pIUnk
     IEcoMemoryAllocator1* pIMem = 0;
     CEcoASNOne1_11B2F7AB* pCMe = 0;
     UGUID* rcid = (UGUID*)&CID_EcoMemoryManager1;
-	
+
     /* Проверка указателей */
     if (ppIEcoASNOne1 == 0 || pIUnkSystem == 0) {
         return result;
     }
 
     /* Получение системного интерфейса приложения */
-    result = pIUnkSystem->pVTbl->QueryInterface(pIUnkSystem, &GID_IEcoSystem1, (void **)&pISys);
+    result = pIUnkSystem->pVTbl->QueryInterface(pIUnkSystem, &GID_IEcoSystem, (void **)&pISys);
 
     /* Проверка */
     if (result != 0 && pISys == 0) {
@@ -237,7 +249,7 @@ int16_t ECOCALLMETHOD createCEcoASNOne1_11B2F7AB(/* in */ IEcoUnknownPtr_t pIUnk
     /* Получение интерфейса для работы с интерфейсной шиной */
     result = pISys->pVTbl->QueryInterface(pISys, &IID_IEcoInterfaceBus1, (void **)&pIBus);
 
-	/* Получение идентификатора компонента для работы с памятью */
+    /* Получение идентификатора компонента для работы с памятью */
     result = pIBus->pVTbl->QueryInterface(pIBus, &IID_IEcoInterfaceBus1MemExt, (void**)&pIMemExt);
     if (result == 0 && pIMemExt != 0) {
         rcid = (UGUID*)pIMemExt->pVTbl->get_Manager(pIMemExt);

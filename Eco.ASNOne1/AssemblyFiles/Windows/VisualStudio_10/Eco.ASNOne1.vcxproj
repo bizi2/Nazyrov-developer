@@ -92,7 +92,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <CallingConvention>StdCall</CallingConvention>
       <CompileAs>CompileAsC</CompileAs>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;ECO_WINDOWS;ECO_WIN32;UGUID_UTILITY;ECO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;ECO_X86_32;_DEBUG;_WINDOWS;ECO_WINDOWS;ECO_WIN32;UGUID_UTILITY;ECO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -110,7 +110,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <CallingConvention>StdCall</CallingConvention>
       <CompileAs>CompileAsC</CompileAs>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;ECO_WINDOWS;ECO_WIN32;UGUID_UTILITY;ECO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;ECO_X86_32;_DEBUG;_WINDOWS;ECO_WINDOWS;ECO_WIN32;UGUID_UTILITY;ECO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,7 +132,7 @@
       <CompileAs>CompileAsC</CompileAs>
       <CallingConvention>StdCall</CallingConvention>
       <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;$(ECO_FRAMEWORK)\Eco.Core1\SharedFiles;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\SharedFiles;$(ECO_FRAMEWORK)\Eco.System1\SharedFiles;$(ECO_FRAMEWORK)\Eco.MemoryManager1\SharedFiles;$(ECO_FRAMEWORK)\Eco.FileSystemManagement1\SharedFiles;$(ECO_FRAMEWORK)\Eco.List1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;UGUID_UTILITY;ECO_WINDOWS;ECO_WIN32;ECO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;ECO_X86_32;NDEBUG;_WINDOWS;UGUID_UTILITY;ECO_WINDOWS;ECO_WIN32;ECO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,7 +154,7 @@
       <CompileAs>CompileAsC</CompileAs>
       <CallingConvention>StdCall</CallingConvention>
       <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\SharedFiles;$(ECO_FRAMEWORK)\Eco.Core1\SharedFiles;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\SharedFiles;$(ECO_FRAMEWORK)\Eco.System1\SharedFiles;$(ECO_FRAMEWORK)\Eco.MemoryManager1\SharedFiles;$(ECO_FRAMEWORK)\Eco.FileSystemManagement1\SharedFiles;$(ECO_FRAMEWORK)\Eco.List1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;UGUID_UTILITY;ECO_WINDOWS;ECO_WIN32;ECO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;ECO_X86_32;NDEBUG;_WINDOWS;UGUID_UTILITY;ECO_WINDOWS;ECO_WIN32;ECO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -169,6 +169,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\HeaderFiles\CEcoASNOne1.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoASNOne1Factory.h" />
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoASNOne1Value.h" />
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoASNOne1ValueSet.h" />
     <ClInclude Include="..\..\..\SharedFiles\ErrEcoASNOne1.h" />
     <ClInclude Include="..\..\..\SharedFiles\IdEcoASNOne1.h" />
     <ClInclude Include="..\..\..\SharedFiles\IEcoASNOne1.h" />
@@ -176,6 +178,8 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\SourceFiles\CEcoASNOne1.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoASNOne1Factory.c" />
+    <ClCompile Include="..\..\..\SourceFiles\CEcoASNOne1Value.c" />
+    <ClCompile Include="..\..\..\SourceFiles\CEcoASNOne1ValueSet.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
