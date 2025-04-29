@@ -39,9 +39,9 @@ typedef struct IEcoPKCS5PBKDF2VTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS5PBKDF2Ptr_t me);
 
     /* IEcoPKCS5PBKDF2 */
-    IEcoASNOneCHOICE*(ECOCALLMETHOD* salt) (/* in */ IEcoPKCS5PBKDF2Ptr_t me);
-    IEcoASNOneINTEGER*(ECOCALLMETHOD* iterationCount) (/* in */ IEcoPKCS5PBKDF2Ptr_t me);
-    IEcoASNOneINTEGER*(ECOCALLMETHOD* keyLength) (/* in */ IEcoPKCS5PBKDF2Ptr_t me);
+    IEcoASNOne1ValueSet*(ECOCALLMETHOD* salt) (/* in */ IEcoPKCS5PBKDF2Ptr_t me);
+    IEcoASNOne1Value*(ECOCALLMETHOD* iterationCount) (/* in */ IEcoPKCS5PBKDF2Ptr_t me);
+    IEcoASNOne1Value*(ECOCALLMETHOD* keyLength) (/* in */ IEcoPKCS5PBKDF2Ptr_t me);
 
 } IEcoPKCS5PBKDF2VTbl, * IEcoPKCS5PBKDF2Ptr_t;
 
@@ -58,8 +58,8 @@ typedef struct IEcoPKCS5PBES1VTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoPKCS5PBES1Ptr_t me);
 
     /* IEcoPKCS5PBES1 */
-    IEcoASNOneDataValue* (ECOCALLMETHOD* salt) (/* in */ IEcoPKCS5PBES1Ptr_t me);
-    IEcoASNOneINTEGER* (ECOCALLMETHOD* iterationCount) (/* in */ IEcoPKCS5PBES1Ptr_t me);
+    IEcoASNOne1Value* (ECOCALLMETHOD* salt) (/* in */ IEcoPKCS5PBES1Ptr_t me);
+    IEcoASNOne1Value* (ECOCALLMETHOD* iterationCount) (/* in */ IEcoPKCS5PBES1Ptr_t me);
 
 } IEcoPKCS5PBES1VTbl, * IEcoPKCS5PBES1Ptr_t;
 
@@ -76,8 +76,8 @@ typedef struct IEcoRC2CBCParameterVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoRC2CBCParameterPtr_t me);
 
     /* IEcoRC2CBCParameterVTbl */
-    IEcoASNOneDataValue*(ECOCALLMETHOD* iv) (/* in */ IEcoRC2CBCParameterPtr_t me);
-    IEcoASNOneINTEGER*(ECOCALLMETHOD* rc2ParameterVision) (/* in */ IEcoRC2CBCParameterPtr_t me);
+    IEcoASNOne1Value*(ECOCALLMETHOD* iv) (/* in */ IEcoRC2CBCParameterPtr_t me);
+    IEcoASNOne1Value*(ECOCALLMETHOD* rc2ParameterVision) (/* in */ IEcoRC2CBCParameterPtr_t me);
 
 } IEcoRC2CBCParameterVTbl, * IEcoRC2CBCParameterPtr_t;
 
@@ -94,10 +94,10 @@ typedef struct IEcoRC5CBCParameterVTbl {
     int16_t(ECOCALLMETHOD* ToDo)(/* in */ IEcoRC5CBCParameterPtr_t me);
 
     /* IEcoRC5CBCParameter */
-    IEcoASNOneINTEGER*(ECOCALLMETHOD* version) (/* in */ IEcoRC5CBCParameterPtr_t me);
-    IEcoASNOneINTEGER*(ECOCALLMETHOD* rounds) (/* in */ IEcoRC5CBCParameterPtr_t me);
-    IEcoASNOneINTEGER*(ECOCALLMETHOD* blockSizeInBits) (/* in */ IEcoRC5CBCParameterPtr_t me);
-    IEcoASNOneDataValue*(ECOCALLMETHOD* iv) (/* in */ IEcoRC2CBCParameterPtr_t me);
+    IEcoASNOne1Value*(ECOCALLMETHOD* version) (/* in */ IEcoRC5CBCParameterPtr_t me);
+    IEcoASNOne1Value*(ECOCALLMETHOD* rounds) (/* in */ IEcoRC5CBCParameterPtr_t me);
+    IEcoASNOne1Value*(ECOCALLMETHOD* blockSizeInBits) (/* in */ IEcoRC5CBCParameterPtr_t me);
+    IEcoASNOne1Value*(ECOCALLMETHOD* iv) (/* in */ IEcoRC2CBCParameterPtr_t me);
 
 } IEcoRC5CBCParameterVTbl, * IEcoRC5CBCParameterPtr_t;
 

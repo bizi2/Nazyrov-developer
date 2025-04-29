@@ -40,8 +40,8 @@ typedef struct CEcoPKCS5PBES1 {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneDataValue* m_salt;
-	IEcoASNOneINTEGER* m_iterationCount;
+    IEcoASNOne1Value* m_salt;
+	IEcoASNOne1Value* m_iterationCount;
 
 } CEcoPKCS5PBES1, *CEcoPKCS5PBES1Ptr;
 

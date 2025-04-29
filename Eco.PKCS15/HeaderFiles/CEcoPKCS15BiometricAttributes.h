@@ -42,7 +42,7 @@ typedef struct CEcoPKCS15BiometricAttributes {
     /* Данные экземпляра */
     IEcoPKCS15BiometricFlags* m_bioFlags;
 	IEcoPKCS15BiometricType* m_bioTypee;
-	IEcoASNOneObjectIdentifier* m_templateId;
+	IEcoASNOne1Value* m_templateId;
 	IEcoPKCS15Reference* m_bioReference;
 	IEcoPKCS15GeneralizedTime* m_lastChange;
 	IEcoPKCS15Path* m_path;

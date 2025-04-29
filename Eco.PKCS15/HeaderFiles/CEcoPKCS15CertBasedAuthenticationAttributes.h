@@ -40,7 +40,7 @@ typedef struct CEcoPKCS15CertBasedAuthenticationAttributes {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneDataValue* m_cha;
+    IEcoASNOne1Value* m_cha;
 
 } CEcoPKCS15CertBasedAuthenticationAttributes, *CEcoPKCS15CertBasedAuthenticationAttributesPtr;
 

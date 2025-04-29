@@ -49,6 +49,75 @@ interface IEcoPKCS7 {
     struct IEcoPKCS7VTbl *pVTbl;
 } IEcoPKCS7;
 
+typedef struct IEcoPKCS7Version* IEcoPKCS7VersionPtr_t;
+
+typedef struct IEcoPKCS7VersionVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7VersionPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7VersionPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7VersionPtr_t me);
+
+    /* IEcoASNOne1Type */
+    uint8_t(ECOCALLMETHOD* get_Tag)(/* in */ IEcoPKCS7VersionPtr_t me);
+    uint8_t(ECOCALLMETHOD* get_TaggedType)(/* in */ IEcoPKCS7VersionPtr_t me);
+    uint8_t(ECOCALLMETHOD* get_Type)(/* in */ IEcoPKCS7VersionPtr_t me);
+
+    /* IEcoPKCS7Version */
+    IEcoASNOne1Value(ECOCALLMETHOD* set_Value)(/* in */ IEcoPKCS7VersionPtr_t me, /* in */ voidptr_t Value, /* in */ int32_t Size);
+    IEcoASNOne1Value(ECOCALLMETHOD* get_Value)(/* in */ IEcoPKCS7VersionPtr_t me, /* out */ voidptr_t Value, /* out */ int32_t* Size);
+
+
+} IEcoPKCS7VersionVTbl, * IEcoPKCS7VersionVTblPtr_t;
+
+interface IEcoPKCS7Version {
+    struct IEcoPKCS7VersionVTbl* pVTbl;
+} IEcoPKCS7Version;
+
+typedef struct IEcoPKCS7ContentType* IEcoPKCS7ContentTypePtr_t;
+
+typedef struct IEcoPKCS7ContentTypeVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7ContentTypePtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7ContentTypePtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7ContentTypePtr_t me);
+
+    /* IEcoASNOne1Type */
+    uint8_t(ECOCALLMETHOD* get_Tag)(/* in */ IEcoPKCS7ContentTypePtr_t me);
+    uint8_t(ECOCALLMETHOD* get_TaggedType)(/* in */ IEcoPKCS7ContentTypePtr_t me);
+    uint8_t(ECOCALLMETHOD* get_Type)(/* in */ IEcoPKCS7ContentTypePtr_t me);
+
+    /* IEcoPKCS7ContentType */
+    IEcoASNOne1Value(ECOCALLMETHOD* set_Value)(/* in */ IEcoPKCS7ContentTypePtr_t me, /* in */ voidptr_t Value, /* in */ int32_t Size);
+    IEcoASNOne1Value(ECOCALLMETHOD* get_Value)(/* in */ IEcoPKCS7ContentTypePtr_t me, /* out */ voidptr_t Value, /* out */ int32_t* Size);
+
+
+} IEcoPKCS7ContentTypeVTbl, * IEcoPKCS7ContentTypeVTblPtr_t;
+
+interface IEcoPKCS7ContentType {
+    struct IEcoPKCS7ContentTypeVTbl* pVTbl;
+} IEcoPKCS7ContentType;
+
+typedef struct IEcoPKCS7DigestAlgorithmIdentifiers* IEcoPKCS7DigestAlgorithmIdentifiersPtr_t;
+
+typedef struct IEcoPKCS7DigestAlgorithmIdentifiersVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me);
+
+    /* IEcoPKCS7DigestAlgorithmIdentifiers */
+    IEcoASNOne1ValueSet(ECOCALLMETHOD* set_Value)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me, /* in */ voidptr_t Value, /* in */ int32_t Size);
+    IEcoASNOne1ValueSet(ECOCALLMETHOD* get_Value)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me, /* out */ voidptr_t Value, /* out */ int32_t* Size);
+
+} IEcoPKCS7DigestAlgorithmIdentifiersVTbl, * IEcoPKCS7DigestAlgorithmIdentifiersPtr_t;
+
+interface IEcoPKCS7DigestAlgorithmIdentifiers {
+    struct IEcoPKCS7DigestAlgorithmIdentifiersVTbl* pVTbl;
+} IEcoPKCS7DigestAlgorithmIdentifiers;
+
 typedef struct IEcoPKCS7ContentInfo* IEcoPKCS7ContentInfoPtr_t;
 
 typedef struct IEcoPKCS7ContentInfoVTbl {
@@ -60,13 +129,225 @@ typedef struct IEcoPKCS7ContentInfoVTbl {
 
     /* IEcoPKCS7ContentInfo */
     IEcoPKCS7ContentType* (ECOCALLMETHOD *contentType)(/* in */ IEcoPKCS7ContentInfoPtr_t me);
-	IEcoPKCS7Content* (ECOCALLMETHOD *content)(/* in */ IEcoPKCS7ContentInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *content)(/* in */ IEcoPKCS7ContentInfoPtr_t me);
 
 } IEcoPKCS7ContentInfoVTbl, *IEcoPKCS7ContentInfoPtr_t;
 
 interface IEcoPKCS7ContentInfo {
     struct IEcoPKCS7ContentInfoVTbl *pVTbl;
 } IEcoPKCS7ContentInfo;
+
+typedef struct IEcoPKCS7AlgorithmIdentifier* IEcoPKCS7AlgorithmIdentifierPtr_t;
+
+typedef struct IEcoPKCS7AlgorithmIdentifierVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7AlgorithmIdentifierPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7AlgorithmIdentifierPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7AlgorithmIdentifierPtr_t me);
+
+    /* IEcoPKCS7AlgorithmIdentifier */
+    IEcoASNOne1Value* (ECOCALLMETHOD* algorithm)(/* in */ IEcoPKCS7AlgorithmIdentifierPtr_t me);
+    IEcoASNOne1Value* (ECOCALLMETHOD* parameters)(/* in */ IEcoPKCS7AlgorithmIdentifierPtr_t me);
+
+} IEcoPKCS7AlgorithmIdentifierVTbl, * IEcoPKCS7AlgorithmIdentifierPtr_t;
+
+interface IEcoPKCS7AlgorithmIdentifier {
+    struct IEcoPKCS7AlgorithmIdentifierVTbl* pVTbl;
+} IEcoPKCS7AlgorithmIdentifier;
+
+typedef struct IEcoPKCS7DigestAlgorithmIdentifier* IEcoPKCS7DigestAlgorithmIdentifierPtr_t;
+
+typedef struct IEcoPKCS7DigestAlgorithmIdentifierVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7DigestAlgorithmIdentifierPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7DigestAlgorithmIdentifierPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7DigestAlgorithmIdentifierPtr_t me);
+
+    /* IEcoPKCS7DigestAlgorithmIdentifier */
+    IEcoPKCS7AlgorithmIdentifier* (ECOCALLMETHOD* algorithm)(/* in */ IEcoPKCS7DigestAlgorithmIdentifierPtr_t me);
+
+} IEcoPKCS7DigestAlgorithmIdentifierVTbl, * IEcoPKCS7DigestAlgorithmIdentifierPtr_t;
+
+interface IEcoPKCS7DigestAlgorithmIdentifier {
+    struct IEcoPKCS7DigestAlgorithmIdentifierVTbl* pVTbl;
+} IEcoPKCS7DigestAlgorithmIdentifier;
+
+typedef struct IEcoPKCS7ContentEncryptionAlgorithmIdentifier* IEcoPKCS7ContentEncryptionAlgorithmIdentifierPtr_t;
+
+typedef struct IEcoPKCS7ContentEncryptionAlgorithmIdentifierVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7ContentEncryptionAlgorithmIdentifierPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7ContentEncryptionAlgorithmIdentifierPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7ContentEncryptionAlgorithmIdentifierPtr_t me);
+
+    /* IEcoPKCS7ContentEncryptionAlgorithmIdentifier */
+    IEcoPKCS7AlgorithmIdentifier* (ECOCALLMETHOD* algorithm)(/* in */ IEcoPKCS7ContentEncryptionAlgorithmIdentifierPtr_t me);
+
+} IEcoPKCS7ContentEncryptionAlgorithmIdentifierVTbl, * IEcoPKCS7ContentEncryptionAlgorithmIdentifierPtr_t;
+
+interface IEcoPKCS7ContentEncryptionAlgorithmIdentifier {
+    struct IEcoPKCS7ContentEncryptionAlgorithmIdentifierVTbl* pVTbl;
+} IEcoPKCS7ContentEncryptionAlgorithmIdentifier;
+
+typedef struct IEcoPKCS7DigestEncryptionAlgorithmIdentifier* IEcoPKCS7DigestEncryptionAlgorithmIdentifierPtr_t;
+
+typedef struct IEcoPKCS7DigestEncryptionAlgorithmIdentifierVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7DigestEncryptionAlgorithmIdentifierPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7DigestEncryptionAlgorithmIdentifierPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7DigestEncryptionAlgorithmIdentifierPtr_t me);
+
+    /* IEcoPKCS7DigestEncryptionAlgorithmIdentifier */
+    IEcoPKCS7AlgorithmIdentifier* (ECOCALLMETHOD* algorithm)(/* in */ IEcoPKCS7DigestEncryptionAlgorithmIdentifierPtr_t me);
+
+} IEcoPKCS7DigestEncryptionAlgorithmIdentifierVTbl, * IEcoPKCS7DigestEncryptionAlgorithmIdentifierPtr_t;
+
+interface IEcoPKCS7DigestEncryptionAlgorithmIdentifier {
+    struct IEcoPKCS7DigestEncryptionAlgorithmIdentifierVTbl* pVTbl;
+} IEcoPKCS7DigestEncryptionAlgorithmIdentifier;
+
+typedef struct IEcoPKCS7KeyEncryptionAlgorithmIdentifier* IEcoPKCS7KeyEncryptionAlgorithmIdentifierPtr_t;
+
+typedef struct IEcoPKCS7KeyEncryptionAlgorithmIdentifierVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7KeyEncryptionAlgorithmIdentifierPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7KeyEncryptionAlgorithmIdentifierPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7KeyEncryptionAlgorithmIdentifierPtr_t me);
+
+    /* IEcoPKCS7KeyEncryptionAlgorithmIdentifier */
+    IEcoPKCS7AlgorithmIdentifier* (ECOCALLMETHOD* algorithm)(/* in */ IEcoPKCS7KeyEncryptionAlgorithmIdentifierPtr_t me);
+
+} IEcoPKCS7KeyEncryptionAlgorithmIdentifierVTbl, * IEcoPKCS7KeyEncryptionAlgorithmIdentifierPtr_t;
+
+interface IEcoPKCS7KeyEncryptionAlgorithmIdentifier {
+    struct IEcoPKCS7KeyEncryptionAlgorithmIdentifierVTbl* pVTbl;
+} IEcoPKCS7KeyEncryptionAlgorithmIdentifier;
+
+typedef struct IEcoPKCS7DigestAlgorithmIdentifiers* IEcoPKCS7DigestAlgorithmIdentifiersPtr_t;
+
+typedef struct IEcoPKCS7DigestAlgorithmIdentifiersVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me);
+
+    /* IEcoPKCS7DigestAlgorithmIdentifiers */
+    IEcoASNOne1ValueSet* (ECOCALLMETHOD* daSet)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me);
+    IEcoASNOne1ValueSet* (ECOCALLMETHOD* daSequence)(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me);
+
+} IEcoPKCS7DigestAlgorithmIdentifiersVTbl, * IEcoPKCS7DigestAlgorithmIdentifiersPtr_t;
+
+interface IEcoPKCS7DigestAlgorithmIdentifiers {
+    struct IEcoPKCS7DigestAlgorithmIdentifiersVTbl* pVTbl;
+} IEcoPKCS7DigestAlgorithmIdentifiers;
+
+typedef struct IEcoPKCS7RecipientInfo* IEcoPKCS7RecipientInfoPtr_t;
+
+typedef struct IEcoPKCS7RecipientInfoVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7RecipientInfoPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7RecipientInfoPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7RecipientInfoPtr_t me);
+
+    /* IEcoPKCS7RecipientInfo */
+    IEcoPKCS7Version* (ECOCALLMETHOD* version)(/* in */ IEcoPKCS7RecipientInfoPtr_t me);
+    IEcoPKCS7IssuerAndSerialNumber* (ECOCALLMETHOD* issuerAndSerialNumber)(/* in */ IEcoPKCS7RecipientInfoPtr_t me);
+    IEcoPKCS7KeyEncryptionAlgorithmIdentifier* (ECOCALLMETHOD* keyEncryptionAlgorithm)(/* in */ IEcoPKCS7RecipientInfoPtr_t me);
+    IEcoASNOne1Value* (ECOCALLMETHOD* encryptedKey)(/* in */ IEcoPKCS7RecipientInfoPtr_t me);
+
+} IEcoPKCS7RecipientInfoVTbl, * IEcoPKCS7RecipientInfoPtr_t;
+
+interface IEcoPKCS7RecipientInfo {
+    struct IEcoPKCS7RecipientInfoVTbl* pVTbl;
+} IEcoPKCS7RecipientInfo;
+
+typedef struct IEcoPKCS7RecipientInfos* IEcoPKCS7RecipientInfosPtr_t;
+
+typedef struct IEcoPKCS7RecipientInfosVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7RecipientInfosPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7RecipientInfosPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7RecipientInfosPtr_t me);
+
+    /* IEcoPKCS7RecipientInfos */
+    IEcoPKCS7RecipientInfo* (ECOCALLMETHOD* riSet)(/* in */ IEcoPKCS7RecipientInfosPtr_t me);
+    IEcoPKCS7RecipientInfo* (ECOCALLMETHOD* riSequence)(/* in */ IEcoPKCS7RecipientInfosPtr_t me);
+
+} IEcoPKCS7RecipientInfosVTbl, * IEcoPKCS7RecipientInfosPtr_t;
+
+interface IEcoPKCS7RecipientInfos {
+    struct IEcoPKCS7RecipientInfosVTbl* pVTbl;
+} IEcoPKCS7RecipientInfos;
+
+typedef struct IEcoPKCS7IssuerAndSerialNumber* IEcoPKCS7IssuerAndSerialNumberPtr_t;
+
+typedef struct IEcoPKCS7IssuerAndSerialNumberVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7IssuerAndSerialNumberPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7IssuerAndSerialNumberPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7IssuerAndSerialNumberPtr_t me);
+
+    /* IEcoPKCS7IssuerAndSerialNumber */
+    IEcoASNOne1Value* (ECOCALLMETHOD* issuer)(/* in */ IEcoPKCS7IssuerAndSerialNumberPtr_t me);
+    IEcoASNOne1Value* (ECOCALLMETHOD* serialNumber)(/* in */ IEcoPKCS7IssuerAndSerialNumberPtr_t me);
+
+} IEcoPKCS7IssuerAndSerialNumberVTbl, * IEcoPKCS7IssuerAndSerialNumberPtr_t;
+
+interface IEcoPKCS7IssuerAndSerialNumber {
+    struct IEcoPKCS7IssuerAndSerialNumberVTbl* pVTbl;
+} IEcoPKCS7IssuerAndSerialNumber;
+
+typedef struct IEcoPKCS7SignerInfo* IEcoPKCS7SignerInfoPtr_t;
+
+typedef struct IEcoPKCS7SignerInfoVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7SignerInfoPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
+
+    /* IEcoPKCS7SignerInfo */
+    IEcoPKCS7Version* (ECOCALLMETHOD* version)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
+    IEcoPKCS7IssuerAndSerialNumber* (ECOCALLMETHOD* issuerAndSerialNumber)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
+    IEcoPKCS7DigestAlgorithmIdentifier* (ECOCALLMETHOD* digestAlgorithm)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
+    IEcoASNOne1ValueSet* (ECOCALLMETHOD* authenticatedAttributes)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
+    IEcoPKCS7DigestEncryptionAlgorithmIdentifier* (ECOCALLMETHOD* digestEncryptionAlgorithm)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
+    IEcoASNOne1Value* (ECOCALLMETHOD* encryptedDigest)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
+    IEcoASNOne1ValueSet* (ECOCALLMETHOD* unauthenticatedAttributes)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
+
+} IEcoPKCS7SignerInfoVTbl, * IEcoPKCS7SignerInfoPtr_t;
+
+interface IEcoPKCS7SignerInfo {
+    struct IEcoPKCS7SignerInfoVTbl* pVTbl;
+} IEcoPKCS7SignerInfo;
+
+typedef struct IEcoPKCS7SignerInfos* IEcoPKCS7SignerInfosPtr_t;
+
+typedef struct IEcoPKCS7SignerInfosVTbl {
+
+    /* IEcoUnknown */
+    int16_t(ECOCALLMETHOD* QueryInterface)(/* in */ IEcoPKCS7SignerInfosPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
+    uint32_t(ECOCALLMETHOD* AddRef)(/* in */ IEcoPKCS7SignerInfosPtr_t me);
+    uint32_t(ECOCALLMETHOD* Release)(/* in */ IEcoPKCS7SignerInfosPtr_t me);
+
+    /* IEcoPKCS7SignerInfos */
+    IEcoPKCS7SignerInfo* (ECOCALLMETHOD* siSet)(/* in */ IEcoPKCS7SignerInfosPtr_t me);
+    IEcoPKCS7SignerInfo* (ECOCALLMETHOD* siSequence)(/* in */ IEcoPKCS7SignerInfosPtr_t me);
+
+} IEcoPKCS7SignerInfosVTbl, * IEcoPKCS7SignerInfosPtr_t;
+
+interface IEcoPKCS7SignerInfos {
+    struct IEcoPKCS7SignerInfosVTbl* pVTbl;
+} IEcoPKCS7SignerInfos;
 
 typedef struct IEcoPKCS7SignedData* IEcoPKCS7SignedDataPtr_t;
 
@@ -80,8 +361,8 @@ typedef struct IEcoPKCS7SignedDataVTbl {
     /* IEcoPKCS7SignedData */
     IEcoPKCS7Version* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS7SignedDataPtr_t me);
 	IEcoPKCS7DigestAlgorithmIdentifiers* (ECOCALLMETHOD *digestAlgorithms)(/* in */ IEcoPKCS7SignedDataPtr_t me);
-	IEcoASNOneCHOICE* (ECOCALLMETHOD *certificates)(/* in */ IEcoPKCS7SignedDataPtr_t me);
-	IEcoASNOneCHOICE* (ECOCALLMETHOD *crls)(/* in */ IEcoPKCS7SignedDataPtr_t me);
+	IEcoASNOne1ValueSet* (ECOCALLMETHOD *certificates)(/* in */ IEcoPKCS7SignedDataPtr_t me);
+	IEcoASNOne1ValueSet* (ECOCALLMETHOD *crls)(/* in */ IEcoPKCS7SignedDataPtr_t me);
     IEcoPKCS7SignerInfos* (ECOCALLMETHOD *signerInfos)(/* in */ IEcoPKCS7SignedDataPtr_t me);
 
 } IEcoPKCS7SignedDataVTbl, *IEcoPKCS7SignedDataPtr_t;
@@ -89,30 +370,6 @@ typedef struct IEcoPKCS7SignedDataVTbl {
 interface IEcoPKCS7SignedData {
     struct IEcoPKCS7SignedDataVTbl *pVTbl;
 } IEcoPKCS7SignedData;
-
-typedef struct IEcoPKCS7SignerInfo* IEcoPKCS7SignerInfoPtr_t;
-
-typedef struct IEcoPKCS7SignerInfoVTbl {
-
-    /* IEcoUnknown */
-    int16_t (ECOCALLMETHOD *QueryInterface)(/* in */ IEcoPKCS7SignerInfoPtr_t me, /* in */ const UGUID* riid, /* out */ voidptr_t* ppv);
-    uint32_t (ECOCALLMETHOD *AddRef)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
-    uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
-
-    /* IEcoPKCS7SignerInfo */
-    IEcoPKCS7Version* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
-	IEcoPKCS7IssuerAndSerialNumber* (ECOCALLMETHOD *issuerAndSerialNumber)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
-	IEcoPKCS7DigestAlgorithmIdentifier* (ECOCALLMETHOD *digestAlgorithm)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
-	IEcoASNOneCHOICE* (ECOCALLMETHOD *authenticatedAttributes)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
-    IEcoPKCS7DigestEncryptionAlgorithmIdentifier* (ECOCALLMETHOD *digestEncryptionAlgorithm)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
-	IEcoPKCS7DigestEncryptedDigest* (ECOCALLMETHOD *encryptedDigest)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
-	IEcoASNOneCHOICE* (ECOCALLMETHOD *unauthenticatedAttributes)(/* in */ IEcoPKCS7SignerInfoPtr_t me);
-
-} IEcoPKCS7SignerInfoVTbl, *IEcoPKCS7SignerInfoPtr_t;
-
-interface IEcoPKCS7SignerInfo {
-    struct IEcoPKCS7SignerInfoVTbl *pVTbl;
-} IEcoPKCS7SignerInfo;
 
 typedef struct IEcoPKCS7EnvelopedData* IEcoPKCS7EnvelopedDataPtr_t;
 
@@ -146,7 +403,7 @@ typedef struct IEcoPKCS7EncryptedContentInfoVTbl {
     /* IEcoPKCS7EnvelopedData */
     IEcoPKCS7ContentType* (ECOCALLMETHOD *contentType)(/* in */ IEcoPKCS7EncryptedContentInfoPtr_t me);
 	IEcoPKCS7ContentEncryptionAlgorithmIdentifier* (ECOCALLMETHOD *contentEncryptionAlgorithm)(/* in */ IEcoPKCS7EncryptedContentInfoPtr_t me);
-	IEcoPKCS7EncryptedContent* (ECOCALLMETHOD *encryptedContent)(/* in */ IEcoPKCS7EncryptedContentInfoPtr_t me); // EncryptedContent ::= OCTET STRING
+	IEcoASNOne1Value* (ECOCALLMETHOD *encryptedContent)(/* in */ IEcoPKCS7EncryptedContentInfoPtr_t me); // EncryptedContent ::= OCTET STRING
 
 } IEcoPKCS7EncryptedContentInfoVTbl, *IEcoPKCS7EncryptedContentInfoPtr_t;
 
@@ -165,7 +422,7 @@ typedef struct IEcoPKCS7DigestInfoVTbl {
 
     /* IEcoPKCS7DigestInfo */
 	IEcoPKCS7DigestAlgorithmIdentifier* (ECOCALLMETHOD *digestAlgorithm)(/* in */ IEcoPKCS7DigestInfoPtr_t me);
-	IEcoPKCS7Digest* (ECOCALLMETHOD *digest)(/* in */ IEcoPKCS7DigestInfoPtr_t me); Digest ::= OCTET STRING
+	IEcoASNOne1Value* (ECOCALLMETHOD *digest)(/* in */ IEcoPKCS7DigestInfoPtr_t me);
 
 } IEcoPKCS7DigestInfoVTbl, *IEcoPKCS7DigestInfoPtr_t;
 
@@ -187,8 +444,8 @@ typedef struct IEcoPKCS7SignedAndEnvelopedDataVTbl {
 	IEcoPKCS7RecipientInfos* (ECOCALLMETHOD *recipientInfos)(/* in */ IEcoPKCS7SignedAndEnvelopedDataPtr_t me);
 	IEcoPKCS7DigestAlgorithmIdentifiers* (ECOCALLMETHOD *digestAlgorithms)(/* in */ IEcoPKCS7SignedAndEnvelopedDataPtr_t me);
 	IEcoPKCS7EncryptedContentInfo* (ECOCALLMETHOD *encryptedContentInfo)(/* in */ IEcoPKCS7SignedAndEnvelopedDataPtr_t me);
-	IEcoASNOneCHOICE* (ECOCALLMETHOD *certificates)(/* in */ IEcoPKCS7SignedAndEnvelopedDataPtr_t me);
-	IEcoASNOneCHOICE* (ECOCALLMETHOD *crls)(/* in */ IEcoPKCS7SignedAndEnvelopedDataPtr_t me);
+	IEcoASNOne1ValueSet* (ECOCALLMETHOD *certificates)(/* in */ IEcoPKCS7SignedAndEnvelopedDataPtr_t me);
+	IEcoASNOne1ValueSet* (ECOCALLMETHOD *crls)(/* in */ IEcoPKCS7SignedAndEnvelopedDataPtr_t me);
     IEcoPKCS7SignerInfos* (ECOCALLMETHOD *signerInfos)(/* in */ IEcoPKCS7SignedAndEnvelopedDataPtr_t me);
 
 } IEcoPKCS7SignedAndEnvelopedDataVTbl, *IEcoPKCS7SignedAndEnvelopedDataPtr_t;
@@ -210,7 +467,7 @@ typedef struct IEcoPKCS7DigestedDataVTbl {
     IEcoPKCS7Version* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS7DigestedDataPtr_t me);
 	IEcoPKCS7DigestAlgorithmIdentifier* (ECOCALLMETHOD *digestAlgorithm)(/* in */ IEcoPKCS7DigestedDataPtr_t me);
 	IEcoPKCS7ContentInfo* (ECOCALLMETHOD *contentInfo)(/* in */ IEcoPKCS7DigestedDataPtr_t me);
-    IEcoPKCS7Digest* (ECOCALLMETHOD *digest)(/* in */ IEcoPKCS7DigestedDataPtr_t me);
+    IEcoASNOne1Value* (ECOCALLMETHOD *digest)(/* in */ IEcoPKCS7DigestedDataPtr_t me);
 
 } IEcoPKCS7DigestedDataVTbl, *IEcoPKCS7DigestedDataPtr_t;
 

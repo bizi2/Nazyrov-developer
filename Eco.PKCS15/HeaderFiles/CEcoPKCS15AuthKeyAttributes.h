@@ -40,7 +40,7 @@ typedef struct CEcoPKCS15AuthKeyAttributes {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneBOOLEAN* m_derivedKey;
+    IEcoASNOne1Value* m_derivedKey;
 	IEcoPKCS15Identifier* m_authKeyId;
 
 } CEcoPKCS15AuthKeyAttributes, *CEcoPKCS15AuthKeyAttributesPtr;

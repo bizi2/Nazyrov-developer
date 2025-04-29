@@ -60,7 +60,7 @@ typedef struct IEcoPKCS15DigestInfoWithDefaultVTbl {
 
     /* IEcoPKCS15DigestInfoWithDefault */
     IEcoPKCS15AlgorithmIdentifier* (ECOCALLMETHOD *digestAlg)(/* in */ IEcoPKCS15DigestInfoWithDefaultPtr_t me);
-	IEcoASNOneDataValue* (ECOCALLMETHOD *digest)(/* in */ IEcoPKCS15DigestInfoWithDefaultPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *digest)(/* in */ IEcoPKCS15DigestInfoWithDefaultPtr_t me);
 
 
 } IEcoPKCS15DigestInfoWithDefaultVTbl, *IEcoPKCS15DigestInfoWithDefaultVTblPtr_t;
@@ -79,9 +79,9 @@ typedef struct IEcoPKCS15PathVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15PathPtr_t me);
 
     /* IEcoPKCS15Path */
-	IEcoASNOneDataValue* (ECOCALLMETHOD *path)(/* in */ IEcoPKCS15PathPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *index)(/* in */ IEcoPKCS15PathPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *length)(/* in */ IEcoPKCS15PathPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *path)(/* in */ IEcoPKCS15PathPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *index)(/* in */ IEcoPKCS15PathPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *length)(/* in */ IEcoPKCS15PathPtr_t me);
 
 
 } IEcoPKCS15PathVTbl, *IEcoPKCS15PathVTblPtr_t;
@@ -103,7 +103,7 @@ typedef struct IEcoPKCS15CommonObjectAttributesVTbl {
 	IEcoPKCS15Label* (ECOCALLMETHOD *label)(/* in */ IEcoPKCS15CommonObjectAttributesPtr_t me);
 	IEcoPKCS15CommonObjectFlags* (ECOCALLMETHOD *flags)(/* in */ IEcoPKCS15CommonObjectAttributesPtr_t me);
 	IEcoPKCS15Identifier* (ECOCALLMETHOD *authId)(/* in */ IEcoPKCS15CommonObjectAttributesPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *userConsent)(/* in */ IEcoPKCS15CommonObjectAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *userConsent)(/* in */ IEcoPKCS15CommonObjectAttributesPtr_t me);
 	IEcoPKCS15AccessControlRule* (ECOCALLMETHOD *accessControlRules)(/* in */ IEcoPKCS15CommonObjectAttributesPtr_t me);
 
 
@@ -145,7 +145,7 @@ typedef struct IEcoPKCS15CommonKeyAttributesVTbl {
     /* IEcoPKCS15CommonKeyAttributes */
 	IEcoPKCS15Identifier* (ECOCALLMETHOD *id)(/* in */ IEcoPKCS15CommonKeyAttributesPtr_t me);
 	IEcoPKCS15KeyUsageFlags* (ECOCALLMETHOD *usage)(/* in */ IEcoPKCS15CommonKeyAttributesPtr_t me);
-	IEcoASNOneBOOLEAN* (ECOCALLMETHOD *native)(/* in */ IEcoPKCS15CommonKeyAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *native)(/* in */ IEcoPKCS15CommonKeyAttributesPtr_t me);
 	IEcoPKCS15KeyAccessFlags* (ECOCALLMETHOD *accessFlags)(/* in */ IEcoPKCS15CommonKeyAttributesPtr_t me);
 	IEcoPKCS15Reference* (ECOCALLMETHOD *keyReference)(/* in */ IEcoPKCS15CommonKeyAttributesPtr_t me);
 	IEcoPKCS15GeneralizedTime* (ECOCALLMETHOD *startDate)(/* in */ IEcoPKCS15CommonKeyAttributesPtr_t me);
@@ -207,7 +207,7 @@ typedef struct IEcoPKCS15SecretPublicKeyAttributesVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15SecretPublicKeyAttributesPtr_t me);
 
     /* IEcoPKCS15SecretPublicKeyAttributes */
-	IEcoASNOneINTEGER** (ECOCALLMETHOD *keyLen)(/* in */ IEcoPKCS15SecretPublicKeyAttributesPtr_t me);
+	IEcoASNOne1Value** (ECOCALLMETHOD *keyLen)(/* in */ IEcoPKCS15SecretPublicKeyAttributesPtr_t me);
 
 
 } IEcoPKCS15SecretPublicKeyAttributesVTbl, *IEcoPKCS15SecretPublicKeyAttributesVTblPtr_t;
@@ -227,13 +227,13 @@ typedef struct IEcoPKCS15CommonCertificateAttributesVTbl {
 
     /* IEcoPKCS15CommonCertificateAttributes */
 	IEcoPKCS15Identifier* (ECOCALLMETHOD *id)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
-	IEcoASNOneBOOLEAN* (ECOCALLMETHOD *authority)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *authority)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
 	IEcoPKCS15CredentialIdentifier* (ECOCALLMETHOD *identifier)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
 	IEcoPKCS15OOBCertHash* (ECOCALLMETHOD *certHash)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
 	IEcoPKCS15Usage* (ECOCALLMETHOD *trustedUsage)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
 	IEcoPKCS15GeneralizedTime* (ECOCALLMETHOD *endDate)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
 	IEcoPKCS15CredentialIdentifier** (ECOCALLMETHOD *identifier)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
-	IEcoASNOneBOOLEAN* (ECOCALLMETHOD *implicitTrust)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *implicitTrust)(/* in */ IEcoPKCS15CommonCertificateAttributesPtr_t me);
 
 
 } IEcoPKCS15CommonCertificateAttributesVTbl, *IEcoPKCS15CommonCertificateAttributesVTblPtr_t;
@@ -313,14 +313,14 @@ typedef struct IEcoPKCS15RSAPrivateKeyObjectVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
 
     /* IEcoPKCS15RSAPrivateKeyObject */
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *modulus)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *publicExponent)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *privateExponent)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *prime1)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *prime2)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *exponent1)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *exponent2)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *coefficient)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *modulus)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *publicExponent)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *privateExponent)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *prime1)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *prime2)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *exponent1)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *exponent2)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *coefficient)(/* in */ IEcoPKCS15RSAPrivateKeyObjectPtr_t me);
 
 } IEcoPKCS15RSAPrivateKeyObjectVTbl, *IEcoPKCS15RSAPrivateKeyObjectVTblPtr_t;
 
@@ -399,7 +399,7 @@ typedef struct IEcoPKCS15PublicRSAKeyAttributesVTbl {
 
     /* IEcoPKCS15PublicRSAKeyAttributes */
 	IEcoPKCS15ObjectValue* (ECOCALLMETHOD *value)(/* in */ IEcoPKCS15PublicRSAKeyAttributesPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *modulusLength)(/* in */ IEcoPKCS15PublicRSAKeyAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *modulusLength)(/* in */ IEcoPKCS15PublicRSAKeyAttributesPtr_t me);
 	IEcoPKCS15KeyInfo* (ECOCALLMETHOD *keyInfo)(/* in */ IEcoPKCS15PublicRSAKeyAttributesPtr_t me);
 
 
@@ -563,7 +563,7 @@ typedef struct IEcoPKCS15X509AttributeCertificateAttributesVTbl {
     /* IEcoPKCS15X509AttributeCertificateAttributes */
 	IEcoPKCS15ObjectValue* (ECOCALLMETHOD *value)(/* in */ IEcoPKCS15X509AttributeCertificateAttributesPtr_t me);
 	IEcoPKCS15GeneralNames* (ECOCALLMETHOD *subject)(/* in */ IEcoPKCS15X509AttributeCertificateAttributesPtr_t me);
-	IEcoASNOneObjectIdentifier* (ECOCALLMETHOD *attrTypes)(/* in */ IEcoPKCS15X509AttributeCertificateAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *attrTypes)(/* in */ IEcoPKCS15X509AttributeCertificateAttributesPtr_t me);
 	IEcoPKCS15CertificateSerialNumber* (ECOCALLMETHOD *serialNumber)(/* in */ IEcoPKCS15X509AttributeCertificateAttributesPtr_t me);
 
 
@@ -699,11 +699,11 @@ typedef struct IEcoPKCS15PinAttributesVTbl {
     /* IEcoPKCS15PinAttributes */
 	IEcoPKCS15PinFlags* (ECOCALLMETHOD *pinFlags)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
 	IEcoPKCS15PinType* (ECOCALLMETHOD *pinType)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *minLength)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *storedLength)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *maxLength)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *minLength)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *storedLength)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *maxLength)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
 	IEcoPKCS15Reference* (ECOCALLMETHOD *pinReference)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
-	IEcoASNOneDataValue* (ECOCALLMETHOD *padChar)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *padChar)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
 	IEcoPKCS15GeneralizedTime* (ECOCALLMETHOD *lastPinChange)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
 	IEcoPKCS15Path* (ECOCALLMETHOD *path)(/* in */ IEcoPKCS15PinAttributesPtr_t me);
 
@@ -726,7 +726,7 @@ typedef struct IEcoPKCS15BiometricAttributesVTbl {
     /* IEcoPKCS15BiometricAttributes */
 	IEcoPKCS15BiometricFlags* (ECOCALLMETHOD *bioFlags)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
 	IEcoPKCS15BiometricType* (ECOCALLMETHOD *bioType)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
-	IEcoASNOneObjectIdentifier* (ECOCALLMETHOD *templateId)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *templateId)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
 	IEcoPKCS15Reference* (ECOCALLMETHOD *bioReference)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
 	IEcoPKCS15GeneralizedTime* (ECOCALLMETHOD *lastChange)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
 	IEcoPKCS15Path* (ECOCALLMETHOD *path)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
@@ -788,7 +788,7 @@ typedef struct IEcoPKCS15AuthKeyAttributesVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15AuthKeyAttributesPtr_t me);
 
     /* IEcoPKCS15AuthKeyAttributes */
-	IEcoASNOneBOOLEAN* (ECOCALLMETHOD *derivedKey)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *derivedKey)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
 	IEcoPKCS15Identifier* (ECOCALLMETHOD *authKeyId)(/* in */ IEcoPKCS15BiometricAttributesPtr_t me);
 
 
@@ -808,7 +808,7 @@ typedef struct IEcoPKCS15CertBasedAuthenticationAttributesVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15AuthKeyAttributesPtr_t me);
 
     /* IEcoPKCS15CertBasedAuthenticationAttributes */
-	IEcoASNOneDataValue* (ECOCALLMETHOD *cha)(/* in */ IEcoPKCS15CertBasedAuthenticationAttributesPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *cha)(/* in */ IEcoPKCS15CertBasedAuthenticationAttributesPtr_t me);
 
 
 } IEcoPKCS15CertBasedAuthenticationAttributesVTbl, *IEcoPKCS15CertBasedAuthenticationAttributesVTblPtr_t;
@@ -827,8 +827,8 @@ typedef struct IEcoPKCS15TokenInfoVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15AuthKeyAttributesPtr_t me);
 
     /* IEcoPKCS15TokenInfo */
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS15TokenInfoPtr_t me);
-	IEcoASNOneDataValue* (ECOCALLMETHOD *serialNumber)(/* in */ IEcoPKCS15TokenInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS15TokenInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *serialNumber)(/* in */ IEcoPKCS15TokenInfoPtr_t me);
 	IEcoPKCS15Label* (ECOCALLMETHOD *manufacturerID)(/* in */ IEcoPKCS15TokenInfoPtr_t me);
 	IEcoPKCS15Label* (ECOCALLMETHOD *label)(/* in */ IEcoPKCS15TokenInfoPtr_t me);
 	IEcoPKCS15TokenFlags* (ECOCALLMETHOD *tokenflags)(/* in */ IEcoPKCS15TokenInfoPtr_t me);
@@ -858,13 +858,13 @@ typedef struct IEcoPKCS15RecordInfoVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15AuthKeyAttributesPtr_t me);
 
     /* IEcoPKCS15RecordInfo */
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *oDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *prKDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *puKDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *sKDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *cDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *dODFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *aODFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *oDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *prKDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *puKDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *sKDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *cDFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *dODFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *aODFRecordLength)(/* in */ IEcoPKCS15RecordInfoPtr_t me);
 
 
 
@@ -921,11 +921,11 @@ typedef struct IEcoPKCS15EnvelopedDataVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15EnvelopedDataPtr_t me);
 
     /* IEcoPKCS15EnvelopedData */
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS15AlgorithmInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS15AlgorithmInfoPtr_t me);
 	IEcoPKCS15OriginatorInfo* (ECOCALLMETHOD *originatorInfo)(/* in */ IEcoPKCS15AlgorithmInfoPtr_t me);
 	IEcoPKCS15RecipientInfos* (ECOCALLMETHOD *recipientInfos)(/* in */ IEcoPKCS15AlgorithmInfoPtr_t me);
 	IEcoPKCS15EncryptedContentInfo* (ECOCALLMETHOD *encryptedContentInfo)(/* in */ IEcoPKCS15AlgorithmInfoPtr_t me);
-	IEcoASNOneSET* (ECOCALLMETHOD *unprotectedAttrs)(/* in */ IEcoPKCS15AlgorithmInfoPtr_t me);
+	IEcoASNOne1ValueSet* (ECOCALLMETHOD *unprotectedAttrs)(/* in */ IEcoPKCS15AlgorithmInfoPtr_t me);
 
 
 
@@ -945,9 +945,9 @@ typedef struct IEcoPKCS15EncryptedContentInfoVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15EncryptedContentInfoPtr_t me);
 
     /* IEcoPKCS15EncryptedContentInfo */
-	IEcoASNOneObjectIdentifier* (ECOCALLMETHOD *contentType)(/* in */ IEcoPKCS15EncryptedContentInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *contentType)(/* in */ IEcoPKCS15EncryptedContentInfoPtr_t me);
 	IEcoPKCS15AlgorithmIdentifier** (ECOCALLMETHOD *contentEncryptionAlgorithm)(/* in */ IEcoPKCS15EncryptedContentInfoPtr_t me);
-	IEcoASNOneDataValue* (ECOCALLMETHOD *encryptedContent)(/* in */ IEcoPKCS15EncryptedContentInfoPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *encryptedContent)(/* in */ IEcoPKCS15EncryptedContentInfoPtr_t me);
 
 
 
@@ -967,7 +967,7 @@ typedef struct IEcoPKCS15TokenVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15TokenPtr_t me);
 
     /* IEcoPKCS15Token */
-	IEcoASNOneINTEGER* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS15TokenPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *version)(/* in */ IEcoPKCS15TokenPtr_t me);
 	IEcoPKCS15KeyManagementInfo* (ECOCALLMETHOD *keyManagementInfo)(/* in */ IEcoPKCS15TokenPtr_t me);
 	IEcoPKCS15Objects* (ECOCALLMETHOD *pkcs15Objects)(/* in */ IEcoPKCS15TokenPtr_t me);
 
@@ -990,7 +990,7 @@ typedef struct IEcoPKCS15KeyManagementInfoVTbl {
 
     /* IEcoPKCS15KeyManagementInfo */
 	IEcoPKCS15Identifier* (ECOCALLMETHOD *keyId)(/* in */ IEcoPKCS15KeyManagementInfoPtr_t me);
-	IEcoASNOneCHOICE* (ECOCALLMETHOD *keyInfo)(/* in */ IEcoPKCS15KeyManagementInfoPtr_t me);
+	IEcoASNOne1ValueSet* (ECOCALLMETHOD *keyInfo)(/* in */ IEcoPKCS15KeyManagementInfoPtr_t me);
 
 
 
@@ -1031,7 +1031,7 @@ typedef struct IEcoPKCS15DDOVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15DDOPtr_t me);
 
     /* IEcoPKCS15DDO */
-	IEcoASNOneObjectIdentifier* (ECOCALLMETHOD *oid)(/* in */ IEcoPKCS15DDOPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *oid)(/* in */ IEcoPKCS15DDOPtr_t me);
 	IEcoPKCS15Path* (ECOCALLMETHOD *odfPath)(/* in */ IEcoPKCS15DDOPtr_t me);
 	IEcoPKCS15Path* (ECOCALLMETHOD *tokenInfoPath)(/* in */ IEcoPKCS15DDOPtr_t me);
 	IEcoPKCS15Path* (ECOCALLMETHOD *unusedPath)(/* in */ IEcoPKCS15DDOPtr_t me);
@@ -1054,9 +1054,9 @@ typedef struct IEcoPKCS15DIRRecordVTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS15DIRRecordPtr_t me);
 
     /* IEcoPKCS15DIRRecord */
-	IEcoASNOneDataValue* (ECOCALLMETHOD *aid)(/* in */ IEcoPKCS15DIRRecordPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *aid)(/* in */ IEcoPKCS15DIRRecordPtr_t me);
 	IEcoPKCS15UTF8String* (ECOCALLMETHOD *label)(/* in */ IEcoPKCS15DIRRecordPtr_t me);
-	IEcoASNOneDataValue* (ECOCALLMETHOD *path)(/* in */ IEcoPKCS15DIRRecordPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD *path)(/* in */ IEcoPKCS15DIRRecordPtr_t me);
 	IEcoPKCS15DDO* (ECOCALLMETHOD *ddo)(/* in */ IEcoPKCS15DIRRecordPtr_t me);
 
 

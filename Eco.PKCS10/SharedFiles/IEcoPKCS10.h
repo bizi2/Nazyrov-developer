@@ -88,7 +88,7 @@ typedef struct IEcoPKCS10CertificateRequestVTbl {
     /* IEcoPKCS10CertificateRequest */
     IEcoPKCS10CertificationRequestInfo* (ECOCALLMETHOD* certificationRequestInfo)(/* in */ IEcoPKCS10CertificateRequestPtr_t me);
     IEcoPKCS10AlgorithmIdentifier* (ECOCALLMETHOD* signatureAlgorithm) (/* in */ IEcoPKCS10CertificateRequestPtr_t me);
-	IEcoASNOneBITSTRING* (ECOCALLMETHOD* signature) (/* in */ IEcoPKCS10CertificateRequestPtr_t me);
+	IEcoASNOne1Value* (ECOCALLMETHOD* signature) (/* in */ IEcoPKCS10CertificateRequestPtr_t me);
 
 } IEcoPKCS10CertificateRequestVTbl, * IEcoPKCS10CertificateRequestPtr_t;
 

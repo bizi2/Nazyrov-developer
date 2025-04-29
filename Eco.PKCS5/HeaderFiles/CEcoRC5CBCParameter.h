@@ -40,10 +40,10 @@ typedef struct CEcoRC5CBCParameter {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-	IEcoASNOneINTEGER* m_version;
-	IEcoASNOneINTEGER* m_rounds;
-	IEcoASNOneINTEGER* m_blockSizeInBits;
-	IEcoASNOneDataValue* m_iv;
+	IEcoASNOne1Value* m_version;
+	IEcoASNOne1Value* m_rounds;
+	IEcoASNOne1Value* m_blockSizeInBits;
+	IEcoASNOne1Value* m_iv;
 
 } CEcoRC5CBCParameter, *CEcoRC5CBCParameterPtr;
 

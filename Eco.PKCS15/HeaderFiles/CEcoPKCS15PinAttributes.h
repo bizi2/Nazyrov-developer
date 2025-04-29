@@ -42,11 +42,11 @@ typedef struct CEcoPKCS15PinAttributes {
     /* Данные экземпляра */
     IEcoPKCS15PinFlags* m_pinFlags;
 	IEcoPKCS15PinType* m_pinType;
-	IEcoASNOneINTEGER* m_minLength;
-	IEcoASNOneINTEGER* m_storedLength;
-	IEcoASNOneINTEGER* m_maxLength;
+	IEcoASNOne1Value* m_minLength;
+	IEcoASNOne1Value* m_storedLength;
+	IEcoASNOne1Value* m_maxLength;
 	IEcoPKCS15Reference* m_pinReference;
-	IEcoASNOneDataValue* m_padChar;
+	IEcoASNOne1Value* m_padChar;
 	IEcoPKCS15GeneralizedTime* m_lastPinChange;
 	IEcoPKCS15Path* m_path;
 

@@ -23,11 +23,14 @@
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
+#include "IEcoASNOne1.h"
+#include "CEcoPKCS7ContentType.h"
+#include "CEcoPKCS7Content.h"
 
 typedef struct CEcoPKCS7ContentInfo {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
-    IEcoPKCS7VTbl* m_pVTblIEcoPKCS7;
+    IEcoPKCS7ContentInfoVTbl* m_pVTblIEcoPKCS7ContentInfo;
 
 
     /* Счетчик ссылок */
@@ -40,8 +43,9 @@ typedef struct CEcoPKCS7ContentInfo {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
+	IEcoASNOne1ValueSet* m_SET;
     IEcoPKCS7ContentType* m_contentType;
-	IEcoPKCS7Content* m_content;
+	IEcoASNOne1Value* m_content;
 
 } CEcoPKCS7ContentInfo, *CEcoPKCS7ContentInfoPtr;
 

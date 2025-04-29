@@ -41,7 +41,7 @@ typedef struct CEcoPKCS15KeyManagementInfo {
 
     /* Данные экземпляра */
     IEcoPKCS15Identifier* m_keyId;
-	IEcoASNOneCHOICE* m_keyInfo;
+	IEcoASNOne1ValueSet* m_keyInfo;
 
 } CEcoPKCS15KeyManagementInfo, *CEcoPKCS15KeyManagementInfoPtr;
 

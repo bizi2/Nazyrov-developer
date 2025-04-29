@@ -17,17 +17,18 @@
  *
  */
 
-#ifndef __C_ECOPKCS7_H__
-#define __C_ECOPKCS7_H__
+#ifndef __C_ECOPKCS7ENCRYPTEDCONTENTINFO_H__
+#define __C_ECOPKCS7ENCRYPTEDCONTENTINFO_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
+#include "IEcoASNOne1.h"
 
 typedef struct CEcoPKCS7EncryptedContentInfo {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
-    IEcoPKCS7VTbl* m_pVTblIEcoPKCS7;
+    IEcoPKCS7EncryptedContentInfoVTbl* m_pVTblIEcoPKCS7EncryptedContentInfo;
 
 
     /* Счетчик ссылок */
@@ -39,7 +40,11 @@ typedef struct CEcoPKCS7EncryptedContentInfo {
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Данные экземпляра */
+	IEcoASNOne1ValueSet* m_SET;
     IEcoPKCS7ContentType* m_contentType;
 	IEcoPKCS7ContentEncryptionAlgorithmIdentifier* m_contentEncryptionAlgorithm;
 	IEcoPKCS7EncryptedContent* m_encryptedContent;
@@ -53,4 +58,4 @@ int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedContentInfo(/* in */ IEcoUnknownPt
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS7EncryptedContentInfo(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7_H__ */
+#endif /* __C_ECOPKCS7ENCRYPTEDCONTENTINFO_H__ */

@@ -40,7 +40,7 @@ typedef struct CEcoPKCS15SecretPublicKeyAttributes {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneINTEGER** m_keyLen;
+    IEcoASNOne1Value** m_keyLen;
 
 } CEcoPKCS15SecretPublicKeyAttributes, *CEcoPKCS15SecretPublicKeyAttributesPtr;
 

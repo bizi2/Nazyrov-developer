@@ -40,9 +40,9 @@ typedef struct CEcoPKCS5PBKDF2 {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneCHOICE* m_salt;
-	IEcoASNOneINTEGER* m_iterationCount;
-	IEcoASNOneINTEGER* m_keyLength;
+    IEcoASNOne1ValueSet* m_salt;
+	IEcoASNOne1Value* m_iterationCount;
+	IEcoASNOne1Value* m_keyLength;
 
 } CEcoPKCS5PBKDF2, *CEcoPKCS5PBKDF2Ptr;
 

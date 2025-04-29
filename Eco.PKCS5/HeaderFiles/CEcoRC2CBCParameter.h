@@ -40,8 +40,8 @@ typedef struct CEcoRC2CBCParameter {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneDataValue* m_iv;
-	IEcoASNOneINTEGER* m_rc2ParameterVision;
+    IEcoASNOne1Value* m_iv;
+	IEcoASNOne1Value* m_rc2ParameterVision;
 
 } CEcoRC2CBCParameter, *CEcoRC2CBCParameterPtr;
 

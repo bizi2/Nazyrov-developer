@@ -40,7 +40,7 @@ typedef struct CEcoPKCS15Token {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneINTEGER* m_version;
+    IEcoASNOne1Value* m_version;
 	IEcoPKCS15KeyManagementInfo* m_keyManagementInfo;
 	IEcoPKCS15Objects* m_pkcs15Objects;
 

@@ -17,12 +17,13 @@
  *
  */
 
-#ifndef __C_ECOPKCS7_H__
-#define __C_ECOPKCS7_H__
+#ifndef __C_ECOPKCS7SIGNERINFO_H__
+#define __C_ECOPKCS7SIGNERINFO_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
+#include "IEcoASNOne1.h"
 
 typedef struct CEcoPKCS7SignerInfo {
 
@@ -43,10 +44,10 @@ typedef struct CEcoPKCS7SignerInfo {
     IEcoPKCS7Version* m_version;
 	IEcoPKCS7IssuerAndSerialNumber* m_issuerAndSerialNumber;
 	IEcoPKCS7DigestAlgorithmIdentifier* m_digestAlgorithm;
-	IEcoASNOneCHOICE* m_authenticatedAttributes;
+	IEcoASNOne1ValueSet* m_authenticatedAttributes;
 	IEcoPKCS7DigestEncryptionAlgorithmIdentifier* m_digestEncryptionAlgorithm;
 	IEcoPKCS7DigestEncryptedDigest* m_encryptedDigest;
-	IEcoASNOneCHOICE* m_unauthenticatedAttributes;
+	IEcoASNOne1ValueSet* m_unauthenticatedAttributes;
 
 } CEcoPKCS7SignerInfo, *CEcoPKCS7SignerInfoPtr;
 
@@ -57,4 +58,4 @@ int16_t ECOCALLMETHOD createCEcoPKCS7SignerInfo(/* in */ IEcoUnknownPtr_t pIUnkS
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS7SignerInfo(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7_H__ */
+#endif /* __C_ECOPKCS7SIGNERINFO_H__ */

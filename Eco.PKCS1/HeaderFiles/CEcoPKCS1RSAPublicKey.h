@@ -17,20 +17,18 @@
  *
  */
 
-#ifndef __C_ECOPKCS1_H__
-#define __C_ECOPKCS1_H__
+#ifndef __C_ECOPKCS1RSAPUBLICKEY_H__
+#define __C_ECOPKCS1RSAPUBLICKEY_H__
 
 #include "IEcoPKCS1.h"
+#include "IEcoASNOne1.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
 
 typedef struct CEcoPKCS1RSAPublicKey {
 
     /* Таблица функций интерфейса IEcoPKCS1 */
-    IEcoPKCS1VTbl* m_pVTblIEcoPKCS1;
-
-    /* Таблица функций интерфейса IEcoPKCS1 */
-    IEcoPKCS1EncoderVTbl* m_pVTblIEcoPKCS1Encoder;
+    IEcoPKCS1RSAPublicKeyVTbl* m_pVTblIEcoPKCS1RSAPublicKey;
 
     /* Счетчик ссылок */
     uint32_t m_cRef;
@@ -41,9 +39,13 @@ typedef struct CEcoPKCS1RSAPublicKey {
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Данные экземпляра */
-	IEcoASNOneINTEGER* m_modulus;
-	IEcoASNOneINTEGER* m_publicExponent;
+    IEcoASNOne1ValueSet* m_SET;
+	IEcoASNOne1Value* m_modulus;
+	IEcoASNOne1Value* m_publicExponent;
 
 } CEcoPKCS1RSAPublicKey, *CEcoPKCS1RSAPublicKeyDPtr;
 
@@ -52,4 +54,4 @@ int16_t ECOCALLMETHOD createCEcoPKCS1RSAPublicKey(/* in */ IEcoUnknownPtr_t pIUn
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS1RSAPublicKey(/* in */ IEcoPKCS1Ptr_t pIEcoPKCS1);
 
-#endif /* __C_ECOPKCS1_H__ */
+#endif /* __C_ECOPKCS1RSAPUBLICKEY_H__ */

@@ -17,12 +17,13 @@
  *
  */
 
-#ifndef __C_ECOPKCS7_H__
-#define __C_ECOPKCS7_H__
+#ifndef __C_ECOPKCS7SIGNEDDATA_H__
+#define __C_ECOPKCS7SIGNEDDATA_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
+#include "IEcoASNOne1.h"
 
 typedef struct CEcoPKCS7SignedData {
 
@@ -42,8 +43,8 @@ typedef struct CEcoPKCS7SignedData {
     /* Данные экземпляра */
     IEcoPKCS7Version* m_version;
 	IEcoPKCS7DigestAlgorithmIdentifiers* m_digestAlgorithms;
-	IEcoASNOneCHOICE* m_certificates;
-	IEcoASNOneCHOICE* m_crls;
+	IEcoASNOne1ValueSet* m_certificates;
+	IEcoASNOne1ValueSet* m_crls;
 	IEcoPKCS7SignerInfos* m_signerInfos;
 
 } CEcoPKCS7SignedData, *CEcoPKCS7SignedDataPtr;
@@ -55,4 +56,4 @@ int16_t ECOCALLMETHOD createCEcoPKCS7SignedData(/* in */ IEcoUnknownPtr_t pIUnkS
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS7SignedData(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7_H__ */
+#endif /* __C_ECOPKCS7SIGNEDDATA_H__ */

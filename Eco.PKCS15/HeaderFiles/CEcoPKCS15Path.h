@@ -40,9 +40,9 @@ typedef struct CEcoPKCS15Path {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneDataValue* m_path;
-	IEcoASNOneINTEGER* m_index;
-	IEcoASNOneINTEGER* m_length;
+    IEcoASNOne1Value* m_path;
+	IEcoASNOne1Value* m_index;
+	IEcoASNOne1Value* m_length;
 
 } CEcoPKCS15Path, *CEcoPKCS15PathPtr;
 

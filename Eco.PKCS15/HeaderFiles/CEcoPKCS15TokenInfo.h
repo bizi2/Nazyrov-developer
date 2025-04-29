@@ -40,8 +40,8 @@ typedef struct CEcoPKCS15TokenInfo {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneINTEGER* m_version;
-	IEcoASNOneDataValue* m_serialNumber;
+    IEcoASNOne1Value* m_version;
+	IEcoASNOne1Value* m_serialNumber;
 	IEcoPKCS15Label* m_manufacturerID;
 	IEcoPKCS15Label* m_label;
 	IEcoPKCS15TokenFlags* m_tokenflags;

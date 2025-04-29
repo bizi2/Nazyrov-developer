@@ -42,7 +42,7 @@ typedef struct CEcoPKCS15CommonKeyAttributes {
     /* Данные экземпляра */
     IEcoPKCS15Identifier* m_id;
 	IEcoPKCS15KeyUsageFlags* m_usage;
-	IEcoASNOneBOOLEAN* m_native;
+	IEcoASNOne1Value* m_native;
 	IEcoPKCS15KeyAccessFlags* m_accessFlagst;
 	IEcoPKCS15Reference* m_keyReference;
 	IEcoPKCS15GeneralizedTime* m_startDate;
