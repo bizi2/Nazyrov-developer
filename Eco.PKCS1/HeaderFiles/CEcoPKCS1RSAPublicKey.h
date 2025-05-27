@@ -21,7 +21,6 @@
 #define __C_ECOPKCS1RSAPUBLICKEY_H__
 
 #include "IEcoPKCS1.h"
-#include "IEcoASNOne1.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
 
@@ -43,14 +42,14 @@ typedef struct CEcoPKCS1RSAPublicKey {
     IEcoASNOne1* m_pIASNOne;
 
     /* Данные экземпляра */
-    IEcoASNOne1ValueSet* m_SET;
+    IEcoASNOne1ValueSet* m_SEQUENCE;
 	IEcoASNOne1Value* m_modulus;
 	IEcoASNOne1Value* m_publicExponent;
 
 } CEcoPKCS1RSAPublicKey, *CEcoPKCS1RSAPublicKeyDPtr;
 
 /* Создание экземпляра */
-int16_t ECOCALLMETHOD createCEcoPKCS1RSAPublicKey(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS1Ptr_t* ppIEcoPKCS1);
+int16_t ECOCALLMETHOD createCEcoPKCS1RSAPublicKey(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* in */ IEcoASNOne1* pIASNOne, /* out */ IEcoPKCS1RSAPublicKeyPtr_t* ppIChildInformation);
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS1RSAPublicKey(/* in */ IEcoPKCS1Ptr_t pIEcoPKCS1);
 

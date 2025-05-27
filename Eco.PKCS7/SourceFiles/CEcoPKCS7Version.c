@@ -4,11 +4,11 @@
  * </кодировка символов>
  *
  * <сводка>
- *   CEcoPKCS1Version
+ *   CEcoPKCS7Version
  * </сводка>
  *
  * <описание>
- *   Данный исходный код описывает реализацию интерфейсов CEcoPKCS1Version
+ *   Данный исходный код описывает реализацию интерфейсов CEcoPKCS7Version
  * </описание>
  *
  * <автор>
@@ -20,7 +20,7 @@
 #include "IEcoSystem1.h"
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
-#include "CEcoPKCS1Version.h"
+#include "CEcoPKCS7Version.h"
 
  /*
   *
@@ -29,12 +29,12 @@
   * </сводка>
   *
   * <описание>
-  *   Функция QueryInterface для интерфейса IEcoPKCS1Version
+  *   Функция QueryInterface для интерфейса IEcoPKCS7Version
   * </описание>
   *
   */
-static int16_t ECOCALLMETHOD CEcoPKCS1Version_QueryInterface(/* in */ IEcoPKCS1VersionPtr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
-    CEcoPKCS1Version* pCMe = (CEcoPKCS1Version*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7Version_QueryInterface(/* in */ IEcoPKCS7VersionPtr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
+    CEcoPKCS7Version* pCMe = (CEcoPKCS7Version*)me;
 
     /* Проверка указателей */
     if (me == 0 || ppv == 0) {
@@ -42,21 +42,21 @@ static int16_t ECOCALLMETHOD CEcoPKCS1Version_QueryInterface(/* in */ IEcoPKCS1V
     }
 
     /* Проверка и получение запрошенного интерфейса */
-    if (IsEqualUGUID(riid, &IID_IEcoPKCS1Version)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS1Version;
-        pCMe->m_pVTblIEcoPKCS1Version->AddRef((IEcoPKCS1Version*)pCMe);
+    if (IsEqualUGUID(riid, &IID_IEcoPKCS7Version)) {
+        *ppv = &pCMe->m_pVTblIEcoPKCS7Version;
+        pCMe->m_pVTblIEcoPKCS7Version->AddRef((IEcoPKCS7Version*)pCMe);
     }
     else if (IsEqualUGUID(riid, &IID_IEcoUnknown)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS1Version;
-        pCMe->m_pVTblIEcoPKCS1Version->AddRef((IEcoPKCS1Version*)pCMe);
+        *ppv = &pCMe->m_pVTblIEcoPKCS7Version;
+        pCMe->m_pVTblIEcoPKCS7Version->AddRef((IEcoPKCS7Version*)pCMe);
     }
     else if (IsEqualUGUID(riid, &IID_IEcoASNOne1Type)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS1Version;
-        pCMe->m_pVTblIEcoPKCS1Version->AddRef((IEcoPKCS1Version*)pCMe);
+        *ppv = &pCMe->m_pVTblIEcoPKCS7Version;
+        pCMe->m_pVTblIEcoPKCS7Version->AddRef((IEcoPKCS7Version*)pCMe);
     }
     else if (IsEqualUGUID(riid, &IID_IEcoASNOne1Value)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS1Version;
-        pCMe->m_pVTblIEcoPKCS1Version->AddRef((IEcoPKCS1Version*)pCMe);
+        *ppv = &pCMe->m_pVTblIEcoPKCS7Version;
+        pCMe->m_pVTblIEcoPKCS7Version->AddRef((IEcoPKCS7Version*)pCMe);
     }
     else {
         *ppv = 0;
@@ -72,12 +72,12 @@ static int16_t ECOCALLMETHOD CEcoPKCS1Version_QueryInterface(/* in */ IEcoPKCS1V
  * </сводка>
  *
  * <описание>
- *   Функция AddRef для интерфейса IEcoPKCS1Version
+ *   Функция AddRef для интерфейса IEcoPKCS7Version
  * </описание>
  *
  */
-static uint32_t ECOCALLMETHOD CEcoPKCS1Version_AddRef(/* in */ IEcoPKCS1VersionPtr_t me) {
-    CEcoPKCS1Version* pCMe = (CEcoPKCS1Version*)me;
+static uint32_t ECOCALLMETHOD CEcoPKCS7Version_AddRef(/* in */ IEcoPKCS7VersionPtr_t me) {
+    CEcoPKCS7Version* pCMe = (CEcoPKCS7Version*)me;
 
     /* Проверка указателя */
     if (me == 0) {
@@ -94,12 +94,12 @@ static uint32_t ECOCALLMETHOD CEcoPKCS1Version_AddRef(/* in */ IEcoPKCS1VersionP
  * </сводка>
  *
  * <описание>
- *   Функция Release для интерфейса IEcoPKCS1Version
+ *   Функция Release для интерфейса IEcoPKCS7Version
  * </описание>
  *
  */
-static uint32_t ECOCALLMETHOD CEcoPKCS1Version_Release(/* in */ IEcoPKCS1VersionPtr_t me) {
-    CEcoPKCS1Version* pCMe = (CEcoPKCS1Version*)me;
+static uint32_t ECOCALLMETHOD CEcoPKCS7Version_Release(/* in */ IEcoPKCS7VersionPtr_t me) {
+    CEcoPKCS7Version* pCMe = (CEcoPKCS7Version*)me;
 
     /* Проверка указателя */
     if (me == 0) {
@@ -111,7 +111,7 @@ static uint32_t ECOCALLMETHOD CEcoPKCS1Version_Release(/* in */ IEcoPKCS1Version
 
     /* В случае обнуления счетчика, освобождение данных экземпляра */
     if (pCMe->m_cRef == 0) {
-        deleteCEcoPKCS1Version((IEcoPKCS1Version*)pCMe);
+        deleteCEcoPKCS7Version((IEcoPKCS7Version*)pCMe);
         return 0;
     }
     return pCMe->m_cRef;
@@ -128,8 +128,8 @@ static uint32_t ECOCALLMETHOD CEcoPKCS1Version_Release(/* in */ IEcoPKCS1Version
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS1Version_get_Tag(/* in */ IEcoPKCS1VersionPtr_t me) {
-    CEcoPKCS1Version* pCMe = (CEcoPKCS1Version*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7Version_get_Tag(/* in */ IEcoPKCS7VersionPtr_t me) {
+    CEcoPKCS7Version* pCMe = (CEcoPKCS7Version*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -150,8 +150,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1Version_get_Tag(/* in */ IEcoPKCS1VersionP
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS1Version_get_TaggetType(/* in */ IEcoPKCS1VersionPtr_t me) {
-    CEcoPKCS1Version* pCMe = (CEcoPKCS1Version*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7Version_get_TaggetType(/* in */ IEcoPKCS7VersionPtr_t me) {
+    CEcoPKCS7Version* pCMe = (CEcoPKCS7Version*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -172,8 +172,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1Version_get_TaggetType(/* in */ IEcoPKCS1V
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS1Version_get_Type(/* in */ IEcoPKCS1VersionPtr_t me) {
-    CEcoPKCS1Version* pCMe = (CEcoPKCS1Version*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7Version_get_Type(/* in */ IEcoPKCS7VersionPtr_t me) {
+    CEcoPKCS7Version* pCMe = (CEcoPKCS7Version*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -194,8 +194,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1Version_get_Type(/* in */ IEcoPKCS1Version
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS1Version_set_Value(/* in */ IEcoPKCS1VersionPtr_t me, /* in */ voidptr_t Value, /* in */ int32_t Size) {
-    CEcoPKCS1Version* pCMe = (CEcoPKCS1Version*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7Version_set_Value(/* in */ IEcoPKCS7VersionPtr_t me, /* in */ voidptr_t Value, /* in */ int32_t Size) {
+    CEcoPKCS7Version* pCMe = (CEcoPKCS7Version*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -219,8 +219,8 @@ static int16_t ECOCALLMETHOD CEcoPKCS1Version_set_Value(/* in */ IEcoPKCS1Versio
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS1Version_get_Value(/* in */ IEcoPKCS1VersionPtr_t me, /* out */ voidptr_t Value, /* out */ int32_t* Size) {
-    CEcoPKCS1Version* pCMe = (CEcoPKCS1Version*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7Version_get_Value(/* in */ IEcoPKCS7VersionPtr_t me, /* out */ voidptr_t Value, /* out */ int32_t* Size) {
+    CEcoPKCS7Version* pCMe = (CEcoPKCS7Version*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -233,16 +233,16 @@ static int16_t ECOCALLMETHOD CEcoPKCS1Version_get_Value(/* in */ IEcoPKCS1Versio
     return result;
 }
 
-/* Create Virtual Table IEcoPKCS1Version */
-IEcoPKCS1VersionVTbl g_x440D2626FE3349A08266393C3E7987CCVTbl_247D52F9 = {
-    CEcoPKCS1Version_QueryInterface,
-    CEcoPKCS1Version_AddRef,
-    CEcoPKCS1Version_Release,
-    CEcoPKCS1Version_get_Tag,
-    CEcoPKCS1Version_get_TaggetType,
-    CEcoPKCS1Version_get_Type,
-    CEcoPKCS1Version_set_Value,
-    CEcoPKCS1Version_get_Value
+/* Create Virtual Table IEcoPKCS7Version */
+IEcoPKCS7VersionVTbl g_x440D2626FE3349A08266393C3E7987CCVTbl_247D52F9 = {
+    CEcoPKCS7Version_QueryInterface,
+    CEcoPKCS7Version_AddRef,
+    CEcoPKCS7Version_Release,
+    CEcoPKCS7Version_get_Tag,
+    CEcoPKCS7Version_get_TaggetType,
+    CEcoPKCS7Version_get_Type,
+    CEcoPKCS7Version_set_Value,
+    CEcoPKCS7Version_get_Value
 };
 
 /*
@@ -256,13 +256,13 @@ IEcoPKCS1VersionVTbl g_x440D2626FE3349A08266393C3E7987CCVTbl_247D52F9 = {
  * </описание>
  *
  */
-int16_t ECOCALLMETHOD createCEcoPKCS1Version(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* in */ IEcoASNOne1* pIASNOne, /* out */ IEcoPKCS1VersionPtr_t* pVersion) {
+int16_t ECOCALLMETHOD createCEcoPKCS7Version(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* in */ IEcoASNOne1* pIASNOne, /* out */ IEcoPKCS7VersionPtr_t* pVersion) {
     int16_t result = ERR_ECO_POINTER;
     IEcoSystem1* pISys = 0;
     IEcoInterfaceBus1* pIBus = 0;
     IEcoInterfaceBus1MemExt* pIMemExt = 0;
     IEcoMemoryAllocator1* pIMem = 0;
-    CEcoPKCS1Version* pCMe = 0;
+    CEcoPKCS7Version* pCMe = 0;
     UGUID* rcid = (UGUID*)&CID_EcoMemoryManager1;
 
     /* Проверка указателей */
@@ -303,7 +303,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS1Version(/* in */ IEcoUnknownPtr_t pIUnkSyst
     }
 
     /* Выделение памяти для данных экземпляра */
-    pCMe = (CEcoPKCS1Version*)pIMem->pVTbl->Alloc(pIMem, sizeof(CEcoPKCS1Version));
+    pCMe = (CEcoPKCS7Version*)pIMem->pVTbl->Alloc(pIMem, sizeof(CEcoPKCS7Version));
     if (pCMe == 0) {
         /* Освобождение в случае ошибки */
         pIBus->pVTbl->Release(pIBus);
@@ -321,7 +321,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS1Version(/* in */ IEcoUnknownPtr_t pIUnkSyst
     pCMe->m_cRef = 1;
 
     /* Создание таблицы функций интерфейса IEcoASNOne1EmployeeNumber */
-    pCMe->m_pVTblIEcoPKCS1Version = &g_x440D2626FE3349A08266393C3E7987CCVTbl_247D52F9;
+    pCMe->m_pVTblIEcoPKCS7Version = &g_x440D2626FE3349A08266393C3E7987CCVTbl_247D52F9;
 
     /* Сохранение указателя на интерфейс для работы с нотацией ASN.1 */
     pCMe->m_pIASNOne = pIASNOne;
@@ -332,7 +332,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS1Version(/* in */ IEcoUnknownPtr_t pIUnkSyst
     pIASNOne->pVTbl->new_Value(pIASNOne, ECO_ASN1_CLASS_APPLICATION | 2, ECO_ASN1_TAG_IMPLICIT, ECO_ASN1_INTEGER_TYPE, &pCMe->m_value);
 
     /* Возврат указателя на интерфейс */
-    *pVersion = (IEcoPKCS1Version*)pCMe;
+    *pVersion = (IEcoPKCS7Version*)pCMe;
 
     /* Освобождение */
     pIBus->pVTbl->Release(pIBus);
@@ -351,8 +351,8 @@ int16_t ECOCALLMETHOD createCEcoPKCS1Version(/* in */ IEcoUnknownPtr_t pIUnkSyst
  * </описание>
  *
  */
-void ECOCALLMETHOD deleteCEcoPKCS1Version(/* in */ IEcoPKCS1VersionPtr_t pIEmployeeNumber) {
-    CEcoPKCS1Version* pCMe = (CEcoPKCS1Version*)pIEmployeeNumber;
+void ECOCALLMETHOD deleteCEcoPKCS7Version(/* in */ IEcoPKCS7VersionPtr_t pIEmployeeNumber) {
+    CEcoPKCS7Version* pCMe = (CEcoPKCS7Version*)pIEmployeeNumber;
     IEcoMemoryAllocator1* pIMem = 0;
 
     if (pIEmployeeNumber != 0) {

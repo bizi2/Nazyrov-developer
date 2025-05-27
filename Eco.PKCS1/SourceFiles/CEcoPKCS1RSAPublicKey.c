@@ -139,7 +139,7 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1RSAPublicKey_get_Tag(/* in */ IEcoPKCS1RSA
         return 0; /* ERR_ECO_POINTER */
     }
 
-    return pCMe->m_SET->pVTbl->get_Tag(pCMe->m_SET);
+    return pCMe->m_SEQUENCE->pVTbl->get_Tag(pCMe->m_SEQUENCE);
 }
 
 /*
@@ -161,7 +161,7 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1RSAPublicKey_get_TaggetType(/* in */ IEcoP
         return 0; /* ERR_ECO_POINTER */
     }
 
-    return pCMe->m_SET->pVTbl->get_TaggedType(pCMe->m_SET);
+    return pCMe->m_SEQUENCE->pVTbl->get_TaggedType(pCMe->m_SEQUENCE);
 }
 
 /*
@@ -183,7 +183,7 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1RSAPublicKey_get_Type(/* in */ IEcoPKCS1RS
         return 0; /* ERR_ECO_POINTER */
     }
 
-    return pCMe->m_SET->pVTbl->get_Type(pCMe->m_SET);
+    return pCMe->m_SEQUENCE->pVTbl->get_Type(pCMe->m_SEQUENCE);
 }
 
 /*
@@ -206,7 +206,7 @@ static int16_t ECOCALLMETHOD CEcoPKCS1RSAPublicKey_Count(/* in */ IEcoPKCS1RSAPu
         return ERR_ECO_POINTER;
     }
 
-    result = pCMe->m_SET->pVTbl->Count(pCMe->m_SET, Count);
+    result = pCMe->m_SEQUENCE->pVTbl->Count(pCMe->m_SEQUENCE, Count);
 
     return result;
 }
@@ -231,7 +231,7 @@ static int16_t ECOCALLMETHOD CEcoPKCS1RSAPublicKey_Item(/* in */ IEcoPKCS1RSAPub
         return ERR_ECO_POINTER;
     }
 
-    result = pCMe->m_SET->pVTbl->Item(pCMe->m_SET, Index, Component);
+    result = pCMe->m_SEQUENCE->pVTbl->Item(pCMe->m_SEQUENCE, Index, Component);
 
     return result;
 }
@@ -256,7 +256,7 @@ static int16_t ECOCALLMETHOD CEcoPKCS1RSAPublicKey_Add(/* in */ IEcoPKCS1RSAPubl
         return ERR_ECO_POINTER;
     }
 
-    result = pCMe->m_SET->pVTbl->Add(pCMe->m_SET, Component, Index);
+    result = pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, Component, Index);
 
     return result;
 }
@@ -383,17 +383,15 @@ int16_t ECOCALLMETHOD createCEcoPKCS1RSAPublicKey(/* in */ IEcoUnknownPtr_t pIUn
     pCMe->m_pIASNOne->pVTbl->AddRef(pCMe->m_pIASNOne);
 
     /* Инициализация данных */
-    pCMe->m_SET = 0;
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_PC_CONSTRUCTED | ECO_ASN1_SET_TYPE, &pCMe->m_SET);
+    pCMe->m_SEQUENCE = 0;
+    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_PC_CONSTRUCTED | ECO_ASN1_SET_TYPE, &pCMe->m_SEQUENCE);
     pCMe->m_modulus = 0;
     createCEcoPKCS1Version((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_modulus);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pCMe->m_modulus, 0);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_modulus, 0);
 
     pCMe->m_publicExponent = 0;
-    createCEcoASNOne1Value_11B2F7AB((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_publicExponent);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_publicExponent, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_pIASNOne->pVTbl->new_Value(pCMe->m_pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_VISIBLE_STRING_TYPE, &pCMe->m_publicExponent);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_publicExponent, 0);
 
     /* Возврат указателя на интерфейс */
     *ppIChildInformation = (IEcoPKCS1RSAPublicKey*)pCMe;

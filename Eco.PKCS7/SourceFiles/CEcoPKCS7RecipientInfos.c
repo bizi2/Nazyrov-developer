@@ -4,11 +4,11 @@
  * </кодировка символов>
  *
  * <сводка>
- *   CEcoPKCS7SignedData
+ *   CEcoPKCS7RecipientInfos
  * </сводка>
  *
  * <описание>
- *   Данный исходный код описывает реализацию интерфейсов CEcoPKCS7SignedData
+ *   Данный исходный код описывает реализацию интерфейсов CEcoPKCS7RecipientInfos
  * </описание>
  *
  * <автор>
@@ -20,10 +20,8 @@
 #include "IEcoSystem1.h"
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
-#include "CEcoPKCS7SignedData.h"
-#include "CEcoPKCS7Version.h"
-#include "CEcoPKCS7DigestAlgorithmIdentifiers.h"
-#include "CEcoPKCS7SignerInfos.h"
+#include "CEcoPKCS7RecipientInfos.h"
+#include "CEcoPKCS7RecipientInfo.h"
 
  /*
   *
@@ -32,12 +30,12 @@
   * </сводка>
   *
   * <описание>
-  *   Функция QueryInterface для интерфейса IEcoPKCS7SignedData
+  *   Функция QueryInterface для интерфейса IEcoPKCS7RecipientInfos
   * </описание>
   *
   */
-static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_QueryInterface(/* in */ IEcoPKCS7SignedDataPtr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7RecipientInfos_QueryInterface(/* in */ IEcoPKCS7RecipientInfosPtr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
 
     /* Проверка указателей */
     if (me == 0 || ppv == 0) {
@@ -45,21 +43,21 @@ static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_QueryInterface(/* in */ IEcoPKC
     }
 
     /* Проверка и получение запрошенного интерфейса */
-    if (IsEqualUGUID(riid, &IID_IEcoPKCS7SignedData)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS7SignedData;
-        pCMe->m_pVTblIEcoPKCS7SignedData->AddRef((IEcoPKCS7SignedData*)pCMe);
+    if (IsEqualUGUID(riid, &IID_IEcoPKCS7RecipientInfos)) {
+        *ppv = &pCMe->m_pVTblIEcoPKCS7RecipientInfos;
+        pCMe->m_pVTblIEcoPKCS7RecipientInfos->AddRef((IEcoPKCS7RecipientInfos*)pCMe);
     }
     else if (IsEqualUGUID(riid, &IID_IEcoUnknown)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS7SignedData;
-        pCMe->m_pVTblIEcoPKCS7SignedData->AddRef((IEcoPKCS7SignedData*)pCMe);
+        *ppv = &pCMe->m_pVTblIEcoPKCS7RecipientInfos;
+        pCMe->m_pVTblIEcoPKCS7RecipientInfos->AddRef((IEcoPKCS7RecipientInfos*)pCMe);
     }
     else if (IsEqualUGUID(riid, &IID_IEcoASNOne1Type)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS7SignedData;
-        pCMe->m_pVTblIEcoPKCS7SignedData->AddRef((IEcoPKCS7SignedData*)pCMe);
+        *ppv = &pCMe->m_pVTblIEcoPKCS7RecipientInfos;
+        pCMe->m_pVTblIEcoPKCS7RecipientInfos->AddRef((IEcoPKCS7RecipientInfos*)pCMe);
     }
     else if (IsEqualUGUID(riid, &IID_IEcoASNOne1ValueSet)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS7SignedData;
-        pCMe->m_pVTblIEcoPKCS7SignedData->AddRef((IEcoPKCS7SignedData*)pCMe);
+        *ppv = &pCMe->m_pVTblIEcoPKCS7RecipientInfos;
+        pCMe->m_pVTblIEcoPKCS7RecipientInfos->AddRef((IEcoPKCS7RecipientInfos*)pCMe);
     }
     else {
         *ppv = 0;
@@ -75,12 +73,12 @@ static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_QueryInterface(/* in */ IEcoPKC
  * </сводка>
  *
  * <описание>
- *   Функция AddRef для интерфейса IEcoPKCS7SignedData
+ *   Функция AddRef для интерфейса IEcoPKCS7RecipientInfos
  * </описание>
  *
  */
-static uint32_t ECOCALLMETHOD CEcoPKCS7SignedData_AddRef(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static uint32_t ECOCALLMETHOD CEcoPKCS7RecipientInfos_AddRef(/* in */ IEcoPKCS7RecipientInfosPtr_t me) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
 
     /* Проверка указателя */
     if (me == 0) {
@@ -97,12 +95,12 @@ static uint32_t ECOCALLMETHOD CEcoPKCS7SignedData_AddRef(/* in */ IEcoPKCS7Signe
  * </сводка>
  *
  * <описание>
- *   Функция Release для интерфейса IEcoPKCS7SignedData
+ *   Функция Release для интерфейса IEcoPKCS7RecipientInfos
  * </описание>
  *
  */
-static uint32_t ECOCALLMETHOD CEcoPKCS7SignedData_Release(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static uint32_t ECOCALLMETHOD CEcoPKCS7RecipientInfos_Release(/* in */ IEcoPKCS7RecipientInfosPtr_t me) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
 
     /* Проверка указателя */
     if (me == 0) {
@@ -114,7 +112,7 @@ static uint32_t ECOCALLMETHOD CEcoPKCS7SignedData_Release(/* in */ IEcoPKCS7Sign
 
     /* В случае обнуления счетчика, освобождение данных экземпляра */
     if (pCMe->m_cRef == 0) {
-        deleteCEcoPKCS7SignedData((IEcoPKCS7SignedData*)pCMe);
+        deleteCEcoPKCS7RecipientInfos((IEcoPKCS7RecipientInfos*)pCMe);
         return 0;
     }
     return pCMe->m_cRef;
@@ -132,8 +130,8 @@ static uint32_t ECOCALLMETHOD CEcoPKCS7SignedData_Release(/* in */ IEcoPKCS7Sign
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS7SignedData_get_Tag(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7RecipientInfos_get_Tag(/* in */ IEcoPKCS7RecipientInfosPtr_t me) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -154,8 +152,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS7SignedData_get_Tag(/* in */ IEcoPKCS7Signe
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS7SignedData_get_TaggetType(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7RecipientInfos_get_TaggetType(/* in */ IEcoPKCS7RecipientInfosPtr_t me) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -176,8 +174,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS7SignedData_get_TaggetType(/* in */ IEcoPKC
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS7SignedData_get_Type(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7RecipientInfos_get_Type(/* in */ IEcoPKCS7RecipientInfosPtr_t me) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -198,8 +196,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS7SignedData_get_Type(/* in */ IEcoPKCS7Sign
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_Count(/* in */ IEcoPKCS7SignedDataPtr_t me, /* in */ int32_t* Count) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7RecipientInfos_Count(/* in */ IEcoPKCS7RecipientInfosPtr_t me, /* in */ int32_t* Count) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -223,8 +221,8 @@ static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_Count(/* in */ IEcoPKCS7SignedD
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_Item(/* in */ IEcoPKCS7SignedDataPtr_t me, /* in */ uint32_t Index, /* out */ voidptr_t* Component) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7RecipientInfos_Item(/* in */ IEcoPKCS7RecipientInfosPtr_t me, /* in */ uint32_t Index, /* out */ voidptr_t* Component) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -248,8 +246,8 @@ static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_Item(/* in */ IEcoPKCS7SignedDa
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_Add(/* in */ IEcoPKCS7SignedDataPtr_t me, /* in */ voidptr_t Component, /* in */ int32_t* Index) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7RecipientInfos_Add(/* in */ IEcoPKCS7RecipientInfosPtr_t me, /* in */ voidptr_t Component, /* in */ int32_t* Index) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -265,7 +263,7 @@ static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_Add(/* in */ IEcoPKCS7SignedDat
 /*
  *
  * <сводка>
- *   Функция dateOfBirth
+ *   Функция name
  * </сводка>
  *
  * <описание>
@@ -273,26 +271,15 @@ static int16_t ECOCALLMETHOD CEcoPKCS7SignedData_Add(/* in */ IEcoPKCS7SignedDat
  * </описание>
  *
  */
-static IEcoPKCS7AlgorithmIdentifier* ECOCALLMETHOD CEcoPKCS7SignedData_digestAlgorithms(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static IEcoPKCS7RecipientInfo* ECOCALLMETHOD CEcoPKCS7RecipientInfos_riSet(/* in */ IEcoPKCS7RecipientInfosPtr_t me) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
 
     /* Проверка указателей */
     if (me == 0) {
         return 0; /*ERR_ECO_POINTER*/
     }
 
-    return pCMe->m_digestAlgorithms;
-}
-
-static IEcoPKCS7Version* ECOCALLMETHOD CEcoPKCS7SignedData_version(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
-
-    /* Проверка указателей */
-    if (me == 0) {
-        return 0; /*ERR_ECO_POINTER*/
-    }
-
-    return pCMe->m_version;
+    return pCMe->m_riSet;
 }
 
 /*
@@ -306,77 +293,30 @@ static IEcoPKCS7Version* ECOCALLMETHOD CEcoPKCS7SignedData_version(/* in */ IEco
  * </описание>
  *
  */
-static IEcoASNOne1ValueSet* ECOCALLMETHOD CEcoPKCS7SignedData_certificates(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
+static IEcoPKCS7RecipientInfo* ECOCALLMETHOD CEcoPKCS7RecipientInfos_riSequence(/* in */ IEcoPKCS7RecipientInfosPtr_t me) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)me;
 
     /* Проверка указателей */
     if (me == 0) {
         return 0; /*ERR_ECO_POINTER*/
     }
 
-    return pCMe->m_certificates;
+    return pCMe->m_riSequence;
 }
 
-/*
- *
- * <сводка>
- *   Функция dateOfBirth
- * </сводка>
- *
- * <описание>
- *   Функция
- * </описание>
- *
- */
-static IEcoASNOne1ValueSet* ECOCALLMETHOD CEcoPKCS7SignedData_crls(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
-
-    /* Проверка указателей */
-    if (me == 0) {
-        return 0; /*ERR_ECO_POINTER*/
-    }
-
-    return pCMe->m_crls;
-}
-
-/*
- *
- * <сводка>
- *   Функция dateOfBirth
- * </сводка>
- *
- * <описание>
- *   Функция
- * </описание>
- *
- */
-static IEcoPKCS7SignerInfos* ECOCALLMETHOD CEcoPKCS7SignedData_signerInfos(/* in */ IEcoPKCS7SignedDataPtr_t me) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)me;
-
-    /* Проверка указателей */
-    if (me == 0) {
-        return 0; /*ERR_ECO_POINTER*/
-    }
-
-    return pCMe->m_signerInfos;
-}
-
-/* Create Virtual Table IEcoPKCS7SignedData */
-IEcoPKCS7SignedDataVTbl g_xD739CAFE1BE24191A824788A1439E7A1VTbl_247D52F9 = {
-    CEcoPKCS7SignedData_QueryInterface,
-    CEcoPKCS7SignedData_AddRef,
-    CEcoPKCS7SignedData_Release,
-    CEcoPKCS7SignedData_get_Tag,
-    CEcoPKCS7SignedData_get_TaggetType,
-    CEcoPKCS7SignedData_get_Type,
-    CEcoPKCS7SignedData_Count,
-    CEcoPKCS7SignedData_Item,
-    CEcoPKCS7SignedData_Add,
-    CEcoPKCS7SignedData_version,
-    CEcoPKCS7SignedData_digestAlgorithms,
-    CEcoPKCS7SignedData_certificates,
-    CEcoPKCS7SignedData_crls,
-    CEcoPKCS7SignedData_signerInfos,
+/* Create Virtual Table IEcoPKCS7RecipientInfos */
+IEcoPKCS7RecipientInfosVTbl g_xD739CAFE1BE24191A824788A1439E7A1VTbl_247D52F9 = {
+    CEcoPKCS7RecipientInfos_QueryInterface,
+    CEcoPKCS7RecipientInfos_AddRef,
+    CEcoPKCS7RecipientInfos_Release,
+    CEcoPKCS7RecipientInfos_get_Tag,
+    CEcoPKCS7RecipientInfos_get_TaggetType,
+    CEcoPKCS7RecipientInfos_get_Type,
+    CEcoPKCS7RecipientInfos_Count,
+    CEcoPKCS7RecipientInfos_Item,
+    CEcoPKCS7RecipientInfos_Add,
+    CEcoPKCS7RecipientInfos_riSet,
+    CEcoPKCS7RecipientInfos_riSequence,
 };
 
 
@@ -391,13 +331,13 @@ IEcoPKCS7SignedDataVTbl g_xD739CAFE1BE24191A824788A1439E7A1VTbl_247D52F9 = {
  * </описание>
  *
  */
-int16_t ECOCALLMETHOD createCEcoPKCS7SignedData(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* in */ IEcoASNOne1* pIASNOne, /* out */ IEcoPKCS7SignedDataPtr_t* ppIChildInformation) {
+int16_t ECOCALLMETHOD createCEcoPKCS7RecipientInfos(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* in */ IEcoASNOne1* pIASNOne, /* out */ IEcoPKCS7RecipientInfosPtr_t* ppIChildInformation) {
     int16_t result = ERR_ECO_POINTER;
     IEcoSystem1* pISys = 0;
     IEcoInterfaceBus1* pIBus = 0;
     IEcoInterfaceBus1MemExt* pIMemExt = 0;
     IEcoMemoryAllocator1* pIMem = 0;
-    CEcoPKCS7SignedData* pCMe = 0;
+    CEcoPKCS7RecipientInfos* pCMe = 0;
     UGUID* rcid = (UGUID*)&CID_EcoMemoryManager1;
     IEcoASNOne1ValueSet* pIValueSet = 0;
 
@@ -439,7 +379,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS7SignedData(/* in */ IEcoUnknownPtr_t pIUnkS
     }
 
     /* Выделение памяти для данных экземпляра */
-    pCMe = (CEcoPKCS7SignedData*)pIMem->pVTbl->Alloc(pIMem, sizeof(CEcoPKCS7SignedData));
+    pCMe = (CEcoPKCS7RecipientInfos*)pIMem->pVTbl->Alloc(pIMem, sizeof(CEcoPKCS7RecipientInfos));
     if (pCMe == 0) {
         /* Освобождение в случае ошибки */
         pIBus->pVTbl->Release(pIBus);
@@ -457,7 +397,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS7SignedData(/* in */ IEcoUnknownPtr_t pIUnkS
     pCMe->m_cRef = 1;
 
     /* Создание таблицы функций интерфейса IEcoASNOne1ChildInformation */
-    pCMe->m_pVTblIEcoPKCS7SignedData = &g_xD739CAFE1BE24191A824788A1439E7A1VTbl_247D52F9;
+    pCMe->m_pVTblIEcoPKCS7RecipientInfos = &g_xD739CAFE1BE24191A824788A1439E7A1VTbl_247D52F9;
 
     /* Сохранение указателя на интерфейс для работы с нотацией ASN.1 */
     pCMe->m_pIASNOne = pIASNOne;
@@ -466,34 +406,16 @@ int16_t ECOCALLMETHOD createCEcoPKCS7SignedData(/* in */ IEcoUnknownPtr_t pIUnkS
     /* Инициализация данных */
     pCMe->m_SET = 0;
     pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_PC_CONSTRUCTED | ECO_ASN1_SET_TYPE, &pCMe->m_SET);
-    pCMe->m_version = 0;
-    createCEcoPKCS7Version((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_version);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pCMe->m_version, 0);
+    pCMe->m_riSet = 0;
+    createCEcoPKCS7RecipientInfo((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_riSet);
+    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pCMe->m_riSet, 0);
 
-    pCMe->m_digestAlgorithms = 0;
-    createCEcoPKCS7DigestAlgorithmIdentifiers((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_digestAlgorithms);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_digestAlgorithms, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
-
-    pCMe->m_certificates = 0;
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_certificates, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
-
-    pCMe->m_crls = 0;
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_crls, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
-
-    pCMe->m_signerInfos = 0;
-    createCEcoPKCS7SignerInfos((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_signerInfos);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_signerInfos, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_riSequence = 0;
+    createCEcoPKCS7RecipientInfo((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_riSequence);
+    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pCMe->m_riSequence, 0);
 
     /* Возврат указателя на интерфейс */
-    *ppIChildInformation = (IEcoPKCS7SignedData*)pCMe;
+    *ppIChildInformation = (IEcoPKCS7RecipientInfos*)pCMe;
 
     /* Освобождение */
     pIBus->pVTbl->Release(pIBus);
@@ -512,8 +434,8 @@ int16_t ECOCALLMETHOD createCEcoPKCS7SignedData(/* in */ IEcoUnknownPtr_t pIUnkS
  * </описание>
  *
  */
-void ECOCALLMETHOD deleteCEcoPKCS7SignedData(/* in */ IEcoPKCS7SignedDataPtr_t pIChildInformation) {
-    CEcoPKCS7SignedData* pCMe = (CEcoPKCS7SignedData*)pIChildInformation;
+void ECOCALLMETHOD deleteCEcoPKCS7RecipientInfos(/* in */ IEcoPKCS7RecipientInfosPtr_t pIChildInformation) {
+    CEcoPKCS7RecipientInfos* pCMe = (CEcoPKCS7RecipientInfos*)pIChildInformation;
     IEcoMemoryAllocator1* pIMem = 0;
 
     if (pIChildInformation != 0) {

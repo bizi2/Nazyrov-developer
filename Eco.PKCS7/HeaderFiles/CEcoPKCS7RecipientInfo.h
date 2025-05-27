@@ -17,20 +17,17 @@
  *
  */
 
-#ifndef __C_ECOPKCS7_H__
-#define __C_ECOPKCS7_H__
+#ifndef __C_ECOPKCS7RECIPIENTINFO_H__
+#define __C_ECOPKCS7RECIPIENTINFO_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
-#include "IEcoASNOne1.h"
-#include "CEcoPKCS7ContentType.h"
-#include "CEcoPKCS7Content.h"
 
-typedef struct CEcoPKCS7ContentInfo {
+typedef struct CEcoPKCS7RecipientInfo {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
-    IEcoPKCS7ContentInfoVTbl* m_pVTblIEcoPKCS7ContentInfo;
+    IEcoPKCS7RecipientInfoVTbl* m_pVTblIEcoPKCS7RecipientInfo;
 
 
     /* Счетчик ссылок */
@@ -39,21 +36,26 @@ typedef struct CEcoPKCS7ContentInfo {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
 	IEcoASNOne1ValueSet* m_SET;
-    IEcoPKCS7ContentType* m_contentType;
-	IEcoPKCS7Content* m_content;
+    IEcoPKCS7Version* m_version;
+    IEcoPKCS7IssuerAndSerialNumber* m_issuerAndSerialNumber;
+    IEcoPKCS7AlgorithmIdentifier* m_keyEncryptionAlgorithm;
+    IEcoASNOne1Value* m_encryptedKey;
 
-} CEcoPKCS7ContentInfo, *CEcoPKCS7ContentInfoPtr;
+} CEcoPKCS7RecipientInfo, *CEcoPKCS7RecipientInfoPtr;
 
 /* Инициализация экземпляра */
-int16_t ECOCALLMETHOD initCEcoPKCS7ContentInfo(/*in*/ IEcoPKCS7Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
+int16_t ECOCALLMETHOD initCEcoPKCS7RecipientInfo(/*in*/ IEcoPKCS7Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
 /* Создание экземпляра */
-int16_t ECOCALLMETHOD createCEcoPKCS7ContentInfo(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS7Ptr_t* ppIEcoPKCS7);
+int16_t ECOCALLMETHOD createCEcoPKCS7RecipientInfo(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS7Ptr_t* ppIEcoPKCS7);
 /* Удаление */
-void ECOCALLMETHOD deleteCEcoPKCS7ContentInfo(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
+void ECOCALLMETHOD deleteCEcoPKCS7RecipientInfo(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7_H__ */
+#endif /* __C_ECOPKCS7RECIPIENTINFO_H__ */

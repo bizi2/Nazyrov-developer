@@ -35,7 +35,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DynamicRelease|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -121,8 +121,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\..\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\$(Configuration)\;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;$(ECO_FRAMEWORK)\Eco.System1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;$(ECO_FRAMEWORK)\Eco.MemoryManager1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;$(ECO_FRAMEWORK)\Eco.FileSystemManagement1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>D5D671F9277042689D64A8F71CF80E6C.lib;00000000000000000000000042757331.lib;0000000000000000000000004D656D31.lib;00000000000000000000000000000100.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\$(Configuration)\;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;$(ECO_FRAMEWORK)\Eco.System1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;$(ECO_FRAMEWORK)\Eco.MemoryManager1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;$(ECO_FRAMEWORK)\Eco.FileSystemManagement1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;..\..\..\..\Eco.ASNOne.BER1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;..\..\..\..\Eco.ASNOne1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;$(ECO_FRAMEWORK)\Eco.Log1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;$(ECO_FRAMEWORK)\Eco.List1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;$(ECO_FRAMEWORK)\Eco.String1\BuildFiles\$(TargetPlatformIdentifier)\$(ProcessorArchitecture)\StaticRelease\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>D5D671F9277042689D64A8F71CF80E6C.lib;00000000000000000000000042757331.lib;0000000000000000000000004D656D31.lib;E0EA41D156824A40877EB6A011B2F7AB.lib;2C2F66F449864F509444C0F7CBE9F1CB.lib;F48EB9164869423796702F3AA50FB39D.lib;00000000000000000000000046534D31.lib;00000000000000000000000053595332.lib;97322B6765B74342BBCE38798A0B40B5.lib;84CC0A7DBABD44EEBE749C9A8312D37E.lib;53884AFC93C448ECAA929C8D3A562281.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DynamicRelease|Win32'">

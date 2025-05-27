@@ -4,11 +4,11 @@
  * </кодировка символов>
  *
  * <сводка>
- *   CEcoPKCS1OtherPrimeInfos
+ *   CEcoPKCS7DigestAlgorithmIdentifiers
  * </сводка>
  *
  * <описание>
- *   Данный исходный код описывает реализацию интерфейсов CEcoPKCS1OtherPrimeInfos
+ *   Данный исходный код описывает реализацию интерфейсов CEcoPKCS7DigestAlgorithmIdentifiers
  * </описание>
  *
  * <автор>
@@ -20,7 +20,7 @@
 #include "IEcoSystem1.h"
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
-#include "CEcoPKCS1OtherPrimeInfos.h"
+#include "CEcoPKCS7DigestAlgorithmIdentifiers.h"
 
  /*
   *
@@ -29,12 +29,12 @@
   * </сводка>
   *
   * <описание>
-  *   Функция QueryInterface для интерфейса IEcoPKCS1OtherPrimeInfos
+  *   Функция QueryInterface для интерфейса IEcoPKCS7DigestAlgorithmIdentifiers
   * </описание>
   *
   */
-static int16_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_QueryInterface(/* in */ IEcoPKCS1OtherPrimeInfosPtr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
-    CEcoPKCS1OtherPrimeInfos* pCMe = (CEcoPKCS1OtherPrimeInfos*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7DigestAlgorithmIdentifiers_QueryInterface(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)me;
 
     /* Проверка указателей */
     if (me == 0 || ppv == 0) {
@@ -42,21 +42,21 @@ static int16_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_QueryInterface(/* in */ IE
     }
 
     /* Проверка и получение запрошенного интерфейса */
-    if (IsEqualUGUID(riid, &IID_IEcoPKCS1OtherPrimeInfos)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS1OtherPrimeInfos;
-        pCMe->m_pVTblIEcoPKCS1OtherPrimeInfos->AddRef((IEcoPKCS1OtherPrimeInfos*)pCMe);
+    if (IsEqualUGUID(riid, &IID_IEcoPKCS7DigestAlgorithmIdentifiers)) {
+        *ppv = &pCMe->m_pVTblIEcoPKCS7DigestAlgorithmIdentifiers;
+        pCMe->m_pVTblIEcoPKCS7DigestAlgorithmIdentifiers->AddRef((IEcoPKCS7DigestAlgorithmIdentifiers*)pCMe);
     }
     else if (IsEqualUGUID(riid, &IID_IEcoUnknown)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS1OtherPrimeInfos;
-        pCMe->m_pVTblIEcoPKCS1OtherPrimeInfos->AddRef((IEcoPKCS1OtherPrimeInfos*)pCMe);
+        *ppv = &pCMe->m_pVTblIEcoPKCS7DigestAlgorithmIdentifiers;
+        pCMe->m_pVTblIEcoPKCS7DigestAlgorithmIdentifiers->AddRef((IEcoPKCS7DigestAlgorithmIdentifiers*)pCMe);
     }
     else if (IsEqualUGUID(riid, &IID_IEcoASNOne1Type)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS1OtherPrimeInfos;
-        pCMe->m_pVTblIEcoPKCS1OtherPrimeInfos->AddRef((IEcoPKCS1OtherPrimeInfos*)pCMe);
+        *ppv = &pCMe->m_pVTblIEcoPKCS7DigestAlgorithmIdentifiers;
+        pCMe->m_pVTblIEcoPKCS7DigestAlgorithmIdentifiers->AddRef((IEcoPKCS7DigestAlgorithmIdentifiers*)pCMe);
     }
     else if (IsEqualUGUID(riid, &IID_IEcoASNOne1Value)) {
-        *ppv = &pCMe->m_pVTblIEcoPKCS1OtherPrimeInfos;
-        pCMe->m_pVTblIEcoPKCS1OtherPrimeInfos->AddRef((IEcoPKCS1OtherPrimeInfos*)pCMe);
+        *ppv = &pCMe->m_pVTblIEcoPKCS7DigestAlgorithmIdentifiers;
+        pCMe->m_pVTblIEcoPKCS7DigestAlgorithmIdentifiers->AddRef((IEcoPKCS7DigestAlgorithmIdentifiers*)pCMe);
     }
     else {
         *ppv = 0;
@@ -72,12 +72,12 @@ static int16_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_QueryInterface(/* in */ IE
  * </сводка>
  *
  * <описание>
- *   Функция AddRef для интерфейса IEcoPKCS1OtherPrimeInfos
+ *   Функция AddRef для интерфейса IEcoPKCS7DigestAlgorithmIdentifiers
  * </описание>
  *
  */
-static uint32_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_AddRef(/* in */ IEcoPKCS1OtherPrimeInfosPtr_t me) {
-    CEcoPKCS1OtherPrimeInfos* pCMe = (CEcoPKCS1OtherPrimeInfos*)me;
+static uint32_t ECOCALLMETHOD CEcoPKCS7DigestAlgorithmIdentifiers_AddRef(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me) {
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)me;
 
     /* Проверка указателя */
     if (me == 0) {
@@ -94,12 +94,12 @@ static uint32_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_AddRef(/* in */ IEcoPKCS1
  * </сводка>
  *
  * <описание>
- *   Функция Release для интерфейса IEcoPKCS1OtherPrimeInfos
+ *   Функция Release для интерфейса IEcoPKCS7DigestAlgorithmIdentifiers
  * </описание>
  *
  */
-static uint32_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_Release(/* in */ IEcoPKCS1OtherPrimeInfosPtr_t me) {
-    CEcoPKCS1OtherPrimeInfos* pCMe = (CEcoPKCS1OtherPrimeInfos*)me;
+static uint32_t ECOCALLMETHOD CEcoPKCS7DigestAlgorithmIdentifiers_Release(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me) {
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)me;
 
     /* Проверка указателя */
     if (me == 0) {
@@ -111,7 +111,7 @@ static uint32_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_Release(/* in */ IEcoPKCS
 
     /* В случае обнуления счетчика, освобождение данных экземпляра */
     if (pCMe->m_cRef == 0) {
-        deleteCEcoPKCS1OtherPrimeInfos((IEcoPKCS1OtherPrimeInfos*)pCMe);
+        deleteCEcoPKCS7DigestAlgorithmIdentifiers((IEcoPKCS7DigestAlgorithmIdentifiers*)pCMe);
         return 0;
     }
     return pCMe->m_cRef;
@@ -128,8 +128,8 @@ static uint32_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_Release(/* in */ IEcoPKCS
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_get_Tag(/* in */ IEcoPKCS1OtherPrimeInfosPtr_t me) {
-    CEcoPKCS1OtherPrimeInfos* pCMe = (CEcoPKCS1OtherPrimeInfos*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7DigestAlgorithmIdentifiers_get_Tag(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me) {
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -150,8 +150,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_get_Tag(/* in */ IEcoPKCS1
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_get_TaggetType(/* in */ IEcoPKCS1OtherPrimeInfosPtr_t me) {
-    CEcoPKCS1OtherPrimeInfos* pCMe = (CEcoPKCS1OtherPrimeInfos*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7DigestAlgorithmIdentifiers_get_TaggetType(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me) {
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -172,8 +172,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_get_TaggetType(/* in */ IE
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_get_Type(/* in */ IEcoPKCS1OtherPrimeInfosPtr_t me) {
-    CEcoPKCS1OtherPrimeInfos* pCMe = (CEcoPKCS1OtherPrimeInfos*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7DigestAlgorithmIdentifiers_get_Type(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me) {
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -194,8 +194,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_get_Type(/* in */ IEcoPKCS
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_set_Value(/* in */ IEcoPKCS1OtherPrimeInfosPtr_t me, /* in */ voidptr_t Value, /* in */ int32_t Size) {
-    CEcoPKCS1OtherPrimeInfos* pCMe = (CEcoPKCS1OtherPrimeInfos*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7DigestAlgorithmIdentifiers_set_Value(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me, /* in */ voidptr_t Value, /* in */ int32_t Size) {
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -219,8 +219,8 @@ static int16_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_set_Value(/* in */ IEcoPKC
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_get_Value(/* in */ IEcoPKCS1OtherPrimeInfosPtr_t me, /* out */ voidptr_t Value, /* out */ int32_t* Size) {
-    CEcoPKCS1OtherPrimeInfos* pCMe = (CEcoPKCS1OtherPrimeInfos*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7DigestAlgorithmIdentifiers_get_Value(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t me, /* out */ voidptr_t Value, /* out */ int32_t* Size) {
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -233,16 +233,16 @@ static int16_t ECOCALLMETHOD CEcoPKCS1OtherPrimeInfos_get_Value(/* in */ IEcoPKC
     return result;
 }
 
-/* Create Virtual Table IEcoPKCS1OtherPrimeInfos */
-IEcoPKCS1OtherPrimeInfosVTbl g_x440D2626FE3349A08266393C3E7987C2 = {
-    CEcoPKCS1OtherPrimeInfos_QueryInterface,
-    CEcoPKCS1OtherPrimeInfos_AddRef,
-    CEcoPKCS1OtherPrimeInfos_Release,
-    CEcoPKCS1OtherPrimeInfos_get_Tag,
-    CEcoPKCS1OtherPrimeInfos_get_TaggetType,
-    CEcoPKCS1OtherPrimeInfos_get_Type,
-    CEcoPKCS1OtherPrimeInfos_set_Value,
-    CEcoPKCS1OtherPrimeInfos_get_Value
+/* Create Virtual Table IEcoPKCS7DigestAlgorithmIdentifiers */
+IEcoPKCS7DigestAlgorithmIdentifiersVTbl g_x440D2626FE3349A08266393C3E7987CCVTbl_247D52F9 = {
+    CEcoPKCS7DigestAlgorithmIdentifiers_QueryInterface,
+    CEcoPKCS7DigestAlgorithmIdentifiers_AddRef,
+    CEcoPKCS7DigestAlgorithmIdentifiers_Release,
+    CEcoPKCS7DigestAlgorithmIdentifiers_get_Tag,
+    CEcoPKCS7DigestAlgorithmIdentifiers_get_TaggetType,
+    CEcoPKCS7DigestAlgorithmIdentifiers_get_Type,
+    CEcoPKCS7DigestAlgorithmIdentifiers_set_Value,
+    CEcoPKCS7DigestAlgorithmIdentifiers_get_Value
 };
 
 /*
@@ -256,17 +256,17 @@ IEcoPKCS1OtherPrimeInfosVTbl g_x440D2626FE3349A08266393C3E7987C2 = {
  * </описание>
  *
  */
-int16_t ECOCALLMETHOD createCEcoPKCS1OtherPrimeInfos(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* in */ IEcoASNOne1* pIASNOne, /* out */ IEcoPKCS1OtherPrimeInfosPtr_t* pInfo) {
+int16_t ECOCALLMETHOD createCEcoPKCS7DigestAlgorithmIdentifiers(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* in */ IEcoASNOne1* pIASNOne, /* out */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t* pDigestAlgorithmIdentifiers) {
     int16_t result = ERR_ECO_POINTER;
     IEcoSystem1* pISys = 0;
     IEcoInterfaceBus1* pIBus = 0;
     IEcoInterfaceBus1MemExt* pIMemExt = 0;
     IEcoMemoryAllocator1* pIMem = 0;
-    CEcoPKCS1OtherPrimeInfos* pCMe = 0;
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = 0;
     UGUID* rcid = (UGUID*)&CID_EcoMemoryManager1;
 
     /* Проверка указателей */
-    if (pInfo == 0 || pIUnkSystem == 0) {
+    if (pDigestAlgorithmIdentifiers == 0 || pIUnkSystem == 0) {
         return result; /* ERR_ECO_POINTER */
     }
 
@@ -303,7 +303,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS1OtherPrimeInfos(/* in */ IEcoUnknownPtr_t p
     }
 
     /* Выделение памяти для данных экземпляра */
-    pCMe = (CEcoPKCS1OtherPrimeInfos*)pIMem->pVTbl->Alloc(pIMem, sizeof(CEcoPKCS1OtherPrimeInfos));
+    pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)pIMem->pVTbl->Alloc(pIMem, sizeof(CEcoPKCS7DigestAlgorithmIdentifiers));
     if (pCMe == 0) {
         /* Освобождение в случае ошибки */
         pIBus->pVTbl->Release(pIBus);
@@ -321,7 +321,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS1OtherPrimeInfos(/* in */ IEcoUnknownPtr_t p
     pCMe->m_cRef = 1;
 
     /* Создание таблицы функций интерфейса IEcoASNOne1EmployeeNumber */
-    pCMe->m_pVTblIEcoPKCS1OtherPrimeInfos = &g_x440D2626FE3349A08266393C3E7987C2;
+    pCMe->m_pVTblIEcoPKCS7DigestAlgorithmIdentifiers = &g_x440D2626FE3349A08266393C3E7987CCVTbl_247D52F9;
 
     /* Сохранение указателя на интерфейс для работы с нотацией ASN.1 */
     pCMe->m_pIASNOne = pIASNOne;
@@ -332,7 +332,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS1OtherPrimeInfos(/* in */ IEcoUnknownPtr_t p
     pIASNOne->pVTbl->new_Value(pIASNOne, ECO_ASN1_CLASS_APPLICATION | 2, ECO_ASN1_TAG_IMPLICIT, ECO_ASN1_INTEGER_TYPE, &pCMe->m_value);
 
     /* Возврат указателя на интерфейс */
-    *pInfo = (IEcoPKCS1OtherPrimeInfos*)pCMe;
+    *pDigestAlgorithmIdentifiers = (IEcoPKCS7DigestAlgorithmIdentifiers*)pCMe;
 
     /* Освобождение */
     pIBus->pVTbl->Release(pIBus);
@@ -351,8 +351,8 @@ int16_t ECOCALLMETHOD createCEcoPKCS1OtherPrimeInfos(/* in */ IEcoUnknownPtr_t p
  * </описание>
  *
  */
-void ECOCALLMETHOD deleteCEcoPKCS1OtherPrimeInfos(/* in */ IEcoPKCS1OtherPrimeInfosPtr_t pIEmployeeNumber) {
-    CEcoPKCS1OtherPrimeInfos* pCMe = (CEcoPKCS1OtherPrimeInfos*)pIEmployeeNumber;
+void ECOCALLMETHOD deleteCEcoPKCS7DigestAlgorithmIdentifiers(/* in */ IEcoPKCS7DigestAlgorithmIdentifiersPtr_t pIEmployeeNumber) {
+    CEcoPKCS7DigestAlgorithmIdentifiers* pCMe = (CEcoPKCS7DigestAlgorithmIdentifiers*)pIEmployeeNumber;
     IEcoMemoryAllocator1* pIMem = 0;
 
     if (pIEmployeeNumber != 0) {

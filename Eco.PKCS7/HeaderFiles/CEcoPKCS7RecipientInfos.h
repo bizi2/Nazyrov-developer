@@ -17,17 +17,18 @@
  *
  */
 
-#ifndef __C_ECOPKCS7ENCRYPTEDDATA_H__
-#define __C_ECOPKCS7ENCRYPTEDDATA_H__
+#ifndef __C_ECOPKCS7RECIPIENTINFOS_H__
+#define __C_ECOPKCS7RECIPIENTINFOS_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
 
-typedef struct CEcoPKCS7EncryptedData {
+typedef struct CEcoPKCS7RecipientInfos {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
-    IEcoPKCS7EncryptedDataVTbl* m_pVTblIEcoPKCS7EncryptedData;
+    IEcoPKCS7RecipientInfosVTbl* m_pVTblIEcoPKCS7RecipientInfos;
+
 
     /* Счетчик ссылок */
     uint32_t m_cRef;
@@ -35,24 +36,24 @@ typedef struct CEcoPKCS7EncryptedData {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
-    /* Системный интерфейс */
-    IEcoSystem1* m_pISys;
-
     /* Интерфейс для работы с нотацией ASN.1 */
     IEcoASNOne1* m_pIASNOne;
 
+    /* Системный интерфейс */
+    IEcoSystem1* m_pISys;
+
     /* Данные экземпляра */
 	IEcoASNOne1ValueSet* m_SET;
-    IEcoPKCS7Version* m_version;
-	IEcoPKCS7EncryptedContentInfo* m_encryptedContentInfo;
+    IEcoPKCS7RecipientInfo* m_riSet;
+    IEcoPKCS7RecipientInfo* m_riSequence;
 
-} CEcoPKCS7EncryptedData, *CEcoPKCS7EncryptedDataPtr;
+} CEcoPKCS7RecipientInfos, *CEcoPKCS7RecipientInfosPtr;
 
 /* Инициализация экземпляра */
-int16_t ECOCALLMETHOD initCEcoPKCS7EncryptedData(/*in*/ IEcoPKCS7Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
+int16_t ECOCALLMETHOD initCEcoPKCS7RecipientInfos(/*in*/ IEcoPKCS7Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
 /* Создание экземпляра */
-int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedData(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS7Ptr_t* ppIEcoPKCS7);
+int16_t ECOCALLMETHOD createCEcoPKCS7RecipientInfos(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS7Ptr_t* ppIEcoPKCS7);
 /* Удаление */
-void ECOCALLMETHOD deleteCEcoPKCS7EncryptedData(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
+void ECOCALLMETHOD deleteCEcoPKCS7RecipientInfos(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7ENCRYPTEDDATA_H__ */
+#endif /* __C_ECOPKCS7RECIPIENTINFOS_H__ */

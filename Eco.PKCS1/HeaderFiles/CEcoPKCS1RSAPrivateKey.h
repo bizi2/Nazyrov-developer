@@ -21,11 +21,8 @@
 #define __C_ECOPKCS1RSAPRIVATEKEY_H__
 
 #include "IEcoPKCS1.h"
-#include "IEcoASNOne1.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
-#include "CEcoPKCS1Version.h"
-#include "CEcoPKCS1OtherPrimeInfos.h"
 
 typedef struct CEcoPKCS1RSAPrivateKey {
 
@@ -45,7 +42,7 @@ typedef struct CEcoPKCS1RSAPrivateKey {
 	IEcoASNOne1* m_pIASNOne;
 
     /* Данные экземпляра */
-	IEcoASNOne1ValueSet* m_SET;
+	IEcoASNOne1ValueSet* m_SEQUENCE;
 	IEcoPKCS1Version* m_version;
 	IEcoASNOne1Value* m_modulus;
 	IEcoASNOne1Value* m_publicExponent;
@@ -60,7 +57,7 @@ typedef struct CEcoPKCS1RSAPrivateKey {
 } CEcoPKCS1RSAPrivateKey, *CEcoPKCS1RSAPrivateKeyPtr;
 
 /* Создание экземпляра */
-int16_t ECOCALLMETHOD createCEcoPKCS1RSAPrivateKey(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS1RSAPrivateKeyPtr_t* ppIEcoPKCS1);
+int16_t ECOCALLMETHOD createCEcoPKCS1RSAPrivateKey(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* in */ IEcoASNOne1* pIASNOne, /* out */ IEcoPKCS1RSAPrivateKeyPtr_t* ppIChildInformation);
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS1RSAPrivateKey(/* in */ IEcoPKCS1RSAPrivateKeyPtr_t pIEcoPKCS1);
 

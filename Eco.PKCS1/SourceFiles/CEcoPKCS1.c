@@ -21,6 +21,9 @@
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
 #include "CEcoPKCS1.h"
+#include "IdEcoASNOne1.h"
+#include "CEcoPKCS1RSAPrivateKey.h"
+#include "CEcoPKCS1RSAPublicKey.h"
 
 /*
  *
@@ -190,11 +193,65 @@ int16_t ECOCALLMETHOD initCEcoPKCS1_A50FB39D(/*in*/ IEcoPKCS1Ptr_t me, /* in */ 
     return result;
 }
 
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS1_A50FB39D_new_RSAPrivateKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS1_A50FB39D_new_RSAPrivateKey(/* in */ IEcoPKCS1Ptr_t me, /* out */ IEcoPKCS1RSAPrivateKey** ppIPKCS1RSAPrivateKey) {
+    CEcoPKCS1_A50FB39D* pCMe = (CEcoPKCS1_A50FB39D*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS1RSAPrivateKey((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS1RSAPrivateKey);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS1_A50FB39D_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS1_A50FB39D_new_RSAPublicKey(/* in */ IEcoPKCS1Ptr_t me, /* out */ IEcoPKCS1RSAPublicKey** ppIPKCS1RSAPublicKey) {
+    CEcoPKCS1_A50FB39D* pCMe = (CEcoPKCS1_A50FB39D*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS1RSAPublicKey((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS1RSAPublicKey);
+
+
+    return result;
+}
+
 /* Create Virtual Table IEcoPKCS1 */
 IEcoPKCS1VTbl g_x0873B45E04504CCFA2C92CDEAD2A7855VTbl_A50FB39D = {
     CEcoPKCS1_A50FB39D_QueryInterface,
     CEcoPKCS1_A50FB39D_AddRef,
     CEcoPKCS1_A50FB39D_Release,
+    CEcoPKCS1_A50FB39D_new_RSAPrivateKey,
+    CEcoPKCS1_A50FB39D_new_RSAPublicKey
 };
 
 //IEcoPKCS1EncoderVTbl g_x0873B45E04504CCFA2C92CDEAD2A7851VTbl_A50FB39D = {

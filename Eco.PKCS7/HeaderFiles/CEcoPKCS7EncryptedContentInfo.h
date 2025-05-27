@@ -23,7 +23,6 @@
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
-#include "IEcoASNOne1.h"
 
 typedef struct CEcoPKCS7EncryptedContentInfo {
 
@@ -45,9 +44,9 @@ typedef struct CEcoPKCS7EncryptedContentInfo {
 
     /* Данные экземпляра */
 	IEcoASNOne1ValueSet* m_SET;
-    IEcoPKCS7ContentType* m_contentType;
-	IEcoPKCS7ContentEncryptionAlgorithmIdentifier* m_contentEncryptionAlgorithm;
-	IEcoPKCS7EncryptedContent* m_encryptedContent;
+    IEcoASNOne1Value* m_contentType;
+	IEcoPKCS7AlgorithmIdentifier* m_contentEncryptionAlgorithm;
+	IEcoASNOne1Value* m_encryptedContent;
 
 } CEcoPKCS7EncryptedContentInfo, *CEcoPKCS7EncryptedContentInfoPtr;
 

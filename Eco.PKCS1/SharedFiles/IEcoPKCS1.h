@@ -25,8 +25,11 @@
 #define __I_ECO_PKCS_1_H__
 
 #include "IEcoBase1.h"
-#include "CEcoPKCS1Version.h"
-#include "CEcoPKCS1OtherPrimeInfos.h"
+#include "IEcoASNOne1.h"
+
+#ifndef __IID_IEcoPKCS1Version
+static const UGUID IID_IEcoPKCS1Version = { 0x01, 0x10, {0x0D, 0xFA, 0xC7, 0xE5, 0x15, 0x06, 0x40, 0x44, 0x85, 0x4A, 0x1B, 0x35, 0xF3, 0x50, 0x55, 0x43} };
+#endif /* __IID_IEcoPKCS1Version */
 
 typedef struct IEcoPKCS1Version* IEcoPKCS1VersionPtr_t;
 
@@ -52,6 +55,10 @@ typedef struct IEcoPKCS1VersionVTbl {
 interface IEcoPKCS1Version {
     struct IEcoPKCS1VersionVTbl* pVTbl;
 } IEcoPKCS1Version;
+
+#ifndef __IID_IEcoPKCS1OtherPrimeInfos
+static const UGUID IID_IEcoPKCS1OtherPrimeInfos = { 0x01, 0x10, {0x0D, 0xFA, 0xC7, 0xE5, 0x15, 0x06, 0x40, 0x44, 0x85, 0x4A, 0x1B, 0x35, 0xF3, 0x50, 0x55, 0x44} };
+#endif /* __IID_IEcoPKCS1OtherPrimeInfos */
 
 typedef struct IEcoPKCS1OtherPrimeInfos* IEcoPKCS1OtherPrimeInfosPtr_t;
 
@@ -148,7 +155,7 @@ typedef struct IEcoPKCS1RSAPrivateKeyVTbl {
     IEcoASNOne1Value* (ECOCALLMETHOD *exponent1)(/* in */ IEcoPKCS1RSAPrivateKeyPtr_t me);
     IEcoASNOne1Value* (ECOCALLMETHOD *exponent2)(/* in */ IEcoPKCS1RSAPrivateKeyPtr_t me);
     IEcoASNOne1Value* (ECOCALLMETHOD *coefficient)(/* in */ IEcoPKCS1RSAPrivateKeyPtr_t me);
-    IEcoPKCS1OtherPrimeInfos* (ECOCALLMETHOD *otherPrimeInfos)(/* in */ IEcoPKCS1RSAPrivateKeyPtr_t me, /* in | out */ bool_t* OPTIONAL);
+    IEcoPKCS1OtherPrimeInfos* (ECOCALLMETHOD *otherPrimeInfos)(/* in */ IEcoPKCS1RSAPrivateKeyPtr_t me);
 
 
 } IEcoPKCS1RSAPrivateKeyVTbl, *IEcoPKCS1RSAPrivateKeyVTblPtr_t;
@@ -174,7 +181,8 @@ typedef struct IEcoPKCS1VTbl {
     uint32_t (ECOCALLMETHOD *Release)(/* in */ IEcoPKCS1Ptr_t me);
 
     /* IEcoPKCS1 */
-    int16_t (ECOCALLMETHOD *MyFunction)(/* in */ IEcoPKCS1Ptr_t me, /* in */ char_t* Name, /* out */ char_t** CopyName);
+    int16_t (ECOCALLMETHOD *new_RSAPrivateKey)(/* in */ IEcoPKCS1Ptr_t me, /* out */ IEcoPKCS1RSAPrivateKey* ppIPKCS1RSAPrivateKey);
+    int16_t (ECOCALLMETHOD *new_RSAPublicKey)(/* in */ IEcoPKCS1Ptr_t me, /* out */ IEcoPKCS1RSAPublicKey* ppIPKCS1RSAPublicKey);
 
 } IEcoPKCS1VTbl, *IEcoPKCS1VTblPtr_t;
 

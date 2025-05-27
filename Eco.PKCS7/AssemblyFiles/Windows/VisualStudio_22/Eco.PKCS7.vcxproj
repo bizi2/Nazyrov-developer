@@ -29,13 +29,13 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='StaticDebug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DynamicRelease|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -173,16 +173,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7.h" />
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7AlgorithmIdentifier.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7ContentInfo.h" />
-    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7ContentType.h" />
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7DigestAlgorithmIdentifiers.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7DigestInfo.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7EncryptedContentInfo.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7EncryptedData.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7EnvelopedData.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7Factory.h" />
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7IssuerAndSerialNumber.h" />
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7RecipientInfo.h" />
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7RecipientInfos.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7SignedAndEnvelopedData.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7SignedData.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7SignerInfo.h" />
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7SignerInfos.h" />
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7Version.h" />
     <ClInclude Include="..\..\..\SharedFiles\ErrEcoPKCS7.h" />
     <ClInclude Include="..\..\..\SharedFiles\IdEcoPKCS7.h" />
@@ -190,16 +195,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7.c" />
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7AlgorithmIdentifier.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7ContentInfo.c" />
-    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7ContentType.c" />
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7DigestAlgorithmIdentifiers.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7DigestInfo.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7EncryptedContentInfo.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7EncryptedData.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7EnvelopedData.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7Factory.c" />
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7IssuerAndSerialNumber.c" />
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7RecipientInfo.c" />
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7RecipientInfos.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7SignedAndEnvelopedData.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7SignedData.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7SignerInfo.c" />
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7SignerInfos.c" />
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7Version.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

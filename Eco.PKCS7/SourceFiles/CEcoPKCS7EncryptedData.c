@@ -4,11 +4,11 @@
  * </кодировка символов>
  *
  * <сводка>
- *   CEcoPKCS7_6EA80DA5
+ *   CEcoPKCS7EncryptedData
  * </сводка>
  *
  * <описание>
- *   Данный исходный код описывает реализацию интерфейсов CEcoPKCS7_6EA80DA5
+ *   Данный исходный код описывает реализацию интерфейсов CEcoPKCS7EncryptedData
  * </описание>
  *
  * <автор>
@@ -20,40 +20,45 @@
 #include "IEcoSystem1.h"
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
-#include "CEcoPKCS7.h"
 #include "CEcoPKCS7EncryptedData.h"
+#include "CEcoPKCS7Version.h"
+#include "CEcoPKCS7EncryptedContentInfo.h"
 
-/*
- *
- * <сводка>
- *   Функция QueryInterface
- * </сводка>
- *
- * <описание>
- *   Функция QueryInterface для интерфейса IEcoPKCS7EncryptedData
- * </описание>
- *
- */
-int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_QueryInterface(/* in */ IEcoPKCS7EncryptedDataPtr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+ /*
+  *
+  * <сводка>
+  *   Функция QueryInterface
+  * </сводка>
+  *
+  * <описание>
+  *   Функция QueryInterface для интерфейса IEcoPKCS7EncryptedData
+  * </описание>
+  *
+  */
+static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_QueryInterface(/* in */ IEcoPKCS7EncryptedDataPtr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
 
     /* Проверка указателей */
     if (me == 0 || ppv == 0) {
-        return -1;
+        return ERR_ECO_POINTER;
     }
 
     /* Проверка и получение запрошенного интерфейса */
-    if ( IsEqualUGUID(riid, &IID_IEcoPKCS7EncryptedData) ) {
+    if (IsEqualUGUID(riid, &IID_IEcoPKCS7EncryptedData)) {
         *ppv = &pCMe->m_pVTblIEcoPKCS7EncryptedData;
         pCMe->m_pVTblIEcoPKCS7EncryptedData->AddRef((IEcoPKCS7EncryptedData*)pCMe);
     }
-    else if ( IsEqualUGUID(riid, &IID_IEcoUnknown) ) {
+    else if (IsEqualUGUID(riid, &IID_IEcoUnknown)) {
         *ppv = &pCMe->m_pVTblIEcoPKCS7EncryptedData;
         pCMe->m_pVTblIEcoPKCS7EncryptedData->AddRef((IEcoPKCS7EncryptedData*)pCMe);
     }
-    else if ( IsEqualUGUID(riid, &IID_IEcoASNOne1ValueSet) ) {
-        *ppv = &pCMe->m_pVTblIChildInformation;
-        pCMe->m_pVTblIChildInformation->AddRef((IEcoASNOne1ExChildInformation*)pCMe);
+    else if (IsEqualUGUID(riid, &IID_IEcoASNOne1Type)) {
+        *ppv = &pCMe->m_pVTblIEcoPKCS7EncryptedData;
+        pCMe->m_pVTblIEcoPKCS7EncryptedData->AddRef((IEcoPKCS7EncryptedData*)pCMe);
+    }
+    else if (IsEqualUGUID(riid, &IID_IEcoASNOne1ValueSet)) {
+        *ppv = &pCMe->m_pVTblIEcoPKCS7EncryptedData;
+        pCMe->m_pVTblIEcoPKCS7EncryptedData->AddRef((IEcoPKCS7EncryptedData*)pCMe);
     }
     else {
         *ppv = 0;
@@ -73,12 +78,12 @@ int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_QueryInterface(/* in */ IE
  * </описание>
  *
  */
-uint32_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_AddRef(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static uint32_t ECOCALLMETHOD CEcoPKCS7EncryptedData_AddRef(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
 
     /* Проверка указателя */
-    if (me == 0 ) {
-        return -1;
+    if (me == 0) {
+        return -1; /* ERR_ECO_POINTER */
     }
 
     return ++pCMe->m_cRef;
@@ -95,104 +100,23 @@ uint32_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_AddRef(/* in */ IEcoPKCS7
  * </описание>
  *
  */
-uint32_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_Release(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static uint32_t ECOCALLMETHOD CEcoPKCS7EncryptedData_Release(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
 
     /* Проверка указателя */
-    if (me == 0 ) {
-        return -1;
+    if (me == 0) {
+        return -1; /* ERR_ECO_POINTER */
     }
 
     /* Уменьшение счетчика ссылок на компонент */
     --pCMe->m_cRef;
 
     /* В случае обнуления счетчика, освобождение данных экземпляра */
-    if ( pCMe->m_cRef == 0 ) {
-        deleteCEcoPKCS7EncryptedData_6EA80DA5((IEcoPKCS7EncryptedData*)pCMe);
+    if (pCMe->m_cRef == 0) {
+        deleteCEcoPKCS7EncryptedData((IEcoPKCS7EncryptedData*)pCMe);
         return 0;
     }
     return pCMe->m_cRef;
-}
-
-/*
- *
- * <сводка>
- *   Функция MyFunction
- * </сводка>
- *
- * <описание>
- *   Функция
- * </описание>
- *
- */
-int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_MyFunction(/* in */ IEcoPKCS7EncryptedDataPtr_t me, /* in */ char_t* Name, /* out */ char_t** copyName) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
-    int16_t index = 0;
-
-    /* Проверка указателей */
-    if (me == 0 || Name == 0 || copyName == 0) {
-        return -1;
-    }
-
-    /* Копирование строки */
-    while(Name[index] != 0) {
-        index++;
-    }
-    pCMe->m_Name = (char_t*)pCMe->m_pIMem->pVTbl->Alloc(pCMe->m_pIMem, index + 1);
-    index = 0;
-    while(Name[index] != 0) {
-        pCMe->m_Name[index] = Name[index];
-        index++;
-    }
-    *copyName = pCMe->m_Name;
-
-    return 0;
-}
-
-
-
-
-/*
- *
- * <сводка>
- *   Функция Init
- * </сводка>
- *
- * <описание>
- *   Функция инициализации экземпляра
- * </описание>
- *
- */
-int16_t ECOCALLMETHOD initCEcoPKCS7EncryptedData_6EA80DA5(/*in*/ IEcoPKCS7EncryptedDataPtr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
-    IEcoInterfaceBus1* pIBus = 0;
-    int16_t result = -1;
-
-    /* Проверка указателей */
-    if (me == 0 ) {
-        return result;
-    }
-
-    /* Сохранение указателя на системный интерфейс */
-    pCMe->m_pISys = (IEcoSystem1*)pIUnkSystem;
-
-    /* Получение интерфейса для работы с интерфейсной шиной */
-    result = pCMe->m_pISys->pVTbl->QueryInterface(pCMe->m_pISys, &IID_IEcoInterfaceBus1, (void **)&pIBus);
-
-    /* Проверка указателей */
-    if (me == 0 ) {
-        return result;
-    }
-
-    /* Сохранение указателя на системный интерфейс */
-    pCMe->m_pISys = (IEcoSystem1*)pIUnkSystem;
-
-
-
-    /* Освобождение */
-    pIBus->pVTbl->Release(pIBus);
-	
-    return result;
 }
 
 
@@ -207,8 +131,8 @@ int16_t ECOCALLMETHOD initCEcoPKCS7EncryptedData_6EA80DA5(/*in*/ IEcoPKCS7Encryp
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_get_Tag(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7EncryptedData_get_Tag(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -229,8 +153,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_get_Tag(/* in */ IE
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_get_TaggetType(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7EncryptedData_get_TaggetType(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -251,8 +175,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_get_TaggetType(/* i
  * </описание>
  *
  */
-static uint8_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_get_Type(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static uint8_t ECOCALLMETHOD CEcoPKCS7EncryptedData_get_Type(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -273,8 +197,8 @@ static uint8_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_get_Type(/* in */ I
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_Count(/* in */ IEcoPKCS7EncryptedDataPtr_t me, /* in */ int32_t* Count) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_Count(/* in */ IEcoPKCS7EncryptedDataPtr_t me, /* in */ int32_t* Count) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -298,8 +222,8 @@ static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_Count(/* in */ IEco
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_Item(/* in */ IEcoPKCS7EncryptedDataPtr_t me, /* in */ uint32_t Index, /* out */ voidptr_t* Component) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_Item(/* in */ IEcoPKCS7EncryptedDataPtr_t me, /* in */ uint32_t Index, /* out */ voidptr_t* Component) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -323,8 +247,8 @@ static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_Item(/* in */ IEcoP
  * </описание>
  *
  */
-static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_Add(/* in */ IEcoPKCS7EncryptedDataPtr_t me, /* in */ voidptr_t Component, /* in */ int32_t* Index) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_Add(/* in */ IEcoPKCS7EncryptedDataPtr_t me, /* in */ voidptr_t Component, /* in */ int32_t* Index) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
     int16_t result;
 
     /* Проверка указателей */
@@ -348,15 +272,15 @@ static int16_t ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_Add(/* in */ IEcoPK
  * </описание>
  *
  */
-static IEcoPKCS7EncryptedDataContentType* ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_contentType(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static IEcoPKCS7Version* ECOCALLMETHOD CEcoPKCS7EncryptedData_version(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
 
     /* Проверка указателей */
     if (me == 0) {
         return 0; /*ERR_ECO_POINTER*/
     }
 
-    return pCMe->m_contentType;
+    return pCMe->m_version;
 }
 
 /*
@@ -370,19 +294,8 @@ static IEcoPKCS7EncryptedDataContentType* ECOCALLMETHOD CEcoPKCS7EncryptedData_6
  * </описание>
  *
  */
-static IEcoPKCS7Version* ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_version(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
-
-    /* Проверка указателей */
-    if (me == 0) {
-        return 0; /*ERR_ECO_POINTER*/
-    }
-
-    return pCMe->m_version;
-}
-
-static IEcoPKCS7EncryptedContentInfo* ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80DA5_encryptedContentInfo(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)me;
+static IEcoPKCS7EncryptedContentInfo* ECOCALLMETHOD CEcoPKCS7EncryptedData_encryptedContentInfo(/* in */ IEcoPKCS7EncryptedDataPtr_t me) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)me;
 
     /* Проверка указателей */
     if (me == 0) {
@@ -393,22 +306,19 @@ static IEcoPKCS7EncryptedContentInfo* ECOCALLMETHOD CEcoPKCS7EncryptedData_6EA80
 }
 
 /* Create Virtual Table IEcoPKCS7EncryptedData */
-IEcoPKCS7EncryptedDataVTbl g_x9748EA58DD7541E5B0A203702BD96EF6VTbl_6EA80DA5 = {
-    CEcoPKCS7EncryptedData_6EA80DA5_QueryInterface,
-    CEcoPKCS7EncryptedData_6EA80DA5_AddRef,
-    CEcoPKCS7EncryptedData_6EA80DA5_Release,
-    CEcoPKCS7EncryptedData_6EA80DA5_MyFunction,
-	CEcoPKCS7EncryptedData_6EA80DA5_get_Tag,
-    CEcoPKCS7EncryptedData_6EA80DA5_get_TaggetType,
-    CEcoPKCS7EncryptedData_6EA80DA5_get_Type,
-    CEcoPKCS7EncryptedData_6EA80DA5_Count,
-    CEcoPKCS7EncryptedData_6EA80DA5_Item,
-    CEcoPKCS7EncryptedData_6EA80DA5_Add,
-    CEcoPKCS7EncryptedData_6EA80DA5_version,
-    CEcoPKCS7EncryptedData_6EA80DA5_encryptedContentInfo
+IEcoPKCS7EncryptedDataVTbl g_xD739CAFE1BE24191A824788A1439E7A1VTbl_247D52F9 = {
+    CEcoPKCS7EncryptedData_QueryInterface,
+    CEcoPKCS7EncryptedData_AddRef,
+    CEcoPKCS7EncryptedData_Release,
+    CEcoPKCS7EncryptedData_get_Tag,
+    CEcoPKCS7EncryptedData_get_TaggetType,
+    CEcoPKCS7EncryptedData_get_Type,
+    CEcoPKCS7EncryptedData_Count,
+    CEcoPKCS7EncryptedData_Item,
+    CEcoPKCS7EncryptedData_Add,
+    CEcoPKCS7EncryptedData_version,
+    CEcoPKCS7EncryptedData_encryptedContentInfo,
 };
-
-
 
 
 /*
@@ -422,13 +332,13 @@ IEcoPKCS7EncryptedDataVTbl g_x9748EA58DD7541E5B0A203702BD96EF6VTbl_6EA80DA5 = {
  * </описание>
  *
  */
-int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedData_6EA80DA5(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS7EncryptedDataPtr_t* ppIEcoPKCS7EncryptedData) {
+int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedData(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* in */ IEcoASNOne1* pIASNOne, /* out */ IEcoPKCS7EncryptedDataPtr_t* ppIChildInformation) {
     int16_t result = ERR_ECO_POINTER;
     IEcoSystem1* pISys = 0;
     IEcoInterfaceBus1* pIBus = 0;
     IEcoInterfaceBus1MemExt* pIMemExt = 0;
     IEcoMemoryAllocator1* pIMem = 0;
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = 0;
+    CEcoPKCS7EncryptedData* pCMe = 0;
     UGUID* rcid = (UGUID*)&CID_EcoMemoryManager1;
     IEcoASNOne1ValueSet* pIValueSet = 0;
 
@@ -438,14 +348,14 @@ int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedData_6EA80DA5(/* in */ IEcoUnknown
     }
 
     /* Получение системного интерфейса приложения */
-    result = pIUnkSystem->pVTbl->QueryInterface(pIUnkSystem, &GID_IEcoSystem, (void **)&pISys);
+    result = pIUnkSystem->pVTbl->QueryInterface(pIUnkSystem, &GID_IEcoSystem, (void**)&pISys);
     /* Проверка */
     if (result != 0 || pISys == 0) {
         return ERR_ECO_NOSYSTEM;
     }
 
     /* Получение интерфейса для работы с интерфейсной шиной */
-    result = pISys->pVTbl->QueryInterface(pISys, &IID_IEcoInterfaceBus1, (void **)&pIBus);
+    result = pISys->pVTbl->QueryInterface(pISys, &IID_IEcoInterfaceBus1, (void**)&pIBus);
     /* Проверка */
     if (result != 0 || pIBus == 0) {
         pISys->pVTbl->Release(pISys);
@@ -460,7 +370,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedData_6EA80DA5(/* in */ IEcoUnknown
     }
 
     /* Получение интерфейса распределителя памяти */
-    pIBus->pVTbl->QueryComponent(pIBus, rcid, 0, &IID_IEcoMemoryAllocator1, (void**) &pIMem);
+    pIBus->pVTbl->QueryComponent(pIBus, rcid, 0, &IID_IEcoMemoryAllocator1, (void**)&pIMem);
     /* Проверка */
     if (result != 0 || pIMem == 0) {
         /* Освобождение в случае ошибки */
@@ -470,7 +380,7 @@ int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedData_6EA80DA5(/* in */ IEcoUnknown
     }
 
     /* Выделение памяти для данных экземпляра */
-    pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)pIMem->pVTbl->Alloc(pIMem, sizeof(CEcoPKCS7EncryptedData_6EA80DA5));
+    pCMe = (CEcoPKCS7EncryptedData*)pIMem->pVTbl->Alloc(pIMem, sizeof(CEcoPKCS7EncryptedData));
     if (pCMe == 0) {
         /* Освобождение в случае ошибки */
         pIBus->pVTbl->Release(pIBus);
@@ -498,16 +408,17 @@ int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedData_6EA80DA5(/* in */ IEcoUnknown
     pCMe->m_SET = 0;
     pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_PC_CONSTRUCTED | ECO_ASN1_SET_TYPE, &pCMe->m_SET);
     pCMe->m_version = 0;
-    createCEcoPKCS7Version((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_name);
+    createCEcoPKCS7Version((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_version);
     pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pCMe->m_version, 0);
+
     pCMe->m_encryptedContentInfo = 0;
-    createCEcoPKCS7EncryptedContentInfo((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_dateOfBirth);
+    createCEcoPKCS7EncryptedContentInfo((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_encryptedContentInfo);
     pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
     pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_encryptedContentInfo, 0);
     pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
 
     /* Возврат указателя на интерфейс */
-    *ppIChildInformation = (IEcoASNOne1ExChildInformation*)pCMe;
+    *ppIChildInformation = (IEcoPKCS7EncryptedData*)pCMe;
 
     /* Освобождение */
     pIBus->pVTbl->Release(pIBus);
@@ -526,20 +437,18 @@ int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedData_6EA80DA5(/* in */ IEcoUnknown
  * </описание>
  *
  */
-void ECOCALLMETHOD deleteCEcoPKCS7EncryptedData_6EA80DA5(/* in */ IEcoPKCS7EncryptedDataPtr_t pIEcoPKCS7EncryptedData) {
-    CEcoPKCS7EncryptedData_6EA80DA5* pCMe = (CEcoPKCS7EncryptedData_6EA80DA5*)pIEcoPKCS7EncryptedData;
+void ECOCALLMETHOD deleteCEcoPKCS7EncryptedData(/* in */ IEcoPKCS7EncryptedDataPtr_t pIChildInformation) {
+    CEcoPKCS7EncryptedData* pCMe = (CEcoPKCS7EncryptedData*)pIChildInformation;
     IEcoMemoryAllocator1* pIMem = 0;
 
-    if (pIEcoPKCS7EncryptedData != 0 ) {
+    if (pIChildInformation != 0) {
         pIMem = pCMe->m_pIMem;
         /* Освобождение */
-        if ( pCMe->m_Name != 0 ) {
-            pIMem->pVTbl->Free(pIMem, pCMe->m_Name);
-        }
-        if ( pCMe->m_pISys != 0 ) {
+        if (pCMe->m_pISys != 0) {
             pCMe->m_pISys->pVTbl->Release(pCMe->m_pISys);
         }
         pIMem->pVTbl->Free(pIMem, pCMe);
         pIMem->pVTbl->Release(pIMem);
     }
 }
+

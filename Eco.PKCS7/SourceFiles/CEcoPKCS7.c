@@ -21,6 +21,14 @@
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
 #include "CEcoPKCS7.h"
+#include "CEcoPKCS7ContentInfo.h"
+#include "CEcoPKCS7DigestInfo.h"
+#include "CEcoPKCS7EncryptedContentInfo.h"
+#include "CEcoPKCS7EncryptedData.h"
+#include "CEcoPKCS7EnvelopedData.h"
+#include "CEcoPKCS7SignedAndEnvelopedData.h"
+#include "CEcoPKCS7SignedData.h"
+#include "CEcoPKCS7SignerInfo.h"
 
 /*
  *
@@ -109,42 +117,6 @@ uint32_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_Release(/* in */ IEcoPKCS7Ptr_t me) {
     return pCMe->m_cRef;
 }
 
-/*
- *
- * <сводка>
- *   Функция MyFunction
- * </сводка>
- *
- * <описание>
- *   Функция
- * </описание>
- *
- */
-int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_MyFunction(/* in */ IEcoPKCS7Ptr_t me, /* in */ char_t* Name, /* out */ char_t** copyName) {
-    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
-    int16_t index = 0;
-
-    /* Проверка указателей */
-    if (me == 0 || Name == 0 || copyName == 0) {
-        return -1;
-    }
-
-    /* Копирование строки */
-    while(Name[index] != 0) {
-        index++;
-    }
-    pCMe->m_Name = (char_t*)pCMe->m_pIMem->pVTbl->Alloc(pCMe->m_pIMem, index + 1);
-    index = 0;
-    while(Name[index] != 0) {
-        pCMe->m_Name[index] = Name[index];
-        index++;
-    }
-    *copyName = pCMe->m_Name;
-
-    return 0;
-}
-
-
 
 
 /*
@@ -190,12 +162,308 @@ int16_t ECOCALLMETHOD initCEcoPKCS7_6EA80DA5(/*in*/ IEcoPKCS7Ptr_t me, /* in */ 
     return result;
 }
 
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_ContentInfo
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_ContentInfo(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7ContentInfo* ppIPKCS7ContentInfo) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7ContentInfo((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7ContentInfo);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_DigestInfo
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_DigestInfo(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7DigestInfo* ppIPKCS7DigestInfo) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7DigestInfo((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7DigestInfo);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_EncryptedContentInfo(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7EncryptedContentInfo* ppIPKCS7EncryptedContentInfo) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7EncryptedContentInfo((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7EncryptedContentInfo);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_EncryptedData(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7EncryptedData* ppIPKCS7EncryptedData) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7EncryptedData((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7EncryptedData);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_PBEParameter
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_EnvelopedData(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7EnvelopedData* ppIPKCS7EnvelopedData) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7EnvelopedData((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7EnvelopedData);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_SignedAndEnvelopedData(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7SignedAndEnvelopedData* ppIPKCS7SignedAndEnvelopedData) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7SignedAndEnvelopedData((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7SignedAndEnvelopedData);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_SignedData(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7SignedData* ppIPKCS7SignedData) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7SignedData((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7SignedData);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_SignerInfo(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7SignerInfo* ppIPKCS7SignerInfo) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7SignerInfo((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7SignerInfo);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_SignerInfos(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7SignerInfos* ppIPKCS7SignerInfos) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7SignerInfos((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7SignerInfos);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_RecipientInfo(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7RecipientInfo* ppIPKCS7RecipientInfo) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7RecipientInfo((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7RecipientInfo);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS7_6EA80DA5_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS7_6EA80DA5_new_RecipientInfos(/* in */ IEcoPKCS7Ptr_t me, /* out */ IEcoPKCS7RecipientInfos* ppIPKCS7RecipientInfos) {
+    CEcoPKCS7_6EA80DA5* pCMe = (CEcoPKCS7_6EA80DA5*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS7RecipientInfos((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS7RecipientInfos);
+
+
+    return result;
+}
+
 /* Create Virtual Table IEcoPKCS7 */
 IEcoPKCS7VTbl g_x9748EA58DD7541E5B0A203702BD96EF6VTbl_6EA80DA5 = {
     CEcoPKCS7_6EA80DA5_QueryInterface,
     CEcoPKCS7_6EA80DA5_AddRef,
     CEcoPKCS7_6EA80DA5_Release,
-    CEcoPKCS7_6EA80DA5_MyFunction
+    CEcoPKCS7_6EA80DA5_new_SignerInfo,
+    CEcoPKCS7_6EA80DA5_new_SignedData,
+    CEcoPKCS7_6EA80DA5_new_SignedAndEnvelopedData,
+    CEcoPKCS7_6EA80DA5_new_EnvelopedData,
+    CEcoPKCS7_6EA80DA5_new_EncryptedData,
+    CEcoPKCS7_6EA80DA5_new_EncryptedContentInfo,
+    CEcoPKCS7_6EA80DA5_new_DigestInfo,
+    CEcoPKCS7_6EA80DA5_new_ContentInfo,
+    CEcoPKCS7_6EA80DA5_new_SignerInfos,
+    CEcoPKCS7_6EA80DA5_new_RecipientInfo,
+    CEcoPKCS7_6EA80DA5_new_RecipientInfos
 };
 
 

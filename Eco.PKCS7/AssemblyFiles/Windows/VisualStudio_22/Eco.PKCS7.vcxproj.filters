@@ -62,10 +62,25 @@
     <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7DigestInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7ContentType.h">
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7Version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7Version.h">
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7IssuerAndSerialNumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7AlgorithmIdentifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7DigestAlgorithmIdentifiers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7RecipientInfos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7RecipientInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS7SignerInfos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -103,7 +118,22 @@
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7Version.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7ContentType.c">
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7IssuerAndSerialNumber.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7AlgorithmIdentifier.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7DigestAlgorithmIdentifiers.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7RecipientInfos.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7RecipientInfo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS7SignerInfos.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

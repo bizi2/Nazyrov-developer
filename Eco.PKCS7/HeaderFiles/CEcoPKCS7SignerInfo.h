@@ -23,12 +23,11 @@
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
-#include "IEcoASNOne1.h"
 
 typedef struct CEcoPKCS7SignerInfo {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
-    IEcoPKCS7VTbl* m_pVTblIEcoPKCS7;
+    IEcoPKCS7SignerInfoVTbl* m_pVTblIEcoPKCS7SignerInfo;
 
 
     /* Счетчик ссылок */
@@ -37,16 +36,20 @@ typedef struct CEcoPKCS7SignerInfo {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
+    IEcoASNOne1ValueSet* m_SET;
     IEcoPKCS7Version* m_version;
 	IEcoPKCS7IssuerAndSerialNumber* m_issuerAndSerialNumber;
-	IEcoPKCS7DigestAlgorithmIdentifier* m_digestAlgorithm;
+	IEcoPKCS7AlgorithmIdentifier* m_digestAlgorithm;
 	IEcoASNOne1ValueSet* m_authenticatedAttributes;
-	IEcoPKCS7DigestEncryptionAlgorithmIdentifier* m_digestEncryptionAlgorithm;
-	IEcoPKCS7DigestEncryptedDigest* m_encryptedDigest;
+	IEcoPKCS7AlgorithmIdentifier* m_digestEncryptionAlgorithm;
+    IEcoASNOne1Value* m_encryptedDigest;
 	IEcoASNOne1ValueSet* m_unauthenticatedAttributes;
 
 } CEcoPKCS7SignerInfo, *CEcoPKCS7SignerInfoPtr;

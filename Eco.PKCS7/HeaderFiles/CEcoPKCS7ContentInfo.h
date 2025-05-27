@@ -17,21 +17,17 @@
  *
  */
 
-#ifndef __C_ECOPKCS7_H__
-#define __C_ECOPKCS7_H__
+#ifndef __C_ECOPKCS7CONTENTINFO_H__
+#define __C_ECOPKCS7CONTENTINFO_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
-#include "IEcoASNOne1.h"
-#include "CEcoPKCS7ContentType.h"
-#include "CEcoPKCS7Content.h"
 
 typedef struct CEcoPKCS7ContentInfo {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
     IEcoPKCS7ContentInfoVTbl* m_pVTblIEcoPKCS7ContentInfo;
-
 
     /* Счетчик ссылок */
     uint32_t m_cRef;
@@ -39,12 +35,15 @@ typedef struct CEcoPKCS7ContentInfo {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
 	IEcoASNOne1ValueSet* m_SET;
-    IEcoPKCS7ContentType* m_contentType;
+    IEcoASNOne1Value* m_contentType;
 	IEcoASNOne1Value* m_content;
 
 } CEcoPKCS7ContentInfo, *CEcoPKCS7ContentInfoPtr;
@@ -56,4 +55,4 @@ int16_t ECOCALLMETHOD createCEcoPKCS7ContentInfo(/* in */ IEcoUnknownPtr_t pIUnk
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS7ContentInfo(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7_H__ */
+#endif /* __C_ECOPKCS7CONTENTINFO_H__ */

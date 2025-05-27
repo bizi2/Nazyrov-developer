@@ -23,7 +23,6 @@
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
-#include "IEcoASNOne1.h"
 
 typedef struct CEcoPKCS7DigestInfo {
 
@@ -37,13 +36,16 @@ typedef struct CEcoPKCS7DigestInfo {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
 	IEcoASNOne1ValueSet* m_SET;
-    IEcoPKCS7DigestAlgorithmIdentifier* m_digestAlgorithm;
-	IEcoPKCS7Digest* m_digest;
+    IEcoPKCS7AlgorithmIdentifier* m_digestAlgorithm;
+    IEcoASNOne1Value* m_digest;
 
 } CEcoPKCS7DigestInfo, *CEcoPKCS7DigestInfoPtr;
 

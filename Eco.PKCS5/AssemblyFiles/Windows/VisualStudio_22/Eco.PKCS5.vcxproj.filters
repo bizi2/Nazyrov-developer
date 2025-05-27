@@ -38,12 +38,36 @@
     <ClInclude Include="..\..\..\SharedFiles\IEcoPKCS5.h">
       <Filter>Shared Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS5PBEParameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS5PBKDF2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS5RC2CBCParameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\HeaderFiles\CEcoPKCS5RC5CBCParameter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS5.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS5Factory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS5PBEParameter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS5PBKDF2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS5RC2CBCParameter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\CEcoPKCS5RC5CBCParameter.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

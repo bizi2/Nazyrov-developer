@@ -8,7 +8,7 @@
  * </сводка>
  *
  * <описание>
- *   Данный заголовок описывает реализацию компонента CEcoPKCS7
+ *   Данный заголовок описывает реализацию компонента CEcoPKCS7CEcoPKCS7SignerInfos
  * </описание>
  *
  * <автор>
@@ -17,20 +17,17 @@
  *
  */
 
-#ifndef __C_ECOPKCS7_H__
-#define __C_ECOPKCS7_H__
+#ifndef __C_ECOPKCS7SIGNERINFOS_H__
+#define __C_ECOPKCS7SIGNERINFOS_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
-#include "IEcoASNOne1.h"
-#include "CEcoPKCS7ContentType.h"
-#include "CEcoPKCS7Content.h"
 
-typedef struct CEcoPKCS7ContentInfo {
+typedef struct CEcoPKCS7SignerInfos {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
-    IEcoPKCS7ContentInfoVTbl* m_pVTblIEcoPKCS7ContentInfo;
+    IEcoPKCS7SignerInfosVTbl* m_pVTblIEcoPKCS7SignerInfos;
 
 
     /* Счетчик ссылок */
@@ -39,21 +36,24 @@ typedef struct CEcoPKCS7ContentInfo {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
 	IEcoASNOne1ValueSet* m_SET;
-    IEcoPKCS7ContentType* m_contentType;
-	IEcoPKCS7Content* m_content;
+    IEcoPKCS7RecipientInfo* m_siSet;
+    IEcoPKCS7RecipientInfo* m_siSequence;
 
-} CEcoPKCS7ContentInfo, *CEcoPKCS7ContentInfoPtr;
+} CEcoPKCS7SignerInfos, *CEcoPKCS7SignerInfosPtr;
 
 /* Инициализация экземпляра */
-int16_t ECOCALLMETHOD initCEcoPKCS7ContentInfo(/*in*/ IEcoPKCS7Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
+int16_t ECOCALLMETHOD initCEcoPKCS7SignerInfos(/*in*/ IEcoPKCS7Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
 /* Создание экземпляра */
-int16_t ECOCALLMETHOD createCEcoPKCS7ContentInfo(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS7Ptr_t* ppIEcoPKCS7);
+int16_t ECOCALLMETHOD createCEcoPKCS7SignerInfos(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS7Ptr_t* ppIEcoPKCS7);
 /* Удаление */
-void ECOCALLMETHOD deleteCEcoPKCS7ContentInfo(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
+void ECOCALLMETHOD deleteCEcoPKCS7SignerInfos(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7_H__ */
+#endif /* __C_ECOPKCS7SIGNERINFOS_H__ */

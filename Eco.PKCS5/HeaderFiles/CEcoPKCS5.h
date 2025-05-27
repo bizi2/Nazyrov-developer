@@ -29,6 +29,8 @@ typedef struct CEcoPKCS5_1CF80E6C {
     /* Таблица функций интерфейса IEcoPKCS5 */
     IEcoPKCS5VTbl* m_pVTblIEcoPKCS5;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
 
     /* Счетчик ссылок */
     uint32_t m_cRef;

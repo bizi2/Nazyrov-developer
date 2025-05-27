@@ -23,19 +23,20 @@
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
-#include "IEcoASNOne1.h"
 
 typedef struct CEcoPKCS7EnvelopedData {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
     IEcoPKCS7EnvelopedDataVTbl* m_pVTblIEcoPKCS7EnvelopedData;
 
-
     /* Счетчик ссылок */
     uint32_t m_cRef;
 
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
+
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
 
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;

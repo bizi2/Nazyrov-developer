@@ -21,7 +21,6 @@
 #define __C_ECOPKCS1OTHERPRIMEINFOS_H__
 
 #include "IEcoPKCS1.h"
-#include "IEcoASNOne1.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
 

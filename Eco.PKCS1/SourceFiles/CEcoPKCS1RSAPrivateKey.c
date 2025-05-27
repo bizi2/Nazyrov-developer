@@ -20,6 +20,7 @@
 #include "IEcoSystem1.h"
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
+#include "IEcoASNOne1.h"
 #include "CEcoPKCS1RSAPrivateKey.h"
 #include "CEcoPKCS1OtherPrimeInfos.h"
 #include "CEcoPKCS1Version.h"
@@ -139,7 +140,7 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1RSAPrivateKey_get_Tag(/* in */ IEcoPKCS1RS
         return 0; /* ERR_ECO_POINTER */
     }
 
-    return pCMe->m_SET->pVTbl->get_Tag(pCMe->m_SET);
+    return pCMe->m_SEQUENCE->pVTbl->get_Tag(pCMe->m_SEQUENCE);
 }
 
 /*
@@ -161,7 +162,7 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1RSAPrivateKey_get_TaggetType(/* in */ IEco
         return 0; /* ERR_ECO_POINTER */
     }
 
-    return pCMe->m_SET->pVTbl->get_TaggedType(pCMe->m_SET);
+    return pCMe->m_SEQUENCE->pVTbl->get_TaggedType(pCMe->m_SEQUENCE);
 }
 
 /*
@@ -183,7 +184,7 @@ static uint8_t ECOCALLMETHOD CEcoPKCS1RSAPrivateKey_get_Type(/* in */ IEcoPKCS1R
         return 0; /* ERR_ECO_POINTER */
     }
 
-    return pCMe->m_SET->pVTbl->get_Type(pCMe->m_SET);
+    return pCMe->m_SEQUENCE->pVTbl->get_Type(pCMe->m_SEQUENCE);
 }
 
 /*
@@ -206,7 +207,7 @@ static int16_t ECOCALLMETHOD CEcoPKCS1RSAPrivateKey_Count(/* in */ IEcoPKCS1RSAP
         return ERR_ECO_POINTER;
     }
 
-    result = pCMe->m_SET->pVTbl->Count(pCMe->m_SET, Count);
+    result = pCMe->m_SEQUENCE->pVTbl->Count(pCMe->m_SEQUENCE, Count);
 
     return result;
 }
@@ -231,7 +232,7 @@ static int16_t ECOCALLMETHOD CEcoPKCS1RSAPrivateKey_Item(/* in */ IEcoPKCS1RSAPr
         return ERR_ECO_POINTER;
     }
 
-    result = pCMe->m_SET->pVTbl->Item(pCMe->m_SET, Index, Component);
+    result = pCMe->m_SEQUENCE->pVTbl->Item(pCMe->m_SEQUENCE, Index, Component);
 
     return result;
 }
@@ -256,7 +257,7 @@ static int16_t ECOCALLMETHOD CEcoPKCS1RSAPrivateKey_Add(/* in */ IEcoPKCS1RSAPri
         return ERR_ECO_POINTER;
     }
 
-    result = pCMe->m_SET->pVTbl->Add(pCMe->m_SET, Component, Index);
+    result = pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, Component, Index);
 
     return result;
 }
@@ -395,7 +396,7 @@ static IEcoASNOne1Value* ECOCALLMETHOD CEcoPKCS1RSAPrivateKey_coefficient(/* in 
 }
 
 /* Create Virtual Table IEcoPKCS1RSAPrivateKey */
-IEcoPKCS1RSAPrivateKeyVTbl g_xD739CAFE1BE24191A824788A1439E7A1VTbl_247D52F9 = {
+IEcoPKCS1RSAPrivateKeyVTbl g_xD739CAFE1BE24191A824788A1439E7A2VTbl = {
     CEcoPKCS1RSAPrivateKey_QueryInterface,
     CEcoPKCS1RSAPrivateKey_AddRef,
     CEcoPKCS1RSAPrivateKey_Release,
@@ -495,72 +496,56 @@ int16_t ECOCALLMETHOD createCEcoPKCS1RSAPrivateKey(/* in */ IEcoUnknownPtr_t pIU
     pCMe->m_cRef = 1;
 
     /* Создание таблицы функций интерфейса IEcoASNOne1ChildInformation */
-    pCMe->m_pVTblIEcoPKCS1RSAPrivateKey = &g_xD739CAFE1BE24191A824788A1439E7A1VTbl_247D52F9;
+    pCMe->m_pVTblIEcoPKCS1RSAPrivateKey = &g_xD739CAFE1BE24191A824788A1439E7A2VTbl;
 
     /* Сохранение указателя на интерфейс для работы с нотацией ASN.1 */
     pCMe->m_pIASNOne = pIASNOne;
     pCMe->m_pIASNOne->pVTbl->AddRef(pCMe->m_pIASNOne);
 
     /* Инициализация данных */
-    pCMe->m_SET = 0;
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_PC_CONSTRUCTED | ECO_ASN1_SET_TYPE, &pCMe->m_SET);
+    pCMe->m_SEQUENCE = 0;
+    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_PC_CONSTRUCTED | ECO_ASN1_SET_TYPE, &pCMe->m_SEQUENCE);
     pCMe->m_version = 0;
     createCEcoPKCS1Version((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_version);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pCMe->m_version, 0);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_version, 0);
 
     pCMe->m_modulus = 0;
-    createCEcoASNOne1Value_11B2F7AB((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_modulus);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_modulus, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_pIASNOne->pVTbl->new_Value(pCMe->m_pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_VISIBLE_STRING_TYPE, &pCMe->m_modulus);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_modulus, 0);
 
     pCMe->m_publicExponent = 0;
-    createCEcoASNOne1Value_11B2F7AB((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_publicExponent);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_publicExponent, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_pIASNOne->pVTbl->new_Value(pCMe->m_pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_VISIBLE_STRING_TYPE, &pCMe->m_publicExponent);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_publicExponent, 0);
 
     pCMe->m_privateExponent = 0;
-    createCEcoASNOne1Value_11B2F7AB((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_privateExponent);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_privateExponent, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_pIASNOne->pVTbl->new_Value(pCMe->m_pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_VISIBLE_STRING_TYPE, &pCMe->m_privateExponent);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_privateExponent, 0);
 
     pCMe->m_prime1 = 0;
-    createCEcoASNOne1Value_11B2F7AB((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_prime1);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_prime1, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_pIASNOne->pVTbl->new_Value(pCMe->m_pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_VISIBLE_STRING_TYPE, &pCMe->m_prime1);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_prime1, 0);
 
     pCMe->m_prime2 = 0;
-    createCEcoASNOne1Value_11B2F7AB((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_prime2);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_prime2, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_pIASNOne->pVTbl->new_Value(pCMe->m_pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_VISIBLE_STRING_TYPE, &pCMe->m_prime2);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_prime2, 0);
 
     pCMe->m_exponent1 = 0;
-    createCEcoASNOne1Value_11B2F7AB((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_exponent1);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_exponent1, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_pIASNOne->pVTbl->new_Value(pCMe->m_pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_VISIBLE_STRING_TYPE, &pCMe->m_exponent1);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_exponent1, 0);
 
     pCMe->m_exponent2 = 0;
-    createCEcoASNOne1Value_11B2F7AB((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_exponent2);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_exponent2, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_pIASNOne->pVTbl->new_Value(pCMe->m_pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_VISIBLE_STRING_TYPE, &pCMe->m_exponent2);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_exponent2, 0);
 
     pCMe->m_coefficient = 0;
-    createCEcoASNOne1Value_11B2F7AB((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_coefficient);
-    pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
-    pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_coefficient, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_pIASNOne->pVTbl->new_Value(pCMe->m_pIASNOne, ECO_ASN1_EMPTY, ECO_ASN1_TAG_EMPTY, ECO_ASN1_VISIBLE_STRING_TYPE, &pCMe->m_coefficient);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pCMe->m_coefficient, 0);
 
     pCMe->m_otherPrimeInfos = 0;
     createCEcoPKCS1OtherPrimeInfos((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, &pCMe->m_otherPrimeInfos);
     pIASNOne->pVTbl->new_ValueSet(pIASNOne, ECO_ASN1_CLASS_CONTEXT_SPECIFIC | ECO_ASN1_PC_CONSTRUCTED | 0, ECO_ASN1_TAG_DEFAULT, ECO_ASN1_EMPTY, &pIValueSet);
     pIValueSet->pVTbl->Add(pIValueSet, pCMe->m_otherPrimeInfos, 0);
-    pCMe->m_SET->pVTbl->Add(pCMe->m_SET, pIValueSet, 0);
+    pCMe->m_SEQUENCE->pVTbl->Add(pCMe->m_SEQUENCE, pIValueSet, 0);
 
     /* Возврат указателя на интерфейс */
     *ppIChildInformation = (IEcoPKCS1RSAPrivateKey*)pCMe;

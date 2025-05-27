@@ -20,8 +20,12 @@
 
 /* Eco OS */
 #include "IEcoSystem1.h"
-#include "IdEcoMemoryManager1.h"
+#include "IEcoPKCS1.h"
+#include "IEcoInterfaceBus1.h"
 #include "IdEcoInterfaceBus1.h"
+#include "IdEcoMemoryManager1.h"
+#include "IdEcoASNOneBER1.h"
+#include "IdEcoASNOne1.h"
 #include "IdEcoFileSystemManagement1.h"
 #include "IdEcoPKCS1.h"
 
@@ -49,9 +53,26 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     /* Указатель на тестируемый интерфейс */
     IEcoPKCS1* pIEcoPKCS1 = 0;
 
+    IEcoASNOneBER1* pIBER = 0;
+
+    IEcoPKCS1* pExample = 0;
+
+    uint8_t temp = 0;
+
+    byte_t* pBuffer = 0;
+    uint32_t cbBuffer = 0;
+
+    IEcoPKCS1OtherPrimeInfos* pOtherPrimeInfos = 0;
+    IEcoPKCS1RSAPrivateKey* pRSAPrivateKey = 0;
+    IEcoPKCS1RSAPublicKey* pRSAPublicKey = 0;
+    IEcoPKCS1Version* pVersion = 0;
+
+    IEcoASNOne1Value* pIValue = 0;
+    IEcoASNOne1ValueSet* pIValueSet = 0;
+
     /* Проверка и создание системного интрефейса */
     if (pISys == 0) {
-        result = pIUnk->pVTbl->QueryInterface(pIUnk, &GID_IEcoSystem1, (void **)&pISys);
+        result = pIUnk->pVTbl->QueryInterface(pIUnk, &GID_IEcoSystem, (void **)&pISys);
         if (result != 0 && pISys == 0) {
         /* Освобождение системного интерфейса в случае ошибки */
             goto Release;
@@ -65,6 +86,18 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 #ifdef ECO_LIB
+    /* Регистрация статического компонента для работы с ASN.1 BER */
+    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoASNOneBER1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_2C2F66F449864F509444C0F7CBE9F1CB);
+    if (result != 0) {
+        /* Освобождение в случае ошибки */
+        goto Release;
+    }
+    /* Регистрация статического компонента для работы со списком */
+    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoASNOne1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_E0EA41D156824A40877EB6A011B2F7AB);
+    if (result != 0) {
+        /* Освобождение в случае ошибки */
+        goto Release;
+    }
     /* Регистрация статического компонента для работы со списком */
     result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoPKCS1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_F48EB9164869423796702F3AA50FB39D);
     if (result != 0 ) {
@@ -81,12 +114,12 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 
-    /* Выделение блока памяти */
-    name = (char_t *)pIMem->pVTbl->Alloc(pIMem, 10);
-
-    /* Заполнение блока памяти */
-    pIMem->pVTbl->Fill(pIMem, name, 'a', 9);
-
+    /* Получение тестируемого интерфейса */
+    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoASNOneBER1, 0, &IID_IEcoASNOneBER1, (void**)&pIBER);
+    if (result != 0 || pIBER == 0) {
+        /* Освобождение интерфейсов в случае ошибки */
+        goto Release;
+    }
 
     /* Получение тестируемого интерфейса */
     result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoPKCS1, 0, &IID_IEcoPKCS1, (void**) &pIEcoPKCS1);
@@ -95,37 +128,26 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 
+    /* Выделение блока памяти */
+    name = (char_t *)pIMem->pVTbl->Alloc(pIMem, 10);
 
-    result = pIEcoPKCS1->pVTbl->MyFunction(pIEcoPKCS1, name, &copyName);
+    /* Заполнение блока памяти */
+    pIMem->pVTbl->Fill(pIMem, name, 'a', 9);
+    
+    pIEcoPKCS1->pVTbl->new_RSAPrivateKey(pIEcoPKCS1, &pRSAPrivateKey);
 
-    IEcoASNOneINTEGER* pointerInteger = NULL;
+    pOtherPrimeInfos = pRSAPrivateKey->pVTbl->otherPrimeInfos(pRSAPrivateKey);
+    temp = 22;
+    pOtherPrimeInfos->pVTbl->set_Value(pIValue, &temp, sizeof(uint8_t));
 
-
-    IEcoPKCS1RSAPublicKey* pointerPublicKey;
-    pointerInteger = pointerPublicKey->pVTbl->modulus;
-    pointerInteger->set(10);
-
-    pointerInteger = pointerPublicKey->pVTbl->publicExponent;
-    pointerInteger->set(30);
-
-    IEcoPKCS1* pointerPKCS1;
-    IEcoASNOneEncoder* pointerEncoder;
-    pointerPKCS1->pVTbl->QueryInterface(pointerPKCS1, IIDAsnOneEncoder, &pointerEncoder);
-    pointerEncoder->Encode(&buffer, len);
-    printf(hexdump, buffer);
-
-    IEcoPKCS1* pointer2PKCS1;
-    pointer2PKCS1 = pointerEncoder->Decode(buffer, len);
-    pointerInteger = pointerPublicKey->pVTbl->modulus;
-    int value = pointerInteger->get;
-    pointerInteger = pointerPublicKey->pVTbl->publicExponent;
-    int value2 = pointerInteger->get;
-
-    IEcoPKCS7* pointerPKCS7;
-    pointerPKCS7->QueryInterface(pointerPKCS7, IIDEcoPKCS1, &pointerPKCS1)
+    pVersion = pRSAPrivateKey->pVTbl->version(pRSAPrivateKey);
+    temp = 11;
+    pVersion->pVTbl->set_Value(pIValue, &temp, sizeof(uint8_t));
 
     /* Освлбождение блока памяти */
     pIMem->pVTbl->Free(pIMem, name);
+
+    result = pIBER->pVTbl->Encode(pIBER, pRSAPrivateKey, &pBuffer, &cbBuffer);
 
 Release:
 

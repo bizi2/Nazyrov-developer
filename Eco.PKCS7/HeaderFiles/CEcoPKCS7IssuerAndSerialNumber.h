@@ -17,17 +17,17 @@
  *
  */
 
-#ifndef __C_ECOPKCS7ENCRYPTEDDATA_H__
-#define __C_ECOPKCS7ENCRYPTEDDATA_H__
+#ifndef __C_ECOPKCS7ISSUERANDSERIALNUMBER_H__
+#define __C_ECOPKCS7ISSUERANDSERIALNUMBER_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
 
-typedef struct CEcoPKCS7EncryptedData {
+typedef struct CEcoPKCS7IssuerAndSerialNumber {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
-    IEcoPKCS7EncryptedDataVTbl* m_pVTblIEcoPKCS7EncryptedData;
+    IEcoPKCS7IssuerAndSerialNumberVTbl* m_pVTblIEcoPKCS7IssuerAndSerialNumber;
 
     /* Счетчик ссылок */
     uint32_t m_cRef;
@@ -35,24 +35,24 @@ typedef struct CEcoPKCS7EncryptedData {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
-    /* Системный интерфейс */
-    IEcoSystem1* m_pISys;
-
     /* Интерфейс для работы с нотацией ASN.1 */
     IEcoASNOne1* m_pIASNOne;
 
-    /* Данные экземпляра */
-	IEcoASNOne1ValueSet* m_SET;
-    IEcoPKCS7Version* m_version;
-	IEcoPKCS7EncryptedContentInfo* m_encryptedContentInfo;
+    /* Системный интерфейс */
+    IEcoSystem1* m_pISys;
 
-} CEcoPKCS7EncryptedData, *CEcoPKCS7EncryptedDataPtr;
+    /* Данные экземпляра */
+    IEcoASNOne1ValueSet* m_SET;
+	IEcoASNOne1Value* m_issuer;
+	IEcoASNOne1Value* m_serialNumber;
+
+} CEcoPKCS7IssuerAndSerialNumber, *CEcoPKCS7IssuerAndSerialNumberPtr;
 
 /* Инициализация экземпляра */
-int16_t ECOCALLMETHOD initCEcoPKCS7EncryptedData(/*in*/ IEcoPKCS7Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
+int16_t ECOCALLMETHOD initCEcoPKCS7IssuerAndSerialNumber(/*in*/ IEcoPKCS7Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
 /* Создание экземпляра */
-int16_t ECOCALLMETHOD createCEcoPKCS7EncryptedData(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS7Ptr_t* ppIEcoPKCS7);
+int16_t ECOCALLMETHOD createCEcoPKCS7IssuerAndSerialNumber(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS7Ptr_t* ppIEcoPKCS7);
 /* Удаление */
-void ECOCALLMETHOD deleteCEcoPKCS7EncryptedData(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
+void ECOCALLMETHOD deleteCEcoPKCS7IssuerAndSerialNumber(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7ENCRYPTEDDATA_H__ */
+#endif /* __C_ECOPKCS7ISSUERANDSERIALNUMBER_H__ */
