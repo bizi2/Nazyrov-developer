@@ -40,9 +40,9 @@ typedef struct CEcoPKCS15EncryptedContentInfo {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneObjectIdentifier* m_contentType;
+    IEcoASNOne1Value* m_contentType;
 	IEcoPKCS15AlgorithmIdentifier** m_contentEncryptionAlgorithm;
-	IEcoASNOneDataValue* m_encryptedContent;
+	IEcoASNOne1Value* m_encryptedContent;
 
 } CEcoPKCS15EncryptedContentInfo, *CEcoPKCS15EncryptedContentInfoPtr;
 

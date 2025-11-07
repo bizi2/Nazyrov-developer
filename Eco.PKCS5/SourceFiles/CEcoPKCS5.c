@@ -21,6 +21,10 @@
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
 #include "CEcoPKCS5.h"
+#include "CEcoPKCS5PBEParameter.h"
+#include "CEcoPKCS5PBKDF2.h"
+#include "CEcoPKCS5RC2CBCParameter.h"
+#include "CEcoPKCS5RC5CBCParameter.h"
 
 /*
  *
@@ -109,41 +113,6 @@ uint32_t ECOCALLMETHOD CEcoPKCS5_1CF80E6C_Release(/* in */ IEcoPKCS5Ptr_t me) {
     return pCMe->m_cRef;
 }
 
-/*
- *
- * <сводка>
- *   Функция MyFunction
- * </сводка>
- *
- * <описание>
- *   Функция
- * </описание>
- *
- */
-int16_t ECOCALLMETHOD CEcoPKCS5_1CF80E6C_MyFunction(/* in */ IEcoPKCS5Ptr_t me, /* in */ char_t* Name, /* out */ char_t** copyName) {
-    CEcoPKCS5_1CF80E6C* pCMe = (CEcoPKCS5_1CF80E6C*)me;
-    int16_t index = 0;
-
-    /* Проверка указателей */
-    if (me == 0 || Name == 0 || copyName == 0) {
-        return -1;
-    }
-
-    /* Копирование строки */
-    while(Name[index] != 0) {
-        index++;
-    }
-    pCMe->m_Name = (char_t*)pCMe->m_pIMem->pVTbl->Alloc(pCMe->m_pIMem, index + 1);
-    index = 0;
-    while(Name[index] != 0) {
-        pCMe->m_Name[index] = Name[index];
-        index++;
-    }
-    *copyName = pCMe->m_Name;
-
-    return 0;
-}
-
 
 
 
@@ -190,12 +159,119 @@ int16_t ECOCALLMETHOD initCEcoPKCS5_1CF80E6C(/*in*/ IEcoPKCS5Ptr_t me, /* in */ 
     return result;
 }
 
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS5_1CF80E6C_new_PBEParameter
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS5_1CF80E6C_new_PBEParameter(/* in */ IEcoPKCS5Ptr_t me, /* out */ IEcoPKCS5PBEParameter* ppIPKCS5PBEParameter) {
+    CEcoPKCS5_1CF80E6C* pCMe = (CEcoPKCS5_1CF80E6C*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS5PBEParameter((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS5PBEParameter);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS5_1CF80E6C_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS5_1CF80E6C_new_PBKDF2(/* in */ IEcoPKCS5Ptr_t me, /* out */ IEcoPKCS5PBKDF2* ppIPKCS5PBKDF2) {
+    CEcoPKCS5_1CF80E6C* pCMe = (CEcoPKCS5_1CF80E6C*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS5PBKDF2((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS5PBKDF2);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS5_1CF80E6C_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS5_1CF80E6C_new_RC2CBCParameter(/* in */ IEcoPKCS5Ptr_t me, /* out */ IEcoPKCS5RC2CBCParameter* ppIPKCS5RC2CBCParameter) {
+    CEcoPKCS5_1CF80E6C* pCMe = (CEcoPKCS5_1CF80E6C*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS5RC2CBCParameter((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS5RC2CBCParameter);
+
+
+    return result;
+}
+
+/*
+ *
+ * <сводка>
+ *   Функция CEcoPKCS5_1CF80E6C_new_RSAPublicKey
+ * </сводка>
+ *
+ * <описание>
+ *   Функция
+ * </описание>
+ *
+ */
+static int16_t ECOCALLMETHOD CEcoPKCS5_1CF80E6C_new_RC5CBCParameter(/* in */ IEcoPKCS5Ptr_t me, /* out */ IEcoPKCS5RC5CBCParameter* ppIPKCS5RC5CBCParameter) {
+    CEcoPKCS5_1CF80E6C* pCMe = (CEcoPKCS5_1CF80E6C*)me;
+    int16_t result;
+
+    /* Проверка указателей */
+    if (me == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    result = createCEcoPKCS5RC5CBCParameter((IEcoUnknownPtr_t)pCMe->m_pISys, 0, pCMe->m_pIASNOne, ppIPKCS5RC5CBCParameter);
+
+
+    return result;
+}
+
 /* Create Virtual Table IEcoPKCS5 */
 IEcoPKCS5VTbl g_xB7200A1CE4B1463DAAC6A4C5B4CDCDBCVTbl_1CF80E6C = {
     CEcoPKCS5_1CF80E6C_QueryInterface,
     CEcoPKCS5_1CF80E6C_AddRef,
     CEcoPKCS5_1CF80E6C_Release,
-    CEcoPKCS5_1CF80E6C_MyFunction
+    CEcoPKCS5_1CF80E6C_new_RC5CBCParameter,
+    CEcoPKCS5_1CF80E6C_new_RC2CBCParameter,
+    CEcoPKCS5_1CF80E6C_new_PBKDF2,
+    CEcoPKCS5_1CF80E6C_new_PBEParameter
 };
 
 

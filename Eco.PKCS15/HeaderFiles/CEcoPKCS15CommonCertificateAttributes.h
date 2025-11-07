@@ -41,13 +41,13 @@ typedef struct CEcoPKCS15CommonCertificateAttributes {
 
     /* Данные экземпляра */
     IEcoPKCS15Identifier* m_id;
-	IEcoASNOneBOOLEAN* m_authority;
+	IEcoASNOne1Value* m_authority;
 	IEcoPKCS15CredentialIdentifier* m_identifier;
 	IEcoPKCS15OOBCertHash* m_certHash;
 	IEcoPKCS15Usage* m_trustedUsage;
 	IEcoPKCS15GeneralizedTime* m_endDate;
 	IEcoPKCS15CredentialIdentifier** m_identifier2;
-	IEcoASNOneBOOLEAN* m_implicitTrust;
+	IEcoASNOne1Value* m_implicitTrust;
 
 } CEcoPKCS15CommonCertificateAttributes, *CEcoPKCS15CommonCertificateAttributesPtr;
 

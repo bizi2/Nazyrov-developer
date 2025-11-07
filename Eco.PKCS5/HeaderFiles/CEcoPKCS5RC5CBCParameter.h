@@ -17,17 +17,17 @@
  *
  */
 
-#ifndef __C_ECOPKCS5_H__
-#define __C_ECOPKCS5_H__
+#ifndef __C_ECOPKCS5RC5CBCPARAMETER_H__
+#define __C_ECOPKCS5RC5CBCPARAMETER_H__
 
 #include "IEcoPKCS5.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
 
-typedef struct CEcoRC5CBCParameter {
+typedef struct CEcoPKCS5RC5CBCParameter {
 
     /* Таблица функций интерфейса IEcoPKCS5 */
-    IEcoPKCS5VTbl* m_pVTblIEcoPKCS5;
+    IEcoPKCS5RC5CBCParameterVTbl* m_pVTblIEcoPKCS5RC5CBCParameter;
 
 
     /* Счетчик ссылок */
@@ -36,22 +36,26 @@ typedef struct CEcoRC5CBCParameter {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-	IEcoASNOneINTEGER* m_version;
-	IEcoASNOneINTEGER* m_rounds;
-	IEcoASNOneINTEGER* m_blockSizeInBits;
-	IEcoASNOneDataValue* m_iv;
+    IEcoASNOne1ValueSet* m_SEQUENCE;
+	IEcoASNOne1Value* m_version;
+	IEcoASNOne1Value* m_rounds;
+	IEcoASNOne1Value* m_blockSizeInBits;
+	IEcoASNOne1Value* m_iv;
 
-} CEcoRC5CBCParameter, *CEcoRC5CBCParameterPtr;
+} CEcoPKCS5RC5CBCParameter, *CEcoPKCS5RC5CBCParameterPtr;
 
 /* Инициализация экземпляра */
-int16_t ECOCALLMETHOD initCEcoRC5CBCParameter(/*in*/ IEcoPKCS5Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
+int16_t ECOCALLMETHOD initCEcoPKCS5RC5CBCParameter(/*in*/ IEcoPKCS5Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
 /* Создание экземпляра */
-int16_t ECOCALLMETHOD createCEcoRC5CBCParameter(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS5Ptr_t* ppIEcoPKCS5);
+int16_t ECOCALLMETHOD createCEcoPKCS5RC5CBCParameter(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS5Ptr_t* ppIEcoPKCS5);
 /* Удаление */
-void ECOCALLMETHOD deleteCEcoRC5CBCParameter(/* in */ IEcoPKCS5Ptr_t pIEcoPKCS5);
+void ECOCALLMETHOD deleteCEcoPKCS5RC5CBCParameter(/* in */ IEcoPKCS5Ptr_t pIEcoPKCS5);
 
-#endif /* __C_ECOPKCS5_H__ */
+#endif /* __C_ECOPKCS5RC5CBCPARAMETER_H__ */

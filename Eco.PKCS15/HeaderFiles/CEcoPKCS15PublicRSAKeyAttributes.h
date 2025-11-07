@@ -41,7 +41,7 @@ typedef struct CEcoPKCS15PublicRSAKeyAttributes {
 
     /* Данные экземпляра */
     IEcoPKCS15ObjectValue* m_value;
-	IEcoASNOneINTEGER* m_modulusLength;
+	IEcoASNOne1Value* m_modulusLength;
 	IEcoPKCS15KeyInfo* m_keyInfo;
 
 } CEcoPKCS15PublicRSAKeyAttributes, *CEcoPKCS15PublicRSAKeyAttributesPtr;

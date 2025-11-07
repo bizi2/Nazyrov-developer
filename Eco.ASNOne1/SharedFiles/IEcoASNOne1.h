@@ -34,7 +34,6 @@
 
 #include "IEcoBase1.h"
 
-
 /* class */
 #define ECO_ASN1_CLASS_UNIVERSAL            0x00
 #define ECO_ASN1_CLASS_APPLICATION          0x40

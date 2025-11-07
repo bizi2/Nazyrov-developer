@@ -40,13 +40,13 @@ typedef struct CEcoPKCS15RecordInfo {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneINTEGER* m_oDFRecordLength;
-	IEcoASNOneINTEGER* m_prKDFRecordLength;
-	IEcoASNOneINTEGER* m_puKDFRecordLength;
-	IEcoASNOneINTEGER* m_sKDFRecordLength;
-	IEcoASNOneINTEGER* m_cDFRecordLength;
-	IEcoASNOneINTEGER* m_dODFRecordLength;
-	IEcoASNOneINTEGER* m_aODFRecordLength;
+    IEcoASNOne1Value* m_oDFRecordLength;
+	IEcoASNOne1Value* m_prKDFRecordLength;
+	IEcoASNOne1Value* m_puKDFRecordLength;
+	IEcoASNOne1Value* m_sKDFRecordLength;
+	IEcoASNOne1Value* m_cDFRecordLength;
+	IEcoASNOne1Value* m_dODFRecordLength;
+	IEcoASNOne1Value* m_aODFRecordLength;
 
 
 } CEcoPKCS15RecordInfo, *CEcoPKCS15RecordInfoPtr;

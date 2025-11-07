@@ -42,7 +42,7 @@ typedef struct CEcoPKCS15X509AttributeCertificateAttributes {
     /* Данные экземпляра */
     IEcoPKCS15ObjectValue* m_value;
 	IEcoPKCS15GeneralNames* m_subject;
-	IEcoASNOneObjectIdentifier* m_attrTypes;
+	IEcoASNOne1Value* m_attrTypes;
 	IEcoPKCS15CertificateSerialNumber* m_serialNumber;
 
 } CEcoPKCS15X509AttributeCertificateAttributes, *CEcoPKCS15X509AttributeCertificateAttributesPtr;

@@ -40,9 +40,9 @@ typedef struct CEcoPKCS15DIRRecord {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneDataValue* m_aid;
+    IEcoASNOne1Value* m_aid;
 	IEcoPKCS15UTF8String* m_label;
-	IEcoASNOneDataValue* m_path;
+	IEcoASNOne1Value* m_path;
 	IEcoPKCS15DDO* m_ddo;
 
 } CEcoPKCS15DIRRecord, *CEcoPKCS15DIRRecordPtr;

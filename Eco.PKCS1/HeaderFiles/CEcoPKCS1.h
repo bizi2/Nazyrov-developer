@@ -21,8 +21,9 @@
 #define __C_ECOPKCS1_H__
 
 #include "IEcoPKCS1.h"
+#include "IEcoASNOne1.h"
 #include "IEcoSystem1.h"
-#include "IdEcoMemoryManager1.h"
+#include "IdEcoMemoryManager1.h"    
 
 typedef struct CEcoPKCS1_A50FB39D {
 
@@ -30,10 +31,13 @@ typedef struct CEcoPKCS1_A50FB39D {
     IEcoPKCS1VTbl* m_pVTblIEcoPKCS1;
 
     /* Таблица функций интерфейса IEcoPKCS1 */
-    IEcoPKCS1EncoderVTbl* m_pVTblIEcoPKCS1Encoder;
+    //IEcoPKCS1EncoderVTbl* m_pVTblIEcoPKCS1Encoder;
 
     /* Счетчик ссылок */
     uint32_t m_cRef;
+
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
 
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;

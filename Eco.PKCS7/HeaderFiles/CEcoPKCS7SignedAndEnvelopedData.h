@@ -17,8 +17,8 @@
  *
  */
 
-#ifndef __C_ECOPKCS7_H__
-#define __C_ECOPKCS7_H__
+#ifndef __C_ECOPKCS7SIGNEDANDENVELOPEDDATA_H__
+#define __C_ECOPKCS7SIGNEDANDENVELOPEDDATA_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
@@ -27,7 +27,7 @@
 typedef struct CEcoPKCS7SignedAndEnvelopedData {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
-    IEcoPKCS7VTbl* m_pVTblIEcoPKCS7;
+    IEcoPKCS7SignedAndEnvelopedDataVTbl* m_pVTblIEcoPKCS7SignedAndEnvelopedData;
 
 
     /* Счетчик ссылок */
@@ -36,16 +36,20 @@ typedef struct CEcoPKCS7SignedAndEnvelopedData {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
+    IEcoASNOne1ValueSet* m_SET;
     IEcoPKCS7Version* m_version;
 	IEcoPKCS7RecipientInfos* m_recipientInfos;
 	IEcoPKCS7DigestAlgorithmIdentifiers* m_digestAlgorithms;
 	IEcoPKCS7EncryptedContentInfo* m_encryptedContentInfo;
-	IEcoASNOneCHOICE* m_certificates;
-	IEcoASNOneCHOICE* m_crls;
+	IEcoASNOne1ValueSet* m_certificates;
+	IEcoASNOne1ValueSet* m_crls;
 	IEcoPKCS7SignerInfos* m_signerInfos;
 
 } CEcoPKCS7SignedAndEnvelopedData, *CEcoPKCS7SignedAndEnvelopedDataPtr;
@@ -57,4 +61,4 @@ int16_t ECOCALLMETHOD createCEcoPKCS7SignedAndEnvelopedData(/* in */ IEcoUnknown
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS7SignedAndEnvelopedData(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7_H__ */
+#endif /* __C_ECOPKCS7SIGNEDANDENVELOPEDDATA_H__ */

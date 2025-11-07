@@ -41,7 +41,7 @@ typedef struct CEcoPKCS15DigestInfoWithDefault {
 
     /* Данные экземпляра */
     IEcoPKCS15AlgorithmIdentifier* m_digestAlg;
-	IEcoASNOneDataValue* m_digest;
+	IEcoASNOne1Value* m_digest;
 
 } CEcoPKCS15DigestInfoWithDefault, *CEcoPKCS15DigestInfoWithDefaultPtr;
 

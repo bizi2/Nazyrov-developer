@@ -40,7 +40,7 @@ typedef struct CEcoPKCS15DDO {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneObjectIdentifier* m_oid;
+    IEcoASNOne1Value* m_oid;
 	IEcoPKCS15Path* m_odfPath;
 	IEcoPKCS15Path* m_tokenInfoPath;
 	IEcoPKCS15Path* m_unusedPath;

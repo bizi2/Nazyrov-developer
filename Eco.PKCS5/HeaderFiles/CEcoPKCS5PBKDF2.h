@@ -17,8 +17,8 @@
  *
  */
 
-#ifndef __C_ECOPKCS5_H__
-#define __C_ECOPKCS5_H__
+#ifndef __C_ECOPKCS5PBKDF2_H__
+#define __C_ECOPKCS5PBKDF2_H__
 
 #include "IEcoPKCS5.h"
 #include "IEcoSystem1.h"
@@ -27,7 +27,7 @@
 typedef struct CEcoPKCS5PBKDF2 {
 
     /* Таблица функций интерфейса IEcoPKCS5 */
-    IEcoPKCS5VTbl* m_pVTblIEcoPKCS5;
+    IEcoPKCS5PBKDF2VTbl* m_pVTblIEcoPKCS5PBKDF2;
 
 
     /* Счетчик ссылок */
@@ -36,13 +36,17 @@ typedef struct CEcoPKCS5PBKDF2 {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneCHOICE* m_salt;
-	IEcoASNOneINTEGER* m_iterationCount;
-	IEcoASNOneINTEGER* m_keyLength;
+    IEcoASNOne1ValueSet* m_SEQUENCE;
+    IEcoASNOne1ValueSet* m_salt;
+	IEcoASNOne1Value* m_iterationCount;
+	IEcoASNOne1Value* m_keyLength;
 
 } CEcoPKCS5PBKDF2, *CEcoPKCS5PBKDF2Ptr;
 
@@ -53,4 +57,4 @@ int16_t ECOCALLMETHOD createCEcoPKCS5PBKDF2(/* in */ IEcoUnknownPtr_t pIUnkSyste
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS5PBKDF2(/* in */ IEcoPKCS5Ptr_t pIEcoPKCS5);
 
-#endif /* __C_ECOPKCS5_H__ */
+#endif /* __C_ECOPKCS5PBKDF2_H__ */

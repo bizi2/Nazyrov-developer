@@ -17,17 +17,17 @@
  *
  */
 
-#ifndef __C_ECOPKCS5_H__
-#define __C_ECOPKCS5_H__
+#ifndef __C_ECOPKCS5PBEParameter_H__
+#define __C_ECOPKCS5PBEParameter_H__
 
 #include "IEcoPKCS5.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
 
-typedef struct CEcoRC2CBCParameter {
+typedef struct CEcoPKCS5PBEParameter {
 
     /* Таблица функций интерфейса IEcoPKCS5 */
-    IEcoPKCS5VTbl* m_pVTblIEcoPKCS5;
+    IEcoPKCS5PBEParameterVTbl* m_pVTblIEcoPKCS5PBEParameter;
 
 
     /* Счетчик ссылок */
@@ -36,20 +36,24 @@ typedef struct CEcoRC2CBCParameter {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneDataValue* m_iv;
-	IEcoASNOneINTEGER* m_rc2ParameterVision;
+    IEcoASNOne1ValueSet* m_SEQUENCE;
+    IEcoASNOne1Value* m_salt;
+	IEcoASNOne1Value* m_iterationCount;
 
-} CEcoRC2CBCParameter, *CEcoRC2CBCParameterPtr;
+} CEcoPKCS5PBEParameter, *CEcoPKCS5PBEParameterPtr;
 
 /* Инициализация экземпляра */
-int16_t ECOCALLMETHOD initCEcoRC2CBCParameter(/*in*/ IEcoPKCS5Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
+int16_t ECOCALLMETHOD initCEcoPKCS5PBEParameter(/*in*/ IEcoPKCS5Ptr_t me, /* in */ IEcoUnknownPtr_t pIUnkSystem);
 /* Создание экземпляра */
-int16_t ECOCALLMETHOD createCEcoRC2CBCParameter(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS5Ptr_t* ppIEcoPKCS5);
+int16_t ECOCALLMETHOD createCEcoPKCS5PBEParameter(/* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter, /* out */ IEcoPKCS5Ptr_t* ppIEcoPKCS5);
 /* Удаление */
-void ECOCALLMETHOD deleteCEcoRC2CBCParameter(/* in */ IEcoPKCS5Ptr_t pIEcoPKCS5);
+void ECOCALLMETHOD deleteCEcoPKCS5PBEParameter(/* in */ IEcoPKCS5Ptr_t pIEcoPKCS5);
 
-#endif /* __C_ECOPKCS5_H__ */
+#endif /* __C_ECOPKCS5PBEParameter_H__ */

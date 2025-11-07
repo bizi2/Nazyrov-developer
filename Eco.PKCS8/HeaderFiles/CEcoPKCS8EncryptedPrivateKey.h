@@ -41,7 +41,7 @@ typedef struct CEcoPKCS8EncryptedPrivateKey {
 
     /* Данные экземпляра */
 	IEcoPKCS8AlgorithmIdentifier* m_encryptionAlgorithm;
-	IEcoPKCS8EncryptedData* m_encryptedData;
+	IEcoASNOne1Value* m_encryptedData;
 
 } CEcoPKCS8EncryptedPrivateKey, *CEcoPKCS8EncryptedPrivateKeyPtr;
 

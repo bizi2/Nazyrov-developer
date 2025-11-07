@@ -17,8 +17,8 @@
  *
  */
 
-#ifndef __C_ECOPKCS7_H__
-#define __C_ECOPKCS7_H__
+#ifndef __C_ECOPKCS7ENVELOPEDDATA_H__
+#define __C_ECOPKCS7ENVELOPEDDATA_H__
 
 #include "IEcoPKCS7.h"
 #include "IEcoSystem1.h"
@@ -27,8 +27,7 @@
 typedef struct CEcoPKCS7EnvelopedData {
 
     /* Таблица функций интерфейса IEcoPKCS7 */
-    IEcoPKCS7VTbl* m_pVTblIEcoPKCS7;
-
+    IEcoPKCS7EnvelopedDataVTbl* m_pVTblIEcoPKCS7EnvelopedData;
 
     /* Счетчик ссылок */
     uint32_t m_cRef;
@@ -36,10 +35,14 @@ typedef struct CEcoPKCS7EnvelopedData {
     /* Интерфейс для работы с памятью */
     IEcoMemoryAllocator1* m_pIMem;
 
+    /* Интерфейс для работы с нотацией ASN.1 */
+    IEcoASNOne1* m_pIASNOne;
+
     /* Системный интерфейс */
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
+	IEcoASNOne1ValueSet* m_SET;
     IEcoPKCS7Version* m_version;
 	IEcoPKCS7RecipientInfos* m_recipientInfos;
 	IEcoPKCS7EncryptedContentInfo* m_encryptedContentInfo;
@@ -53,4 +56,4 @@ int16_t ECOCALLMETHOD createCEcoPKCS7EnvelopedData(/* in */ IEcoUnknownPtr_t pIU
 /* Удаление */
 void ECOCALLMETHOD deleteCEcoPKCS7EnvelopedData(/* in */ IEcoPKCS7Ptr_t pIEcoPKCS7);
 
-#endif /* __C_ECOPKCS7_H__ */
+#endif /* __C_ECOPKCS7ENVELOPEDDATA_H__ */

@@ -40,14 +40,14 @@ typedef struct CEcoPKCS15RSAPrivateKeyObject {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneINTEGER* m_modulus;
-	IEcoASNOneINTEGER* m_publicExponent;
-	IEcoASNOneINTEGER* m_privateExponent;
-	IEcoASNOneINTEGER* m_prime1;
-	IEcoASNOneINTEGER* m_prime2;
-	IEcoASNOneINTEGER* m_exponent1;
-	IEcoASNOneINTEGER* m_exponent2;
-	IEcoASNOneINTEGER* m_coefficient;
+    IEcoASNOne1Value* m_modulus;
+	IEcoASNOne1Value* m_publicExponent;
+	IEcoASNOne1Value* m_privateExponent;
+	IEcoASNOne1Value* m_prime1;
+	IEcoASNOne1Value* m_prime2;
+	IEcoASNOne1Value* m_exponent1;
+	IEcoASNOne1Value* m_exponent2;
+	IEcoASNOne1Value* m_coefficient;
 
 } CEcoPKCS15RSAPrivateKeyObject, *CEcoPKCS15RSAPrivateKeyObjectPtr;
 

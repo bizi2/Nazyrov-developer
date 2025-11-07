@@ -40,11 +40,11 @@ typedef struct CEcoPKCS15EnvelopedData {
     IEcoSystem1* m_pISys;
 
     /* Данные экземпляра */
-    IEcoASNOneINTEGER* m_version;
+    IEcoASNOne1Value* m_version;
 	IEcoPKCS15OriginatorInfo* m_originatorInfo;
 	IEcoPKCS15RecipientInfos* m_recipientInfos;
 	IEcoPKCS15EncryptedContentInfo* m_encryptedContentInfo;
-	IEcoASNOneSET* m_unprotectedAttrs;
+	IEcoASNOne1ValueSet* m_unprotectedAttrs;
 
 } CEcoPKCS15EnvelopedData, *CEcoPKCS15EnvelopedDataPtr;
 

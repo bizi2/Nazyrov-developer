@@ -43,7 +43,7 @@ typedef struct CEcoPKCS15CommonObjectAttributes {
     IEcoPKCS15Label* m_label;
 	IEcoPKCS15CommonObjectFlags* m_flags;
 	IEcoPKCS15Identifier* m_authId;
-	IEcoASNOneINTEGER* m_userConsent;
+	IEcoASNOne1Value* m_userConsent;
 	IEcoPKCS15AccessControlRule* m_accessControlRules;
 
 } CEcoPKCS15CommonObjectAttributes, *CEcoPKCS15CommonObjectAttributesPtr;
