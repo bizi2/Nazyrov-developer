@@ -1,5 +1,5 @@
 ifeq ($(TARGET), 1)
-OUT_TARGET = lib53884AFC93C448ECAA929C8D3A562281.a
+OUT_TARGET = lib777B4B258FDC44C9A54F78A98339851F.a
 ifeq ($(DEBUG), 1)
 CONFIG_TARGET = StaticDebug
 CCFLAGS_TARGET = -Wall -O3 -g -DECO_LIB
@@ -10,7 +10,7 @@ CCFLAGS_TARGET = -O3 -DECO_LIB
 LDFLAGS_TARGET =
 endif
 else
-OUT_TARGET = 53884AFC93C448ECAA929C8D3A562281.so
+OUT_TARGET = 777B4B258FDC44C9A54F78A98339851F.so
 ifeq ($(DEBUG), 1)
 CONFIG_TARGET = DynamicDebug
 CCFLAGS_TARGET = -Wall -O3 -fPIC -g -DECO_DLL
@@ -31,11 +31,10 @@ SRC = \
 INCLUDES = \
 -I ../../../HeaderFiles \
 -I ../../../SharedFiles \
--I ../../../../Eco.Core1/SharedFiles \
--I ../../../../Eco.InterfaceBus1/SharedFiles \
--I ../../../../Eco.String1/SharedFiles \
--I ../../../../Eco.WideString1/SharedFiles \
--I ../../../../Eco.MemoryManager1/SharedFiles
+-I $(ECO_FRAMEWORK)/Eco.Core1/SharedFiles \
+-I $(ECO_FRAMEWORK)/Eco.InterfaceBus1/SharedFiles \
+-I $(ECO_FRAMEWORK)/Eco.String1/SharedFiles \
+-I $(ECO_FRAMEWORK)/Eco.MemoryManager1/SharedFiles
 
 OBJ = $(SRC:.c=.o)
 
@@ -43,7 +42,7 @@ OUT = $(OUT_TARGET)
 OUT_DIR = ../../../BuildFiles/Linux/x64/$(CONFIG_TARGET)
 
 # C++ compiler flags (-g -O2 -Wall)
-CCFLAGS = $(CCFLAGS_TARGET) -DECO_LINUX -DUGUID_UTILITY
+CCFLAGS = $(CCFLAGS_TARGET) -DECO_LINUX -DUGUID_UTILITY -DECO_X86_64
 
 # compiler
 GNU =
