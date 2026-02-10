@@ -41,10 +41,12 @@ typedef struct CEcoEventPoll1 {
     /* Данные экземпляра */
 #ifdef ECO_OS
 #elif ECO_WINDOWS
+	void* m_hio;
 #elif ECO_LINUX
     int m_fd;
     int m_maxevents;
-    struct epoll_event** m_epoll_events;
+    int m_ready_events;
+    struct epoll_event* m_epoll_events;
 #elif ECO_APPLE
 #elif ECO_ANDROID
 #endif

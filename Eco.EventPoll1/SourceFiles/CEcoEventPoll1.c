@@ -1,4 +1,4 @@
-﻿/*
+/*
  * <кодировка символов>
  *   Cyrillic (UTF-8 with signature) - Codepage 65001
  * </кодировка символов>
@@ -137,7 +137,7 @@ uint32_t CEcoEventPoll1_Release(/* in */ struct IEcoEventPoll1* me) {
  * </сводка>
  *
  * <описание>
- *   Функция
+ *   Функцияя регистрации файлового дескриптора в Epoll
  * </описание>
  *
  */
@@ -145,7 +145,6 @@ int16_t CEcoEventPoll1_Add(/* in */ struct IEcoEventPoll1* me, /* in */ descript
     CEcoEventPoll1* pCMe = (CEcoEventPoll1*)me;
 #ifdef ECO_OS
 #elif ECO_WINDOWS
-    HANDLE hIO = 0;
 #elif ECO_LINUX
     int ret = 0;
     struct epoll_event epoll_event = {0};
@@ -159,10 +158,17 @@ int16_t CEcoEventPoll1_Add(/* in */ struct IEcoEventPoll1* me, /* in */ descript
     }
 #ifdef ECO_OS
 #elif ECO_WINDOWS
-    if ((hIO = CreateIoCompletionPort(fd, NULL, 1, NULL)) == INVALID_HANDLE_VALUE) {
+    if ((CreateIoCompletionPort((HANDLE)fd, (HANDLE)pCMe->m_hio, (ULONG_PTR)fd, NULL)) == NULL) {
         return -1;
     }
 #elif ECO_LINUX
+    //проверка на превышение размера  m_maxevents
+    
+    epoll_event = (struct epoll_event) {
+        .events = EPOLLIN | EPOLLERR | EPOLLHUP, 
+        .data = {.u32 = *(int*)&fd} // user data
+    };
+
     if ((ret = epoll_ctl(pCMe->m_fd, EPOLL_CTL_ADD, *(int*)&fd, &epoll_event)) < 0) {
         return -1;
     }
@@ -263,8 +269,15 @@ int16_t CEcoEventPoll1_Del(/* in */ struct IEcoEventPoll1* me, /* in */ descript
  */
 int32_t CEcoEventPoll1_Wait(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t maxevents, /* in */ int32_t timeout) {
     CEcoEventPoll1* pCMe = (CEcoEventPoll1*)me;
+    IEcoMemoryAllocator1* pIMem = 0;
 #ifdef ECO_OS
 #elif ECO_WINDOWS
+	BOOL ret;
+	DWORD bytesTransferred;
+    ULONG_PTR completionKey;
+    LPOVERLAPPED overlapped;
+    OVERLAPPED_ENTRY completionEntries[64];
+    ULONG entryCount = 0;
 #elif ECO_LINUX
     int ret = 0;
 #elif ECO_APPLE
@@ -275,12 +288,30 @@ int32_t CEcoEventPoll1_Wait(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t
     if (me == 0) {
         return -1;
     }
+    pIMem = pCMe->m_pIMem;
 #ifdef ECO_OS
 #elif ECO_WINDOWS
+	ret = GetQueuedCompletionStatusEx(
+            (HANDLE)pCMe->m_hio,
+            completionEntries, //массив overlapped получаемых событий
+            min(maxevents, 64), //максимальное количество возвращаемых записей
+            &entryCount, // результат - количество извлеченных
+            timeout == -1 ? INFINITE : timeout, // timeout
+            FALSE // функция не возвращает значение пока не пройдет timeout или не получит запись
+     ); 
 #elif ECO_LINUX
-    if ((ret =  epoll_wait(pCMe->m_fd, epoll_events, maxevents, timeout)) < 0) {
+    //проверка если /* in */ int32_t maxevents больще чем pCMe->m_maxevents
+    if(pCMe->m_maxevents < maxevents){
+        pCMe->m_maxevents = maxevents;
+        //узнать кк освобождать память
+        pCMe->m_epoll_events = (struct epoll_event*)pIMem->pVTbl->Alloc(pIMem, sizeof(struct epoll_event) * pCMe->m_maxevents);
+    }
+    
+    if ((ret =  epoll_wait(pCMe->m_fd, pCMe->m_epoll_events, maxevents, timeout)) < 0) {
         return -1;
     }
+    pCMe->m_ready_events = ret;
+    return ret;
 #elif ECO_APPLE
 #elif ECO_ANDROID
 #endif
@@ -301,12 +332,36 @@ int32_t CEcoEventPoll1_Wait(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t
  */
 int16_t CEcoEventPoll1_Enum(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t number, /* out */ descriptor_t* fd) {
     CEcoEventPoll1* pCMe = (CEcoEventPoll1*)me;
+    IEcoMemoryAllocator1* pIMem = 0;
 
+    int i = 0;
+    
     /* Проверка указателей */
     if (me == 0) {
         return -1;
     }
+    pIMem = pCMe->m_pIMem;
+    #ifdef ECO_LINUX
+    // реализация с возвращаемым множеством дескрипторов
 
+    // fd = (descriptor_t*)pIMem->pVTbl->Alloc(pIMem, sizeof(descriptor_t) * pCMe->m_ready_events);
+    // for(i = 0; i < pCMe->m_ready_events; i++) {
+    //     fd[i] = (descriptor_t)pCMe->m_epoll_events[i].data.u32;
+    // }
+    // возвращаем размер массива дескрипторов
+    // return  pCMe->m_ready_events;
+
+    // реализация с получением одного объекта из массива epoll_events
+    // получать его можно многораз до следующего обновления epoll_events 
+    if(fd == 0) {
+        return -1;
+    }
+    if (number >= pCMe->m_maxevents) {
+        return -1;
+    }
+    *fd = (descriptor_t)pCMe->m_epoll_events[i].data.u32;
+
+    #endif
     return 0;
 }
 
@@ -411,12 +466,20 @@ int16_t createCEcoEventPoll1(/* in */ IEcoUnknown* pIUnkSystem, /* in */ IEcoUnk
     /* Инициализация данных */
 #ifdef ECO_OS
 #elif ECO_WINDOWS
+	pCMe->m_hio = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0 , 0);
+	if(pCMe->m_hio == NULL) {
+		deleteCEcoEventPoll1((IEcoEventPoll1*)pCMe);
+		return -1;
+	}
 #elif ECO_LINUX
     pCMe->m_fd = epoll_create1(0);
     if (pCMe->m_fd < 0) {
         deleteCEcoEventPoll1((IEcoEventPoll1*)pCMe);
         return -1;
     }
+	pCMe->m_epoll_events = 0;
+    pCMe->m_maxevents = 0;
+    pCMe->m_ready_events = 0;
 #elif ECO_APPLE
 #elif ECO_ANDROID
 #endif
