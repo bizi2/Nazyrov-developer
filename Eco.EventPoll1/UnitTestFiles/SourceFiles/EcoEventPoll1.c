@@ -30,7 +30,12 @@
 #include "IdEcoFileSystemManagement1.h"
 #include "IdEcoEventPoll1.h"
 #include "IdEcoThreadManager1.h"
+#include "IdEcoSocketP02.h"
 
+/* Указатель на интерфейс работы с системной интерфейсной шиной */
+IEcoInterfaceBus1* g_pIBus = 0;
+/* Указатель на интерфейс работы с памятью */
+IEcoMemoryAllocator1* g_pIMem = 0;
 /* Глобальный указатель на интерфейс работы с журналом */
 IEcoLog1* g_pILog = 0;
 /* Глобальный указатель на интерфейс работы с файлом */
@@ -63,6 +68,154 @@ uint32_t SimpleThread(/* in */ IEcoUnknown* pIUnk, /* in */ void* param) {
     return 0;
 }
 
+uint32_t ServerThread(/* in */ IEcoUnknown* pIUnk, /* in */ void* param) {
+    IEcoThread1*    pIThread = (IEcoThread1*)pIUnk;
+    IEcoSocketP02*  pIServerSocket  = 0;
+    IEcoINetP02*    pIINet          = 0;
+    IEcoEventPoll1* pIEventPoll     = 0;
+    int16_t         result          = -1;
+
+    /* данные о сокете */
+    int saccepted   = -1;
+    int sserver     = -1;
+    struct sockaddr_in serv_addr;
+
+    /* вспомогательные переменные */
+    char_t* buf = 0;
+	int i = 0;
+    int count_ready = 0;
+    int expected_connections_count = *(int*)param;
+
+    /* Получение интерфейса сокетов*/
+    result = g_pIBus->pVTbl->QueryComponent(g_pIBus, &CID_EcoSocketP02, 0, &IID_IEcoSocketP02, (void**) &pIServerSocket);
+    if (result != 0 || pIServerSocket == 0) {
+        /* Освобождение интерфейсов в случае ошибки */
+        return -1;
+    }
+
+    /*получения интерфейса для работы с сетевыми адресами*/
+    result = pIServerSocket->pVTbl->QueryInterface(pIServerSocket, &IID_IEcoINetP02, (void**) &pIINet);
+    if (result != 0 || pIINet == 0) {
+        /* Освобождение интерфейсов в случае ошибки */
+        return -1;
+    }
+
+    sserver = pIServerSocket->pVTbl->socket(pIServerSocket, AF_INET, SOCK_STREAM , 0);
+
+    g_pIMem->pVTbl->Fill(g_pIMem, &serv_addr, 0, sizeof(serv_addr));
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_addr.s_addr = pIINet->pVTbl->inet_addr(pIINet, "127.0.0.1");
+    serv_addr.sin_port = pIINet->pVTbl->htons(pIINet, 9001); 
+
+    /* Пнивязка адреса к сокету */
+    pIServerSocket->pVTbl->bind(pIServerSocket, sserver, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
+
+    /* Установка максимального числа подключений к сокету */
+    pIServerSocket->pVTbl->listen(pIServerSocket, sserver, 10);
+
+    /* Получение тестируемого интерфейса (epoll) */
+    g_pIBus->pVTbl->QueryComponent(g_pIBus, &CID_EcoEventPoll1, 0, &IID_IEcoEventPoll1, (void**) &pIEventPoll);
+    if (result != 0 && pIEventPoll == 0) {
+        /* Освобождение интерфейсов в случае ошибки */
+        return -1;
+    }
+
+    /* подключение всех сокетов клиентов*/
+    for(i = 0; i < expected_connections_count; i++) {
+        saccepted = pIServerSocket->pVTbl->accept(pIServerSocket, sserver, (struct sockaddr*)NULL, NULL);
+	    g_pILog->pVTbl->InfoFormat(g_pILog, "Simple Thread Id -> socket accepted [%X]", saccepted);
+
+        /* дбавление сокета подключение в Epoll*/
+        result = pIEventPoll->pVTbl->Add(pIEventPoll, (descriptor_t)&saccepted);
+        if(result != 0) {
+            g_pILog->pVTbl->InfoFormat(g_pILog, "Can't add socket fd to EPOLL = %X", saccepted);
+            /* Освобождение интерфейсов в случае ошибки */
+           return -1;
+        }
+    }
+
+
+    /* Ожидание завершения записи на 20 секунд */
+    count_ready = pIEventPoll->pVTbl->Wait(pIEventPoll, 10, 20000);
+    if (count_ready != -1) {
+        g_pILog->pVTbl->InfoFormat(g_pILog, "Waited fds %d", count_ready);
+        i = 0;
+        buf = (char_t*)g_pIMem->pVTbl->Alloc(g_pIMem, 256);
+        /* Просмотр списка готовых дескрипторов */
+        while (i < count_ready && count_ready != -1) {
+            pIEventPoll->pVTbl->Enum(pIEventPoll, i, &saccepted);
+            g_pILog->pVTbl->InfoFormat(g_pILog, "Write completed for descriptor : %X", saccepted);
+
+            g_pIMem->pVTbl->Fill(g_pIMem, buf, 0, 256);
+            pIServerSocket->pVTbl->recv(pIServerSocket, saccepted, buf, 256, 0);
+            g_pILog->pVTbl->InfoFormat(g_pILog, "ThreadID = %X -> Receive message : %s\n", pIThread->pVTbl->get_Id(pIThread), buf);
+            i++;
+        }
+    }
+    else {
+        g_pILog->pVTbl->ErrorFormat(g_pILog, "Error : timeout...");
+    }
+
+    return 0;
+}
+
+uint32_t ClientThread(/* in */ IEcoUnknown* pIUnk, /* in */ void* param) {
+    IEcoThread1*    pIThread = (IEcoThread1*)pIUnk;
+    IEcoSocketP02*  pIClientSocket  = 0;
+    IEcoINetP02*    pIINet          = 0;
+    int16_t         result          = -1;
+
+    /* данные о сокете */
+    int sclient = -1;
+    struct sockaddr_in serv_addr;
+    int status = -1;
+	char_t* mes = "Hello";
+
+	pIThread->pVTbl->Sleep(pIThread, 1000);
+
+    /* Получение тестируемого интерфейса */
+    result = g_pIBus->pVTbl->QueryComponent(g_pIBus, &CID_EcoSocketP02, 0, &IID_IEcoSocketP02, (void**) & pIClientSocket);
+    if (result != 0 || pIClientSocket == 0) {
+        /* Освобождение интерфейсов в случае ошибки */
+        return -1;
+    }
+
+    result = pIClientSocket->pVTbl->QueryInterface(pIClientSocket, &IID_IEcoINetP02, (void**) &pIINet);
+    if (result != 0 || pIINet == 0) {
+        /* Освобождение интерфейсов в случае ошибки */
+        return -1;
+    }
+
+    g_pILog->pVTbl->InfoFormat(g_pILog, "ThreadID = %X -> Create ClientSocket interface", pIThread->pVTbl->get_Id(pIThread));
+
+    /* Создаем сокет для клиента */
+    sclient = pIClientSocket->pVTbl->socket(pIClientSocket, AF_INET, SOCK_STREAM , 0);
+
+    g_pIMem->pVTbl->Fill(g_pIMem, &serv_addr, '0', sizeof(serv_addr));
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_addr.s_addr = pIINet->pVTbl->inet_addr(pIINet, "127.0.0.1");
+    serv_addr.sin_port = pIINet->pVTbl->htons(pIINet, 9001); 
+
+    /* Подключение к серверу */
+	do {
+		status = pIClientSocket->pVTbl->connect(pIClientSocket, sclient, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
+	} while(status < 0);
+
+    if (status < 0) {
+        g_pILog->pVTbl->InfoFormat(g_pILog, "ThreadID = %X -> Connection Failed", pIThread->pVTbl->get_Id(pIThread));
+        return -1;
+    }
+    else {
+        g_pILog->pVTbl->InfoFormat(g_pILog, "ThreadID = %X -> Connection success", pIThread->pVTbl->get_Id(pIThread));
+        pIThread->pVTbl->Sleep(pIThread, 3000);
+		pIClientSocket->pVTbl->send(pIClientSocket, sclient, mes, 5, 0);
+		//pIThread->pVTbl->Sleep(pIThread, 5000);
+		pIClientSocket->pVTbl->shutdown(pIClientSocket, sclient, 0);
+    }
+
+	return 0;
+}
+
 /*
  *
  * <сводка>
@@ -79,9 +232,9 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     /* Указатель на системный интерфейс */
     IEcoSystem1* pISys = 0;
     /* Указатель на интерфейс работы с системной интерфейсной шиной */
-    IEcoInterfaceBus1* pIBus = 0;
+    //IEcoInterfaceBus1* pIBus = 0;
     /* Указатель на интерфейс работы с памятью */
-    IEcoMemoryAllocator1* pIMem = 0;
+    //IEcoMemoryAllocator1* pIMem = 0;
     char_t* name = 0;
     char_t* copyName = 0;
     /* Указатель на тестируемый интерфейс */
@@ -91,12 +244,16 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     /* Указатели на интерфейсы для работы с потоками */
     IEcoThreadManager1* pIThreadMgr = 0;
     IEcoThread1* pICurrentThread = 0;
+    IEcoThread1* pIServerSThread = 0;
     IEcoThread1* pISimpleThread = 0;
     /* Указатели на интерфейсы для работы с файлами */
     IEcoFileManager1* pIFileMgr = 0;
 
+    int i = 0;
+    int connections = 2;
     int32_t countReady = 0;
     int32_t indexReady = 0;
+    descriptor_t send_fd = 0;
     descriptor_t fd = 0;
 
 
@@ -110,66 +267,72 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     }
 
     /* Получение интерфейса для работы с интерфейсной шиной */
-    result = pISys->pVTbl->QueryInterface(pISys, &IID_IEcoInterfaceBus1, (void **)&pIBus);
-    if (result != 0 || pIBus == 0) {
+    result = pISys->pVTbl->QueryInterface(pISys, &IID_IEcoInterfaceBus1, (void **)&g_pIBus);
+    if (result != 0 || g_pIBus == 0) {
         /* Освобождение в случае ошибки */
         goto Release;
     }
 #ifdef ECO_LIB
-    /* Регистрация статического компонента для работы со списком */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoEventPoll1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_777B4B258FDC44C9A54F78A98339851F);
+    /* Регистрация статического компонента для работы с epoll */
+    result = g_pIBus->pVTbl->RegisterComponent(g_pIBus, &CID_EcoEventPoll1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_777B4B258FDC44C9A54F78A98339851F);
+    if (result != 0 ) {
+        /* Освобождение в случае ошибки */
+        goto Release;
+    }
+    /* Регистрация статического компонента для работы с сокетами */
+    result = g_pIBus->pVTbl->RegisterComponent(g_pIBus, &CID_EcoSocketP02, (IEcoUnknown*)GetIEcoComponentFactoryPtr_1CE95396008F46EAB4374010C8B58383);
     if (result != 0 ) {
         /* Освобождение в случае ошибки */
         goto Release;
     }
     /* Регистрация статического компонента для работы с менеджером потоков */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoThreadManager1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_B7D8E10E1D3540CCB1CA96F766AF1936);
+    result = g_pIBus->pVTbl->RegisterComponent(g_pIBus, &CID_EcoThreadManager1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_B7D8E10E1D3540CCB1CA96F766AF1936);
     if (result != 0 ) {
         /* Освобождение в случае ошибки */
         goto Release;
     }
     /* Регистрация статического компонента для работы с журналом */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoLog1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_97322B6765B74342BBCE38798A0B40B5);
+    result = g_pIBus->pVTbl->RegisterComponent(g_pIBus, &CID_EcoLog1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_97322B6765B74342BBCE38798A0B40B5);
     if (result != 0 ) {
         /* Освобождение в случае ошибки */
         goto Release;
     }
     /* Регистрация статического компонента для работы со строкой */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoString1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_84CC0A7DBABD44EEBE749C9A8312D37E);
+    result = g_pIBus->pVTbl->RegisterComponent(g_pIBus, &CID_EcoString1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_84CC0A7DBABD44EEBE749C9A8312D37E);
     if (result != 0 ) {
         /* Освобождение в случае ошибки */
         goto Release;
     }
     /* Регистрация статического компонента для работы со списком */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoList1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_53884AFC93C448ECAA929C8D3A562281);
+    result = g_pIBus->pVTbl->RegisterComponent(g_pIBus, &CID_EcoList1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_53884AFC93C448ECAA929C8D3A562281);
     if (result != 0 ) {
         /* Освобождение в случае ошибки */
         goto Release;
     }
     /* Регистрация статического компонента для работы с датой и вреенем */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoDateTime1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_5B2BA17BEA704527BC708F88568FE115);
+    result = g_pIBus->pVTbl->RegisterComponent(g_pIBus, &CID_EcoDateTime1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_5B2BA17BEA704527BC708F88568FE115);
     if (result != 0 ) {
         /* Освобождение в случае ошибки */
         goto Release;
     }
 #endif
     /* Получение интерфейса управления памятью */
-    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoMemoryManager1, 0, &IID_IEcoMemoryAllocator1, (void**) &pIMem);
+    result = g_pIBus->pVTbl->QueryComponent(g_pIBus, &CID_EcoMemoryManager1, 0, &IID_IEcoMemoryAllocator1, (void**) &g_pIMem);
 
     /* Проверка */
-    if (result != 0 && pIMem == 0) {
+    if (result != 0 && g_pIMem == 0) {
         /* Освобождение системного интерфейса в случае ошибки */
         goto Release;
     }
 
     /* Получение интерфейса  для работы с журналом */
-    pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1, (void**) &g_pILog);
+    g_pIBus->pVTbl->QueryComponent(g_pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1, (void**) &g_pILog);
     if (result != 0 || g_pILog == 0) {
         /* Освобождение интерфейсов в случае ошибки */
         goto Release;
     }
 
-    pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1FileAffiliate, (void**) &pIFileAffiliate);
+    g_pIBus->pVTbl->QueryComponent(g_pIBus, &CID_EcoLog1, 0, &IID_IEcoLog1FileAffiliate, (void**) &pIFileAffiliate);
     if (result != 0 || pIFileAffiliate == 0) {
         /* Освобождение интерфейсов в случае ошибки */
         goto Release;
@@ -179,71 +342,56 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
 
     g_pILog->pVTbl->Info(g_pILog, "Start tests!!!");
 
-    /* Получение тестируемого интерфейса */
-    pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoEventPoll1, 0, &IID_IEcoEventPoll1, (void**) &pIEventPoll);
-    if (result != 0 && pIEventPoll == 0) {
-        /* Освобождение интерфейсов в случае ошибки */
-        goto Release;
-    }
-
-    /* Получение интерфейса управление файлами */
-    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoFileSystemManagement1, 0, &IID_IEcoFileManager1, (void**) &pIFileMgr);
-    if (result != 0 || pIFileMgr == 0) {
-        /* Освобождение интерфейсов в случае ошибки */
-        goto Release;
-    }
-
-    /* Создание нового файла */
-    g_pIFile = pIFileMgr->pVTbl->Create(pIFileMgr, "Simple.txt");
-
-    /* Добавление в пул событий файловый дескриптор для отслеживания */
-    pIEventPoll->pVTbl->Add(pIEventPoll, g_pIFile->pVTbl->get_Descriptor(g_pIFile));
-
     /* Получение интерфейса для работы с потоками */
-    pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoThreadManager1, 0, &IID_IEcoThreadManager1, (void**) &pIThreadMgr);
+    g_pIBus->pVTbl->QueryComponent(g_pIBus, &CID_EcoThreadManager1, 0, &IID_IEcoThreadManager1, (void**) &pIThreadMgr);
     if (result != 0 || pIThreadMgr == 0) {
         /* Освобождение интерфейсов в случае ошибки */
         goto Release;
     }
 
-    /* Создание нового потока */
-    pISimpleThread = pIThreadMgr->pVTbl->CreateThread(pIThreadMgr, SimpleThread, 0, 0, 0);
+     /* Получение интерфейса текущего потока */
+    pICurrentThread = pIThreadMgr->pVTbl->get_CurrentThread(pIThreadMgr);
+
+    /* Создание потока сервера */
+    pISimpleThread = pIThreadMgr->pVTbl->CreateThread(pIThreadMgr, ServerThread, &connections, 0, 0);
     /* Вывод информации о потоке*/
     if (pISimpleThread != 0) {
-        g_pILog->pVTbl->InfoFormat(g_pILog, "Create Simple Thread Id : %X", pISimpleThread->pVTbl->get_Id(pISimpleThread));
+        g_pILog->pVTbl->InfoFormat(g_pILog, "Create Server Thread Id : %X", pISimpleThread->pVTbl->get_Id(pISimpleThread));
     }
     else {
-        g_pILog->pVTbl->Error(g_pILog, "Error create Simple Thread ");
+        g_pILog->pVTbl->Error(g_pILog, "Error create Server Thread ");
+        goto Release;
     }
+    pICurrentThread->pVTbl->Sleep(pICurrentThread, 3000);
 
-    /* Ожидание завершения записи на 10 секунд */
-    countReady = pIEventPoll->pVTbl->Wait(pIEventPoll, 10, 10000);
-    if (countReady != -1) {
-        /* Просмотр списка готовых дескрипторов */
-        while (indexReady < countReady && countReady != -1) {
-            pIEventPoll->pVTbl->Enum(pIEventPoll, indexReady, &fd);
-            g_pILog->pVTbl->InfoFormat(g_pILog, "Write completed for descriptor : %X", fd);
-            indexReady++;
-        }
-    }
-    else {
-        g_pILog->pVTbl->ErrorFormat(g_pILog, "Error : timeout...");
-    }
+	for(i = 0; i < connections; i++) {
+		pISimpleThread = pIThreadMgr->pVTbl->CreateThread(pIThreadMgr, ClientThread, 0, 0, 0);
+		/* Вывод информации о потоке*/
+		if (pISimpleThread != 0) {
+			g_pILog->pVTbl->InfoFormat(g_pILog, "Create Client Thread Id : %X", pISimpleThread->pVTbl->get_Id(pISimpleThread));
+		}
+		else {
+			g_pILog->pVTbl->Error(g_pILog, "Error create Simple Thread ");
+			goto Release;
+		}
+		pICurrentThread->pVTbl->Sleep(pICurrentThread, 3000);
+	}
 
-
-    /* Освлбождение блока памяти */
-   // pIMem->pVTbl->Free(pIMem, name);
-
+    pICurrentThread->pVTbl->Sleep(pICurrentThread, 40000);
 Release:
 
     /* Освобождение интерфейса для работы с интерфейсной шиной */
-    if (pIBus != 0) {
-        pIBus->pVTbl->Release(pIBus);
+    if (g_pIBus != 0) {
+        g_pIBus->pVTbl->Release(g_pIBus);
     }
 
     /* Освобождение интерфейса работы с памятью */
-    if (pIMem != 0) {
-        pIMem->pVTbl->Release(pIMem);
+    if (g_pIMem != 0) {
+        g_pIMem->pVTbl->Release(g_pIMem);
+    }
+    /* Освобождение интерфейса работы с журналированием */
+    if (g_pILog != 0) {
+        g_pILog->pVTbl->Release(g_pILog);
     }
 
     /* Освобождение тестируемого интерфейса */

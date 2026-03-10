@@ -166,10 +166,10 @@ int16_t CEcoEventPoll1_Add(/* in */ struct IEcoEventPoll1* me, /* in */ descript
     
     epoll_event = (struct epoll_event) {
         .events = EPOLLIN | EPOLLERR | EPOLLHUP, 
-        .data = {.u32 = *(int*)&fd} // user data
+        .data = {.u32 = *(int*)fd} // user data
     };
 
-    if ((ret = epoll_ctl(pCMe->m_fd, EPOLL_CTL_ADD, *(int*)&fd, &epoll_event)) < 0) {
+    if ((ret = epoll_ctl(pCMe->m_fd, EPOLL_CTL_ADD, *(int*)fd, &epoll_event)) < 0) {
         return -1;
     }
 #elif ECO_APPLE
@@ -301,13 +301,16 @@ int32_t CEcoEventPoll1_Wait(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t
      ); 
 #elif ECO_LINUX
     //проверка если /* in */ int32_t maxevents больще чем pCMe->m_maxevents
-    if(pCMe->m_maxevents < maxevents){
-        pCMe->m_maxevents = maxevents;
+    // if(pCMe->m_maxevents < maxevents){
+    //     pCMe->m_maxevents = maxevents;
+    //     //узнать кк освобождать память
+    //     pCMe->m_epoll_events = (struct epoll_event*)pIMem->pVTbl->Alloc(pIMem, sizeof(struct epoll_event) * pCMe->m_maxevents);
+    // }
+    pCMe->m_maxevents = maxevents;
         //узнать кк освобождать память
-        pCMe->m_epoll_events = (struct epoll_event*)pIMem->pVTbl->Alloc(pIMem, sizeof(struct epoll_event) * pCMe->m_maxevents);
-    }
+    pCMe->m_epoll_events = (struct epoll_event*)pIMem->pVTbl->Alloc(pIMem, sizeof(struct epoll_event) * pCMe->m_maxevents);
     
-    if ((ret =  epoll_wait(pCMe->m_fd, pCMe->m_epoll_events, maxevents, timeout)) < 0) {
+    if ((ret = epoll_wait(pCMe->m_fd, pCMe->m_epoll_events, maxevents, timeout)) < 0) {
         return -1;
     }
     pCMe->m_ready_events = ret;
@@ -330,7 +333,7 @@ int32_t CEcoEventPoll1_Wait(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t
  * </описание>
  *
  */
-int16_t CEcoEventPoll1_Enum(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t number, /* out */ descriptor_t* fd) {
+int16_t CEcoEventPoll1_Enum(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t number, /* out */ descriptor_t fd) {
     CEcoEventPoll1* pCMe = (CEcoEventPoll1*)me;
     IEcoMemoryAllocator1* pIMem = 0;
 
@@ -353,13 +356,15 @@ int16_t CEcoEventPoll1_Enum(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t
 
     // реализация с получением одного объекта из массива epoll_events
     // получать его можно многораз до следующего обновления epoll_events 
+
     if(fd == 0) {
         return -1;
     }
     if (number >= pCMe->m_maxevents) {
         return -1;
     }
-    *fd = (descriptor_t)pCMe->m_epoll_events[i].data.u32;
+
+    *(int*)fd = pCMe->m_epoll_events[i].data.u32;
 
     #endif
     return 0;

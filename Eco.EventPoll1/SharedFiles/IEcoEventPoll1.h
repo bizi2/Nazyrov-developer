@@ -43,7 +43,7 @@ typedef struct IEcoEventPoll1VTbl {
     int16_t (*Mod)(/* in */ struct IEcoEventPoll1* me, /* in */ descriptor_t fd);
     int16_t (*Del)(/* in */ struct IEcoEventPoll1* me, /* in */ descriptor_t fd);
     int32_t (*Wait)(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t maxevents, /* in */ int32_t timeout);
-    int16_t (*Enum)(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t number, /* out */ descriptor_t* fd);
+    int16_t (*Enum)(/* in */ struct IEcoEventPoll1* me, /* in */ int32_t number, /* out */ descriptor_t fd);
 
 } IEcoEventPoll1VTbl, *IEcoEventPoll1VTblPtr;
 
