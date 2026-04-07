@@ -41,7 +41,13 @@ typedef struct CEcoEventPoll1 {
     /* Данные экземпляра */
 #ifdef ECO_OS
 #elif ECO_WINDOWS
-	void* m_hio;
+    voidptr_t m_hio;
+    int32_t m_maxevents;
+    int32_t m_ready_events;
+    voidptr_t* m_registered;
+    int32_t m_registered_count;
+    int32_t m_registered_capacity;
+    voidptr_t* m_ready_contexts;
 #elif ECO_LINUX
     int m_fd;
     int m_maxevents;

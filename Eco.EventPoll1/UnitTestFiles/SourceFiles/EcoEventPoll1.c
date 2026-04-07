@@ -44,29 +44,24 @@ IEcoFile1* g_pIFile = 0;
 /*
  *
  * <сводка>
- *   Функция SimpleThread
+ *   Функция ServerThread
  * </сводка>
  *
  * <описание>
- *   Функция SimpleThread - поток
+ *   Функция сервера принимает клиентские подключения и обрабатывает события чтения через IEcoEventPoll1
  * </описание>
  *
+ * <параметры>
+ *   pIUnk - указатель на интерфейс текущего потока
+ *   param - указатель на количество ожидаемых клиентских подключений
+ * </параметры>
+ *
+ * <возврат>
+ *   0 - успешное выполнение, -1 - ошибка
+ * </возврат>
+ *
  */
-uint32_t SimpleThread(/* in */ IEcoUnknown* pIUnk, /* in */ void* param) {
-    IEcoThread1* pIThread = (IEcoThread1*)pIUnk;
-    char_t buffer[] = "Hello Event Poll\n";
-    uint32_t size = sizeof(buffer) - 1;
-    int16_t index = 0;
-    g_pILog->pVTbl->InfoFormat(g_pILog, "Simple Thread Id = %x - Start write to file fd = %X", pIThread->pVTbl->get_Id(pIThread), g_pIFile->pVTbl->get_Descriptor(g_pIFile));
 
-    while (index < 1000) {
-        size = sizeof(buffer) - 1;
-        g_pIFile->pVTbl->Write(g_pIFile, buffer, &size);
-        index++;
-    }
-    g_pILog->pVTbl->InfoFormat(g_pILog, "Simple Thread Id = %x - Completed", pIThread->pVTbl->get_Id(pIThread));
-    return 0;
-}
 
 uint32_t ServerThread(/* in */ IEcoUnknown* pIUnk, /* in */ void* param) {
     IEcoThread1*    pIThread = (IEcoThread1*)pIUnk;
@@ -84,6 +79,8 @@ uint32_t ServerThread(/* in */ IEcoUnknown* pIUnk, /* in */ void* param) {
     char_t* buf = 0;
 	int i = 0;
     int count_ready = 0;
+    int processed_connections_count = 0;
+    int wait_attempt = 0;
     int expected_connections_count = *(int*)param;
 
     /* Получение интерфейса сокетов*/
@@ -134,31 +131,70 @@ uint32_t ServerThread(/* in */ IEcoUnknown* pIUnk, /* in */ void* param) {
         }
     }
 
+    buf = (char_t*)g_pIMem->pVTbl->Alloc(g_pIMem, 256);
+    if (buf == 0) {
+        return -1;
+    }
 
-    /* Ожидание завершения записи на 20 секунд */
-    count_ready = pIEventPoll->pVTbl->Wait(pIEventPoll, 10, 20000);
-    if (count_ready != -1) {
+    /* Ожидание завершения записи до обработки всех клиентов */
+    while (processed_connections_count < expected_connections_count && wait_attempt < (expected_connections_count * 4)) {
+        count_ready = pIEventPoll->pVTbl->Wait(pIEventPoll, expected_connections_count, 20000);
+        if (count_ready < 0) {
+            g_pILog->pVTbl->Error(g_pILog, "Error : wait failure");
+            break;
+        }
+
+        if (count_ready == 0) {
+            g_pILog->pVTbl->Info(g_pILog, "Wait returned no ready descriptors, continue polling");
+            wait_attempt++;
+            continue;
+        }
+
         g_pILog->pVTbl->InfoFormat(g_pILog, "Waited fds %d", count_ready);
         i = 0;
-        buf = (char_t*)g_pIMem->pVTbl->Alloc(g_pIMem, 256);
-        /* Просмотр списка готовых дескрипторов */
-        while (i < count_ready && count_ready != -1) {
+        while (i < count_ready && processed_connections_count < expected_connections_count) {
             pIEventPoll->pVTbl->Enum(pIEventPoll, i, &saccepted);
             g_pILog->pVTbl->InfoFormat(g_pILog, "Write completed for descriptor : %X", saccepted);
 
             g_pIMem->pVTbl->Fill(g_pIMem, buf, 0, 256);
             pIServerSocket->pVTbl->recv(pIServerSocket, saccepted, buf, 256, 0);
             g_pILog->pVTbl->InfoFormat(g_pILog, "ThreadID = %X -> Receive message : %s\n", pIThread->pVTbl->get_Id(pIThread), buf);
+            pIEventPoll->pVTbl->Del(pIEventPoll, (descriptor_t)&saccepted);
+
+            processed_connections_count++;
             i++;
         }
+
+        wait_attempt++;
     }
-    else {
-        g_pILog->pVTbl->ErrorFormat(g_pILog, "Error : timeout...");
+
+    if (processed_connections_count != expected_connections_count) {
+        g_pILog->pVTbl->Error(g_pILog, "Processed connections count is less than expected");
     }
 
     return 0;
 }
 
+/*
+ *
+ * <сводка>
+ *   Функция ClientThread
+ * </сводка>
+ *
+ * <описание>
+ *   Функция клиента создает сокет, подключается к серверу и отправляет тестовое сообщение
+ * </описание>
+ *
+ * <параметры>
+ *   pIUnk - указатель на интерфейс текущего потока
+ *   param - пользовательский параметр потока
+ * </параметры>
+ *
+ * <возврат>
+ *   0 - успешное выполнение, -1 - ошибка
+ * </возврат>
+ *
+ */
 uint32_t ClientThread(/* in */ IEcoUnknown* pIUnk, /* in */ void* param) {
     IEcoThread1*    pIThread = (IEcoThread1*)pIUnk;
     IEcoSocketP02*  pIClientSocket  = 0;
@@ -219,12 +255,64 @@ uint32_t ClientThread(/* in */ IEcoUnknown* pIUnk, /* in */ void* param) {
 /*
  *
  * <сводка>
+ *   Функция InitClientThreads
+ * </сводка>
+ *
+ * <описание>
+ *   Функция создает указанное количество клиентских потоков
+ * </описание>
+ *
+ * <параметры>
+ *   pIThreadMgr - указатель на интерфейс менеджера потоков
+ *   pICurrentThread - указатель на текущий поток
+ *   connections - количество клиентских потоков для создания
+ * </параметры>
+ *
+ * <возврат>
+ *   0 - успешное выполнение, -1 - ошибка
+ * </возврат>
+ *
+ */
+int16_t InitClientThreads(/* in */ IEcoThreadManager1* pIThreadMgr, 
+                          /* in */ IEcoThread1* pICurrentThread, 
+                          /* in */ int connections) {
+    int i = 0;
+    IEcoThread1* pISimpleThread = 0;
+    
+    g_pILog->pVTbl->Info(g_pILog, "init client threads!!!");
+    for(i = 0; i < connections; i++) {
+        pISimpleThread = pIThreadMgr->pVTbl->CreateThread(pIThreadMgr, ClientThread, 0, 0, 0);
+        /* Вывод информации о потоке*/
+        if (pISimpleThread != 0) {
+            g_pILog->pVTbl->InfoFormat(g_pILog, "Create Client Thread Id : %X", pISimpleThread->pVTbl->get_Id(pISimpleThread));
+        }
+        else {
+            g_pILog->pVTbl->Error(g_pILog, "Error create Simple Thread ");
+            return -1;
+        }
+        pICurrentThread->pVTbl->Sleep(pICurrentThread, 3000);
+    }
+    
+    return 0;
+}
+
+/*
+ *
+ * <сводка>
  *   Функция EcoMain
  * </сводка>
  *
  * <описание>
  *   Функция EcoMain - точка входа
  * </описание>
+ *
+ * <параметры>
+ *   pIUnk - указатель на системный интерфейс приложения
+ * </параметры>
+ *
+ * <возврат>
+ *   0 - успешное выполнение, -1 - ошибка
+ * </возврат>
  *
  */
 int16_t EcoMain(IEcoUnknown* pIUnk) {
@@ -352,32 +440,21 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
      /* Получение интерфейса текущего потока */
     pICurrentThread = pIThreadMgr->pVTbl->get_CurrentThread(pIThreadMgr);
 
-    /* Создание потока сервера */
-    pISimpleThread = pIThreadMgr->pVTbl->CreateThread(pIThreadMgr, ServerThread, &connections, 0, 0);
-    /* Вывод информации о потоке*/
-    if (pISimpleThread != 0) {
-        g_pILog->pVTbl->InfoFormat(g_pILog, "Create Server Thread Id : %X", pISimpleThread->pVTbl->get_Id(pISimpleThread));
-    }
-    else {
-        g_pILog->pVTbl->Error(g_pILog, "Error create Server Thread ");
+    /* Создание серверного потока */
+    g_pILog->pVTbl->Info(g_pILog, "Creating Server thread");
+    pIServerSThread = pIThreadMgr->pVTbl->CreateThread(pIThreadMgr, ServerThread, &connections, 0, 0);
+    if (pIServerSThread == 0) {
+        g_pILog->pVTbl->Error(g_pILog, "Error create Server Thread");
         goto Release;
     }
-    pICurrentThread->pVTbl->Sleep(pICurrentThread, 3000);
 
-	for(i = 0; i < connections; i++) {
-		pISimpleThread = pIThreadMgr->pVTbl->CreateThread(pIThreadMgr, ClientThread, 0, 0, 0);
-		/* Вывод информации о потоке*/
-		if (pISimpleThread != 0) {
-			g_pILog->pVTbl->InfoFormat(g_pILog, "Create Client Thread Id : %X", pISimpleThread->pVTbl->get_Id(pISimpleThread));
-		}
-		else {
-			g_pILog->pVTbl->Error(g_pILog, "Error create Simple Thread ");
-			goto Release;
-		}
-		pICurrentThread->pVTbl->Sleep(pICurrentThread, 3000);
-	}
+	/* Создание клиентских потоков */
+    if (InitClientThreads(pIThreadMgr, pICurrentThread, connections) != 0) {
+        goto Release;
+    }
 
     pICurrentThread->pVTbl->Sleep(pICurrentThread, 40000);
+    
 Release:
 
     /* Освобождение интерфейса для работы с интерфейсной шиной */
