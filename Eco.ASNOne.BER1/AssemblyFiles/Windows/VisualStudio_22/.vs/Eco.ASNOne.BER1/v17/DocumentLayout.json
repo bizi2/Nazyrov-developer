@@ -1,0 +1,148 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\AssemblyFiles\\Windows\\VisualStudio_22\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B31BB829-EFF8-4A3A-81B7-478831790DC7}|Eco.ASNOne.BER1.vcxproj|C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SourceFiles\\CEcoASNOneBER1Factory.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B31BB829-EFF8-4A3A-81B7-478831790DC7}|Eco.ASNOne.BER1.vcxproj|C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SourceFiles\\CEcoASNOneBER1.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7954BB0F-5EE0-4C7C-8F42-D7913D5FCAEA}|Eco.ASNOne.BER1UnitTest.vcxproj|C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\UnitTestFiles\\SourceFiles\\EcoASNOneBER1.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7954BB0F-5EE0-4C7C-8F42-D7913D5FCAEA}|Eco.ASNOne.BER1UnitTest.vcxproj|C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\AssemblyFiles\\Windows\\VisualStudio_22\\EcoHost.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7954BB0F-5EE0-4C7C-8F42-D7913D5FCAEA}|Eco.ASNOne.BER1UnitTest.vcxproj|solutionrelative:EcoHost.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B31BB829-EFF8-4A3A-81B7-478831790DC7}|Eco.ASNOne.BER1.vcxproj|C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\HeaderFiles\\CEcoASNOneBER1Factory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B31BB829-EFF8-4A3A-81B7-478831790DC7}|Eco.ASNOne.BER1.vcxproj|C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\HeaderFiles\\CEcoASNOneBER1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B31BB829-EFF8-4A3A-81B7-478831790DC7}|Eco.ASNOne.BER1.vcxproj|C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SharedFiles\\IEcoASNOneBER1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B31BB829-EFF8-4A3A-81B7-478831790DC7}|Eco.ASNOne.BER1.vcxproj|C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SharedFiles\\IdEcoASNOneBER1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CEcoASNOneBER1Factory.c",
+              "DocumentMoniker": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SourceFiles\\CEcoASNOneBER1Factory.c",
+              "RelativeDocumentMoniker": "..\\..\\..\\SourceFiles\\CEcoASNOneBER1Factory.c",
+              "ToolTip": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SourceFiles\\CEcoASNOneBER1Factory.c",
+              "RelativeToolTip": "..\\..\\..\\SourceFiles\\CEcoASNOneBER1Factory.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsBAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-05-22T10:48:06.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EcoASNOneBER1.c",
+              "DocumentMoniker": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\UnitTestFiles\\SourceFiles\\EcoASNOneBER1.c",
+              "RelativeDocumentMoniker": "..\\..\\..\\UnitTestFiles\\SourceFiles\\EcoASNOneBER1.c",
+              "ToolTip": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\UnitTestFiles\\SourceFiles\\EcoASNOneBER1.c",
+              "RelativeToolTip": "..\\..\\..\\UnitTestFiles\\SourceFiles\\EcoASNOneBER1.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-05-21T15:45:11.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CEcoASNOneBER1.h",
+              "DocumentMoniker": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\HeaderFiles\\CEcoASNOneBER1.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\HeaderFiles\\CEcoASNOneBER1.h",
+              "ToolTip": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\HeaderFiles\\CEcoASNOneBER1.h",
+              "RelativeToolTip": "..\\..\\..\\HeaderFiles\\CEcoASNOneBER1.h",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-22T09:17:56.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IEcoASNOneBER1.h",
+              "DocumentMoniker": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SharedFiles\\IEcoASNOneBER1.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\SharedFiles\\IEcoASNOneBER1.h",
+              "ToolTip": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SharedFiles\\IEcoASNOneBER1.h",
+              "RelativeToolTip": "..\\..\\..\\SharedFiles\\IEcoASNOneBER1.h",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAwD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-22T09:17:49.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CEcoASNOneBER1.c",
+              "DocumentMoniker": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SourceFiles\\CEcoASNOneBER1.c",
+              "RelativeDocumentMoniker": "..\\..\\..\\SourceFiles\\CEcoASNOneBER1.c",
+              "ToolTip": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SourceFiles\\CEcoASNOneBER1.c",
+              "RelativeToolTip": "..\\..\\..\\SourceFiles\\CEcoASNOneBER1.c",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAAwGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-05-22T09:17:27.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CEcoASNOneBER1Factory.h",
+              "DocumentMoniker": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\HeaderFiles\\CEcoASNOneBER1Factory.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\HeaderFiles\\CEcoASNOneBER1Factory.h",
+              "ToolTip": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\HeaderFiles\\CEcoASNOneBER1Factory.h",
+              "RelativeToolTip": "..\\..\\..\\HeaderFiles\\CEcoASNOneBER1Factory.h",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-22T09:18:02.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EcoHost.c",
+              "DocumentMoniker": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\AssemblyFiles\\Windows\\VisualStudio_22\\EcoHost.c",
+              "RelativeDocumentMoniker": "EcoHost.c",
+              "ToolTip": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\AssemblyFiles\\Windows\\VisualStudio_22\\EcoHost.c",
+              "RelativeToolTip": "EcoHost.c",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAAwFAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-05-22T09:26:19.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IdEcoASNOneBER1.h",
+              "DocumentMoniker": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SharedFiles\\IdEcoASNOneBER1.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\SharedFiles\\IdEcoASNOneBER1.h",
+              "ToolTip": "C:\\Users\\engfile\\EcoPrac\\Eco.Security-main\\Eco.ASNOne.BER1\\SharedFiles\\IdEcoASNOneBER1.h",
+              "RelativeToolTip": "..\\..\\..\\SharedFiles\\IdEcoASNOneBER1.h",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-22T09:17:43.714Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

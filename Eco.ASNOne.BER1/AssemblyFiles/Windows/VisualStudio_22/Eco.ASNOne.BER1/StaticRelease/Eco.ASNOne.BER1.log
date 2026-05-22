@@ -1,0 +1,7 @@
+﻿  CEcoASNOneBER1.c
+C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\SourceFiles\CEcoASNOneBER1.c(240,33): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\SourceFiles\CEcoASNOneBER1.c(293,37): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\SourceFiles\CEcoASNOneBER1.c(395,36): warning C4018: <: несоответствие типов со знаком и без знака
+  CEcoASNOneBER1Factory.c
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1564,5): warning MSB8012: TargetPath(C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_22\Eco.ASNOne.BER1\StaticRelease\2C2F66F449864F509444C0F7CBE9F1CB.lib) не соответствует значению свойства выходного файла (C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\BuildFiles\Windows\x86\StaticRelease\2C2F66F449864F509444C0F7CBE9F1CB.lib) для Library. Это может привести к неправильной сборке проекта. Чтобы исправить это, убедитесь, что значения свойств $(OutDir), $(TargetName) и $(TargetExt) соответствуют значению, указанному в %(Lib.OutputFile).
+  Eco.ASNOne.BER1.vcxproj -> C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_22\Eco.ASNOne.BER1\StaticRelease\2C2F66F449864F509444C0F7CBE9F1CB.lib

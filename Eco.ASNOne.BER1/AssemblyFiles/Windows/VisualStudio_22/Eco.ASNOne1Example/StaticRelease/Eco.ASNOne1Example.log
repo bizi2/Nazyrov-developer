@@ -1,0 +1,9 @@
+﻿  CEcoASNOne1Example.c
+  CEcoASNOne1ExampleFactory.c
+  CEcoASNOne1ExChildInformation.c
+  CEcoASNOne1ExDate.c
+  CEcoASNOne1ExEmployeeNumber.c
+  CEcoASNOne1ExName.c
+  CEcoASNOne1ExPersonnelRecord.c
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1564,5): warning MSB8012: TargetPath(C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_22\Eco.ASNOne1Example\StaticRelease\CC01E1FC921E4B1C93C6AA45247D52F9.lib) не соответствует значению свойства выходного файла (C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\BuildFiles\Windows\x86\StaticRelease\CC01E1FC921E4B1C93C6AA45247D52F9.lib) для Library. Это может привести к неправильной сборке проекта. Чтобы исправить это, убедитесь, что значения свойств $(OutDir), $(TargetName) и $(TargetExt) соответствуют значению, указанному в %(Lib.OutputFile).
+  Eco.ASNOne1Example.vcxproj -> C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_22\Eco.ASNOne1Example\StaticRelease\CC01E1FC921E4B1C93C6AA45247D52F9.lib

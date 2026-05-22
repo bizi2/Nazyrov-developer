@@ -1,0 +1,24 @@
+﻿Build started 22.05.2026 15:31:23.
+     1>Project "C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne.BER1.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Eco.ASNOne.BER1\DynamicDebug\Eco.ASNOne.BER1.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\..\HeaderFiles /I..\..\..\SharedFiles /I..\..\..\..\Eco.ASNOne1\SharedFiles /I"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.FRAME\Eco.Core1\SharedFiles" /I"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.FRAME\Eco.MemoryManager1\SharedFiles" /I"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.FRAME\Eco.InterfaceBus1\SharedFiles" /ZI /nologo /W3 /WX- /Od /Oy- /D ECO_WIN32 /D ECO_X86_32 /D ECO_WINDOWS /D _DEBUG /D _WINDOWS /D ECO_DLL /D UGUID_UTILITY /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Eco.ASNOne.BER1\DynamicDebug\\" /Fd"Eco.ASNOne.BER1\DynamicDebug\vc100.pdb" /Gz /TC /analyze- /errorReport:prompt ..\..\..\SourceFiles\CEcoASNOneBER1.c
+         CEcoASNOneBER1.c
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(990,5): warning MSB8012: TargetPath(C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne.BER1\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.dll) does not match the Linker's OutputFile property value (C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\BuildFiles\Windows\x86\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\..\BuildFiles\Windows\x86\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.dll" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Eco.ASNOne.BER1\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne.BER1\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne.BER1\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.lib" /MACHINE:X86 /DLL Eco.ASNOne.BER1\DynamicDebug\CEcoASNOneBER1.obj
+         Eco.ASNOne.BER1\DynamicDebug\CEcoASNOneBER1Factory.obj
+         LINK : ..\..\..\BuildFiles\Windows\x86\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.dll not found or not built by the last incremental link; performing full link
+            Creating library C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne.BER1\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.lib and object C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne.BER1\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.exp
+         Eco.ASNOne.BER1.vcxproj -> C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne.BER1\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"..\..\..\BuildFiles\Windows\x86\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.dll;#2" /manifest Eco.ASNOne.BER1\DynamicDebug\2C2F66F449864F509444C0F7CBE9F1CB.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Eco.ASNOne.BER1\DynamicDebug\Eco.ASNOne.BER1.unsuccessfulbuild".
+         Touching "Eco.ASNOne.BER1\DynamicDebug\Eco.ASNOne.BER1.lastbuildstate".
+     1>Done Building Project "C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne.BER1.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.25

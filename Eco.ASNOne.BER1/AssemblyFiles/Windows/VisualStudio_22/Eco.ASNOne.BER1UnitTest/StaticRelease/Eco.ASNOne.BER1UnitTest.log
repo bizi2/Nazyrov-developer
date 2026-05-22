@@ -1,0 +1,9 @@
+﻿  EcoASNOneBER1.c
+C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\UnitTestFiles\SourceFiles\EcoASNOneBER1.c(225,51): warning C4047: функция: "uint32_t *" отличается по уровням косвенного обращения от "uint32_t"
+C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\UnitTestFiles\SourceFiles\EcoASNOneBER1.c(225,51): warning C4024: функция по указателю: различные типы для формального и фактического параметров 3
+  Создание кода
+  0 of 6 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  Eco.ASNOne.BER1UnitTest.vcxproj -> C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_22\Eco.ASNOne.BER1UnitTest\StaticRelease\Eco.ASNOne.BER1UnitTest.exe

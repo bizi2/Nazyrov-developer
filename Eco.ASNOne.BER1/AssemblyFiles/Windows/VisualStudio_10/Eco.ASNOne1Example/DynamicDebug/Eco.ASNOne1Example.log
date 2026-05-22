@@ -1,0 +1,37 @@
+﻿Build started 22.05.2026 15:19:24.
+     1>Project "C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne1Example.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Eco.ASNOne1Example\DynamicDebug\Eco.ASNOne1Example.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "Eco.ASNOne1Example\DynamicDebug\Eco.ASNOne1Example.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\..\UnitTestFiles\HeaderFiles /I..\..\..\HeaderFiles /I..\..\..\UnitTestFiles\SharedFiles /I..\..\..\SharedFiles /I..\..\..\..\Eco.ASNOne1\SharedFiles /I"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.FRAME\Eco.Core1\SharedFiles" /I"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.FRAME\Eco.InterfaceBus1\SharedFiles" /I"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.FRAME\Eco.System1\SharedFiles" /I"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.FRAME\Eco.MemoryManager1\SharedFiles" /I"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.FRAME\Eco.FileSystemManagement1\SharedFiles" /I"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.FRAME\Eco.List1\SharedFiles" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D ECO_X86_32 /D _DEBUG /D _WINDOWS /D ECO_WINDOWS /D ECO_WIN32 /D UGUID_UTILITY /D ECO_DLL /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Eco.ASNOne1Example\DynamicDebug\\" /Fd"Eco.ASNOne1Example\DynamicDebug\vc100.pdb" /Gz /TC /analyze- /errorReport:prompt ..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1Example.c ..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExampleFactory.c ..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExChildInformation.c ..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExDate.c ..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExEmployeeNumber.c ..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExName.c ..\..\..\UnitTestFiles\SourceFiles\CEcoASNOne1ExPersonnelRecord.c
+         CEcoASNOne1ExPersonnelRecord.c
+         CEcoASNOne1ExName.c
+         CEcoASNOne1ExEmployeeNumber.c
+         CEcoASNOne1ExDate.c
+         CEcoASNOne1ExChildInformation.c
+         CEcoASNOne1ExampleFactory.c
+         CEcoASNOne1Example.c
+         Generating Code...
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(990,5): warning MSB8012: TargetPath(C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne1Example\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.dll) does not match the Linker's OutputFile property value (C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\BuildFiles\Windows\x86\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\..\BuildFiles\Windows\x86\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.dll" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Eco.ASNOne1Example\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne1Example\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne1Example\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.lib" /MACHINE:X86 /DLL Eco.ASNOne1Example\DynamicDebug\CEcoASNOne1Example.obj
+         Eco.ASNOne1Example\DynamicDebug\CEcoASNOne1ExampleFactory.obj
+         Eco.ASNOne1Example\DynamicDebug\CEcoASNOne1ExChildInformation.obj
+         Eco.ASNOne1Example\DynamicDebug\CEcoASNOne1ExDate.obj
+         Eco.ASNOne1Example\DynamicDebug\CEcoASNOne1ExEmployeeNumber.obj
+         Eco.ASNOne1Example\DynamicDebug\CEcoASNOne1ExName.obj
+         Eco.ASNOne1Example\DynamicDebug\CEcoASNOne1ExPersonnelRecord.obj
+            Creating library C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne1Example\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.lib and object C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne1Example\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.exp
+         Eco.ASNOne1Example.vcxproj -> C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne1Example\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"..\..\..\BuildFiles\Windows\x86\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.dll;#2" /manifest Eco.ASNOne1Example\DynamicDebug\CC01E1FC921E4B1C93C6AA45247D52F9.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Eco.ASNOne1Example\DynamicDebug\Eco.ASNOne1Example.unsuccessfulbuild".
+         Touching "Eco.ASNOne1Example\DynamicDebug\Eco.ASNOne1Example.lastbuildstate".
+     1>Done Building Project "C:\Users\engfile\EcoPrac\Eco.Security-main\Eco.ASNOne.BER1\AssemblyFiles\Windows\VisualStudio_10\Eco.ASNOne1Example.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.67
