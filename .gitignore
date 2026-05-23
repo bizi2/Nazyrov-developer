@@ -1,1 +1,12 @@
 Eco.FRAME/ 
+*.suo 
+*.sdf 
+*.opensdf 
+*.db 
+*.ipch 
+*.unsuccessfulbuild 
+.vs/ 
+FileContentIndex/ 
+ipch/ 
+Browse.VC.db 
+DocumentLayout*.json 
